@@ -1,0 +1,822 @@
+
+$colorDefaultText: #0279E6;
+$colorLightText: #D9E0EE;
+$colorBrightText: white;
+
+$colorBlack: black;
+$colorWhite: white;
+$colorBright: #B8EC79;
+
+$colorDefaultButton: #044170;
+$colorDimButton: darken($colorDefaultButton, 4%);
+$colorDarkButton: darken($colorDefaultButton, 19%);
+
+$colorLightButton: lighten($colorDefaultButton, 7%);
+$colorLightDimButton: lighten($colorDimButton, 5%);
+$colorLightDarkButton: black;
+
+$colorNearBlack: #1B1613;
+
+$colorBorder: #063056;
+$colorBorderLight: #054675;
+$colorBorderDark: #002135;
+
+$colorDarkBackground: #031524;
+
+
+
+/* Hover arrows */
+@mixin hoverArrowBase($width: 26px, $height: 26px) {
+	background-image: url(../img/navi_icons.png);
+	display: inline-block;
+	width: $width;
+	height: $height;
+	border: none;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	vertical-align: bottom;
+}
+
+@mixin borderRadius($radius) {
+	border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+}
+
+@mixin edgedBorderRadius($topLeft, $topRight, $bottomLeft, $bottomRight) {
+	border-radius: $topLeft $topRight $bottomLeft $bottomRight;
+	-moz-border-radius: $topLeft $topRight $bottomLeft $bottomRight;
+	-webkit-border-radius: $topLeft $topRight $bottomLeft $bottomRight;
+}
+
+@mixin defaultBorder {
+	border: 1px solid $colorBorder {
+		top-color: $colorBorderLight;
+	}
+}
+
+@mixin windowBackground {
+	background-color: rgba($colorBlack, .65);
+	background-image: url(../img/menu_content.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+
+@mixin boxShadow($radius, $color) {
+	$list: 0px 0px $radius $color;
+
+	box-shadow: $list;
+	-webkit-box-shadow: $list;
+	-moz-box-shadow: $list;
+}
+
+@mixin complexShadow($list1, $list2) {
+	box-shadow: $list1, $list2;
+	-webkit-box-shadow: $list1, $list2;
+	-moz-box-shadow: $list1, $list2;
+}
+
+@mixin inset($radius, $color, $hOffset: 0, $vOffset: 0) {
+	$list: inset $hOffset $vOffset $radius $color;
+	box-shadow: $list;
+	-webkit-box-shadow: $list;
+	-moz-box-shadow: $list;
+}
+
+@mixin complexGradient($colorBackground, $list) {
+	background: $colorBackground;
+
+	background: linear-gradient($list);
+	background: -o-linear-gradient($list);
+	background: -moz-linear-gradient($list);
+	background: -webkit-linear-gradient($list);
+	background: -ms-linear-gradient($list);
+}
+
+@mixin buttonGradient($background, $bright, $dark) {
+	background: $background;
+	background: -moz-linear-gradient(top,  $background 0%, $background 48%, $dark 50%, $dark 60%, $bright 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$background), color-stop(48%,$background), color-stop(50%,$dark), color-stop(60%,$dark), color-stop(100%,$bright));
+	background: -webkit-linear-gradient(top,  $background 0%,$background 48%,$dark 50%,$dark 60%,$bright 100%);
+	background: -o-linear-gradient(top,  $background 0%,$background 48%,$dark 50%,$dark 60%,$bright 100%);
+	background: -ms-linear-gradient(top,  $background 0%,$background 48%,$dark 50%,$dark 60%,$bright 100%);
+	background: linear-gradient(to bottom,  $background 0%,$background 48%,$dark 50%,$dark 60%,$bright 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$colorDimGray', endColorstr='$colorGray',GradientType=0 );
+}
+
+@mixin linearGradient($colorBackground, $colorFrom, $colorTo) {
+	$list: bottom, $colorTo 0%, $colorFrom 100%;
+
+	@include complexGradient($colorBackground, $list);
+}
+
+@mixin linearDoubleGradient($colorBackground, $colorFrom, $colorAcross, $colorTo) {
+	background: $colorBackground;
+
+	background: linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+	background: -o-linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+	background: -moz-linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+	background: -webkit-linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+	background: -ms-linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+}
+
+@mixin linkTriangle($color) {
+	display: inline-block;
+	width: 0px;
+	height: 0px;
+
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 4px solid $color;
+}
+
+
+
+* {
+	padding: 0px;
+	margin: 0px;
+
+	color: $colorDefaultText;
+	font-size: 13px;
+	font-family: Verdana;
+
+	background-color: black;
+	background-color: transparent;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+
+	background-color: #08070c;
+}
+
+.tipTip {
+	cursor: help;
+}
+
+ul.list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		float: left;
+
+		&.mission {
+			width: 180px;
+			text-align: center;
+		}
+	}
+}
+
+/* Input style */
+form {
+	display: inline;
+}
+
+input[type=text],
+input[type=password],
+select,
+.textinput {
+	color: #0E1423;
+	width: 120px;
+
+	background: MintCream url(http://board-schlacht-um-kyoto.de/img_suk/candy_input.png) repeat-x;
+	border: 1px solid #A0A4B8;
+	border-top: 1px solid #6F778A;
+	border-radius: 3px;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+select:focus,
+textarea:focus {
+	border: 1px solid #91BAD5;
+	border-top: 1px solid #6796AE;
+
+	-webkit-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE; /* webkit browser*/
+	-moz-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE; /* firefox */
+	box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE;
+}
+
+input[type=text].small,
+select.small {
+	text-align:center;
+	width: 80px;
+}
+
+input[type=text].tiny,
+select.tiny {
+	text-align:center;
+	width: 40px;
+}
+
+select option {
+	color: #0E1423;
+}
+
+p {
+	margin: 10px 0;
+}
+
+hr {
+	margin: 15px 0 15px 0;
+	border: none;
+	border-top: 1px dotted $colorDefaultText;
+	height: 1px;
+}
+
+table td {
+	padding: 2px;
+}
+
+h2, .h2 {
+	color: #d8e425;
+	font-size: 16px;
+
+	margin-top: 13px;
+	margin-bottom: 10px;
+}
+
+.null {
+	display: none;
+}
+.bold {
+	font-weight: bold !important;
+}
+.top {
+	vertical-align: top;
+}
+.center {
+	text-align: center;
+}
+.left {
+	text-align: right;
+}
+.right {
+	text-align: right;
+}
+.floatLeft {
+	float: left;
+}
+.floatRight {
+	float: right;
+}
+.clear {
+	clear: both;
+}
+.smallFont {
+	font-size: 9px;
+}
+
+
+/* Boxes */
+div.box {
+	margin-bottom: 8px;
+
+	h3.header {
+		position: relative;
+		height: 25px;
+		line-height: 25px;
+
+		padding-left: 10px;
+
+		color: $colorLightText;
+		text-shadow: 0 0 4px $colorLightText;
+		font-weight: bold;
+
+		background-color: $colorDarkBackground;
+		background-image: url(../img/menu_title.jpg);
+		background-position: top right;
+		background-repeat: no-repeat;
+
+		border: 1px solid $colorBorder;
+		border-top-color: $colorBorderLight;
+		@include edgedBorderRadius(7px, 7px, 0px, 0px);
+		@include inset(4px, $colorBlack);
+
+		a.close {
+			position: absolute;
+			right: 8px;
+			top: 1px;
+
+			color: red;
+
+			&:hover {
+				color: white;
+			}
+		}
+	}
+
+	div.content {
+		padding: 12px 8px;
+
+		@include windowBackground;
+
+		border: 1px solid $colorBorderDark {
+			top-color: transparent;
+			bottom-color: $colorBorder;
+		}
+		@include edgedBorderRadius(0px, 0px, 7px, 7px);
+		@include inset(6px, $colorBlack);
+
+		.menu {
+			display: block;
+			height: 26px;
+			line-height: 26px;
+
+			font-weight: bold;
+
+			margin-left: 20px;
+
+			&.space {
+				margin-bottom: 15px;
+			}
+
+			&.selected {
+				@include linearDoubleGradient(
+					rgba($colorDefaultText, .5),
+					transparent,
+					rgba($colorDefaultText, .5),
+					transparent
+				);
+			}
+
+			span {
+				@include linkTriangle($colorWhite);
+			}
+		}
+
+		div.seperator {
+			width: 200px;
+			height: 1px;
+
+			background-image: url(../img/hseperator.png);
+			background-position: top center;
+			background-repeat: no-repeat;
+		}
+	}
+}
+
+
+/* Main color theme */
+.headline {
+	color: #d8e425;
+}
+.variable {
+	color: #a3b13b;
+}
+.highlight {
+	color: #88e1ff;
+}
+.critical {
+	color: #e3131e;
+}
+
+
+/* Main body content */
+#topBanner {
+	position: relative;
+
+	width: 1000px;
+	height: 250px;
+
+	background-image: url(../img/temp_banner.jpg);
+	background-repeat: no-repeat;
+	padding-bottom: 8px;
+
+	text-align: right;
+
+	#languageSelector {
+		padding: 6px;
+	}
+
+	#status {
+		position: absolute;
+		right: 35px;
+		top: 40px;
+
+		width: 150px;
+		padding: 8px;
+
+		//background-color: rgba($colorBlack, .75);
+
+		//@include windowBackground;
+		@include linearGradient(
+			rgba($colorBlack, .85),
+			rgba($colorDarkBackground, .85),
+			rgba($colorBlack, .85)
+		);
+		@include defaultBorder;
+		@include borderRadius(6px);
+		@include boxShadow(10px, $colorBlack);
+
+		td {
+			text-align: left;
+			font-size: 9px;
+		}
+	}
+}
+
+#contentContainer {
+	display: inline-block;
+	width: 1000px;
+	text-align: left;
+
+	#contentNavi {
+		display: inline-block;
+		width: 220px;
+	}
+
+	#contentBody {
+		display: inline-block;
+		width: 750px;
+
+		#tabs {
+			background-image: url(../img/menu_tab_bg.png);
+			background-repeat: repeat-x;
+
+			@include defaultBorder;
+			@include edgedBorderRadius(0px, 15px, 0px, 15px);
+		}
+
+		.profile {
+			width: 320px;
+		}
+	}
+}
+
+
+/* Flags */
+.lang {
+	display: inline-block;
+	background-image: url(../img/flags.jpg);
+	border: none;
+
+	width: 20px;
+	height: 14px;
+
+	text-decoration: none;
+
+	&.de {
+		background-position: 0 0;
+	}
+
+	&.en {
+		background-position: 0 -14px;
+	}
+}
+
+/* jQuery ui css extension */
+.ui-slider-range {
+	border-radius: 5px;
+}
+
+h3.ui-widget-header {
+	padding: 8px 5px;
+	margin-bottom: 10px;
+}
+
+
+/* Info box */
+#infoLayer {
+	.shade {
+		position: fixed;
+		left: 0px;
+		top: 0px;
+		z-index: 1000;
+
+		width: 100%;
+		height: 100%;
+
+		background-color: black;
+		opacity: 0.5;
+		-moz-opacity: 0.5;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		filter: alpha(opacity=50);
+	}
+
+	.container.small {
+		margin-left: -135px;
+		width: 250px;
+
+		.content {
+			#amountSlider {
+				display: inline-block;
+				margin: 0 5px;
+				width: 115px;
+			}
+
+			#labelSlider {
+				display: inline-block;
+				margin-left: 15px;
+				width: 90px;
+			}
+		}
+	}
+
+	.container {
+		position: fixed;
+		left: 50%;
+		top: 40%;
+		z-index: 1001;
+		margin-left: -210px;
+		width: 400px;
+
+		text-align: left;
+
+		-moz-box-shadow: 0px 3px 6px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0px 3px 6px rgba(0,0,0,0.5);
+		box-shadow: 0px 3px 6px rgba(0,0,0,0.5);
+
+		.buttons {
+			padding-top: 12px;
+			float: right;
+		}
+	}
+}
+
+
+/* Crafter: fiddle page */
+div.ingredient {
+	display: inline-block;
+	text-align: center;
+
+	p {
+		line-height: 27px;
+	}
+}
+
+.fiddlingContainer {
+	padding-top: 35px;
+	width: 500px;
+
+	#fiddleProgress {
+		margin: 5px;
+	}
+}
+
+/* Hangar: mission page */
+#missionBox {
+	margin: 35px;
+	text-align: center;
+}
+
+
+/* Event box */
+.eventBox {
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 600;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 70px;
+	padding: 5px;
+
+	color: white;
+	font: 10px  Verdana;
+	text-shadow:  0 0 2px black;
+	text-align: center;
+
+
+	@include boxShadow(8px, $colorBlack);
+
+	width: 450px;
+	border: 1px solid black;
+	border-radius:4px;
+
+	&.combined {
+		text-align: left;
+		padding-left: 50px;
+	}
+
+	&.success {
+		$colorSuccessDim: rgb(118, 204,33);
+		$colorSuccessDark: rgb(46, 121, 2);
+		$colorSuccessBorder: darken($colorSuccessDark, 5%);
+
+		@include linearGradient($colorSuccessDim, $colorSuccessDim, $colorSuccessDark);
+		border-color: $colorSuccessBorder;
+	}
+
+	&.failure {
+		$colorFailureDim: rgb(203, 1, 1);
+		$colorFailureDark: rgb(117, 13, 0);
+		$colorFailureBorder: darken($colorFailureDark, 5%);
+
+		@include linearGradient($colorFailureDim, $colorFailureDim, $colorFailureDark);
+		border-color: $colorFailureBorder;
+	}
+
+	span.headline {
+		color: yellow;
+	}
+}
+
+
+/* anchors */
+a {
+	display: inline-block;
+	color: $colorLightText;
+
+	cursor: pointer;
+	text-decoration:none;
+
+	&:hover {
+		color: $colorBrightText;
+		text-shadow: 0 0 2px $colorLightText;
+	}
+
+	&.jumper {
+		@include hoverArrowBase;
+
+		&.left {
+			&:link,
+			&:visited,
+			&:active {
+				background-position: 0px 0px;
+			}
+
+			&:hover {
+				background-position: 0px -27px;
+			}
+		}
+
+		&.right {
+			&:link,
+			&:visited,
+			&:active {
+				background-position: -27px 0px;
+			}
+
+			&:hover {
+				background-position: -27px -27px;
+			}
+		}
+	}
+
+	&.tab {
+		width: 180px;
+		height: 55px;
+		line-height: 55px;
+
+		font: {
+			size: 17px;
+			weight: bold;
+		}
+		text-align: center;
+		text-shadow: 0 0 10px $colorDefaultText;
+
+		border: none;
+
+		background-image: url(../img/vseperator.png);
+		background-position: right center;
+		background-repeat: no-repeat;
+
+		&:hover {
+			text-shadow: 0 0 10px $colorLightText;
+		}
+
+		&:nth-child(4) {
+			background-image: none;
+		}
+	}
+
+	&.revealPresent {
+		display: inline-block;
+		width: 80px;
+		height: 80px;
+		line-height: 80px;
+
+		text-align: center;
+
+		border: 1px solid $colorBorderLight;
+		@include borderRadius(5px);
+
+		font: {
+			weight: bold;
+			size: 30px;
+			style: italic;
+		}
+	}
+
+	&.accordion {
+		display: block;
+
+		span {
+			@include linkTriangle($colorBright);
+		}
+	}
+}
+
+
+/* Status and progress bars */
+div.statusBar {
+	display: block;
+	width: 99px;
+	height: 8px;
+
+	border: 1px solid grayscale($colorBorderLight);
+
+	.display {
+		width: 99px;
+		height: 8px;
+
+		background: {
+			image: url('../img/big_bars.png');
+			repeat: no-repeat;
+		}
+	}
+}
+
+div.progressBar {
+	position: relative;
+	height: 20px;
+
+	margin: 60px 0 20px;
+	padding: 10px;
+
+	@include borderRadius(25px);
+	@include inset(2px, rgba($colorBlack, 0.3));
+
+	background: none repeat scroll 0 0 #191c24;
+
+	span {
+		position: relative;
+		width: 0%;
+		height: 100%;
+
+		background: {
+			image: url(../img/progress.png);
+			position: right center;
+		}
+
+		@include borderRadius(20px);
+		@include complexShadow(
+			0 2px 9px rgba(255, 255, 255, 0.3) inset,
+			0 -2px 6px rgba(0, 0, 0, 0.4) inset
+		);
+
+		display: block;
+		overflow: hidden;
+	}
+}
+
+
+/* Style buttons */
+.button {
+	display: inline-block;
+
+	width: 100px;
+	height: 22px !important;
+	line-height: 20px !important;
+
+	text-decoration: none !important;
+	text-align: center !important;
+
+	color: $colorWhite !important;
+	font-weight: normal !important;
+
+	cursor: pointer;
+
+	border: 1px solid $colorBorder;
+	border-top-color: $colorBorderLight;
+	@include borderRadius(11px);
+	@include inset(2px, $colorBlack);
+	@include buttonGradient($colorDimButton, $colorDefaultButton, $colorDarkButton);
+
+	&:hover {
+		text-shadow: 0 0 2px $colorBright !important;
+		@include buttonGradient($colorLightDimButton, $colorLightButton, $colorDarkButton);
+	}
+
+	&.small {
+		width: 60px;
+	}
+
+	&.large {
+		width: 140px;
+	}
+
+	&.disabled {
+		color: grayscale($colorLightButton) !important;
+		@include buttonGradient(grayscale($colorDimButton), grayscale($colorDefaultButton), grayscale($colorDarkButton));
+
+		&:hover {
+			text-shadow: 0 0 0 transparent !important;
+			@include buttonGradient(grayscale($colorDimButton), grayscale($colorDefaultButton), grayscale($colorDarkButton));
+		}
+	}
+
+	&.important {
+		color: $colorWhite !important;
+
+		&:hover {
+			text-shadow: 0 0 2px $colorWhite !important;
+		}
+	}
+}
