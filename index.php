@@ -98,12 +98,12 @@ class dispatcher {
 
 //		switch ($this->route) {
 //			case 'test':
-//				$starship = $account->starship();
+//				$starship = $account->Starship();
 //
 //				$battleManager = new battleManager();
 //				$battleManager->setOpponents(
 //					$starship,
-//					ObjectPool::getLegacy('account', 2)->starship()
+//					ObjectPool::getLegacy('account', 2)->Starship()
 //				);
 //
 //				$battleManager->start();

@@ -1,6 +1,11 @@
 <?php
 
-class renderBattle extends RendererAbstract {
+class RenderFightData extends RendererAbstract {
+	/**
+	 * @var RenderFightData
+	 */
+	private static $instance;
+
 	/**
 	 * @var int
 	 */
@@ -17,16 +22,27 @@ class renderBattle extends RendererAbstract {
 	private $tempData = array();
 
 	/**
-	 * @var array of starship
+	 * @var Starship[]
 	 */
 	private $starships = array();
 
 	/**
 	 * @static
-	 * @return renderBattle
+	 * @return RenderFightData
 	 */
-	public static function create() {
-		return ObjectPool::getLegacy('renderBattle');
+	public static function get() {
+		if (self::$instance === null) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function battleData() {
+		return $this->battleData;
 	}
 
 	/**
@@ -178,7 +194,7 @@ class renderBattle extends RendererAbstract {
 			'ships'		=> array()
 		);
 
-		/* @var starship $starship */
+		/* @var Starship $starship */
 		foreach ($this->starships as $starship) {
 			$account = $starship->account();
 			$condition = $starship->condition();
@@ -200,7 +216,7 @@ class renderBattle extends RendererAbstract {
 	 * @param technology $item
 	 * @param string $message
 	 * @param string $class
-	 * @return renderBattle
+	 * @return RenderFightData
 	 */
 	public function newEvent(
 		Account $account,
@@ -225,7 +241,7 @@ class renderBattle extends RendererAbstract {
 	 * @param mixed $value1
 	 * @param mixed $value2
 	 * @param bool $break
-	 * @return renderBattle
+	 * @return RenderFightData
 	 */
 	public function addEventInfo(
 		$message,
@@ -250,10 +266,10 @@ class renderBattle extends RendererAbstract {
 	}
 
 	/**
-	 * @param starship $starship
-	 * @return renderBattle
+	 * @param Starship $starship
+	 * @return RenderFightData
 	 */
-	public function addStarship(starship $starship) {
+	public function addStarship(Starship $starship) {
 		$this->starships[] = $starship;
 
 		return $this;

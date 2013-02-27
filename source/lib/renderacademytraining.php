@@ -8,7 +8,7 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 			return;
 		}
 
-		$actionAcademyTraining = $this->account()->actionAcademyTraining();
+		$actionAcademyTraining = $this->account()->factory()->actionAcademyTraining();
 		if ($request->get('train') === 'tactics') {
 			$actionAcademyTraining->startTactics();
 		}
@@ -52,7 +52,7 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 		$js = "$('.train').academyTraining();";
 		JavaScript::create()->bind($js);
 
-		if ($account->actionAcademyTraining()->canStart()) {
+		if ($account->factory()->actionAcademyTraining()->canStart()) {
 			$class = '';
 			$title = i18n('youGo');
 		}

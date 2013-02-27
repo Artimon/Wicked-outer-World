@@ -3,7 +3,7 @@
 class RenderAcademyCourse extends RenderAcademyAbstract {
 	protected function commitActions() {
 		$request = Request::getInstance();
-		$actionAcademyCourse = $this->account()->actionAcademyCourse();
+		$actionAcademyCourse = $this->account()->factory()->actionAcademyCourse();
 
 		if ($request->post('startCourse')) {
 			$actionAcademyCourse->start();
@@ -18,7 +18,7 @@ class RenderAcademyCourse extends RenderAcademyAbstract {
 		$this->commitActions();
 
 		$account = $this->account();
-		$course = $account->actionAcademyCourse();
+		$course = $account->factory()->actionAcademyCourse();
 
 		$coursesHeadline = i18n('courses');
 		$coursesText = i18n('coursesText');

@@ -905,3 +905,136 @@ function gameCycle() {
 	setTimeout(gameCycle, cycleDelay);
 }
 */
+
+(function ($) {
+	$.fn.barScale = function (name, percentage) {
+		var width = Math.round(99 * (percentage / 100)) + 'px';
+
+		this
+			.find('.statusBar')
+			.find('.' + name)
+			.stop()
+			.animate({width: width});
+	}
+}(jQuery));
+
+(function ($) {
+	$.fn.animateFight = function (jsonActions, jsonTranslations) {
+		var $self = this,
+			actions = JSON.parse(jsonActions),
+			translations = JSON.parse(jsonTranslations),
+			$sides = {},
+			message,
+			object,
+			key = 0;
+
+		/**
+		 * @param side string
+		 * @return {*}
+		 */
+		function fighterContainer(side) {
+			if (!$sides[side]) {
+				$sides[side] = $self.find('.' + side);
+			}
+
+			return $sides[side];
+		}
+
+		function animate(object, value, color) {
+			var $container,
+				$event;
+
+			$container = fighterContainer(object.s).find('.actionContainer');
+
+			$event = $("<div class='event'>" + value + "</div>");
+			$container.append($event);
+
+			$event.css({
+				left: (100 + Math.random() * 50) + 'px',
+				top: (Math.random() * 30 - 50) + 'px',
+				color: color,
+				textShadow: '0 0 4px ' + color
+			});
+
+			$event.animate(
+				{top: '-=50px', left: '+=15px'},
+				1000,
+				function () {
+					$event.fadeOut(
+						'fast',
+						function () {
+							$event.remove();
+						}
+					);
+				}
+			);
+		}
+
+		function cycle() {
+			object = actions[key];
+			message = translations[object.m];
+
+			switch (object.a) {
+				case 'r':
+					animate(
+						object,
+						message + ' +' + object.v,
+						'#BBF24E'
+					);
+					break;
+
+				case 'su':
+					animate(object, message, '#CE79DD');
+					break;
+
+				case 'sp':
+					animate(
+						object,
+						message + ' +' + object.v,
+						'#CE79DD'
+					);
+					break;
+
+				case 'sd':
+					animate(object, message, '#CE79DD');
+					break;
+
+				case 'd':
+
+					animate(
+						object,
+						message + ' -' + object.v,
+						'#B7502B'
+					);
+					break;
+
+				case 'm':
+					animate(
+						object,
+						message + ' ' + translations.missed,
+						'#A5E396'
+					);
+					break;
+			}
+
+			fighterContainer('aggressor').barScale('condition', object.ag.c);
+			fighterContainer('aggressor').barScale('shield', object.ag.s);
+			fighterContainer('aggressor').barScale('energy', object.ag.e);
+
+			fighterContainer('victim').barScale('condition', object.vi.c);
+			fighterContainer('victim').barScale('shield', object.vi.s);
+			fighterContainer('victim').barScale('energy', object.vi.e);
+
+			key++;
+
+			if (key < actions.length) {
+				window.setTimeout(cycle, object.d);
+			}
+			else {
+				$self.find('.fightResult').fadeIn();
+			}
+		}
+
+		cycle();
+	};
+}(jQuery));

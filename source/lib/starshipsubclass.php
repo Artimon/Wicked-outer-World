@@ -3,25 +3,25 @@
 /**
  * Basic constructor and functions for starship subclasses.
  */
-abstract class starshipSubclass {
+abstract class StarshipSubclass {
 	/**
-	 * @var starship
+	 * @var Starship
 	 */
 	private $starship;
 
 	/**
 	 * Constructor
 	 *
-	 * @param starship $starship
+	 * @param Starship $starship
 	 */
-	public function __construct(starship $starship) {
+	public function __construct(Starship $starship) {
 		$this->starship = $starship;
 	}
 
 	/**
-	 * Return starship.
+	 * Return Starship.
 	 *
-	 * @return starship
+	 * @return Starship
 	 */
 	public function starship() {
 		return $this->starship;

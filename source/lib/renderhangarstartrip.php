@@ -27,7 +27,7 @@ class RenderHangarStarTrip extends RendererAbstract {
 	 * @return string
 	 */
 	protected function starTripActionHtml() {
-		$this->account()->actionHangarStarTrip()->start();
+		$this->account()->factory()->actionHangarStarTrip()->start();
 
 		$js = "$('#space').engine2d(init);";
 		JavaScript::create()->bind($js);

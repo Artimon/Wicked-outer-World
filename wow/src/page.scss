@@ -154,6 +154,11 @@ body {
 
 .tipTip {
 	cursor: help;
+
+	&.action {
+		cursor: pointer;
+		color: $colorBrightText;
+	}
 }
 
 ul.list {
@@ -228,8 +233,15 @@ hr {
 	height: 1px;
 }
 
-table td {
-	padding: 2px;
+table {
+	th {
+		font-weight: bold;
+		color: $colorLightText;
+	}
+
+	th, td {
+		padding: 2px;
+	}
 }
 
 h2, .h2 {
@@ -562,6 +574,51 @@ div.ingredient {
 #missionBox {
 	margin: 35px;
 	text-align: center;
+}
+
+/* Skirmish page */
+#skirmish {
+	.column {
+		display: inline-block;
+		width: 360px;
+
+		vertical-align: top;
+
+		tr.push td {
+			padding: {
+				top: 15px;
+				bottom: 15px;
+			}
+
+			color: $colorBright;
+		}
+	}
+
+	#fightContainer {
+		.fighter {
+			display: inline-block;
+			width: 350px;
+
+			.label {
+				font-size: 9px;
+
+				.statusBar {
+					margin-bottom: 4px;
+				}
+			}
+		}
+
+		.actionContainer {
+			position: relative;
+
+			.event {
+				position: absolute;
+				font-weight: bold;
+
+				white-space: nowrap;
+			}
+		}
+	}
 }
 
 

@@ -60,7 +60,7 @@ class Starbase {
 			new StarbaseModuleTradeDeck(),
 			new StarbaseModuleFactory(),
 			new StarbaseModuleHangar(),
-			new StarbaseModuleFight()
+			new StarbaseModuleSkirmish()
 		);
 	}
 }

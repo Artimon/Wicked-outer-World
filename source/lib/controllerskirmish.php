@@ -1,6 +1,6 @@
 <?php
 
-class ControllerFight extends ControllerAbstract {
+class ControllerSkirmish extends ControllerAbstract {
 	public function __construct() {
 		$this->assertOnline();
 	}
@@ -13,12 +13,12 @@ class ControllerFight extends ControllerAbstract {
 		$account = Game::getInstance()->account();
 
 		switch ($section) {
-			case 'result':
-				$renderer = new RenderFightResult($account);
+			case 'fight':
+				$renderer = new RenderSkirmishFight($account);
 				break;
 
 			default:
-				$renderer = new RenderFightList($account);
+				$renderer = new RenderSkirmishOpponents($account);
 				break;
 		}
 

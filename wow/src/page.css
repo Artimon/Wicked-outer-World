@@ -16,6 +16,9 @@ body {
 
 .tipTip {
   cursor: help; }
+  .tipTip.action {
+    cursor: pointer;
+    color: white; }
 
 ul.list {
   list-style-type: none;
@@ -76,7 +79,10 @@ hr {
   border-top: 1px dotted #0279e6;
   height: 1px; }
 
-table td {
+table th {
+  font-weight: bold;
+  color: #d9e0ee; }
+table th, table td {
   padding: 2px; }
 
 h2, .h2 {
@@ -335,6 +341,29 @@ div.ingredient {
 #missionBox {
   margin: 35px;
   text-align: center; }
+
+/* Skirmish page */
+#skirmish .column {
+  display: inline-block;
+  width: 360px;
+  vertical-align: top; }
+  #skirmish .column tr.push td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #b8ec79; }
+#skirmish #fightContainer .fighter {
+  display: inline-block;
+  width: 350px; }
+  #skirmish #fightContainer .fighter .label {
+    font-size: 9px; }
+    #skirmish #fightContainer .fighter .label .statusBar {
+      margin-bottom: 4px; }
+#skirmish #fightContainer .actionContainer {
+  position: relative; }
+  #skirmish #fightContainer .actionContainer .event {
+    position: absolute;
+    font-weight: bold;
+    white-space: nowrap; }
 
 /* Event box */
 .eventBox {

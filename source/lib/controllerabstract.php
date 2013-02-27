@@ -119,7 +119,11 @@ abstract class ControllerAbstract implements ControllerInterface {
 			return;
 		}
 
-		header('Location: index.php');
+		$this->redirect('?');
+	}
+
+	public function redirect($url) {
+		header('location: ' . $url);
 		exit;	// @TODO Call shutdown.
 	}
 }

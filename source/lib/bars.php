@@ -13,15 +13,38 @@ class Bars extends AccountSubclass {
 			$account->experience()
 		);
 	}
+
 	/**
 	 * @return string
 	 */
 	public function conditionBar() {
-		return Plugins::statusBar(
-			'condition',
-			100,
-			75
-		);
+		$starship = $this->account()->starship();
+		$max = $starship->structure() + $starship->armor();
+		$current = $max;	// Fill with account value;
+
+		return Plugins::statusBar('condition', $max, $current);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function shieldBar() {
+		$starship = $this->account()->starship();
+		$max = $starship->hasShield()
+			? $starship->shield()->shieldMaxStrength()
+			: 0;
+
+		return Plugins::statusBar('shield', $max, 0);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function energyBar() {
+		$max = $this->account()->starship()->engine()->capacity();
+		$current = $max;	// Fill with account value;
+
+		return Plugins::statusBar('energy', $max, $current);
 	}
 
 	/**
@@ -58,7 +81,7 @@ class Bars extends AccountSubclass {
 
 		return Plugins::statusBar(
 			'tacticsProgress',
-			$account->actionAcademyTraining()->neededTacticsExperience(),
+			$account->factory()->actionAcademyTraining()->neededTacticsExperience(),
 			$account->tacticsExperience()
 		);
 	}
@@ -71,7 +94,7 @@ class Bars extends AccountSubclass {
 
 		return Plugins::statusBar(
 			'defenseProgress',
-			$account->actionAcademyTraining()->neededDefenseExperience(),
+			$account->factory()->actionAcademyTraining()->neededDefenseExperience(),
 			$account->defenseExperience()
 		);
 	}
@@ -84,7 +107,7 @@ class Bars extends AccountSubclass {
 
 		return Plugins::statusBar(
 			'tacticsProgress',
-			$account->actionAcademyTraining()->neededCraftingExperience(),
+			$account->factory()->actionAcademyTraining()->neededCraftingExperience(),
 			$account->craftingExperience()
 		);
 	}

@@ -3,7 +3,7 @@
 /**
  * Handles starship condition in common and current damages.
  */
-class condition extends starshipSubclass {
+class Condition extends StarshipSubclass {
 	/**
 	 * @var stdClass
 	 */
@@ -20,41 +20,69 @@ class condition extends starshipSubclass {
 	private $shield;
 
 	/**
+	 * @var stdClass
+	 */
+	private $energy;
+
+	/**
 	 * @return void
 	 */
 	public function init() {
+		$starship = $this->starship();
+
 		$this->structure = new stdClass();
-		$this->structure->max = $this->starship()->structure();
+		$this->structure->max = $starship->structure();
 		$this->structure->current = $this->structure->max;
 
 		$this->armor = new stdClass();
-		$this->armor->max = $this->starship()->armor();
+		$this->armor->max = $starship->armor();
 		$this->armor->current = $this->armor->max;
 
 		$this->shield = new stdClass();
 		$this->shield->max = 0;
 		$this->shield->current = 0;
-		$this->shield->item = $this->starship()->shield();
+		$this->shield->item = $starship->shield();
 		if ($this->shield->item) {
 			/* @var technology $this->shield->item */
 			$this->shield->max = $this->shield->item->shieldMaxStrength();
 		}
+
+		$this->energy = new stdClass();
+		$this->energy->max = $starship->capacity();
+		$this->energy->current = $this->energy->max;
+		$this->energy->recharge = $starship->rechargePerRound();
+	}
+
+	/**
+	 * @param stdClass $thing
+	 * @return float
+	 */
+	private function percentage(stdClass $thing) {
+		$factor = $thing->current / $thing->max;
+		return round(100 * $factor);
 	}
 
 	/**
 	 * @return float
 	 */
 	public function structurePercentage() {
-		$factor = $this->structure->current / $this->structure->max;
-		return round(100 * $factor);
+		return $this->percentage($this->structure);
 	}
 
 	/**
 	 * @return float
 	 */
 	public function armorPercentage() {
-		$factor = $this->armor->current / $this->armor->max;
-		return round(100 * $factor);
+		return $this->percentage($this->armor);
+	}
+
+	/**
+	 * @return float
+	 */
+	public function conditionPercentage() {
+		$condition = $this->structurePercentage() + $this->armorPercentage();
+
+		return round($condition / 2);
 	}
 
 	/**
@@ -65,8 +93,14 @@ class condition extends starshipSubclass {
 			return 0;
 		}
 
-		$factor = $this->shield->current / $this->shield->max;
-		return round(100 * $factor);
+		return $this->percentage($this->shield);
+	}
+
+	/**
+	 * @return float
+	 */
+	public function energyPercentage() {
+		return $this->percentage($this->energy);
 	}
 
 	/**
@@ -76,15 +110,35 @@ class condition extends starshipSubclass {
 		return ($this->shield->current > 0);
 	}
 
-	public function activateShield() {
+	/**
+	 * @param technology $shield
+	 */
+	public function activateShield(technology $shield) {
+		if (!$this->canActivateShield($shield)) {
+			return;
+		}
+
+		$this->energy->current -= $shield->shieldBuildUpDrain();
 		$this->shield->current = $this->shield->max;
 	}
 
 	/**
-	 * @param int $energyAvailable
+	 * @param technology $shield
+	 * @return bool
+	 * @throws InvalidArgumentException
+	 */
+	public function canActivateShield(technology $shield) {
+		if (!$shield->isShield()) {
+			throw new InvalidArgumentException('Item is no shield.');
+		}
+
+		return ($this->energy->current >= $shield->shieldBuildUpDrain());
+	}
+
+	/**
 	 * @return int
 	 */
-	public function rechargeShield($energyAvailable) {
+	public function rechargeShield() {
 		/* @var technology $shield */
 		$shield = $this->shield->item;
 
@@ -101,14 +155,18 @@ class condition extends starshipSubclass {
 		$singleEnergy = $shield->shieldRechargeDrain();
 
 		$energyNeeded = ceil($discharge / $singleStrength);
-		$energyNeeded = min($energyNeeded, $energyAvailable, $singleEnergy);
+		$energyNeeded = min($energyNeeded, $this->energy->current, $singleEnergy);
+
+		$before = $this->shield->current;
 
 		$this->shield->current = min(
 			$this->shield->max,
 			$this->shield->current + ($energyNeeded * $singleStrength)
 		);
 
-		return $energyNeeded;
+		$this->energy->current -= $energyNeeded;
+
+		return (int)($this->shield->current - $before);
 	}
 
 	/**
@@ -125,11 +183,44 @@ class condition extends starshipSubclass {
 	}
 
 	/**
-	 * @param string $part
-	 * @param int $damage
+	 * @param int $amount
+	 * @return Condition
 	 */
-	private function raiseCriticals($part, $damage) {
+	public function drainEnergy($amount) {
+		$this->energy->current -= $amount;
+		$this->energy->current = max(0, $this->energy->current);
 
+		return $this;
+	}
+
+	/**
+	 * @param $amount
+	 * @return bool
+	 */
+	public function canDrainEnergy($amount) {
+		return ($this->energy->current >= $amount);
+	}
+
+	/**
+	 * @return int recharge value
+	 */
+	public function rechargeEnergy() {
+		$previous = $this->energy->current;
+
+		$this->energy->current += $this->energy->recharge;
+		$this->energy->current = min(
+			$this->energy->current,
+			$this->energy->max
+		);
+
+		return ($this->energy->current - $previous);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isDefeated() {
+		return ($this->structure->current <= 0);
 	}
 
 	/**
@@ -159,10 +250,6 @@ class condition extends starshipSubclass {
 			if ($rest <= 0) {
 				break;
 			}
-		}
-
-		if ($this->structure->current <= 0) {
-//			echo $this->starship()->name().' destroyed<br>';
 		}
 
 		return $damage;

@@ -57,11 +57,13 @@ class ObjectPool {
 
 	/**
 	 * @param string $className
-	 * @param object $parent
+	 * @param object|int $parent
 	 * @return mixed instance of subclass
 	 */
 	protected function fromPool($className, $parent) {
-		$key = spl_object_hash($parent);
+		$key = is_numeric($parent)
+			? (int)$parent
+			: spl_object_hash($parent);
 
 		if (!isset(self::$instances[$className][$key])) {
 			$instance = new $className($parent);
@@ -70,6 +72,22 @@ class ObjectPool {
 		}
 
 		return self::$instances[$className][$key];
+	}
+
+	/**
+	 * @param int $id
+	 * @return Account
+	 */
+	public function account($id) {
+		return $this->fromPool('Account', $id);
+	}
+
+	/**
+	 * @param Account $account
+	 * @return AccountFactory
+	 */
+	public function accountFactory(Account $account) {
+		return $this->fromPool('AccountFactory', $account);
 	}
 
 	/**
@@ -150,5 +168,13 @@ class ObjectPool {
 	 */
 	public function actionHangarStarTrip(Account $account) {
 		return $this->fromPool('ActionHangarStarTrip', $account);
+	}
+
+	/**
+	 * @param Account $account
+	 * @return ActionSkirmishOpponents
+	 */
+	public function actionSkirmishOpponents(Account $account) {
+		return $this->fromPool('ActionSkirmishOpponents', $account);
 	}
 }

@@ -44,7 +44,7 @@ class Account extends Lisbeth_Entity {
 	protected $table = 'accounts';
 
 	/**
-	 * @var starship
+	 * @var Starship
 	 */
 	private $starship;
 
@@ -166,6 +166,8 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
+	 * @TODO Move to "action" class.
+	 *
 	 * @param int $value
 	 * @return Account
 	 */
@@ -177,10 +179,17 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
+	 * @TODO Move to "action" class.
+	 *
 	 * @param int $value
 	 * @return Account
 	 */
 	public function incrementEndurance($value) {
+		if ($value < 0) {
+			// @TODO Use "level class".
+			$this->increment('experience', -$value);
+		}
+
 		return $this
 			->setValue('actionPoints', $this->actionPoints())
 			->setValue('endurance', $this->endurance() + $value)
@@ -238,11 +247,11 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
-	 * @return starship
+	 * @return Starship
 	 */
 	public function starship() {
 		if ($this->starship === null) {
-			$this->starship = new starship($this, $this->value('starshipId'), 1);
+			$this->starship = new Starship($this, $this->value('starshipId'), 1);
 		}
 
 		return $this->starship;
@@ -348,38 +357,10 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
-	 * @return ActionProfileHealthCare
+	 * @return AccountFactory
 	 */
-	public function actionProfileHealthCare() {
-		return ObjectPool::get()->actionProfileHealthCare($this);
-	}
-
-	/**
-	 * @return ActionHangarMission
-	 */
-	public function actionHangarMission() {
-		return ObjectPool::get()->actionHangarMission($this);
-	}
-
-	/**
-	 * @return ActionAcademyCourse
-	 */
-	public function actionAcademyCourse() {
-		return ObjectPool::get()->actionAcademyCourse($this);
-	}
-
-	/**
-	 * @return ActionAcademyTraining
-	 */
-	public function actionAcademyTraining() {
-		return ObjectPool::get()->actionAcademyTraining($this);
-	}
-
-	/**
-	 * @return ActionHangarStarTrip
-	 */
-	public function actionHangarStarTrip() {
-		return ObjectPool::get()->actionHangarStarTrip($this);
+	public function factory() {
+		return ObjectPool::get()->accountFactory($this);
 	}
 
 	/**

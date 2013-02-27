@@ -71,7 +71,16 @@ class technology extends AccountSubclass{
 	 * @return string
 	 */
 	public function name() {
-		return i18n('name'.$this->techData['name']);
+		return i18n(
+			$this->nameRaw()
+		);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function nameRaw() {
+		return ('name' . $this->techData['name']);
 	}
 
 	/**

@@ -707,10 +707,65 @@ $translations = array(
 	 * Battle
 	 ****************************************************/
 
+	'number' => array(
+		'de' => 'Nummer',
+		'en' => 'Number'
+	),
 	'fight' => array(
 		'de' => 'Kämpfen',
 		'en' => 'Fight'
 	),
+	'skirmish' => array(
+		'de' => 'Kämpfen',
+		'en' => 'Fight'
+	),
+	'pirateBay' => array(
+		'de' => 'Piratenhort',
+		'en' => 'Pirate bay'
+	),
+	'showHim' => array(
+		'de' => 'Zeig`s ihm!',
+		'en' => 'Show him!'
+	),
+	'pirateBayDescription' => array(
+		'de' => 'Lust auf ein Kämpfchen? Die Sonntagsflieger dort draussen haben gewiss noch ein paar Münzen zuviel.',
+		'en' => 'You want a little quarrel? Those sunday pilots out there for sure have some spare coins.'
+	),
+	'badBoys' => array(
+		'de' => 'Böse Buben',
+		'en' => 'Bad boys'
+	),
+	'shieldUp' => array(
+		'de' => 'Schilde!',
+		'en' => 'Shields!'
+	),
+	'shieldPlus' => array(
+		'de' => 'Schilde',
+		'en' => 'Shields'
+	),
+	'shieldDown' => array(
+		'de' => 'Schilde kollabiert!',
+		'en' => 'Shields collapsed!'
+	),
+	'missed' => array(
+		'de' => 'Vorbei!',
+		'en' => 'Missed!'
+	),
+	'skirmishLost' => array(
+		'de' => 'Was für eine Enttäuschung, %s hat es Dir ganzschön gegeben!',
+		'en' => 'What a swizz, %s really punished you!'
+	),
+	'skirmishCloseWon' => array(
+		'de' => 'Das war aber recht knapp. Für %s lässt Du %s ziehen.',
+		'en' => 'That was quite close. For %s you let %s go.'
+	),
+	'skirmishWellWon' => array(
+		'de' => 'Du hast %s ziehmlich zerlegt und %s erbeutet.',
+		'en' => 'You really tore %s apart and took %s.'
+	),
+
+
+	// Old
 	'insufficientEnergyWeapon' => array(
 		'de' => "Energielevel zu niedrig um %s abzufeuern.",
 		'en' => "Energy level too low to fire %s."
@@ -735,10 +790,10 @@ $translations = array(
 		'de' => "Energielevel: %s%%",
 		'en' => "Energy level: %s%%"
 	),
-	'missed' => array(
-		'de' => "Verfehlt!",
-		'en' => "Missed!"
-	),
+//	'missed' => array(
+//		'de' => "Verfehlt!",
+//		'en' => "Missed!"
+//	),
 	'hitOnce' => array(
 		'de' => "Ein Treffer!",
 		'en' => "Hit once!"

@@ -232,18 +232,22 @@ class entityLoader extends dataObjectProvider {
 		// @TODO read out sector id.
 		$forceTypes = array(self::TYPE_ITEM, self::TYPE_ASTEROID);
 		$forceTypes = implode(',', $forceTypes);
+
+		$playerType = self::TYPE_PLAYER;
+
 		$sql = "
 			SELECT *
 			FROM
 				`entities`
 			WHERE
-				(
-					`type` IN({$forceTypes}) AND
-					`accountId` = {$this->account()->id()}
-				) OR (
-					`sectorId` = 0 AND
-					`commandCreated` > ".(TIME - 1800)."
-				);";
+				`type` IN({$forceTypes}) AND
+				`accountId` = {$this->account()->id()}
+			UNION SELECT *
+			FROM
+				`entities`
+			WHERE
+				`type` = {$playerType}
+			LIMIT 10;";
 		$database = $this->database();
 		$database->query($sql);
 
@@ -263,7 +267,8 @@ class entityLoader extends dataObjectProvider {
 				$updatePosition =
 					$this->vectorUpdate($playerPos, $entityPos) ||
 					$this->vectorUpdate($playerDest, $entityDest);
-			} elseif ($id === $targetId) {
+			}
+			elseif ($id === $targetId) {
 				$distance = new vector();
 				$distance->diff($playerPos, $entityPos);
 				$command = $this->command($id, $type, $distance->length());

@@ -66,7 +66,7 @@ class RenderProfile extends RendererAbstract {
 			$account->maxActionPoints()
 		);
 
-		$class = $account->actionProfileHealthCare()->canStart()
+		$class = $account->factory()->actionProfileHealthCare()->canStart()
 			? ''
 			: ' disabled';
 
@@ -129,7 +129,7 @@ class RenderProfile extends RendererAbstract {
 	 * @return string
 	 */
 	public function spaceDoctorHtml() {
-		$healthCare = $this->account()->actionProfileHealthCare();
+		$healthCare = $this->account()->factory()->actionProfileHealthCare();
 
 		$reveal = $this->request()->get('reveal');
 		if ($reveal) {

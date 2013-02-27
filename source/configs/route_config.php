@@ -26,8 +26,8 @@ return array(
 		'database'		=> true,
 		'ajax'			=> true
 	),
-	'fight' => array(
-		'controller'	=> 'ControllerFight',
+	'skirmish' => array(
+		'controller'	=> 'ControllerSkirmish',
 		'database'		=> true
 	),
 	'logout' => array(

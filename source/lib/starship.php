@@ -4,14 +4,9 @@
  * Handles starships.
  * Starships and accounts are the same.
  */
-class starship extends techContainerAbstract {
+class Starship extends techContainerAbstract {
 	/**
-	 * @var battleTimer
-	 */
-	private $battleTimer;
-
-	/**
-	 * @var condition
+	 * @var Condition
 	 */
 	private $condition;
 
@@ -159,23 +154,11 @@ class starship extends techContainerAbstract {
 	}
 
 	/**
-	 * @return battleTimer
-	 */
-	public function battleTimer() {
-		if ($this->battleTimer === null) {
-			$this->battleTimer = new battleTimer($this);
-			$this->battleTimer->init();
-		}
-
-		return $this->battleTimer;
-	}
-
-	/**
-	 * @return condition
+	 * @return Condition
 	 */
 	public function condition() {
 		if ($this->condition === null) {
-			$this->condition = new condition($this);
+			$this->condition = new Condition($this);
 			$this->condition->init();
 		}
 

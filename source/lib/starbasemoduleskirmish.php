@@ -3,7 +3,12 @@
 /**
  * Factory module for starbases.
  */
-class StarbaseModuleFight extends StarbaseModuleAbstract {
+class StarbaseModuleSkirmish extends StarbaseModuleAbstract {
+	/**
+	 * @var bool
+	 */
+	protected $menuSpacer = true;
+
 	/**
 	 * @return string
 	 */
@@ -15,6 +20,6 @@ class StarbaseModuleFight extends StarbaseModuleAbstract {
 	 * @return string
 	 */
 	public function route() {
-		return 'fight';
+		return 'skirmish';
 	}
 }

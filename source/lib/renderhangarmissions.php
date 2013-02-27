@@ -23,7 +23,7 @@ class RenderHangarMissions extends RenderHangarAbstract {
 		$notEnoughActionPoints = i18n('notEnoughActionPoints');
 		$go = i18n('go');
 
-		$starTrip = $this->account()->actionHangarStarTrip();
+		$starTrip = $this->account()->factory()->actionHangarStarTrip();
 		if ($starTrip->canStart()) {
 			$class = '';
 			$title = $startMission;
@@ -45,7 +45,7 @@ class RenderHangarMissions extends RenderHangarAbstract {
 </div>
 <hr>";
 
-		$mission = $this->account()->actionHangarMission();
+		$mission = $this->account()->factory()->actionHangarMission();
 		foreach ($config->missions as $missionId => $data) {
 			$mission->load($missionId);
 			if ($mission->canStart()) {
@@ -81,7 +81,7 @@ class RenderHangarMissions extends RenderHangarAbstract {
 	 * @return string
 	 */
 	protected function missionActionHtml($missionId) {
-		$json = $this->account()->actionHangarMission()->load($missionId)->start();
+		$json = $this->account()->factory()->actionHangarMission()->load($missionId)->start();
 		$js = "$('#missionBox').missionBox('{$json}');";
 
 		JavaScript::create()->bind($js);
