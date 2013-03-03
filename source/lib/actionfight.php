@@ -66,6 +66,13 @@ class ActionFight {
 	}
 
 	/**
+	 * @param Starship $starship
+	 */
+	public function update(Starship $starship) {
+		$starship->account()->update();
+	}
+
+	/**
 	 * @return string
 	 */
 	public function start() {
@@ -107,19 +114,29 @@ class ActionFight {
 		}
 		while (++$rounds < 20);
 
+		$aggressorCondition->applyDamage();
+		$victimCondition->applyDamage();
+
 		$victimName = $this->victim->account()->name();
 		if ($this->isWinner()) {
 			$plunder = new ActionFightPlunder();
-			$money = $plunder->commit($this->aggressor, $this->victim);
+			$money = $plunder->apply($this->aggressor, $this->victim);
 			$money = Format::money($money);
 
 			if ($aggressorCondition->conditionPercentage() > 20) {
-				return i18n('skirmishWellWon', $victimName, $money);
+				$message = i18n('skirmishWellWon', $victimName, $money);
 			}
-
-			return i18n('skirmishCloseWon', $money, $victimName);
+			else {
+				$message = i18n('skirmishCloseWon', $money, $victimName);
+			}
+		}
+		else {
+			$message = i18n('skirmishLost', $victimName);
 		}
 
-		return i18n('skirmishLost', $victimName);
+		$this->update($this->aggressor);
+		$this->update($this->victim);
+
+		return $message;
 	}
 }

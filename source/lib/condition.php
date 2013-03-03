@@ -25,25 +25,37 @@ class Condition extends StarshipSubclass {
 	private $energy;
 
 	/**
+	 * @param stdClass $element
+	 * @param float $percentage
+	 */
+	protected function setCurrent(stdClass $element, $percentage) {
+		$value = $element->max * $percentage;
+		$value = round($value / 100);
+
+		$element->current = $value;
+	}
+
+	/**
 	 * @return void
 	 */
 	public function init() {
 		$starship = $this->starship();
+		$repair = $starship->repair();
 
 		$this->structure = new stdClass();
 		$this->structure->max = $starship->structure();
-		$this->structure->current = $this->structure->max;
+		$this->setCurrent($this->structure, $repair);
 
 		$this->armor = new stdClass();
 		$this->armor->max = $starship->armor();
-		$this->armor->current = $this->armor->max;
+		$this->setCurrent($this->armor, $repair);
 
 		$this->shield = new stdClass();
 		$this->shield->max = 0;
 		$this->shield->current = 0;
 		$this->shield->item = $starship->shield();
 		if ($this->shield->item) {
-			/* @var technology $this->shield->item */
+			/* @var Technology $this->shield->item */
 			$this->shield->max = $this->shield->item->shieldMaxStrength();
 		}
 
@@ -51,6 +63,32 @@ class Condition extends StarshipSubclass {
 		$this->energy->max = $starship->capacity();
 		$this->energy->current = $this->energy->max;
 		$this->energy->recharge = $starship->rechargePerRound();
+	}
+
+	/**
+	 * Sets current repair state to starship (account).
+	 */
+	public function applyDamage() {
+		$repair = $this->conditionPercentage();	// Current value.
+		$repair -= $this->starship()->repair();	// Subtract initial value o get negative difference.
+
+		$this->starship()->addDamage($repair);
+
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function conditionMaximum() {
+		return ($this->structure->max + $this->armor->max);
+	}
+
+	/**
+	 * @return int
+	 */
+	public function conditionCurrent() {
+		return ($this->structure->current + $this->armor->current);
 	}
 
 	/**
@@ -111,9 +149,9 @@ class Condition extends StarshipSubclass {
 	}
 
 	/**
-	 * @param technology $shield
+	 * @param Technology $shield
 	 */
-	public function activateShield(technology $shield) {
+	public function activateShield(Technology $shield) {
 		if (!$this->canActivateShield($shield)) {
 			return;
 		}
@@ -123,11 +161,11 @@ class Condition extends StarshipSubclass {
 	}
 
 	/**
-	 * @param technology $shield
+	 * @param Technology $shield
 	 * @return bool
 	 * @throws InvalidArgumentException
 	 */
-	public function canActivateShield(technology $shield) {
+	public function canActivateShield(Technology $shield) {
 		if (!$shield->isShield()) {
 			throw new InvalidArgumentException('Item is no shield.');
 		}
@@ -139,7 +177,7 @@ class Condition extends StarshipSubclass {
 	 * @return int
 	 */
 	public function rechargeShield() {
-		/* @var technology $shield */
+		/* @var Technology $shield */
 		$shield = $this->shield->item;
 
 		if (!$shield) {
@@ -224,17 +262,17 @@ class Condition extends StarshipSubclass {
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 * @param int $hits
 	 * @return int inflicted damage
 	 */
-	public function addDamage(technology $item, $hits) {
+	public function addDamage(Technology $item, $hits) {
 		// Shields: absorb integers like ultima online armor from 0 to x
 		$damage = $item->damage() * $hits;
 		$damage = round($damage * math::create()->gaussFactor());
 
 		if ($this->isShieldActivated()) {
-			/* @var technology $shield */
+			/* @var Technology $shield */
 			$shield = $this->shield->item;
 
 			$absorb = $shield->shieldAbsorb($item->damageType());

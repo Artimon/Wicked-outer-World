@@ -5,7 +5,7 @@
  * The tech container provides tech selector access.
  */
 abstract class techContainerAbstract
-	extends technology
+	extends Technology
 	implements techContainerInterface {
 
 	/**
@@ -69,10 +69,10 @@ abstract class techContainerAbstract
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return int
 	 */
-	public function loadableAmount(technology $item) {
+	public function loadableAmount(Technology $item) {
 		$techId = $item->id();
 		$group = $this->groupByItem($item);
 
@@ -80,7 +80,7 @@ abstract class techContainerAbstract
 			$groupItem = $group->item($techId);
 		}
 		else {
-			$groupItem = technology::raw($techId);
+			$groupItem = Technology::raw($techId);
 		}
 
 		return min(
@@ -90,10 +90,10 @@ abstract class techContainerAbstract
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return techGroup
 	 */
-	public function itemSlot(technology $item) {
+	public function itemSlot(Technology $item) {
 		return $this->groupByName(
 			$item->starshipSlot()
 		);

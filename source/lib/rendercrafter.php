@@ -140,10 +140,10 @@ class RenderCrafter extends RendererAbstract {
 
 	/**
 	 * @param techGroup $stock
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return string
 	 */
-	private function craftInfo(techGroup $stock, technology $item) {
+	private function craftInfo(techGroup $stock, Technology $item) {
 		$content = array();
 		$ingredients = $item->craftIngredients();
 		foreach ($ingredients as $techId => $amountNeeded) {
@@ -171,7 +171,7 @@ class RenderCrafter extends RendererAbstract {
 		$fiddle = new Fiddle();
 		$fiddle->start();
 
-		$technology = technology::raw($techId);
+		$technology = Technology::raw($techId);
 		$ingredients = $technology->craftIngredients();
 		foreach ($ingredients as $techId => $amount) {
 			$fiddle->addIngredient($techId, $amount);
@@ -210,7 +210,7 @@ class RenderCrafter extends RendererAbstract {
 		}
 		else {
 			foreach ($recipes as $techId => $amount) {
-				$technology = technology::raw($techId);
+				$technology = Technology::raw($techId);
 
 				$available = 0;
 				if ($stock->hasItem($techId)) {

@@ -34,15 +34,15 @@ interface techContainerInterface {
 
 	/**
 	 * @abstract
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return techGroup
 	 */
-	public function groupByItem(technology $item);
+	public function groupByItem(Technology $item);
 
 	/**
 	 * @abstract
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return int
 	 */
-	public function loadableAmount(technology $item);
+	public function loadableAmount(Technology $item);
 }

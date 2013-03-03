@@ -2,14 +2,14 @@
 
 class RenderTechInfo extends RendererAbstract {
 	/**
-	 * @var technology
+	 * @var Technology
 	 */
 	private $item;
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 */
-	public function __construct(technology $item) {
+	public function __construct(Technology $item) {
 		$this->item = $item;
 	}
 
@@ -180,8 +180,8 @@ class RenderTechInfo extends RendererAbstract {
 </tr><tr>
 	<td class='top'>".i18n('absorbs').":</td>
 	<td class='headline right'>
-		{$this->item->shieldAbsorb(technology::DAMAGE_KINETIC)}<br>
-		{$this->item->shieldAbsorb(technology::DAMAGE_ENERGY)}
+		{$this->item->shieldAbsorb(Technology::DAMAGE_KINETIC)}<br>
+		{$this->item->shieldAbsorb(Technology::DAMAGE_ENERGY)}
 	</td>
 	<td class='variable'>
 		(".i18n('kinetic').")<br>

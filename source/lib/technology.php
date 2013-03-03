@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Handles technology.
+ * Handles Technology.
  */
-class technology extends AccountSubclass{
+class Technology extends AccountSubclass{
 	const TYPE_STOCKAGE			= 0;	// Item stockage
 	const TYPE_STARSHIP			= 1;	// Starships
 	const TYPE_WEAPON			= 2;	// Weapons
@@ -91,7 +91,7 @@ class technology extends AccountSubclass{
 	}
 
 	/**
-	 * Current amount of items from this technology.
+	 * Current amount of items from this Technology.
 	 *
 	 * @return int
 	 */
@@ -105,7 +105,7 @@ class technology extends AccountSubclass{
 
 	/**
 	 * @param	int		$amount
-	 * @return	technology
+	 * @return	Technology
 	 */
 	public function add($amount) {
 		$this->amount += $amount;
@@ -115,7 +115,7 @@ class technology extends AccountSubclass{
 
 	/**
 	 * @param	int		$amount
-	 * @return	technology
+	 * @return	Technology
 	 * @throws	InvalidArgumentException
 	 */
 	public function sub($amount) {
@@ -135,7 +135,7 @@ class technology extends AccountSubclass{
 	 ****************************************************/
 
 	/**
-	 * Return the possible maximum weight a technology can carry.
+	 * Return the possible maximum weight a Technology can carry.
 	 *
 	 * @return	int
 	 */
@@ -348,11 +348,11 @@ class technology extends AccountSubclass{
 	}
 
 	/**
-	 * @return null|technology
+	 * @return null|Technology
 	 */
 	public function ammunitionId() {
 		if ($this->isWeapon() && isset($this->techData['ammo'])) {
-			return new technology(
+			return new Technology(
 				$this->account(),
 				$this->techData['ammo']
 			);
@@ -397,6 +397,21 @@ class technology extends AccountSubclass{
 			if (isset($absorb[$damageType])) {
 				return $absorb[$damageType];
 			}
+		}
+
+		return 0;
+	}
+
+	/*****************************************************
+	 * Drive / Engines
+	 ****************************************************/
+
+	/**
+	 * @return int
+	 */
+	public function starTourSeconds() {
+		if ($this->isDrive()) {
+			return $this->techData['seconds'];
 		}
 
 		return 0;
@@ -760,13 +775,13 @@ class technology extends AccountSubclass{
 
 	/**
 	 * @param int $techId
-	 * @return technology
+	 * @return Technology
 	 */
 	public static function raw($techId) {
 		static $technologies = array();
 
 		if (!isset($technologies[$techId])) {
-			$technologies[$techId] = new technology(
+			$technologies[$techId] = new Technology(
 				new Account(null),
 				$techId
 			);

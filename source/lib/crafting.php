@@ -39,7 +39,7 @@ class crafting extends Lisbeth_Entity {
 	public function addRecipe($techId) {
 		$techId = (int)$techId;
 
-		$technology = technology::raw($techId);
+		$technology = Technology::raw($techId);
 		if (!$technology->isCraftable()) {
 			return;
 		}

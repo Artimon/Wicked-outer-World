@@ -123,6 +123,7 @@ abstract class ControllerAbstract implements ControllerInterface {
 	}
 
 	public function redirect($url) {
+		$url = html_entity_decode($url);
 		header('location: ' . $url);
 		exit;	// @TODO Call shutdown.
 	}

@@ -17,13 +17,13 @@ class techGroup extends techContainerSubclass {
 	private $update = false;
 
 	/**
-	 * @var technology[]
+	 * @var Technology[]
 	 */
 	private $items = array();
 
 	/**
 	 * @param	int		$techId
-	 * @return	technology
+	 * @return	Technology
 	 * @throws	InvalidArgumentException
 	 */
 	public function item($techId) {
@@ -44,7 +44,7 @@ class techGroup extends techContainerSubclass {
 	}
 
 	/**
-	 * @return technology[]
+	 * @return Technology[]
 	 */
 	public function items() {
 		return $this->items;
@@ -53,12 +53,12 @@ class techGroup extends techContainerSubclass {
 	/**
 	 * @param	int		$techId
 	 * @param	int		$amount
-	 * @return	technology
+	 * @return	Technology
 	 */
 	public function newItem($techId, $amount) {
 		$techId = (int)$techId;
 
-		$item = new technology(
+		$item = new Technology(
 			$this->techContainer()->account(),
 			$techId,
 			$amount
@@ -68,10 +68,10 @@ class techGroup extends techContainerSubclass {
 	}
 
 	/**
-	 * @param technology $item
-	 * @return technology
+	 * @param Technology $item
+	 * @return Technology
 	 */
-	public function addItem(technology $item) {
+	public function addItem(Technology $item) {
 		$techId = $item->id();
 		$this->items[$techId] = $item;
 
@@ -79,10 +79,10 @@ class techGroup extends techContainerSubclass {
 	}
 
 	/**
-	 * @param technology $item
-	 * @return technology
+	 * @param Technology $item
+	 * @return Technology
 	 */
-	public function removeItem(technology $item) {
+	public function removeItem(Technology $item) {
 		$techId = $item->id();
 		unset($this->items[$techId]);
 
@@ -90,11 +90,11 @@ class techGroup extends techContainerSubclass {
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 * @param int $amount
 	 * @return bool
 	 */
-	public function canLoadWeight(technology $item, $amount) {
+	public function canLoadWeight(Technology $item, $amount) {
 		$techId = $item->id();
 
 		if ($this->hasItem($techId)) {
@@ -117,10 +117,10 @@ class techGroup extends techContainerSubclass {
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return int
 	 */
-	public function loadableAmount(technology $item) {
+	public function loadableAmount(Technology $item) {
 		$techId = $item->id();
 
 		$availableTonnage = $this->techContainer()->availableTonnage();
@@ -136,13 +136,13 @@ class techGroup extends techContainerSubclass {
 
 	/**
 	 * @param techGroup $techGroup
-	 * @param technology $item
+	 * @param Technology $item
 	 * @param int $amount
 	 * @return int amount
 	 */
 	public function moveItemTo(
 		techGroup $techGroup,
-		technology $item,
+		Technology $item,
 		$amount = 1
 	) {
 		if (($amount <= 0) || ($item->amount() < $amount)) {
@@ -210,7 +210,7 @@ class techGroup extends techContainerSubclass {
 	 * @return bool
 	 */
 	public function hasIngredients($techId) {
-		$technology = technology::raw($techId);
+		$technology = Technology::raw($techId);
 
 		$ingredients = $technology->craftIngredients();
 		foreach ($ingredients as $techId => $amount) {
@@ -314,6 +314,21 @@ class techGroup extends techContainerSubclass {
 		}
 
 		return $rechargePerRound;
+	}
+
+	/**
+	 * Return the highest value of the equipped drives.
+	 *
+	 * @return int
+	 */
+	public function starTourSeconds() {
+		$seconds = 0;
+
+		foreach ($this->items() as $technology) {
+			$seconds += $technology->starTourSeconds();
+		}
+
+		return $seconds;
 	}
 
 	/**

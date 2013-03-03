@@ -12,7 +12,7 @@ class techGroupTest extends phpUnitFramework {
 		$stackGap,
 		$expectedAmount
 	) {
-		$item = $this->mock('technology');
+		$item = $this->mock('Technology');
 		$item
 			->expects($this->once())
 			->method('weight')

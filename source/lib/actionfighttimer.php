@@ -19,7 +19,7 @@ class ActionFightTimer {
 	private $weapons = array();
 
 	/**
-	 * @var technology
+	 * @var Technology
 	 */
 	private $shield;
 
@@ -75,7 +75,7 @@ class ActionFightTimer {
 		$this->shield = $starship->shield();
 
 		$weaponry = $starship->weaponry()->items();
-		/* @var technology $technology */
+		/* @var Technology $technology */
 		foreach ($weaponry as $technology) {
 			for ($i = $technology->amount(); $i > 0; --$i) {
 				$weapon = new stdClass();
@@ -148,9 +148,9 @@ class ActionFightTimer {
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 */
-	private function weaponAction(technology $item) {
+	private function weaponAction(Technology $item) {
 		$hits = $this->accuracy()->hits(
 			$this->starship(),
 			$this->opponent(),
@@ -191,7 +191,7 @@ class ActionFightTimer {
 
 	private function fireWeapons() {
 		foreach ($this->weapons as $weapon) {
-			/* @var technology $item */
+			/* @var Technology $item */
 			$item = $weapon->item;
 
 			// Not ready to fire yet.

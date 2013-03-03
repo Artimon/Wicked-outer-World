@@ -96,3 +96,5 @@ ADD `craftingExperience` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `craftingLevel`
 
 ALTER TABLE `accounts` CHANGE `astronauticsLevel` `defenseLevel` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0',
 CHANGE `astronauticsExperience` `defenseExperience` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' ;
+
+ALTER TABLE  `entities` CHANGE  `commandCreated`  `timeout` BIGINT( 20 ) NOT NULL DEFAULT  '0' ;

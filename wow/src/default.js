@@ -386,7 +386,7 @@ function ConfirmBox(initCallback, confirmCallback) {
 		$this.click(function (event) {
 			event.preventDefault();
 
-			if (this.hasClass('disabled')) {
+			if ($(this).hasClass('disabled')) {
 				return;
 			}
 
@@ -443,7 +443,7 @@ function ConfirmBox(initCallback, confirmCallback) {
 
 
 
-function init(engine2d) {
+function init(engine2d, duration) {
 	var background, entityHandles = {};
 
 	engine2d.appendFunction('hoverName', function (entity) {
@@ -514,7 +514,8 @@ function init(engine2d) {
 	engine2d.appendFunction('moveFighter', function (entity) {
 		var temp = vector(),
 			factor,
-			distance = temp.diff(entity.moveTo, entity.position).length();
+			distance = temp.diff(entity.moveTo, entity.position).length(),
+			$space;
 
 		if (distance > 1) {
 			distance = Math.min(2 * engine2d.time, distance);
@@ -535,6 +536,32 @@ function init(engine2d) {
 			engine2d.camera.position.set(
 				entity.position
 			).sub(vector(200, 200));
+
+			temp = engine2d.totalTime / 1000;
+			temp = duration - temp;
+			temp = Math.round(100 * temp);
+			temp /= 100;
+
+			if (temp < -1) {
+				$space = $('#space');
+
+				$space.fadeOut(
+					'slow',
+					function () {
+						$space.next().fadeIn();
+					}
+				);
+			}
+
+			engine2d.addText(
+				Math.max(0, temp),
+				'Arial',
+				'48px',
+				'red',
+				'left',
+				50,
+				50
+			);
 		}
 
 		engine2d.functions.hoverName(entity);
@@ -567,7 +594,7 @@ function init(engine2d) {
 		flare.animationOffset = Math.random() * 360;
 
 
-		hullBar = engine2d.entityCreate(
+/*		hullBar = engine2d.entityCreate(
 			'./wow/img/bars.png',
 			engine2d.functions.hullBar,
 			vector(),
@@ -585,7 +612,7 @@ function init(engine2d) {
 		);
 
 		shieldBar.parentEntity = fighter;
-		shieldBar.pane = vector(0, 4);
+		shieldBar.pane = vector(0, 4);*/
 
 		return fighter;
 	});
@@ -797,12 +824,12 @@ function init(engine2d) {
 	engine2d.functions.createStardust('stardust_slow.png', 0.5).repeat = true;
 	engine2d.functions.createStardust('stardust_fast.png', 0.33).repeat = true;
 
-//	engine2d.functions.createFighter(vector(450, 250)).angle = 235;
-//	engine2d.functions.createFighter(vector(350, 450)).angle = 180;
-//	engine2d.player = engine2d.functions.createFighter(vector(400, 400));
+//	engine2d.functions.createFighter(Vector(450, 250)).angle = 235;
+//	engine2d.functions.createFighter(Vector(350, 450)).angle = 180;
+//	engine2d.player = engine2d.functions.createFighter(Vector(400, 400));
 
-//	engine2d.functions.createAsteroid(vector(450, 0));
-//	engine2d.functions.createAsteroid(vector(350, 0));
+//	engine2d.functions.createAsteroid(Vector(450, 0));
+//	engine2d.functions.createAsteroid(Vector(350, 0));
 
 	engine2d.click(function (absolute, relative, entity) {
 		if (!entity || !entity.type || entity.type !== 'fighter') {

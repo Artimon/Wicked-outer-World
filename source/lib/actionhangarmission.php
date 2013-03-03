@@ -88,7 +88,7 @@ class ActionHangarMission extends ActionAbstract {
 
 				case 'item':
 					foreach ($value as $techId) {
-						$item = technology::raw($techId);
+						$item = Technology::raw($techId);
 						echo $item->name();
 					}
 					break;

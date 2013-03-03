@@ -33,41 +33,76 @@ class entityLoader extends dataObjectProvider {
 	}
 
 	/**
-	 * @param int $sectorId
+	 * @return Vector
 	 */
-	public function initSector($sectorId) {
-		$sectorId = (int)$sectorId;
+	public function randomPosition() {
+		// @TODO read out sector data.
+		return new Vector(
+			rand(300, 600),
+			rand(100, 500)
+		);
+	}
 
+	/**
+	 * @param int $duration
+	 */
+	public function initSector($duration) {
 		$database = $this->database();
-// remove/recreate all items on sector enter
-		$sql = "UPDATE `entities` SET `commandCreated` = ".TIME.";";
-		$database->query($sql)->freeResult();
-		return;
+
+		$accountId = $this->account()->id();
+		$timeout = TIME + (int)$duration;
 
 		$sql = "
 			DELETE FROM `entities`
 			WHERE
-				`sectorId` = {$sectorId} AND
-				`accountId` = {$this->account()->id()};";
+				`accountId` = {$accountId};";
+		$database->query($sql)->freeResult();
 
+		$position = $this->randomPosition();
+		$items = array(
+			array(
+				self::TYPE_PLAYER,
+				$accountId,
+				$position->x,
+				$position->y,
+				$timeout,
+				$position->x,
+				$position->y
+			)
+		);
+
+		for ($i = 5; $i > 0; --$i) {
+			$position = $this->randomPosition();
+			$items[] = array(
+				self::TYPE_ITEM,
+				$accountId,
+				$position->x,
+				$position->y,
+				$timeout,
+				$position->x,
+				$position->y
+			);
+		}
+
+		$values = array();
+		foreach ($items as $item) {
+			$values[] = '(' . implode(',', $item) . ')';
+		}
+		$values = implode(',', $values);
 		// @TODO Create entities depending on sector settings.
 		$sql = "
 			INSERT INTO `entities`
 			(
 				`type`,
-				`sectorId`,
 				`accountId`,
 				`positionX`,
 				`positionY`,
-				`commandCreated`,
+				`timeout`,
 				`targetX`,
 				`targetY`
 			)
 			VALUES
-			(1, 0, 1, 350, 450, ".TIME.", 350, 450),
-			(1, 0, 2, 400, 400, ".TIME.", 400, 400),
-			(2, 0, 1, 450, 100, ".TIME.", 150, 1000),
-			(2, 0, 1, 350, 100, ".TIME.", 50, 1000);";
+				{$values};";
 		$database->query($sql)->freeResult();
 	}
 
@@ -84,12 +119,12 @@ class entityLoader extends dataObjectProvider {
 	}
 
 	/**
-	 * @param vector $position
+	 * @param Vector $position
 	 * @param int $x
 	 * @param int $y
 	 * @return bool
 	 */
-	protected function notInRange(vector $position, $x, $y) {
+	protected function notInRange(Vector $position, $x, $y) {
 		return (
 			(abs($position->x - $x) > 250) ||
 			(abs($position->y - $y) > 250)
@@ -115,11 +150,11 @@ class entityLoader extends dataObjectProvider {
 	}
 
 	/**
-	 * @param vector $player
-	 * @param vector $entity
+	 * @param Vector $player
+	 * @param Vector $entity
 	 * @return bool true on update
 	 */
-	protected function vectorUpdate(vector $player, vector $entity) {
+	protected function vectorUpdate(Vector $player, Vector $entity) {
 		// No position yet given.
 		if ($player->length() == 0) {
 			$player->set($entity);
@@ -154,10 +189,6 @@ class entityLoader extends dataObjectProvider {
 	protected function newItem($entityId) {
 		$entityId = (int)$entityId;
 
-		// @TODO read out sector data.
-		$x = rand(300, 600);
-		$y = rand(100, 500);
-
 		$database = $this->database();
 
 		$sql = "
@@ -169,17 +200,44 @@ class entityLoader extends dataObjectProvider {
 			->query($sql)
 			->freeResult();
 
+//		$position = $this->randomPosition();
+//
+//		$sql = "
+//			INSERT INTO
+//				`entities`
+//			SET
+//				`type` = ".self::TYPE_ITEM.",
+//				`accountId` = {$this->account()->id()},
+//				`positionX` = {$position->x},
+//				`positionY` = {$position->y};";
+//		$database
+//			->query($sql)
+//			->freeResult();
+	}
+
+	/**
+	 * @param int $entityId
+	 * @return bool
+	 */
+	protected function canCollect($entityId) {
+		$entityId = (int)$entityId;
+
+		$timeout = TIME;
 		$sql = "
-			INSERT INTO
+			SELECT
+				COUNT(*) AS `valid`
+			FROM
 				`entities`
-			SET
-				`type` = ".self::TYPE_ITEM.",
-				`accountId` = {$this->account()->id()},
-				`positionX` = {$x},
-				`positionY` = {$y};";
-		$database
-			->query($sql)
-			->freeResult();
+			WHERE
+				`id` = {$entityId} AND
+				`accountId` = {$this->account()->id()} AND
+				`timeout` >= {$timeout};";
+
+		$database = $this->database();
+		$result = $database->query($sql)->fetchOne();
+		$database->freeResult();
+
+		return ($result > 0);
 	}
 
 	/**
@@ -194,7 +252,7 @@ class entityLoader extends dataObjectProvider {
 				return null;
 
 			case self::TYPE_ITEM:
-				if ($distance < 25) {
+				if ($distance < 25 && $this->canCollect($entityId)) {
 					$this->storeItem($entityId);
 					$this->newItem($entityId);
 					return 'fade';
@@ -216,13 +274,13 @@ class entityLoader extends dataObjectProvider {
 		$request = Request::getInstance();
 
 		// Current position.
-		$playerPos = new vector(
+		$playerPos = new Vector(
 			$request->get('myX', .0),
 			$request->get('myY', .0)
 		);
 
 		// Move destination, not necessarily equal to target position.
-		$playerDest = new vector(
+		$playerDest = new Vector(
 			$request->get('toX', .0),
 			$request->get('toY', .0)
 		);
@@ -259,8 +317,8 @@ class entityLoader extends dataObjectProvider {
 			$accountId	= (int)$temp['accountId'];
 			$isPlayer	= $this->isPlayer($type, $accountId);
 
-			$entityPos = new vector($temp['positionX'], $temp['positionY']);
-			$entityDest = new vector($temp['targetX'], $temp['targetY']);
+			$entityPos = new Vector($temp['positionX'], $temp['positionY']);
+			$entityDest = new Vector($temp['targetX'], $temp['targetY']);
 
 			$command = null;
 			if ($isPlayer) {
@@ -269,7 +327,7 @@ class entityLoader extends dataObjectProvider {
 					$this->vectorUpdate($playerDest, $entityDest);
 			}
 			elseif ($id === $targetId) {
-				$distance = new vector();
+				$distance = new Vector();
 				$distance->diff($playerPos, $entityPos);
 				$command = $this->command($id, $type, $distance->length());
 			}

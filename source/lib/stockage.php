@@ -33,7 +33,7 @@ class stockage extends techContainerAbstract {
 	 * @return int items appeared
 	 */
 	public function appear($techId, $amount = 1) {
-		$item = new technology(
+		$item = new Technology(
 			$this->account(),
 			$techId,
 			$amount
@@ -47,10 +47,10 @@ class stockage extends techContainerAbstract {
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return techGroup
 	 */
-	public function groupByItem(technology $item) {
+	public function groupByItem(Technology $item) {
 		return $this->techSelector()->stock();
 	}
 

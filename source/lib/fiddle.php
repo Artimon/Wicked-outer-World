@@ -107,7 +107,7 @@ class Fiddle {
 	 * @param int $techId
 	 */
 	public function create(stockage $stockage, $techId) {
-		$item = technology::raw($techId);
+		$item = Technology::raw($techId);
 		$amount = $item->stackSize();
 
 		$fiddle = $stockage->fiddle();

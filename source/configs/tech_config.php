@@ -57,8 +57,8 @@ Cockpit  Weaponry  Body  Engine
 */
 
 $technology = array();
-/*$technology[-1] = array(
-	'type'		=> technology::TYPE_STOCKAGE,
+/*$Technology[-1] = array(
+	'type'		=> Technology::TYPE_STOCKAGE,
 	'name'		=> 'Stockage',
 	'weight'	=> 0,
 	'tonnage'	=> 30,
@@ -67,7 +67,7 @@ $technology = array();
 	)
 );*/
 $technology[1] = array(
-	'type'		=> technology::TYPE_STARSHIP,
+	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'RagnarokMkI',
 	'weight'	=> 30,
 	'tonnage'	=> 18,
@@ -81,7 +81,7 @@ $technology[1] = array(
 	)
 );
 $technology[2] = array(
-	'type'		=> technology::TYPE_STARSHIP,
+	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'GenesisSC4',
 	'weight'	=> 30,
 	'tonnage'	=> 21,
@@ -96,14 +96,14 @@ $technology[2] = array(
 );
 
 $technology[30] = array(
-	'type'		=> technology::TYPE_MINING_MODULE,
+	'type'		=> Technology::TYPE_MINING_MODULE,
 	'name'		=> 'JunkCollector',
 	'weight'	=> 8
 );
 
 // ballistic, explosion and energy armor
 $technology[40] = array(
-	'type'		=> technology::TYPE_PLATING,
+	'type'		=> Technology::TYPE_PLATING,
 	'name'		=> 'ImpactArmor',
 	'weight'	=> 1,
 	'stack'		=> 1,
@@ -127,14 +127,14 @@ $technology[40] = array(
  * micro-laser, pulse-laser, quad-laser
  */
 $technology[60] = array(
-	'type'			=> technology::TYPE_WEAPON,
+	'type'			=> Technology::TYPE_WEAPON,
 	'name'			=> 'SmallBlaster',
 	'weight'		=> 1,
 	'damage'		=> 11,
 	'reload'		=> 3,
 	'drain'			=> 4,
 	'burst'			=> 3,
-	'damageType'	=> technology::DAMAGE_KINETIC,
+	'damageType'	=> Technology::DAMAGE_KINETIC,
 	'ammo'			=> BLASTER_AMMUNITION_ID,
 	'craft' => array(
 		IRON_ID			=> 2,
@@ -143,13 +143,13 @@ $technology[60] = array(
 	)
 );
 $technology[61] = array(
-	'type'			=> technology::TYPE_WEAPON,
+	'type'			=> Technology::TYPE_WEAPON,
 	'name'			=> 'LightLaser',
 	'weight'		=> 1,
 	'damage'		=> 27,
 	'reload'		=> 2,
 	'drain'			=> 6,
-	'damageType'	=> technology::DAMAGE_ENERGY,
+	'damageType'	=> Technology::DAMAGE_ENERGY,
 	'craft' => array(
 		IRON_ID			=> 1,
 		CRYSTALS_ID		=> 2,
@@ -158,7 +158,7 @@ $technology[61] = array(
 );
 
 $technology[BLASTER_AMMUNITION_ID] = array(
-	'type'		=> technology::TYPE_AMMUNITION,
+	'type'		=> Technology::TYPE_AMMUNITION,
 	'name'		=> 'BlasterAmmunition',
 	'weight'	=> 1,
 	'stack'		=> 150
@@ -176,44 +176,44 @@ $technology[BLASTER_AMMUNITION_ID] = array(
  * Level 2 Alien Shield
  */
 $technology[KINETIC_SHIELD_ID] = array(
-	'type'		=> technology::TYPE_SHIELD,
+	'type'		=> Technology::TYPE_SHIELD,
 	'name'		=> 'KineticShield',
 	'weight'	=> 2,
 	'recharge'	=> 1,	// max energy recharge per round
 	'buildUp'	=> 10,	// initial energy needed
 	'shield'	=> 4,	// "armor" per energy
 	'absorb'	=> array(
-		technology::DAMAGE_KINETIC => 2
+		Technology::DAMAGE_KINETIC => 2
 	)
 );
 
 $technology[ENERGY_SHIELD_ID] = array(
-	'type'		=> technology::TYPE_SHIELD,
+	'type'		=> Technology::TYPE_SHIELD,
 	'name'		=> 'EnergyShield',
 	'weight'	=> 2,
 	'recharge'	=> 2,	// max energy recharge per round
 	'buildUp'	=> 10,	// initial energy needed
 	'shield'	=> 4,	// "armor" per energy
 	'absorb'	=> array(
-		technology::DAMAGE_ENERGY => 2
+		Technology::DAMAGE_ENERGY => 2
 	)
 );
 
 $technology[DISTORTION_SHIELD_ID] = array(
-	'type'		=> technology::TYPE_SHIELD,
+	'type'		=> Technology::TYPE_SHIELD,
 	'name'		=> 'DistortionShield',
 	'weight'	=> 4,
 	'recharge'	=> 3,	// max energy recharge per round
 	'buildUp'	=> 14,	// initial energy needed
 	'shield'	=> 5,	// "armor" per energy
 	'absorb'	=> array(
-		technology::DAMAGE_KINETIC => 2,
-		technology::DAMAGE_ENERGY => 2
+		Technology::DAMAGE_KINETIC => 2,
+		Technology::DAMAGE_ENERGY => 2
 	)
 );
 
 $technology[80] = array(
-	'type'		=> technology::TYPE_REACTOR,
+	'type'		=> Technology::TYPE_REACTOR,
 	'name'		=> 'NuclearBatteries',
 	'weight'	=> 3,
 	'recharge'	=> 4,
@@ -221,19 +221,22 @@ $technology[80] = array(
 );
 
 $technology[90] = array(
-	'type'		=> technology::TYPE_DRIVE,
+	'type'		=> Technology::TYPE_DRIVE,
 	'name'		=> 'CombustionDrive',
-	'weight'	=> '5'
+	'weight'	=> '5',
+	'seconds'	=> 7
 );
 $technology[91] = array(
-	'type'		=> technology::TYPE_DRIVE,
+	'type'		=> Technology::TYPE_DRIVE,
 	'name'		=> 'IonDrive',
-	'weight'	=> '3'
+	'weight'	=> '3',
+	'seconds'	=> 7
 );
 $technology[92] = array(
-	'type'		=> technology::TYPE_DRIVE,
+	'type'		=> Technology::TYPE_DRIVE,
 	'name'		=> 'PulseDrive',
-	'weight'	=> '5'
+	'weight'	=> '5',
+	'seconds'	=> 8
 );
 
 
@@ -246,7 +249,7 @@ $technology[92] = array(
  * Everything that is craftable has a 50% regain chance for 50% of the needed resources (floor)
  */
 $technology[IRON_ID] = array(
-	'type'		=> technology::TYPE_INGREDIENT,
+	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'Iron',
 	'weight'	=> 1,
 	'stack'		=> 1,
@@ -257,21 +260,21 @@ $technology[IRON_ID] = array(
 	),
 );
 $technology[CRYSTALS_ID] = array(
-	'type'		=> technology::TYPE_INGREDIENT,
+	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'Crystals',
 	'weight'	=> 1,
 	'stack'		=> 1,
 	'price'		=> 30
 );
 $technology[ELECTRONICS_ID] = array(
-	'type'		=> technology::TYPE_INGREDIENT,
+	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'Electronics',
 	'weight'	=> 1,
 	'stack'		=> 1,
 	'price'		=> 30
 );
 $technology[ENERGY_CELLS_ID] = array(
-	'type'		=> technology::TYPE_INGREDIENT,
+	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'EnergyCells',
 	'weight'	=> 1,
 	'stack'		=> 1,
@@ -279,7 +282,7 @@ $technology[ENERGY_CELLS_ID] = array(
 );
 
 $technology[SPACE_JUNK_ID] = array(
-	'type'		=> technology::TYPE_INGREDIENT,
+	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'SpaceJunk',
 	'weight'	=> 1,
 	'stack'		=> 1,
@@ -290,7 +293,7 @@ $technology[SPACE_JUNK_ID] = array(
 	)
 );
 $technology[TECHNICAL_COMPONENTS_ID] = array(
-	'type'		=> technology::TYPE_INGREDIENT,
+	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'TechnicalComponents',
 	'weight'	=> 1,
 	'stack'		=> 1,

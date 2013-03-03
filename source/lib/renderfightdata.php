@@ -213,14 +213,14 @@ class RenderFightData extends RendererAbstract {
 
 	/**
 	 * @param Account $account
-	 * @param technology $item
+	 * @param Technology $item
 	 * @param string $message
 	 * @param string $class
 	 * @return RenderFightData
 	 */
 	public function newEvent(
 		Account $account,
-		technology $item,
+		Technology $item,
 		$message,
 		$class = null
 	) {

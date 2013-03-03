@@ -18,11 +18,11 @@ class Bars extends AccountSubclass {
 	 * @return string
 	 */
 	public function conditionBar() {
-		$starship = $this->account()->starship();
-		$max = $starship->structure() + $starship->armor();
-		$current = $max;	// Fill with account value;
+		$condition = $this->account()->starship()->condition();
+		$maximum = $condition->conditionMaximum();
+		$current = $condition->conditionCurrent();
 
-		return Plugins::statusBar('condition', $max, $current);
+		return Plugins::statusBar('condition', $maximum, $current);
 	}
 
 	/**

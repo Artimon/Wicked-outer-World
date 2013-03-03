@@ -9,13 +9,13 @@ class Accuracy {
 	/**
 	 * @param Starship $firingStarship
 	 * @param Starship $opponentStarship
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return array
 	 */
 	public function hits(
 		Starship $firingStarship,
 		Starship $opponentStarship,
-		technology $item
+		Technology $item
 	) {
 		$this->hits = 0;
 

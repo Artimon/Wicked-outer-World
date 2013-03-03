@@ -7,7 +7,7 @@ class ControllerTechInfo extends ControllerAbstract {
 	 */
 	public function renderer($section) {
 		$techId = $this->request()->get('techId');
-		$item = technology::raw($techId);
+		$item = Technology::raw($techId);
 
 		return new RenderTechInfo($item);
 	}

@@ -27,17 +27,50 @@ class RenderHangarStarTrip extends RendererAbstract {
 	 * @return string
 	 */
 	protected function starTripActionHtml() {
-		$this->account()->factory()->actionHangarStarTrip()->start();
+		$account = $this->account();
+		$actionHangarStarTrip = $account->factory()->actionHangarStarTrip();
 
-		$js = "$('#space').engine2d(init);";
+		$controller = $this->controller();
+		if (!$actionHangarStarTrip->canStart()) {
+			$controller->redirect(
+				$controller->currentRoute(
+					array('section' => 'missions')
+				)
+			);
+		}
+
+		$actionHangarStarTrip->start();
+
+		$starTourSeconds = $account->starship()->engine()->starTourSeconds();
+
+		$js = "
+			$('#space').engine2d(function (engine2d) {
+				init(engine2d, {$starTourSeconds});
+			});";
 		JavaScript::create()->bind($js);
 
-		$entityLoader = new entityLoader($this->account());
-		$entityLoader->initSector(0);
+		$entityLoader = new entityLoader($account);
+		$entityLoader->initSector($starTourSeconds);
+
+		$headline = i18n('starTrip');
+		$outOfFuel = i18n('outOfFuel');
+		$back = i18n('back');
+
+		$url = $controller->currentRoute(
+			array('section' => 'missions')
+		);
 
 		return "
-Ladebalken beim einsammeln (Mining Module boost).<br>
-<canvas id='space' width='400' height='400'></canvas>
-<div id='fps'>frames: 0</div>";
+			<div id='starTour'>
+				<h2>{$headline}</h2>
+				<canvas id='space' width='400' height='400'></canvas>
+				<div class='finished null'>
+					<hr>
+					<p class='highlight bold'>{$outOfFuel}</p>
+					<a href='{$url}' class='button important'>{$back}</a>
+				</div>
+				Ladebalken beim einsammeln (Mining Module boost).
+				<div id='fps'>frames: 0</div>
+			</div>";
 	}
 }

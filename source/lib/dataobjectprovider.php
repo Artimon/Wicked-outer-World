@@ -5,7 +5,7 @@
  */
 class dataObjectProvider {
 	/**
-	 * @var database
+	 * @var Lisbeth_Database
 	 */
 	private $database;
 
@@ -27,11 +27,11 @@ class dataObjectProvider {
 	/**
 	 * Get database instance.
 	 *
-	 * @return database
+	 * @return Lisbeth_Database
 	 */
 	public function database() {
 		if (null === $this->database) {
-			$this->database = new database();
+			$this->database = new Lisbeth_Database();
 		}
 
 		return $this->database;

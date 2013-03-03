@@ -20,7 +20,7 @@ class html {
 	 */
 	public static function techLink($techId) {
 		$techId = (int)$techId;
-		$technology = technology::raw($techId);
+		$technology = Technology::raw($techId);
 
 		return "<a href='javascript:;' class='techInfo' data-techId='{$techId}'>{$technology->name()}</a>";
 	}

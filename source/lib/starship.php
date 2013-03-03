@@ -60,6 +60,13 @@ class Starship extends techContainerAbstract {
 	}
 
 	/**
+	 * @return float
+	 */
+	public function repair() {
+		return $this->account()->repair();
+	}
+
+	/**
 	 * Return current starship weight.
 	 *
 	 * @return int
@@ -78,11 +85,11 @@ class Starship extends techContainerAbstract {
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 * @throws InvalidArgumentException
 	 * @return techGroup
 	 */
-	public function groupByItem(technology $item) {
+	public function groupByItem(Technology $item) {
 		try {
 			$slot = $item->starshipSlot();
 			return $this->groupByName($slot);
@@ -131,12 +138,12 @@ class Starship extends techContainerAbstract {
 	}
 
 	/**
-	 * @return null|technology
+	 * @return null|Technology
 	 */
 	public function shield() {
 		$items = $this->equipment()->items();
 
-		/* @var technology $technology */
+		/* @var Technology $technology */
 		foreach ($items as $technology) {
 			if ($technology->isShield()) {
 				return $technology;
@@ -163,5 +170,13 @@ class Starship extends techContainerAbstract {
 		}
 
 		return $this->condition;
+	}
+
+	/**
+	 * @param float $value to subtract from repair percentage.
+	 * @return Starship
+	 */
+	public function addDamage($value) {
+		return $this->account()->incrementRepair($value);
 	}
 }

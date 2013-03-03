@@ -342,6 +342,11 @@ div.ingredient {
   margin: 35px;
   text-align: center; }
 
+#starTour #space,
+#starTour .finished {
+  width: 730px;
+  height: 730px; }
+
 /* Skirmish page */
 #skirmish .column {
   display: inline-block;

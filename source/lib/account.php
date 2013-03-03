@@ -106,6 +106,17 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
+	 * @return float
+	 */
+	public function repair() {
+		$repair = (float)$this->value('repair');
+		$repair = max(0, $repair);
+		$repair += 15 * $this->passedTicks();
+
+		return min(100, $repair);
+	}
+
+	/**
 	 * Regenerate 3 endurance points in 5 minutes without improvements.
 	 *
 	 * @return int
@@ -114,7 +125,7 @@ class Account extends Lisbeth_Entity {
 		$endurance = (int)$this->value('endurance');
 
 		return min(
-			$endurance + (3 * $this->updateTicks()),
+			$endurance + (3 * $this->passedTicks()),
 			$this->maxEndurance()
 		);
 	}
@@ -128,7 +139,7 @@ class Account extends Lisbeth_Entity {
 		$actionPoints = (int)$this->value('actionPoints');
 
 		return min(
-			$actionPoints + (2 * $this->updateTicks()),
+			$actionPoints + (2 * $this->passedTicks()),
 			$this->maxActionPoints()
 		);
 	}
@@ -166,16 +177,43 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
+	 * @param float $repair
+	 * @param int $endurance
+	 * @param int $actionPoints
+	 * @return Lisbeth_Entity
+	 */
+	protected function applyTickValues($repair, $endurance, $actionPoints) {
+		return $this
+			->setValue('repair', $repair)
+			->setValue('actionPoints', $endurance)
+			->setValue('endurance', $actionPoints)
+			->setValue('lastUpdate', TIME);
+	}
+
+	/**
+	 * @param float $value
+	 * @return Lisbeth_Entity
+	 */
+	public function incrementRepair($value) {
+		return $this->applyTickValues(
+			$this->repair() + $value,
+			$this->actionPoints(),
+			$this->endurance()
+		);
+	}
+
+	/**
 	 * @TODO Move to "action" class.
 	 *
 	 * @param int $value
 	 * @return Account
 	 */
 	public function incrementActionPoints($value) {
-		return $this
-			->setValue('actionPoints', $this->actionPoints() + $value)
-			->setValue('endurance', $this->endurance())
-			->setValue('lastUpdate', TIME);
+		return $this->applyTickValues(
+			$this->repair(),
+			$this->actionPoints() + $value,
+			$this->endurance()
+		);
 	}
 
 	/**
@@ -190,10 +228,11 @@ class Account extends Lisbeth_Entity {
 			$this->increment('experience', -$value);
 		}
 
-		return $this
-			->setValue('actionPoints', $this->actionPoints())
-			->setValue('endurance', $this->endurance() + $value)
-			->setValue('lastUpdate', TIME);
+		return $this->applyTickValues(
+			$this->repair(),
+			$this->actionPoints(),
+			$this->endurance() + $value
+		);
 	}
 
 	/**
@@ -213,9 +252,9 @@ class Account extends Lisbeth_Entity {
 	/**
 	 * One tick every 5 minutes.
 	 *
-	 * @return int
+	 * @return int ticks since last update
 	 */
-	public function updateTicks() {
+	public function passedTicks() {
 		$seconds = 300;
 
 		$lastUpdate = (int)($this->lastUpdate() / $seconds);

@@ -19,10 +19,10 @@ class trashContainer extends techContainerAbstract {
 	}
 
 	/**
-	 * @param technology $item
+	 * @param Technology $item
 	 * @return techGroup
 	 */
-	public function groupByItem(technology $item) {
+	public function groupByItem(Technology $item) {
 		return $this->techSelector()->trash();
 	}
 

@@ -6,7 +6,7 @@
  * Time: 12:27
  * To change this template use File | Settings | File Templates.
  */
-class vector {
+class Vector {
 	/**
 	 * @var float
 	 */
@@ -27,10 +27,10 @@ class vector {
 	}
 
 	/**
-	 * @param vector $vector
-	 * @return vector
+	 * @param Vector $vector
+	 * @return Vector
 	 */
-	public function set(vector $vector) {
+	public function set(Vector $vector) {
 		$this->x = $vector->x;
 		$this->y = $vector->y;
 
@@ -38,10 +38,10 @@ class vector {
 	}
 
 	/**
-	 * @param vector $vector
-	 * @return vector
+	 * @param Vector $vector
+	 * @return Vector
 	 */
-	public function add(vector $vector) {
+	public function add(Vector $vector) {
 		$this->x += $vector->x;
 		$this->y += $vector->y;
 
@@ -49,10 +49,10 @@ class vector {
 	}
 
 	/**
-	 * @param vector $vector
-	 * @return vector
+	 * @param Vector $vector
+	 * @return Vector
 	 */
-	public function sub(vector $vector) {
+	public function sub(Vector $vector) {
 		$this->x -= $vector->x;
 		$this->y -= $vector->y;
 
@@ -60,11 +60,11 @@ class vector {
 	}
 
 	/**
-	 * @param vector $vector1
-	 * @param vector $vector2
-	 * @return vector
+	 * @param Vector $vector1
+	 * @param Vector $vector2
+	 * @return Vector
 	 */
-	public function diff(vector $vector1, vector $vector2) {
+	public function diff(Vector $vector1, Vector $vector2) {
 		$this->x = $vector1->x - $vector2->x;
 		$this->y = $vector1->y - $vector2->y;
 
@@ -72,10 +72,10 @@ class vector {
 	}
 
 	/**
-	 * @param vector $vector
-	 * @return vector
+	 * @param Vector $vector
+	 * @return Vector
 	 */
-	public function multiply(vector $vector) {
+	public function multiply(Vector $vector) {
 		$this->x *= $vector->x;
 		$this->y *= $vector->y;
 
@@ -83,21 +83,21 @@ class vector {
 	}
 
 	/**
-	 * @return vector
+	 * @return Vector
 	 */
 	public function length() {
 		return sqrt($this->x * $this->x + $this->y * $this->y);
 	}
 
 	/**
-	 * @return vector
+	 * @return Vector
 	 */
 	public function angle() {
 		return -atan2($this->y, $this->x) * (180 / M_PI);
 	}
 
 	/**
-	 * @return vector
+	 * @return Vector
 	 */
 	public function inverse() {
 		$this->x *= -1;
@@ -108,7 +108,7 @@ class vector {
 
 	/**
 	 * @param float $factor
-	 * @return vector
+	 * @return Vector
 	 */
 	public function scale($factor) {
 		$this->x *= $factor;
@@ -119,7 +119,7 @@ class vector {
 
 	/**
 	 * @param float $length
-	 * @return vector
+	 * @return Vector
 	 */
 	public function normalize($length) {
 		$this->scale($length / $this->length());
@@ -129,10 +129,10 @@ class vector {
 
 	/**
 	 * @param float $angle
-	 * @return vector
+	 * @return Vector
 	 */
 	public function rotate($angle) {
-		$temp = new vector();
+		$temp = new Vector();
 
 		$angle *= M_PI / 180;
 		$temp->x = $this->x * cos($angle) - $this->y * sin($angle);

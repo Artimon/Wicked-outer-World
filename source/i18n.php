@@ -38,7 +38,7 @@ $translations = array(
 	),
 	'descRagnarokMkI' => array(
 		'de' => "Dieser leichte Raumjäger ist high-end Technologie... aus der Zeit der ersten Weltraum Konflikte. Man sollte jetzt nicht unbedingt sagen er sei eine Rostlaube, aber mit irgendwas musst Du das Spiel ja beginnen, oder?",
-		'en' => "This light fighter is high-end technology... from the age of first space conflicts. One shouldn't say this is a rust bucket, but you gotta start the game with something, right?"
+		'en' => "This light fighter is high-end Technology... from the age of first space conflicts. One shouldn't say this is a rust bucket, but you gotta start the game with something, right?"
 	),
 
 	'nameGenesisSC4' => array(
@@ -762,6 +762,10 @@ $translations = array(
 	'skirmishWellWon' => array(
 		'de' => 'Du hast %s ziehmlich zerlegt und %s erbeutet.',
 		'en' => 'You really tore %s apart and took %s.'
+	),
+	'outOfFuel' => array(
+		'de' => 'Schnell zurück, befor der Treibstoff ausgeht!',
+		'en' => 'Hurry back home before fuel runs out!'
 	),
 
 
