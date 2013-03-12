@@ -12,6 +12,14 @@ abstract class ControllerAbstract implements ControllerInterface {
 	private $ajax;
 
 	/**
+	 * @param string $route
+	 * @return string
+	 */
+	public function route($route) {
+		return '?page=' . $route;
+	}
+
+	/**
 	 * @param array $parameters
 	 * @return string
 	 */

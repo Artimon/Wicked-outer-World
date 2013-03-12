@@ -34,6 +34,10 @@ return array(
 		'controller'	=> 'ControllerLogout',
 		'database'		=> true
 	),
+	'register' => array(
+		'controller'	=> 'ControllerRegister',
+		'database'		=> true
+	),
 	'default' => array(
 		'controller'	=> 'ControllerLogin',
 		'database'		=> true

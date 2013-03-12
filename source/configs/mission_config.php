@@ -21,6 +21,10 @@ return array(
 				array(
 					'teaser' => 'missionTalkedWithPilots',
 					'reward' => array('exp' => 1)
+				),
+				array(
+					'teaser' => 'missionThoughtAboutLife',
+					'reward' => array('exp' => 1)
 				)
 			)
 		)
@@ -36,8 +40,20 @@ return array(
 					'reward' => array('exp' => 1)
 				),
 				array(
+					'teaser' => 'missionBlindedByTheSun',
+					'reward' => array('exp' => 2)
+				),
+				array(
 					'teaser' => 'missionFoundSpaceJunk',
 					'reward' => array('item' => array(SPACE_JUNK_ID))
+				),
+				array(
+					'teaser' => 'missionFoundEnergyCell',
+					'reward' => array('item' => array(ENERGY_CELLS_ID))
+				),
+				array(
+					'teaser' => 'missionFoundElectronics',
+					'reward' => array('item' => array(ELECTRONICS_ID))
 				)
 			)
 		)

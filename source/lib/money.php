@@ -21,4 +21,11 @@ class Money extends AccountSubclass {
 	public function long() {
 		return Format::money($this->value(), false);
 	}
+
+	/**
+	 * @return int
+	 */
+	public function premiumCoins() {
+		return (int)$this->account()->value('premiumCoins');
+	}
 }

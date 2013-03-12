@@ -64,6 +64,44 @@ class Account extends Lisbeth_Entity {
 	private $crafting;
 
 	/**
+	 * @param string $name
+	 * @param string $password
+	 * @param string $email
+	 * @param int $shipId
+	 * @return Account
+	 */
+	public static function create($name, $password, $email, $shipId) {
+		$database = new Lisbeth_Database();
+		$name = $database->escape($name);
+		$email = $database->escape($email);
+		$password = md5($password);
+		$shipId = (int)$shipId;
+
+		$sql = "
+			INSERT INTO `Accounts`
+			SET
+				`name` = '{$name}',
+				`password` = '{$password}',
+				`email` = '{$email}',
+				`starshipId` = {$shipId};";
+		$database->query($sql)->freeResult();
+
+		$id = mysql_insert_id();
+		$game = Game::getInstance();
+		$game->session()->store('id', $id);
+
+		$account = $game->account();
+		$stock = $account->stockage()->stock();
+		$stock->newItem(SMALL_BLASTER_ID, 1);
+		$stock->newItem(BLASTER_AMMUNITION_ID, 75);
+		$stock->newItem(NUCLEAR_BATTERIES_ID, 1);
+		$stock->newItem(COMBUSTION_DRIVE_ID, 1);
+		$stock->update();
+
+		return $account;
+	}
+
+	/**
 	 * @return int
 	 */
 	public function id() {

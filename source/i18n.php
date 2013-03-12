@@ -488,6 +488,10 @@ $translations = array(
 		'de' => 'Weltraumfieber und Schwerelosigkeitskrankheit sind wirklich üble Gesellen, aber wer geht schon freiwillig zum Arzt? Darum erhälst Du bei jedem Arztbesuch eine Kleinigkeit.',
 		'en' => 'Space fever and zero gravtity disease are really bad companions, but who visits a doctor voluntarily? Thus you`ll get something nice for each visit at the doctor.'
 	),
+	'healthCareReward' => array(
+		'de' => 'Du hast %s erhalten!',
+		'en' => 'You got %s!'
+	),
 	'startCheck' => array(
 		'de' => 'Jetzt checken',
 		'en' => 'Start check'
@@ -898,21 +902,46 @@ $translations = array(
 		'en' => 'Stroll Around'
 	),
 	'missionFoundMoney' => array(
-		'de' => 'Du hast %s Kreditkarten gefunden!',
-		'en' => 'You found %s credit cards!'
+		'de' => 'Glückstag! Du hast %s s£ gefunden!',
+		'en' => 'Lucky day! You found %s s£!'
 	),
 	'missionTalkedWithPilots' => array(
 		'de' => 'Du hast Dich mit einem anderen Piloten unterhalten.',
 		'en' => 'You talked to another pilot.'
 	),
+	'missionThoughtAboutLife' => array(
+		'de' => 'Du hast über Dein Leben nachgedacht.',
+		'en' => 'You thought about your life.'
+	),
+
+	'missionCollectJunk' => array(
+		'de' => 'Schrott sammeln',
+		'en' => 'Collect Junk'
+	),
+	'missionMetWithJunkers' => array(
+		'de' => 'Du hast Dich mit anderen Schrottsammlern unterhalten.',
+		'en' => 'You talked to other junkers.'
+	),
+	'missionBlindedByTheSun' => array(
+		'de' => 'Du wurdest von der Sonne geblendet.',
+		'en' => 'You have been blinded by the sun.'
+	),
+	'missionFoundSpaceJunk' => array(
+		'de' => 'Du hast Weltraumschrott gefunden!',
+		'en' => 'You found some space junk!'
+	),
+	'missionFoundEnergyCell' => array(
+		'de' => 'Du hast eine Energiezelle gefunden!',
+		'en' => 'You found a energy cell!'
+	),
+	'missionFoundElectronics' => array(
+		'de' => 'Du hast Elektronikbauteile gefunden!',
+		'en' => 'You found some electronic parts!'
+	),
 
 	'missionExploration' => array(
 		'de' => 'Erkundung',
 		'en' => 'Exploration'
-	),
-	'missionCollectJunk' => array(
-		'de' => 'Schrott sammeln',
-		'en' => 'Collect Junk'
 	),
 
 	/*****************************************************
@@ -930,5 +959,62 @@ $translations = array(
 	'password' => array(
 		'de' => 'Passwort',
 		'en' => 'Password'
+	),
+	'logout' => array(
+		'de' => 'Logout',
+		'en' => 'Logout'
+	),
+	'logoutHeadline' => array(
+		'de' => 'Fehler: Seite nicht gefunden',
+		'en' => 'Error: Page not found'
+	),
+	'logoutDescription' => array(
+		'de' => 'Sie müssen sich einloggen, um diese Aktion ausführen zu können.',
+		'en' => 'You must log in to perform this action.'
+	),
+	'logoutFootNote' => array(
+		'de' => 'Nein Quatsch, wir machen nur Spaß. Bis zum nächsten mal! ;)',
+		'en' => 'No, just kidding. See you next time! ;)'
+	),
+
+	/*****************************************************
+	 * Register
+	 ****************************************************/
+
+	'register' => array(
+		'de' => 'Registrieren',
+		'en' => 'Register'
+	),
+	'registerIntro' => array(
+		'de' => 'Du willst also ein tollkühner Weltraumcowboy werden? Dann hol` Dir Deine Pilotenlizenz und erhalte Deinen ersten Raumjäger!',
+		'en' => 'So you want to become a foolhardy space cowboy? Get your pilot license now and get your first space fighter!'
+	),
+	'coolName' => array(
+		'de' => 'Cooler Name',
+		'en' => 'Cool Name'
+	),
+	'nameTip' => array(
+		'de' => 'Du kannst Buchstaben, Zahlen und Binde-/Unterstriche verwenden.',
+		'en' => 'You may use letters, numbers, dash and underscore.'
+	),
+	'usernameTaken' => array(
+		'de' => 'Dieser Name ist leider schon vergeben.',
+		'en' => 'Unfortunately this name is already taken.'
+	),
+	'crazyPassword' => array(
+		'de' => 'Irres Passwort',
+		'en' => 'Crazy password'
+	),
+	'email' => array(
+		'de' => 'Email',
+		'en' => 'email'
+	),
+	'leaveEmpty' => array(
+		'de' => 'Bitte frei lassen.',
+		'en' => 'Leave empty, please.'
+	),
+	'yourShip' => array(
+		'de' => 'Dein Schiff',
+		'en' => 'Your ship'
 	)
 );

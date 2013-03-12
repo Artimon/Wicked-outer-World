@@ -260,7 +260,7 @@ class RenderCrafter extends RendererAbstract {
 		$js = "$('#craftCommit').craft();";
 		JavaScript::create()->bind($js);
 
-		return 'wanna craft something?<br>'.$html;
+		return $html;
 	}
 
 	/**

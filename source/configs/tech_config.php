@@ -30,7 +30,14 @@
 // Creating a clan only possible at a certain minimum level.
 // Levels give skill points.
 
+define('SMALL_BLASTER_ID', 60);
+
 define('BLASTER_AMMUNITION_ID', 70);
+
+define('NUCLEAR_BATTERIES_ID', 80);
+
+define('COMBUSTION_DRIVE_ID', 90);
+
 define('KINETIC_SHIELD_ID', 120);
 define('ENERGY_SHIELD_ID', 121);
 define('DISTORTION_SHIELD_ID', 122);
@@ -66,6 +73,8 @@ $technology = array();
 		'stock' => 1
 	)
 );*/
+
+// ID in registration config.
 $technology[1] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'RagnarokMkI',
@@ -80,6 +89,7 @@ $technology[1] = array(
 		'engine'		=> 2
 	)
 );
+// ID in registration config.
 $technology[2] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'GenesisSC4',
@@ -126,7 +136,7 @@ $technology[40] = array(
  * Burst weapons without ammunition:
  * micro-laser, pulse-laser, quad-laser
  */
-$technology[60] = array(
+$technology[SMALL_BLASTER_ID] = array(
 	'type'			=> Technology::TYPE_WEAPON,
 	'name'			=> 'SmallBlaster',
 	'weight'		=> 1,
@@ -212,7 +222,7 @@ $technology[DISTORTION_SHIELD_ID] = array(
 	)
 );
 
-$technology[80] = array(
+$technology[NUCLEAR_BATTERIES_ID] = array(
 	'type'		=> Technology::TYPE_REACTOR,
 	'name'		=> 'NuclearBatteries',
 	'weight'	=> 3,
@@ -220,7 +230,7 @@ $technology[80] = array(
 	'capacity'	=> 10
 );
 
-$technology[90] = array(
+$technology[COMBUSTION_DRIVE_ID] = array(
 	'type'		=> Technology::TYPE_DRIVE,
 	'name'		=> 'CombustionDrive',
 	'weight'	=> '5',

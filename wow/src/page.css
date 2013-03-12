@@ -44,18 +44,29 @@ select,
   border: 1px solid #A0A4B8;
   border-top: 1px solid #6F778A;
   border-radius: 3px; }
-
-input[type=text]:focus,
-input[type=password]:focus,
-select:focus,
-textarea:focus {
-  border: 1px solid #91BAD5;
-  border-top: 1px solid #6796AE;
-  -webkit-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE;
-  /* webkit browser*/
-  -moz-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE;
-  /* firefox */
-  box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE; }
+  input[type=text]:focus,
+  input[type=password]:focus,
+  select:focus,
+  .textinput:focus {
+    border: 1px solid #91BAD5;
+    border-top: 1px solid #6796AE;
+    -webkit-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE;
+    /* webkit browser*/
+    -moz-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE;
+    /* firefox */
+    box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE; }
+  input[type=text].error,
+  input[type=password].error,
+  select.error,
+  .textinput.error {
+    background: #fac8ca;
+    border: 1px solid #e3131e;
+    border-top: 1px solid #e3131e;
+    -webkit-box-shadow: 0 0 4px #e3131e, inset 0 0 4px #e3131e;
+    /* webkit browser*/
+    -moz-box-shadow: 0 0 4px #e3131e, inset 0 0 4px #e3131e;
+    /* firefox */
+    box-shadow: 0 0 4px #e3131e, inset 0 0 4px #e3131e; }
 
 input[type=text].small,
 select.small {
@@ -90,6 +101,12 @@ h2, .h2 {
   font-size: 16px;
   margin-top: 13px;
   margin-bottom: 10px; }
+  h2.error, .h2.error {
+    color: #e3131e;
+    line-height: 48px;
+    padding-left: 56px;
+    background-image: url(../img/messagebox_warning.png);
+    background-repeat: no-repeat; }
 
 .null {
   display: none; }
@@ -213,8 +230,6 @@ div.box {
   position: relative;
   width: 1000px;
   height: 250px;
-  background-image: url(../img/temp_banner.jpg);
-  background-repeat: no-repeat;
   padding-bottom: 8px;
   text-align: right; }
   #topBanner #languageSelector {
@@ -271,7 +286,10 @@ div.box {
   border: none;
   width: 20px;
   height: 14px;
-  text-decoration: none; }
+  text-decoration: none;
+  box-shadow: 0px 0px 2px black;
+  -webkit-box-shadow: 0px 0px 2px black;
+  -moz-box-shadow: 0px 0px 2px black; }
   .lang.de {
     background-position: 0 0; }
   .lang.en {
@@ -346,6 +364,13 @@ div.ingredient {
 #starTour .finished {
   width: 730px;
   height: 730px; }
+
+#register .techInfo {
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/ic_info.png);
+  border: none;
+  cursor: pointer; }
 
 /* Skirmish page */
 #skirmish .column {

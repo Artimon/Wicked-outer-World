@@ -123,6 +123,8 @@ class ActionFight {
 			$money = $plunder->apply($this->aggressor, $this->victim);
 			$money = Format::money($money);
 
+			$experienceGain = 50;
+
 			if ($aggressorCondition->conditionPercentage() > 20) {
 				$message = i18n('skirmishWellWon', $victimName, $money);
 			}
@@ -131,8 +133,12 @@ class ActionFight {
 			}
 		}
 		else {
+			$experienceGain = 25;
+
 			$message = i18n('skirmishLost', $victimName);
 		}
+
+		$this->aggressor->account()->levelProgress()->addExperience($experienceGain);
 
 		$this->update($this->aggressor);
 		$this->update($this->victim);

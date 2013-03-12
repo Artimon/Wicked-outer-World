@@ -78,7 +78,7 @@ class ActionHangarMission extends ActionAbstract {
 
 			switch ($reward) {
 				case 'exp':
-					$account->increment('experience', $value);
+					$account->levelProgress()->addExperience($value);
 					break;
 
 				case 'money':
@@ -89,7 +89,7 @@ class ActionHangarMission extends ActionAbstract {
 				case 'item':
 					foreach ($value as $techId) {
 						$item = Technology::raw($techId);
-						echo $item->name();
+						$account->stockage()->stock()->addItem($item);
 					}
 					break;
 

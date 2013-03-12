@@ -1,12 +1,12 @@
 <?php
 
-class ControllerLogin extends ControllerAbstract {
+class ControllerRegister extends ControllerAbstract {
 	/**
 	 * @param string $section
-	 * @return RendererInterface|RenderLogin
+	 * @return RendererInterface|RenderRegister
 	 */
 	public function renderer($section) {
-		$renderer = new RenderLogin();
+		$renderer = new RenderRegister();
 
 		return $renderer->setController($this);
 	}

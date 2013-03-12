@@ -6,9 +6,9 @@ class RenderLogin extends RendererAbstract {
 	 */
 	public function bodyHtml() {
 		if ($this->login()) {
-			// @TODO This is ugly and you know it. ^^
-			header('Location: index.php?page=profile');
-			exit;
+			$this->controller()->redirect(
+				$this->controller()->route('profile')
+			);
 		}
 
 		$username = i18n('username');

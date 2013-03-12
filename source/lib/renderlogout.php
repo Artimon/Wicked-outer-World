@@ -6,9 +6,20 @@ class RenderLogout extends RendererAbstract {
 	 */
 	public function bodyHtml() {
 		$session = new Leviathan_Session();
-		$session->reset();
 
-		return 'Thanks for loggin out ya twat!';
+		$language = $session->value('language');
+		$session
+			->reset()
+			->store('language', $language);
+
+		$headline = i18n('logoutHeadline');
+		$description = i18n('logoutDescription');
+		$footNote = i18n('logoutFootNote');
+
+		return "
+			<h2 class='error'>{$headline}</h2>
+			<p>{$description}</p>
+			<p class='highlight'>{$footNote}</p>";
 	}
 
 	/**

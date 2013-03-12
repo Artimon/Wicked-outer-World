@@ -65,7 +65,9 @@ class RenderSidebar {
 	protected function renderCharacter() {
 		$account = Game::getInstance()->account();
 
-		$money = $account->money()->short();
+		$accountMoney = $account->money();
+		$money = $accountMoney->short();
+		$premiumCoins = $accountMoney->premiumCoins();
 
 		$moneyName			= i18n('moneyName');
 		$messagesTitle		= i18n('messages');
@@ -73,8 +75,8 @@ class RenderSidebar {
 		$premiumCoinsTitle	= i18n('premiumCoins');
 
 		/*
-		 * Space Pounds sÂ£
-		 * Space Pfund sÂ£
+		 * Space Pounds s£
+		 * Space Pfund s£
 		 */
 
 		$html = "
@@ -90,7 +92,7 @@ class RenderSidebar {
 <div>{$eventsTitle}</div>
 <div class='clear seperator'></div>
 
-<div class='floatRight'>56</div>
+<div class='floatRight'>{$premiumCoins}</div>
 <div>{$premiumCoinsTitle}</div>";
 
 		return Format::box(i18n('pilot'), $html);

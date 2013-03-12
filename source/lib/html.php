@@ -29,12 +29,17 @@ class html {
 	 * @static
 	 * @param string $name
 	 * @param array $data [value => label]
+	 * @param mixed $current
 	 * @return string
 	 */
-	public static function selectBox($name, array $data) {
-		$html = "<select name='{$name}'>";
+	public static function selectBox($name, array $data, $current = null) {
+		$html = "<select name='{$name}' class='{$name}'>";
 		foreach ($data as $value => $label) {
-			$html .= "<option value='{$value}'>{$label}</option>";
+			$selected = ($current == $value)
+				? " selected='selected'"
+				: '';
+
+			$html .= "<option value='{$value}'{$selected}>{$label}</option>";
 		}
 		$html .= "</select>";
 

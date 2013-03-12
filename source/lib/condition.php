@@ -96,6 +96,10 @@ class Condition extends StarshipSubclass {
 	 * @return float
 	 */
 	private function percentage(stdClass $thing) {
+		if ($thing->max <= 0) {
+			return 0;
+		}
+
 		$factor = $thing->current / $thing->max;
 		return round(100 * $factor);
 	}

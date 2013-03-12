@@ -7,6 +7,8 @@ $colorBlack: black;
 $colorWhite: white;
 $colorBright: #B8EC79;
 
+$colorError: #e3131e;
+
 $colorDefaultButton: #044170;
 $colorDimButton: darken($colorDefaultButton, 4%);
 $colorDarkButton: darken($colorDefaultButton, 19%);
@@ -192,18 +194,25 @@ select,
 	border: 1px solid #A0A4B8;
 	border-top: 1px solid #6F778A;
 	border-radius: 3px;
-}
 
-input[type=text]:focus,
-input[type=password]:focus,
-select:focus,
-textarea:focus {
-	border: 1px solid #91BAD5;
-	border-top: 1px solid #6796AE;
+	&:focus {
+		border: 1px solid #91BAD5;
+		border-top: 1px solid #6796AE;
 
-	-webkit-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE; /* webkit browser*/
-	-moz-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE; /* firefox */
-	box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE;
+		-webkit-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE; /* webkit browser*/
+		-moz-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE; /* firefox */
+		box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE;
+	}
+
+	&.error {
+		background: lighten($colorError, 40%);
+		border: 1px solid $colorError;
+		border-top: 1px solid $colorError;
+
+		-webkit-box-shadow: 0 0 4px $colorError, inset 0 0 4px $colorError; /* webkit browser*/
+		-moz-box-shadow: 0 0 4px $colorError, inset 0 0 4px $colorError; /* firefox */
+		box-shadow: 0 0 4px $colorError, inset 0 0 4px $colorError;
+	}
 }
 
 input[type=text].small,
@@ -250,6 +259,16 @@ h2, .h2 {
 
 	margin-top: 13px;
 	margin-bottom: 10px;
+
+	&.error {
+		color: $colorError;
+		line-height: 48px;
+
+		padding-left: 56px;
+
+		background-image: url(../img/messagebox_warning.png);
+		background-repeat: no-repeat;
+	}
 }
 
 .null {
@@ -384,7 +403,7 @@ div.box {
 	color: #88e1ff;
 }
 .critical {
-	color: #e3131e;
+	color: $colorError;
 }
 
 
@@ -395,8 +414,8 @@ div.box {
 	width: 1000px;
 	height: 250px;
 
-	background-image: url(../img/temp_banner.jpg);
-	background-repeat: no-repeat;
+	//background-image: url(../img/temp_banner.jpg);
+	//background-repeat: no-repeat;
 	padding-bottom: 8px;
 
 	text-align: right;
@@ -471,6 +490,8 @@ div.box {
 	height: 14px;
 
 	text-decoration: none;
+
+	@include boxShadow(2px, black);
 
 	&.de {
 		background-position: 0 0;
@@ -581,6 +602,18 @@ div.ingredient {
 	.finished {
 		width: 730px;
 		height: 730px;
+	}
+}
+
+#register {
+	.techInfo {
+		width: 20px;
+		height: 20px;
+
+		background-image: url(../img/ic_info.png);
+		border: none;
+
+		cursor: pointer;
 	}
 }
 

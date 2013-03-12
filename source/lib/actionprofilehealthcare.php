@@ -34,13 +34,36 @@ class ActionProfileHealthCare extends AccountSubclass {
 			return;
 		}
 
-		// @TODO Add reward (coins, money and a third one).
-		$this->account()
+		$rewards = array(
+			'money' => array(500, 100, 50),
+			'premiumCoins' => array(3, 1),
+			'experience' => array(100, 80, 50)
+		);
+
+		$account = $this->account();
+
+		$reward = array_rand($rewards);
+		$amount = array_rand($rewards[$reward]);
+		$amount = $rewards[$reward][$amount];
+
+		if ($reward === 'experience') {
+			$account->levelProgress()->addExperience($amount);
+
+			$message = $amount . ' ' . i18n('experience');
+		}
+		else {
+			$account->increment($reward, $amount);
+
+			$message = $reward === 'money'
+				? Format::money($amount)
+				: $amount . ' ' . i18n('premiumCoins');
+		}
+
+		$message = i18n('healthCareReward', $message);
+		EventBox::get()->success($message);
+
+		$account
 			->setValue('lastHealthCare', TIME)
 			->update();
-
-		$this->eventBox()->success(
-			i18n('healthCareReward')
-		);
 	}
 }
