@@ -174,12 +174,16 @@ class entityLoader extends dataObjectProvider {
 	 * @param int $entityId
 	 */
 	protected function storeItem($entityId) {
-		$items = array(
-			CRYSTALS_ID => true,
-			ELECTRONICS_ID => true,
-			ENERGY_CELLS_ID => true,
-			SPACE_JUNK_ID => true
-		);
+		$items = array();
+
+		$config = Config::getInstance()->technology();
+		$config = array_keys($config->technology);
+		foreach ($config as $techId) {
+			$item = Technology::raw($techId);
+			if ($item->isIngredient()) {
+				$items[$techId] = true;
+			}
+		}
 
 		$entityId = array_rand($items);
 

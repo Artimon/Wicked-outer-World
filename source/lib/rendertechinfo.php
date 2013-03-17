@@ -19,7 +19,10 @@ class RenderTechInfo extends RendererAbstract {
 	public function bodyHtml() {
 		return "
 <h2>{$this->item->name()}</h2>
-<p>{$this->item->description()}</p>".$this->techData();
+<p>
+	{$this->item->description()}<br>
+	{$this->techData()}
+</p>";
 	}
 
 	/**
@@ -48,7 +51,43 @@ class RenderTechInfo extends RendererAbstract {
 	 * @return string
 	 */
 	private function starshipData() {
-		return "@TODO create data list".$this->item->id();
+		$html = "
+<colgroup>
+	<col>
+	<col width='40'>
+	<col>
+</colgroup>
+<tr>
+	<td>".i18n('weight').":</td>
+	<td class='headline right'>{$this->item->weight()}</td>
+	<td class='variable'>{$this->weightUnit()}</td>
+</tr><tr>
+	<td>".i18n('tonnage').":</td>
+	<td class='headline right'>{$this->item->tonnage()}</td>
+	<td class='variable'>{$this->weightUnit()}</td>
+</tr><tr>
+	<td>".i18n('internalStructure').":</td>
+	<td class='headline right'>{$this->item->structure()}</td>
+</tr><tr>
+	<td class='headline'>" . i18n('slots') . "</td>
+</tr><tr>
+	<td>".i18n('weaponry').":</td>
+	<td class='headline right'>{$this->item->weaponrySlots()}</td>
+</tr><tr>
+	<td>".i18n('ammunition').":</td>
+	<td class='headline right'>{$this->item->ammunitionSlots()}</td>
+</tr><tr>
+	<td>".i18n('equipment').":</td>
+	<td class='headline right'>{$this->item->equipmentSlots()}</td>
+</tr><tr>
+	<td>".i18n('cargo').":</td>
+	<td class='headline right'>{$this->item->cargoSlots()}</td>
+</tr><tr>
+	<td>".i18n('engine').":</td>
+	<td class='headline right'>{$this->item->engineSlots()}</td>
+</tr>";
+
+		return html::defaultTable($html);
 	}
 
 	/**

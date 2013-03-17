@@ -69,10 +69,16 @@ class RenderSkirmishOpponents extends RendererAbstract {
 			$list
 		);
 
+		$noWeaponsInfo = '';
+		if ($account->starship()->weaponry()->isEmpty()) {
+			$noWeaponsInfo = i18n('noWeaponsInfo');
+			$noWeaponsInfo = "<h2 class='error'>{$noWeaponsInfo}</h2>";
+		}
+
 		return "
 			<h2>{$headline}</h2>
 			<div id='skirmish'>
-				<div class='column'>{$description}</div>
+				<div class='column'>{$description}{$noWeaponsInfo}</div>
 				<div class='column'>
 					{$list}
 				</div>

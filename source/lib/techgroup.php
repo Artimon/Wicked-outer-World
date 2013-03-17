@@ -90,6 +90,13 @@ class techGroup extends techContainerSubclass {
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function isEmpty() {
+		return empty($this->items);
+	}
+
+	/**
 	 * @param Technology $item
 	 * @param int $amount
 	 * @return bool

@@ -199,25 +199,97 @@ $translations = array(
 		'de' => 'Eisen',
 		'en' => 'Iron'
 	),
+	'descIron' => array(
+		'de' => 'Die meisten Ausrüstungsteile werden aus Eisen gebaut. Dummerweise muss man das Eisen erst aus dem vielen Weltraumschrott herausschmelzen.',
+		'en' => 'Most equipment parts are made from iron. Unforunately you got to melt that iron out of all that space junk.'
+	),
+	'namePlastics' => array(
+		'de' => 'Plastik',
+		'en' => 'Plastics'
+	),
+	'descPlastics' => array(
+		'de' => 'Damit lässt sich doch gewiss etwas anfangen?',
+		'en' => 'For sure this must be useful for something?'
+	),
+	'nameWater' => array(
+		'de' => 'Wasser',
+		'en' => 'Water'
+	),
+	'descWater' => array(
+		'de' => 'Wasser kann zum Reinigen oder Mischen anderer Flüssigkeiten verwandt werden.',
+		'en' => 'Water can be used for cleaning or mixing with other fluids.'
+	),
+	'nameCoolant' => array(
+		'de' => 'Kühlflüssigkeit',
+		'en' => 'Coolant'
+	),
+	'descCoolant' => array(
+		'de' => 'Hochleistungskühler kommen nicht mehr ohne Kühlflüssigkeit aus.',
+		'en' => 'High performance coolers can´t get along without coolant.'
+	),
+	'nameNobleGas' => array(
+		'de' => 'Edelgas',
+		'en' => 'Noble Gas'
+	),
+	'descNobleGas' => array(
+		'de' => 'Gase können als Plasma erstaunliche Wirkungen entfalten.',
+		'en' => 'Gases can develop amazing effects as plasma.'
+	),
 	'nameCrystals' => array(
 		'de' => 'Kristalle',
 		'en' => 'Crystals'
+	),
+	'descCrystals' => array(
+		'de' => 'Kristalle sehen nicht nur hübsch aus, sondern sind auch wichtiger Bestandteil elektronischer Bauteile und dienen dem Fokusieren von Licht.',
+		'en' => 'Crystals do not only look nice, they are also important for electronic components and can be used to focus light.'
 	),
 	'nameElectronics' => array(
 		'de' => 'Elektronik',
 		'en' => 'Electronics'
 	),
+	'descElectronics' => array(
+		'de' => 'Naja... besser als alles von Hand zu bedinen, oder?',
+		'en' => 'Well... better than handling everything ba hand, right?'
+	),
 	'nameEnergyCells' => array(
 		'de' => 'Energiezellen',
 		'en' => 'EnergyCells'
+	),
+	'descEnergyCells' => array(
+		'de' => 'Hier stecken einige Pferde drin. Damit lässt sich vermutlich auch etwas schmelzen?',
+		'en' => 'Quite some horses are within. They may even be able to melt some stuff?'
 	),
 	'nameSpaceJunk' => array(
 		'de' => 'Weltraumschrott',
 		'en' => 'SpaceJunk'
 	),
+	'descSpaceJunk' => array(
+		'de' => '"Zufällig" herumfliegender Weltraumschrott.',
+		'en' => '"Accidential" flying aroung space junk.'
+	),
+	'nameToxicWaste' => array(
+		'de' => 'Giftabfälle',
+		'en' => 'Toxic Waste'
+	),
+	'descToxicWaste' => array(
+		'de' => 'Ich sollte mich davon fern halten, doch welche Schätze könnten darin stecken?',
+		'en' => 'I should stay away from it, but what kind of treasures may be hidden within?'
+	),
 	'nameTechnicalComponents' => array(
 		'de' => 'Technische Komponenten',
 		'en' => 'TechnicalComponents'
+	),
+	'descTechnicalComponents' => array(
+		'de' => 'Sehr praktisch diese allgemeingebräuchlichen Bauteile.',
+		'en' => 'Very handy those universally usable parts.'
+	),
+	'nameCooler' => array(
+		'de' => 'Kühler',
+		'en' => 'Cooler'
+	),
+	'descCooler' => array(
+		'de' => 'Kühler sind zum Schutz allen Hitzerzeugenden Komponenten im Einsatz.',
+		'en' => 'Cooler are used to protect all heat generating components.'
 	),
 
 	/*****************************************************
@@ -313,6 +385,10 @@ $translations = array(
 	'status' => array(
 		'de' => 'Status',
 		'en' => 'Status'
+	),
+	'hangarDescription' => array(
+		'de' => 'Das Paradies eines jeden Piloten, hier kannst Du an Deinem Raumschiff herum schrauben und zu Missionen starten.',
+		'en' => 'The paradise of every pilot, here you can work on your spaceship and start to missions.'
 	),
 
 	/*****************************************************
@@ -417,6 +493,10 @@ $translations = array(
 	'howMany' => array(
 		'de' => 'Wie viele?',
 		'en' => 'How many?'
+	),
+	'slots' => array(
+		'de' => 'Slots',
+		'en' => 'Slots'
 	),
 
 	/*****************************************************
@@ -864,6 +944,10 @@ $translations = array(
 	'outOfFuel' => array(
 		'de' => 'Schnell zurück, befor der Treibstoff ausgeht!',
 		'en' => 'Hurry back home before fuel runs out!'
+	),
+	'noWeaponsInfo' => array(
+		'de' => 'Keine Waffe ausgerüstet!',
+		'en' => 'No weapon equipped yet!'
 	),
 
 

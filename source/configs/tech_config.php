@@ -43,11 +43,22 @@ define('ENERGY_SHIELD_ID', 121);
 define('DISTORTION_SHIELD_ID', 122);
 
 define('IRON_ID',					1000);
+define('PLASTICS_ID',				1025);
+define('WATER_ID',					1030);
+define('COOLANT_ID',				1035);
+
 define('CRYSTALS_ID',				1050);
+define('NOBLE_GAS_ID',				1075);
+
 define('ELECTRONICS_ID',			1100);
+
 define('ENERGY_CELLS_ID',			1150);
+
 define('SPACE_JUNK_ID',				1200);
+define('TOXIC_WASTE_ID',			1225);
+
 define('TECHNICAL_COMPONENTS_ID',	1250);
+define('COOLER_ID',					1275);
 
 
 // Galaxy on Fire items:
@@ -74,7 +85,9 @@ $technology = array();
 	)
 );*/
 
-$technology[-1] = array();	// Stockage
+$technology[-1] = array(
+	'type' => null
+);	// Stockage
 
 // ID in registration config.
 $technology[1] = array(
@@ -149,11 +162,12 @@ $technology[SMALL_BLASTER_ID] = array(
 	'burst'			=> 3,
 	'damageType'	=> Technology::DAMAGE_KINETIC,
 	'ammo'			=> BLASTER_AMMUNITION_ID,
-	'price'			=> 385,	// Value for trading.
+	'price'			=> 1015,	// Value for trading.
 	'craft' => array(
 		IRON_ID			=> 2,
 		ELECTRONICS_ID	=> 1,
-		ENERGY_CELLS_ID	=> 1
+		ENERGY_CELLS_ID	=> 1,
+		COOLER_ID		=> 1
 	)
 );
 $technology[61] = array(
@@ -164,11 +178,12 @@ $technology[61] = array(
 	'reload'		=> 2,
 	'drain'			=> 6,
 	'damageType'	=> Technology::DAMAGE_ENERGY,
-	'price'			=> 510,	// Value for trading.
+	'price'			=> 1210,	// Value for trading.
 	'craft' => array(
 		IRON_ID			=> 1,
 		CRYSTALS_ID		=> 2,
-		ENERGY_CELLS_ID => 2
+		ENERGY_CELLS_ID	=> 2,
+		COOLER_ID		=> 1
 	)
 );
 
@@ -177,7 +192,11 @@ $technology[BLASTER_AMMUNITION_ID] = array(
 	'name'		=> 'BlasterAmmunition',
 	'weight'	=> 1,
 	'stack'		=> 150,
-	'price'		=> 25	// Value for trading.
+	'price'		=> 25,	// Value for trading.
+	'craft' => array(
+		NOBLE_GAS_ID	=> 1,
+		ENERGY_CELLS_ID	=> 1
+	)
 );
 
 /*
@@ -282,6 +301,42 @@ $technology[IRON_ID] = array(
 		ENERGY_CELLS_ID	=> 1
 	)
 );
+$technology[PLASTICS_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'Plastics',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> 35	// Value for trading.
+);
+$technology[WATER_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'Water',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> 5	// Value for trading.
+);
+$technology[COOLANT_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'Coolant',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> 75,	// Value for trading.
+	'craft' => array(
+		WATER_ID		=> 1,
+		NOBLE_GAS_ID	=> 1
+	)
+);
+$technology[NOBLE_GAS_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'NobleGas',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> 55,	// Value for trading.
+	'craft' => array(
+		ENERGY_CELLS_ID	=> 1,
+		TOXIC_WASTE_ID	=> 1
+	)
+);
 $technology[CRYSTALS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'Crystals',
@@ -314,6 +369,12 @@ $technology[SPACE_JUNK_ID] = array(
 		ELECTRONICS_ID	=> array('chance' => 20, 'amount' => 1)
 	)
 );
+$technology[TOXIC_WASTE_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'ToxicWaste',
+	'weight'	=> 1,
+	'stack'		=> 1
+);
 $technology[TECHNICAL_COMPONENTS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'TechnicalComponents',
@@ -326,5 +387,21 @@ $technology[TECHNICAL_COMPONENTS_ID] = array(
 	),
 	'regain' => array(
 		IRON_ID => array('chance' => 50, 'amount' => 1)
+	)
+);
+$technology[COOLER_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'Cooler',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> 588,	// Value for trading.
+	'craft' => array(
+		IRON_ID					=> 1,
+		COOLANT_ID				=> 2,
+		TECHNICAL_COMPONENTS_ID	=> 1
+	),
+	'regain' => array(
+		IRON_ID		=> array('chance' => 80, 'amount' => 1),
+		COOLANT_ID	=> array('chance' => 40, 'amount' => 2)
 	)
 );
