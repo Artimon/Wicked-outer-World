@@ -2,6 +2,11 @@
 
 class crafting extends Lisbeth_Entity {
 	/**
+	 * @var string primary key name
+	 */
+	protected $primary = 'accountId';
+
+	/**
 	 * @var string
 	 */
 	protected $table = 'crafting';

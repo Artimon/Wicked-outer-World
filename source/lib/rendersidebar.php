@@ -84,11 +84,11 @@ class RenderSidebar {
 <div>{$moneyName}</div>
 <div class='clear seperator'></div>
 
-<div class='floatRight'>12</div>
+<div class='floatRight'>-</div>
 <div>{$messagesTitle}</div>
 <div class='clear seperator'></div>
 
-<div class='floatRight'>34</div>
+<div class='floatRight'>-</div>
 <div>{$eventsTitle}</div>
 <div class='clear seperator'></div>
 

@@ -78,7 +78,7 @@ class Account extends Lisbeth_Entity {
 		$shipId = (int)$shipId;
 
 		$sql = "
-			INSERT INTO `Accounts`
+			INSERT INTO `accounts`
 			SET
 				`name` = '{$name}',
 				`password` = '{$password}',
@@ -89,6 +89,12 @@ class Account extends Lisbeth_Entity {
 		$id = mysql_insert_id();
 		$game = Game::getInstance();
 		$game->session()->store('id', $id);
+
+		$sql = "
+			INSERT INTO `crafting`
+			SET
+				`accountId` = {$id};";
+		$database->query($sql)->freeResult();
 
 		$account = $game->account();
 		$stock = $account->stockage()->stock();

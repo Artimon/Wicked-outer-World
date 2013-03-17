@@ -42,11 +42,11 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	</td>
 </tr>";
 
-		$html .= $this->itemList($stockage, $starship->weaponry(),		i18n('remove'));
-		$html .= $this->itemList($stockage, $starship->ammunition(),	i18n('remove'));
-		$html .= $this->itemList($stockage, $starship->equipment(),		i18n('remove'));
-		$html .= $this->itemList($stockage, $starship->cargo(),			i18n('remove'));
-		$html .= $this->itemList($stockage, $starship->engine(),		i18n('remove'));
+		$html .= plugins::itemList($stockage, $starship->weaponry(),	i18n('remove'));
+		$html .= plugins::itemList($stockage, $starship->ammunition(),	i18n('remove'));
+		$html .= plugins::itemList($stockage, $starship->equipment(),	i18n('remove'));
+		$html .= plugins::itemList($stockage, $starship->cargo(),		i18n('remove'));
+		$html .= plugins::itemList($stockage, $starship->engine(),		i18n('remove'));
 
 		$html .= "
 <tr>
@@ -59,7 +59,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	</td>
 </tr>";
 
-		$html .= $this->itemList($starship, $stockage->stock(),			i18n('equip'), false);
+		$html .= plugins::itemList($starship, $stockage->stock(),			i18n('equip'), false);
 
 		$howMany = i18n('howMany');
 		JavaScript::create()->bind("$('.moveItem').moveItem('{$howMany}');");
@@ -116,90 +116,6 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 </tr>";
 
 		return html::defaultTable($html);
-	}
-
-	/**
-	 * @param techContainerInterface $techContainer
-	 * @param techGroup $techGroup
-	 * @param string $buttonText
-	 * @param bool $addHeadline
-	 * @return string
-	 */
-	private function itemList(
-		techContainerInterface $techContainer,
-		techGroup $techGroup,
-		$buttonText,
-		$addHeadline = true
-	) {
-		$group = $techGroup->type();
-
-		$html = '';
-		if ($addHeadline) {
-			$html .= "
-<tr>
-	<td colspan='2' class='headline'>".i18n($techGroup->type())."</td>
-</tr>";
-		}
-
-		$items = $techGroup->items();
-		if (count($items) > 0) {
-			foreach ($items as $item) {
-				$amount = $item->amount();
-
-				if ($item->isStackable()) {
-					$amountInfo = " ({$amount})";
-					$weight = $item->totalWeight();
-				}
-				else {
-					$amountInfo = '';
-					$weight = $item->weight();
-				}
-
-				$loadableAmount = $techContainer->loadableAmount($item);
-				if (!$item->isStackable()) {
-					// Prevent selector menu for unstackable items.
-					$loadableAmount = min(1, $loadableAmount);
-				}
-
-				$repeat = $item->slotUsage();
-				while ($repeat-- > 0) {
-					$techId = $item->id();
-
-					$class = 'moveItem button';
-					if ($loadableAmount <= 0) {
-						$class .= ' disabled';
-					}
-
-					$html .= "
-<tr>
-	<td>{$weight}t</td>
-	<td class='variable'>{$item->name()}{$amountInfo}</td>
-	<td>
-		<form action='' method='post'>
-			<input type='button' class='techInfo button small' value='Info' data-techId='{$techId}'>
-
-			<input type='hidden' name='slot' value='{$group}'>
-			<input type='hidden' name='techId' value='{$techId}'>
-			<input type='hidden' name='amount' value='1' class='amount'>
-			<input type='hidden' name='possible' value='{$loadableAmount}' class='possible'>
-			<input type='submit' class='{$class}' value='{$buttonText}'>
-		</form>
-	</td>
-</tr>";
-				}
-			}
-		}
-
-		$availableSlots = $techGroup->slotsAvailable();
-		while ($availableSlots-- > 0) {
-			$html .= "
-<tr>
-	<td></td>
-	<td>- ".i18n('empty')." -</td>
-</tr>";
-		}
-
-		return $html;
 	}
 
 	/**

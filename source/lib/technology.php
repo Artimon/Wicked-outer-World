@@ -688,63 +688,122 @@ class Technology extends AccountSubclass{
 	 * @return bool
 	 */
 	public function isStarship() {
-		return (self::TYPE_STARSHIP === $this->techData['type']);
+		return (self::TYPE_STARSHIP === $this->type());
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isWeapon() {
-		return (self::TYPE_WEAPON === $this->techData['type']);
+		return (self::TYPE_WEAPON === $this->type());
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isAmmunition() {
-		return (self::TYPE_AMMUNITION === $this->techData['type']);
+		return (self::TYPE_AMMUNITION === $this->type());
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isMiningModule() {
-		return (self::TYPE_MINING_MODULE === $this->techData['type']);
+		return (self::TYPE_MINING_MODULE === $this->type());
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isPlating() {
-		return (self::TYPE_PLATING === $this->techData['type']);
+		return (self::TYPE_PLATING === $this->type());
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isShield() {
-		return (self::TYPE_SHIELD === $this->techData['type']);
+		return (self::TYPE_SHIELD === $this->type());
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isReactor() {
-		return (self::TYPE_REACTOR === $this->techData['type']);
+		return (self::TYPE_REACTOR === $this->type());
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isDrive() {
-		return (self::TYPE_DRIVE === $this->techData['type']);
+		return (self::TYPE_DRIVE === $this->type());
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isIngredient() {
-		return (self::TYPE_INGREDIENT === $this->techData['type']);
+		return (self::TYPE_INGREDIENT === $this->type());
+	}
+
+	/**
+	 * @return string
+	 */
+	public function typeName() {
+		switch ($this->type()) {
+			case self::TYPE_STARSHIP:
+				return i18n('starship');
+
+			case self::TYPE_WEAPON:
+				return i18n('weaponry');
+
+			case self::TYPE_AMMUNITION:
+				return i18n('ammunition');
+
+			case self::TYPE_MINING_MODULE:
+				return i18n('miningModule');
+
+			case self::TYPE_PLATING:
+				return i18n('additionalArmor');
+
+			case self::TYPE_SHIELD:
+				return i18n('shieldPlus');
+
+			case self::TYPE_REACTOR:
+				return i18n('reactors');
+
+			case self::TYPE_DRIVE:
+				return i18n('drives');
+
+			case self::TYPE_INGREDIENT:
+				return i18n('ingredients');
+
+			default:
+				return 'unknown';
+		}
+	}
+
+	/*****************************************************
+	 * Item trading
+	 ****************************************************/
+
+	/**
+	 * @return bool
+	 */
+	public function isShoppable() {
+		return ($this->shopPrice() > 0);
+	}
+
+	/**
+	 * @return int
+	 */
+	public function shopPrice() {
+		if (array_key_exists('price', $this->techData)) {
+			return (int)$this->techData['price'];
+		}
+
+		return 0;
 	}
 
 	/*****************************************************

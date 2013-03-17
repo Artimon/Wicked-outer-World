@@ -74,6 +74,8 @@ $technology = array();
 	)
 );*/
 
+$technology[-1] = array();	// Stockage
+
 // ID in registration config.
 $technology[1] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
@@ -118,6 +120,7 @@ $technology[40] = array(
 	'weight'	=> 1,
 	'stack'		=> 1,
 	'armor'		=> 9,
+	'price'		=> 240,	// Value for trading.
 	'craft' => array(	// commodities needed to craft it
 		IRON_ID	=> 4
 	)
@@ -146,6 +149,7 @@ $technology[SMALL_BLASTER_ID] = array(
 	'burst'			=> 3,
 	'damageType'	=> Technology::DAMAGE_KINETIC,
 	'ammo'			=> BLASTER_AMMUNITION_ID,
+	'price'			=> 385,	// Value for trading.
 	'craft' => array(
 		IRON_ID			=> 2,
 		ELECTRONICS_ID	=> 1,
@@ -160,6 +164,7 @@ $technology[61] = array(
 	'reload'		=> 2,
 	'drain'			=> 6,
 	'damageType'	=> Technology::DAMAGE_ENERGY,
+	'price'			=> 510,	// Value for trading.
 	'craft' => array(
 		IRON_ID			=> 1,
 		CRYSTALS_ID		=> 2,
@@ -171,7 +176,8 @@ $technology[BLASTER_AMMUNITION_ID] = array(
 	'type'		=> Technology::TYPE_AMMUNITION,
 	'name'		=> 'BlasterAmmunition',
 	'weight'	=> 1,
-	'stack'		=> 150
+	'stack'		=> 150,
+	'price'		=> 25	// Value for trading.
 );
 
 /*
@@ -194,7 +200,8 @@ $technology[KINETIC_SHIELD_ID] = array(
 	'shield'	=> 4,	// "armor" per energy
 	'absorb'	=> array(
 		Technology::DAMAGE_KINETIC => 2
-	)
+	),
+	'price'		=> 2400	// Value for trading.
 );
 
 $technology[ENERGY_SHIELD_ID] = array(
@@ -206,7 +213,8 @@ $technology[ENERGY_SHIELD_ID] = array(
 	'shield'	=> 4,	// "armor" per energy
 	'absorb'	=> array(
 		Technology::DAMAGE_ENERGY => 2
-	)
+	),
+	'price'		=> 7600	// Value for trading.
 );
 
 $technology[DISTORTION_SHIELD_ID] = array(
@@ -219,7 +227,8 @@ $technology[DISTORTION_SHIELD_ID] = array(
 	'absorb'	=> array(
 		Technology::DAMAGE_KINETIC => 2,
 		Technology::DAMAGE_ENERGY => 2
-	)
+	),
+	'price'		=> 14720	// Value for trading.
 );
 
 $technology[NUCLEAR_BATTERIES_ID] = array(
@@ -227,26 +236,30 @@ $technology[NUCLEAR_BATTERIES_ID] = array(
 	'name'		=> 'NuclearBatteries',
 	'weight'	=> 3,
 	'recharge'	=> 4,
-	'capacity'	=> 10
+	'capacity'	=> 10,
+	'price'		=> 420	// Value for trading.
 );
 
 $technology[COMBUSTION_DRIVE_ID] = array(
 	'type'		=> Technology::TYPE_DRIVE,
 	'name'		=> 'CombustionDrive',
 	'weight'	=> '5',
-	'seconds'	=> 7
+	'seconds'	=> 7,
+	'price'		=> 560	// Value for trading.
 );
 $technology[91] = array(
 	'type'		=> Technology::TYPE_DRIVE,
 	'name'		=> 'IonDrive',
 	'weight'	=> '3',
-	'seconds'	=> 7
+	'seconds'	=> 7,
+	'price'		=> 1810	// Value for trading.
 );
 $technology[92] = array(
 	'type'		=> Technology::TYPE_DRIVE,
 	'name'		=> 'PulseDrive',
 	'weight'	=> '5',
-	'seconds'	=> 8
+	'seconds'	=> 8,
+	'price'		=> 4640	// Value for trading.
 );
 
 
@@ -263,32 +276,32 @@ $technology[IRON_ID] = array(
 	'name'		=> 'Iron',
 	'weight'	=> 1,
 	'stack'		=> 1,
-	'price'		=> 30,
+	'price'		=> 80,	// Value for trading.
 	'craft' => array(
 		SPACE_JUNK_ID	=> 1,
 		ENERGY_CELLS_ID	=> 1
-	),
+	)
 );
 $technology[CRYSTALS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'Crystals',
 	'weight'	=> 1,
 	'stack'		=> 1,
-	'price'		=> 30
+	'price'		=> 90	// Value for trading.
 );
 $technology[ELECTRONICS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'Electronics',
 	'weight'	=> 1,
 	'stack'		=> 1,
-	'price'		=> 30
+	'price'		=> 120	// Value for trading.
 );
 $technology[ENERGY_CELLS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
 	'name'		=> 'EnergyCells',
 	'weight'	=> 1,
 	'stack'		=> 1,
-	'price'		=> 20
+	'price'		=> 110	// Value for trading.
 );
 
 $technology[SPACE_JUNK_ID] = array(
@@ -296,7 +309,6 @@ $technology[SPACE_JUNK_ID] = array(
 	'name'		=> 'SpaceJunk',
 	'weight'	=> 1,
 	'stack'		=> 1,
-	'price'		=> 5,
 	'regain' => array(
 		IRON_ID			=> array('chance' => 80, 'amount' => 1),
 		ELECTRONICS_ID	=> array('chance' => 20, 'amount' => 1)
@@ -307,7 +319,7 @@ $technology[TECHNICAL_COMPONENTS_ID] = array(
 	'name'		=> 'TechnicalComponents',
 	'weight'	=> 1,
 	'stack'		=> 1,
-	'price'		=> 5,
+	'price'		=> 220,	// Value for trading.
 	'craft' => array(
 		IRON_ID			=> 1,
 		ELECTRONICS_ID	=> 1

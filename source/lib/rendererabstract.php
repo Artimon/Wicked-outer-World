@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class RendererAbstract
+ *
+ * Well, mvc still turned out as the better solution, but it was worth a try.
+ */
 abstract class RendererAbstract implements RendererInterface {
 	/**
 	 * @var ControllerInterface
