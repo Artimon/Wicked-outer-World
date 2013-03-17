@@ -5,12 +5,20 @@ return array(
 		'controller'	=> 'ControllerProfile',
 		'database'		=> true
 	),
+	'quarters' => array(
+		'controller'	=> 'ControllerQuarters',
+		'database'		=> true
+	),
 	'academy' => array(
 		'controller'	=> 'ControllerAcademy',
 		'database'		=> true
 	),
 	'hangar' => array(
 		'controller'	=> 'ControllerHangar',
+		'database'		=> true
+	),
+	'tradeDeck' => array(
+		'controller'	=> 'ControllerTradeDeck',
 		'database'		=> true
 	),
 	'factory' => array(

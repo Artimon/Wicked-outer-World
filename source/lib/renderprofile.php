@@ -12,8 +12,8 @@ class RenderProfile extends RendererAbstract {
 			: $this->profileHtml();
 
 		return "
-<div class='floatRight profile'>{$content}</div>
-<div class='center'>
+<div class='floatRight columRight'>{$content}</div>
+<div class='center columLeft'>
 	<img src='./wow/img/tmp_char.png'>
 </div>
 <div class='clear'></div>";
@@ -70,6 +70,10 @@ class RenderProfile extends RendererAbstract {
 			? ''
 			: ' disabled';
 
+		$condition = $account->starship()->condition();
+		$maximum = $condition->conditionMaximum();
+		$current = $condition->conditionCurrent();
+
 		return "
 <table>
 	<colgroup>
@@ -85,14 +89,14 @@ class RenderProfile extends RendererAbstract {
 		<td>{$experience}</td>
 		<td class='smallFont critical'>
 			{$account->experience()} /
-			{$levelProgress->nextLevelExperience()}
+			{$levelProgress->levelExperience()}
 			[{$levelProgress->progress()}%]<br>
 			{$bars->experienceBar()}
 		</td>
 	</tr><tr>
 		<td class='highlight'>{$shipCondition}</td>
 		<td class='smallFont variable'>
-			N/A @TODO<br>
+			{$current} / {$maximum} [{$condition->conditionPercentage()}%]<br>
 			{$bars->conditionBar()}
 		</td>
 	</tr><tr>

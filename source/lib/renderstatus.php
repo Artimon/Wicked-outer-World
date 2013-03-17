@@ -24,19 +24,25 @@ class RenderStatus extends AccountSubclass implements RendererInterface {
 <div id='status'>
 	<table>
 		<tr>
-			<td>ico</td>
+			<td class='bottom'>
+				<img src='./wow/img/condition.png' alt='+'>
+			</td>
 			<td>
 				{$shipCondition}<br>
 				{$bars->conditionBar()}
 			</td>
 		</tr><tr>
-			<td>ico</td>
+			<td class='bottom'>
+				<img src='./wow/img/endurance.png' alt='*'>
+			</td>
 			<td title='{$currently}: {$account->endurance()}' class='tipTip'>
 				{$endurance}<br>
 				{$bars->enduranceBar()}
 			</td>
 		</tr><tr>
-			<td>ico</td>
+			<td class='bottom'>
+				<img src='./wow/img/action.png' alt='-'>
+			</td>
 			<td title='{$currently}: {$account->actionPoints()}' class='tipTip'>
 				{$actionPoints}<br>
 				{$bars->actionPointsBar()}

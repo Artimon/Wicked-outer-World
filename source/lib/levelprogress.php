@@ -11,7 +11,7 @@ class LevelProgress extends AccountSubclass {
 		$account = $this->account();
 		$account->increment('experience', $amount);
 
-		if ($this->currentLevelExperience() >= $this->nextLevelExperience()) {
+		if ($this->currentLevelExperience() >= $this->levelExperience()) {
 			$account->increment('level', 1);
 		}
 
@@ -30,10 +30,15 @@ class LevelProgress extends AccountSubclass {
 	 * P2 (1 / 860)
 	 * P3 (20 / 100000)
 	 *
+	 * @param bool $lastLevel
 	 * @return int
 	 */
-	public function nextLevelExperience() {
+	public function levelExperience($lastLevel = false) {
 		$x = $this->account()->level();
+
+		if ($lastLevel) {
+			--$x;
+		}
 
 		$y = 500;
 		$y += 107 * $x;
@@ -46,9 +51,11 @@ class LevelProgress extends AccountSubclass {
 	 * @return int
 	 */
 	public function progress() {
-		$difference = $this->nextLevelExperience() - $this->currentLevelExperience();
+		$offset		= $this->levelExperience(true);
+		$current	= $this->currentLevelExperience() - $offset;
+		$needed		= $this->levelExperience() - $offset;
 
-		$factor = $this->account()->experience() / $difference;
+		$factor = $current / $needed;
 		return (int)round(100 * $factor);
 	}
 }

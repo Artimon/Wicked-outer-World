@@ -257,6 +257,18 @@ $translations = array(
 		'de' => 'Energie',
 		'en' => 'energy'
 	),
+	'reactors' => array(
+		'de' => 'Reaktoren',
+		'en' => 'Reactors'
+	),
+	'drives' => array(
+		'de' => 'Antriebe',
+		'en' => 'Drives'
+	),
+	'ingredients' => array(
+		'de' => 'Ingredienzien',
+		'en' => 'Ingredients'
+	),
 
 	/*****************************************************
 	 * Navigation
@@ -408,6 +420,59 @@ $translations = array(
 	),
 
 	/*****************************************************
+	 * Trade Deck
+	 ****************************************************/
+
+	'tradeDeckDescription' => array(
+		'de' => 'Ein shopping zentrum im Weltraum? Na, warum nicht!',
+		'en' => 'A shopping centre  out in space? Well, why not!'
+	),
+	'shop' => array(
+		'de' => 'Laden',
+		'en' => 'Shop'
+	),
+	'shopDescription' => array(
+		'de' => 'Du suchst nach der besten Ausrüstung in diesem großen schwarzen nichts? Sieh Dich einfach etwas um.',
+		'en' => 'Searching for the finest hardware out in that big black room? Just take a look around.'
+	),
+	'grocer' => array(
+		'de' => 'Krämer',
+		'en' => 'Grocer'
+	),
+	'grocerDescription' => array(
+		'de' => 'Die Vorbereitungen zur Eröffnung sind in vollem Gange.',
+		'en' => 'The preparations for the opening are ongoing.'
+	),
+	'starships' => array(
+		'de' => 'Raumschiffe',
+		'en' => 'Starships'
+	),
+	'airlock' => array(
+		'de' => 'Luftschleuse',
+		'en' => 'Airlock'
+	),
+	'airlockDescription' => array(
+		'de' => 'Du hast ein paar Dinge, die der Grüne Punkt nicht annimmt? Diese Luftschleuse könnte bei der Entsorgung behilflich sein...',
+		'en' => 'You got some stuff the Green Dot does not accept? This airlock may be helpful for your waste disposal...'
+	),
+	'buy' => array(
+		'de' => 'Kaufen',
+		'en' => 'Buy'
+	),
+	'depollute' => array(
+		'de' => 'Entsorgen',
+		'en' => 'Depollute'
+	),
+	'itemBought' => array(
+		'de' => 'Du hast %s in Dein Lager gelegt.',
+		'en' => 'You put %s to you stock'
+	),
+	'itemsDepolluted' => array(
+		'de' => 'Du hast %s %s entsorgt.',
+		'en' => 'You depolluted %s %s.'
+	),
+
+	/*****************************************************
 	 * Crafter
 	 ****************************************************/
 
@@ -507,6 +572,35 @@ $translations = array(
 	'back' => array(
 		'de' => 'Zurück',
 		'en' => 'Back'
+	),
+
+	/*****************************************************
+	 * Quarters
+	 ****************************************************/
+
+	'quarter' => array(
+		'de' => 'Quartier',
+		'en' => 'Quarter'
+	),
+	'quartersDescription' => array(
+		'de' => 'Hier kannst Du Dich von den Strapazen des Weltraum-Lebens erholen.',
+		'en' => 'Here you can relax from the exertions of the outer-space-life.'
+	),
+	'loungeDescription' => array(
+		'de' => 'In der Space Lounge kannst Du mal so richtig phät abchillen.',
+		'en' => 'In the space lounge you can have a wicked chillout.'
+	),
+	'restCureHeadline' => array(
+		'de' => 'Erholungskur',
+		'en' => 'Rest cure'
+	),
+	'restCureDescription' => array(
+		'de' => 'Das wird Deine morschen Glieder wieder auf Schwung bringen.',
+		'en' => 'This will bring your rotten limbs back to life.'
+	),
+	'youFeelBetter' => array(
+		'de' => 'Du fühlst Dich gleich viel besser!',
+		'en' => 'You feel a lot better now!'
 	),
 
 	/*****************************************************
@@ -975,6 +1069,14 @@ $translations = array(
 	'logoutFootNote' => array(
 		'de' => 'Nein Quatsch, wir machen nur Spaß. Bis zum nächsten mal! ;)',
 		'en' => 'No, just kidding. See you next time! ;)'
+	),
+	'developmentHeadline' => array(
+		'de' => 'Baustelle - in Entwicklung',
+		'en' => 'Construction site - development'
+	),
+	'developmentMessage' => array(
+		'de' => 'Du kannst Dich bereits registrieren, das Spiel ist jedoch noch in der Alpha-Entwicklung.',
+		'en' => 'You may already register, but the game is still under alpha construction.'
 	),
 
 	/*****************************************************

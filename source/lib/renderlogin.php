@@ -14,8 +14,11 @@ class RenderLogin extends RendererAbstract {
 		$username = i18n('username');
 		$password = i18n('password');
 
+		$developmentHeadline = i18n('developmentHeadline');
+		$developmentMessage = i18n('developmentMessage');
+
 		$html = "
-<div class='floatRight profile'>
+<div class='floatRight columRight'>
 	<form action='' method='post'>
 		<table>
 			<tr>
@@ -37,8 +40,12 @@ class RenderLogin extends RendererAbstract {
 		</table>
 	</form>
 </div>
-<div class='center'>
-	<img src='./wow/img/tmp_char.png'>
+<div class='columLeft'>
+	<h2 class='error'>{$developmentHeadline}</h2>
+	<p>{$developmentMessage}</p>
+	<div class='center'>
+		<img src='./wow/img/tmp_char.png'>
+	</div>
 </div>
 <div class='clear'></div>";;
 

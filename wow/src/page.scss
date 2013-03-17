@@ -804,6 +804,12 @@ a {
 
 	&.accordion {
 		display: block;
+		cursor: pointer;
+
+		margin: {
+			top: 5px;
+			bottom: 5px;
+		}
 
 		span {
 			@include linkTriangle($colorBright);

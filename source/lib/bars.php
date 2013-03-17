@@ -7,10 +7,14 @@ class Bars extends AccountSubclass {
 	public function experienceBar() {
 		$account = $this->account();
 
+		$levelProgress = $account->levelProgress();
+
+		$offset = $levelProgress->levelExperience(true);
+
 		return Plugins::statusBar(
 			'experience',
-			$account->levelProgress()->nextLevelExperience(),
-			$account->experience()
+			$levelProgress->levelExperience() - $offset,
+			$account->experience() - $offset
 		);
 	}
 

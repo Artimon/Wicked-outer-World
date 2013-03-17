@@ -189,8 +189,8 @@ class dispatcher {
 		$javaScript->bind("$('.tipTip').tipTip();");
 		$javaScript->bind($eventBox->javaScript());
 
-		$files = glob('./wow/img/tmp_bg/*.*');
-		$fileName = $files[array_rand($files)];
+//		$files = glob('./wow/img/tmp_bg/*.*');
+//		$fileName = $files[array_rand($files)];
 		$fileName = '';
 
 		$contentBody = $content->regionBody();
@@ -234,13 +234,7 @@ class dispatcher {
 		</div>
 
 <p class='center'>
-	<a class='button' href='index.php?page=test'>Test</a>
-	<a class='button' href='index.php?page=hangar'>".i18n('hangar')."</a>
-	<a class='button' href='index.php?page=factory'>".i18n('factory')."</a>
-	<a class='button' href='index.php?page=lounge'>".i18n('lounge')."</a>
-	<a class='button' href='index.php?page=map'>".i18n('map')."</a>
-	<a class='button' href='index.php?page=missions'>".i18n('missions')."</a>
-	<a class='button' href='index.php?page=status'>".i18n('status')."</a>
+	...
 </p>
 
 		<script type='text/javascript' src='./ext/jQuery/jquery-1.8.0.min.js'></script>
@@ -266,9 +260,9 @@ class dispatcher {
 	 */
 	private function dbConnect() {
 		define('HOST_FOR_MYSQL',		'localhost');
-		define('USER_FOR_MYSQL',		'battleronAlpha');
+		define('USER_FOR_MYSQL',		'wowalpha');
 		define('PASS_FOR_MYSQL',		'$Vietam1383');
-		define('DATABASE_FOR_MYSQL',	'battleronAlpha');
+		define('DATABASE_FOR_MYSQL',	'wowalpha');
 
 		mysql_connect(HOST_FOR_MYSQL, USER_FOR_MYSQL, PASS_FOR_MYSQL) or die('no connection');
 		mysql_select_db(DATABASE_FOR_MYSQL) or die('no database');

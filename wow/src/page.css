@@ -493,7 +493,10 @@ a {
     font-size: 30px;
     font-style: italic; }
   a.accordion {
-    display: block; }
+    display: block;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px; }
     a.accordion span {
       display: inline-block;
       width: 0px;
