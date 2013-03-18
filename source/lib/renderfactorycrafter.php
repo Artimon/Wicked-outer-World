@@ -3,8 +3,7 @@
 /**
  * Handles crafting, disassembling and blueprinting.
  */
-class RenderCrafter extends RendererAbstract {
-
+class RenderFactoryCrafter extends RenderFactoryAbstract {
 	/**
 	 * @return string
 	 */
@@ -20,14 +19,6 @@ class RenderCrafter extends RendererAbstract {
 			default:
 				return $this->fiddleHtml();
 		}
-	}
-
-	public function tabsHtml() {
-		return $this->overviewHtml();
-	}
-
-	public function usesBox() {
-		return true;
 	}
 
 	/**
@@ -267,21 +258,11 @@ class RenderCrafter extends RendererAbstract {
 	 * @return string
 	 */
 	private function disassembleHtml() {
-		return 'Lemme take that apart!';
-	}
+		$headline = i18n('disassemble');
+		$description = i18n('grocerDescription');
 
-	/**
-	 * @return string
-	 */
-	private function overviewHtml() {
-		$router = Router::getInstance();
-
-		$links = array(
-			"<a class='tab' href='{$router->fromRequest('fiddle')}'>".i18n('fiddle')."</a>",
-			"<a class='tab' href='{$router->fromRequest('craft')}'>".i18n('craft')."</a>",
-			"<a class='tab' href='{$router->fromRequest('disassemble')}'>".i18n('disassemble')."</a>"
-		);
-
-		return implode('', $links);
+		return "
+			<h2 class='error'>{$headline}</h2>
+			<p>{$description}</p>";
 	}
 }
