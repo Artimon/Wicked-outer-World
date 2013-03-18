@@ -256,9 +256,7 @@ function ConfirmBox(initCallback, confirmCallback) {
 
 					$title.remove();
 
-					$layer
-						.find('.content')
-						.html($html);
+					$content.html($html);
 				}
 			});
 		});

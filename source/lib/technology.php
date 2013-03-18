@@ -828,6 +828,17 @@ class Technology extends AccountSubclass{
 		return array();
 	}
 
+	/**
+	 * @return bool
+	 */
+	public function receiveCraftHint() {
+		if (array_key_exists('craftHint', $this->techData)) {
+			return $this->techData['craftHint'];
+		}
+
+		return false;
+	}
+
 	/*****************************************************
 	 * Raw data retrieval
 	 ****************************************************/

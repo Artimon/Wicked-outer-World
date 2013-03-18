@@ -7,9 +7,12 @@ class ActionHangarStarTrip extends ActionAbstract {
 	 * @return bool
 	 */
 	public function canStart() {
-		$endurance = $this->account()->endurance();
+		$account = $this->account();
 
-		return ($endurance >= self::ENDURANCE_DRAIN);
+		$hasEndurance = ($account->endurance() >= self::ENDURANCE_DRAIN);
+		$hasEngine = !$account->starship()->engine()->isEmpty();
+
+		return ($hasEndurance && $hasEngine);
 	}
 
 	/**

@@ -5,11 +5,11 @@ abstract class RenderHangarAbstract extends RendererAbstract {
 	 * @return string
 	 */
 	public function tabsHtml() {
-		$router = Router::getInstance();
+		$controller = $this->controller();
 
 		$tabs = array(
-			$router->fromRequest('garage') => i18n('garage'),
-			$router->fromRequest('missions') => i18n('missions')
+			$controller->section('garage') => i18n('garage'),
+			$controller->section('missions') => i18n('missions')
 		);
 
 		return $this->tabsFromArray($tabs);

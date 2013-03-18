@@ -7,12 +7,26 @@ class ControllerFactory extends ControllerAbstract {
 
 	/**
 	 * @param string $section
-	 * @return RenderCrafter|RendererInterface
+	 * @return RenderFactoryCrafter|RendererInterface
 	 */
 	public function renderer($section) {
-		$account = $this->game()->account();
+		switch ($section) {
+			case 'craft':
+				$renderer = new RenderFactoryCrafter();
+				break;
 
-		$renderer = new RenderCrafter($account);
+			case 'disassemble':
+				$renderer = new RenderFactoryDisassemble();
+				break;
+
+			case 'engineer':
+				$renderer = new RenderFactoryEngineer();
+				break;
+
+			default:
+				$renderer = new RenderFactoryFiddle();
+				break;
+		}
 
 		return $renderer->setController($this);
 	}

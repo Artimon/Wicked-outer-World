@@ -27,10 +27,12 @@ class RenderHangarMissions extends RenderHangarAbstract {
 		if ($starTrip->canStart()) {
 			$class = '';
 			$title = $startMission;
+			$driveHint = '';
 		}
 		else {
 			$class = ' disabled';
 			$title = $notEnoughEndurance;
+			$driveHint = "<p class='critical bold'>" . i18n('noDriveNotice') . "</p>";
 		}
 
 		$url = $this->controller()->currentRoute(
@@ -41,6 +43,7 @@ class RenderHangarMissions extends RenderHangarAbstract {
 <div class='center'>
 	<h2>" . i18n('starTrip') . "</h2>
 	<p>" . i18n('starTripDescription') . "</p>
+	{$driveHint}
 	<a href='{$url}' title='{$title}' class='tipTip button{$class}'>{$go}</a>
 </div>
 <hr>";
@@ -81,7 +84,12 @@ class RenderHangarMissions extends RenderHangarAbstract {
 	 * @return string
 	 */
 	protected function missionActionHtml($missionId) {
-		$json = $this->account()->factory()->actionHangarMission()->load($missionId)->start();
+		$mission = $this->account()->factory()->actionHangarMission()->load($missionId);
+		if (!$mission->canStart()) {
+			return $this->missionSelectionHtml();
+		}
+
+		$json = $mission->start();
 		$js = "$('#missionBox').missionBox('{$json}');";
 
 		JavaScript::create()->bind($js);

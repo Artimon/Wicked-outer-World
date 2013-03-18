@@ -136,7 +136,8 @@ $technology[40] = array(
 	'price'		=> 240,	// Value for trading.
 	'craft' => array(	// commodities needed to craft it
 		IRON_ID	=> 4
-	)
+	),
+	'craftHint'	=> true
 );
 
 /*
@@ -168,7 +169,8 @@ $technology[SMALL_BLASTER_ID] = array(
 		ELECTRONICS_ID	=> 1,
 		ENERGY_CELLS_ID	=> 1,
 		COOLER_ID		=> 1
-	)
+	),
+	'craftHint'	=> true
 );
 $technology[61] = array(
 	'type'			=> Technology::TYPE_WEAPON,
@@ -184,7 +186,8 @@ $technology[61] = array(
 		CRYSTALS_ID		=> 2,
 		ENERGY_CELLS_ID	=> 2,
 		COOLER_ID		=> 1
-	)
+	),
+	'craftHint'	=> true
 );
 
 $technology[BLASTER_AMMUNITION_ID] = array(
@@ -196,7 +199,8 @@ $technology[BLASTER_AMMUNITION_ID] = array(
 	'craft' => array(
 		NOBLE_GAS_ID	=> 1,
 		ENERGY_CELLS_ID	=> 1
-	)
+	),
+	'craftHint'	=> true
 );
 
 /*
@@ -299,7 +303,8 @@ $technology[IRON_ID] = array(
 	'craft' => array(
 		SPACE_JUNK_ID	=> 1,
 		ENERGY_CELLS_ID	=> 1
-	)
+	),
+	'craftHint'	=> true
 );
 $technology[PLASTICS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
@@ -324,7 +329,8 @@ $technology[COOLANT_ID] = array(
 	'craft' => array(
 		WATER_ID		=> 1,
 		NOBLE_GAS_ID	=> 1
-	)
+	),
+	'craftHint'	=> true
 );
 $technology[NOBLE_GAS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
@@ -335,7 +341,8 @@ $technology[NOBLE_GAS_ID] = array(
 	'craft' => array(
 		ENERGY_CELLS_ID	=> 1,
 		TOXIC_WASTE_ID	=> 1
-	)
+	),
+	'craftHint'	=> true
 );
 $technology[CRYSTALS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
@@ -367,7 +374,8 @@ $technology[SPACE_JUNK_ID] = array(
 	'regain' => array(
 		IRON_ID			=> array('chance' => 80, 'amount' => 1),
 		ELECTRONICS_ID	=> array('chance' => 20, 'amount' => 1)
-	)
+	),
+	'craftHint'	=> true
 );
 $technology[TOXIC_WASTE_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
@@ -387,7 +395,8 @@ $technology[TECHNICAL_COMPONENTS_ID] = array(
 	),
 	'regain' => array(
 		IRON_ID => array('chance' => 50, 'amount' => 1)
-	)
+	),
+	'craftHint'	=> true
 );
 $technology[COOLER_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
@@ -403,5 +412,6 @@ $technology[COOLER_ID] = array(
 	'regain' => array(
 		IRON_ID		=> array('chance' => 80, 'amount' => 1),
 		COOLANT_ID	=> array('chance' => 40, 'amount' => 2)
-	)
+	),
+	'craftHint'	=> true
 );

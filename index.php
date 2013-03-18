@@ -204,6 +204,8 @@ class dispatcher {
 			$contentBody = Format::box($content->regionHead(), $contentBody);
 		}
 
+		$leaveFeedback = i18n('leaveFeedback');
+
 		return "<!doctype html>
 <html lang='de'>
 	<head>
@@ -243,6 +245,29 @@ class dispatcher {
 		<script type='text/javascript' src='./ext/demetron/demetron.js'></script>
 		<script type='text/javascript' src='./wow/src/default.js'></script>
 		<script type='text/javascript'>{$javaScript->bindings()}</script>
+
+<script type='text/javascript'>
+reformal_wdg_domain  = 'wicked-outer-world';
+reformal_wdg_mode    = 0;
+reformal_wdg_title   = 'Wicked outer World';
+reformal_wdg_ltitle  = '{$leaveFeedback}';
+reformal_wdg_lfont   = '';
+reformal_wdg_lsize   = '';
+reformal_wdg_color   = '#FFA000';
+reformal_wdg_bcolor  = '#516683';
+reformal_wdg_tcolor  = '#FFFFFF';
+reformal_wdg_align   = 'left';
+reformal_wdg_waction = 0;
+reformal_wdg_vcolor  = '#9FCE54';
+reformal_wdg_cmline  = '#E0E0E0';
+reformal_wdg_glcolor = '#105895';
+reformal_wdg_tbcolor = '#FFFFFF';
+
+reformal_wdg_bimage = '8489db229aa0a66ab6b80ebbe0bb26cd.png';
+
+</script>
+
+<script type='text/javascript' language='JavaScript' src='http://idea.informer.com/tab6.js?domain=wicked-outer-world'></script><noscript><a href='http://wicked-outer-world.idea.informer.com'>Wicked outer World feedback </a> <a href='http://idea.informer.com'><img src='http://widget.idea.informer.com/tmpl/images/widget_logo.jpg' /></a></noscript>
 	</body>
 </html>";
 	}

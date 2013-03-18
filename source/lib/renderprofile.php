@@ -75,6 +75,7 @@ class RenderProfile extends RendererAbstract {
 		$current = $condition->conditionCurrent();
 
 		return "
+<h2>{$account->name()}</h2>
 <table>
 	<colgroup>
 		<col width='200'>

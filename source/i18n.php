@@ -504,7 +504,7 @@ $translations = array(
 	 ****************************************************/
 
 	'tradeDeckDescription' => array(
-		'de' => 'Ein shopping zentrum im Weltraum? Na, warum nicht!',
+		'de' => 'Ein Shopping Zentrum im Weltraum? Na, warum nicht!',
 		'en' => 'A shopping centre  out in space? Well, why not!'
 	),
 	'shop' => array(
@@ -1037,6 +1037,22 @@ $translations = array(
 		'de' => 'Seltsame Materie',
 		'en' => 'Awkward Materia'
 	),
+	'engineer' => array(
+		'de' => 'Ingenieur',
+		'en' => 'Engineer'
+	),
+	'engineerDescription' => array(
+		'de' => 'Du hast einen zufällig herumschlendernden Ingenieur mit Langeweise gefunden, er sagt...',
+		'en' => 'You found a bored, randomly lingering around engineer, he says...'
+	),
+	'haveYouTriedFiddle' => array(
+		'de' => '"Hast Du schon versucht %s zu kombinieren?"',
+		'en' => '"Have you tried combining %s?"'
+	),
+	'lookForAnEngineer' => array(
+		'de' => '*schaue nach einem Ingenieur*',
+		'en' => '*look for an engineer*'
+	),
 
 	/*****************************************************
 	 * Missions
@@ -1073,6 +1089,10 @@ $translations = array(
 	'missionSuccess' => array(
 		'de' => 'Mission erfolgreich!',
 		'en' => 'Mission successful!'
+	),
+	'noDriveNotice' => array(
+		'de' => 'Du solltest zuerst einen Antrieb ausrüsten.',
+		'en' => 'You should equip an engine first.'
 	),
 
 	'missionStrollAround' => array(
@@ -1202,5 +1222,14 @@ $translations = array(
 	'yourShip' => array(
 		'de' => 'Dein Schiff',
 		'en' => 'Your ship'
+	),
+
+	/*****************************************************
+	 * Custom
+	 ****************************************************/
+
+	'leaveFeedback' => array(
+		'de' => 'Gib Feedback',
+		'en' => 'Leave feedback'
 	)
 );
