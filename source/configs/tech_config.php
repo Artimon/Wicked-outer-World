@@ -374,8 +374,7 @@ $technology[SPACE_JUNK_ID] = array(
 	'regain' => array(
 		IRON_ID			=> array('chance' => 80, 'amount' => 1),
 		ELECTRONICS_ID	=> array('chance' => 20, 'amount' => 1)
-	),
-	'craftHint'	=> true
+	)
 );
 $technology[TOXIC_WASTE_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,

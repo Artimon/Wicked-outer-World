@@ -18,8 +18,8 @@ class RenderFactoryEngineer extends RenderFactoryAbstract {
 			$list[] = $item;
 		}
 
-		$accountId = $this->account()->id();
-		$random = new Leviathan_StaticRandom($accountId);
+		$seed = date('Ymd') + $this->account()->id();
+		$random = new Leviathan_StaticRandom($seed);
 
 		$index = $random->random(1, count($list)) - 1;
 		$item = $list[$index];

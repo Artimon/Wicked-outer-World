@@ -42,7 +42,7 @@ class ActionSkirmishOpponents extends ActionAbstract {
 			WHERE
 				`experience` > {$experience}
 			ORDER BY
-				`experience` ASC
+				`experience` DESC
 			LIMIT 20;";
 
 		$database = new Lisbeth_Database();
