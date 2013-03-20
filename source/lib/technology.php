@@ -91,6 +91,17 @@ class Technology extends AccountSubclass{
 	}
 
 	/**
+	 * @return int
+	 */
+	public function level() {
+		if (array_key_exists('level', $this->techData)) {
+			return (int)$this->techData['level'];
+		}
+
+		return 0;
+	}
+
+	/**
 	 * Current amount of items from this Technology.
 	 *
 	 * @return int
@@ -350,7 +361,7 @@ class Technology extends AccountSubclass{
 	/**
 	 * @return null|Technology
 	 */
-	public function ammunitionId() {
+	public function ammunition() {
 		if ($this->isWeapon() && isset($this->techData['ammo'])) {
 			return new Technology(
 				$this->account(),

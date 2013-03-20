@@ -27,7 +27,22 @@ class Accuracy {
 		 */
 
 
-		$this->hitSomething($opponentStarship, $item->burst());
+		$burst = $item->burst();
+		$ammunition = $item->ammunition();
+		if ($ammunition) {
+			$group = $firingStarship->ammunition();
+			$techId = $ammunition->id();
+
+			if ($group->hasItem($techId)) {
+				$ammunition = $group->item($techId);
+				$ammunitionAmount = $ammunition->amount();
+
+				$burst = min($burst, $ammunitionAmount);
+				$ammunition->sub($burst);
+			}
+		}
+
+		$this->hitSomething($opponentStarship, $burst);
 
 		return $this->hits;
 	}

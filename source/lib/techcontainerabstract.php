@@ -6,7 +6,7 @@
  */
 abstract class techContainerAbstract
 	extends Technology
-	implements techContainerInterface {
+	implements TechContainerInterface {
 
 	/**
 	 * @var techSelector

@@ -4,7 +4,7 @@
  * Handles starships.
  * Starships and accounts are the same.
  */
-class Starship extends techContainerAbstract {
+class Starship extends TechContainerAbstract {
 	/**
 	 * @var Condition
 	 */
@@ -57,6 +57,18 @@ class Starship extends techContainerAbstract {
 			$this->equipment()->payload() +
 			$this->cargo()->payload() +
 			$this->engine()->payload();
+	}
+
+	/**
+	 * @param Technology $item
+	 * @return int
+	 */
+	public function loadableAmount(Technology $item) {
+		if ($item->level() > $this->account()->level()) {
+			return 0;
+		}
+
+		return parent::loadableAmount($item);
 	}
 
 	/**

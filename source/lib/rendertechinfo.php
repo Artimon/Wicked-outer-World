@@ -17,12 +17,15 @@ class RenderTechInfo extends RendererAbstract {
 	 * @return string
 	 */
 	public function bodyHtml() {
+		$neededLevel = i18n('neededLevel', $this->item->level());
+
 		return "
 <h2>{$this->item->name()}</h2>
-<p>
-	{$this->item->description()}<br>
+<div>
+	<p class='critical bold'>{$neededLevel}</p>
+	<p>{$this->item->description()}</p>
 	{$this->techData()}
-</p>";
+</div>";
 	}
 
 	/**
@@ -102,7 +105,7 @@ class RenderTechInfo extends RendererAbstract {
 			$burstShots = i18n('perShot');
 		}
 
-		$ammunition = $this->item->ammunitionId();
+		$ammunition = $this->item->ammunition();
 		if ($ammunition) {
 			$ammunitionType = $ammunition->name().' '.i18n('perShot');
 		} else {

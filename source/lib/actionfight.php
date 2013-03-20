@@ -69,7 +69,7 @@ class ActionFight {
 	 * @param Starship $starship
 	 */
 	public function update(Starship $starship) {
-		$starship->account()->update();
+		$starship->ammunition()->update();
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?php
 
-interface techContainerInterface {
+interface TechContainerInterface {
 	/**
 	 * Return the container's weight plus its payload.
 	 *

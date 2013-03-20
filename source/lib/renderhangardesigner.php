@@ -68,7 +68,9 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		$html = "
 <h2>".i18n('garage')."</h2>
 <p>".i18n('garageDescription')."</p>
-".$html;
+<div class='floatRight columnRight'>&nbsp;<br><br>{$this->statusHtml()}</div>
+<div class='floatLeft columnLeft'>{$html}</div>
+<div class='clear'></div>";
 
 		return $html;
 	}
@@ -80,6 +82,10 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		$starship = $this->account()->starship();
 
 		$html = "
+<colgroup>
+	<col width='200'>
+	<col width='80'>
+</colgroup>
 <tr>
 	<td colspan='2' class='headline'>".i18n('weight')."</td>
 </tr><tr>

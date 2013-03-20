@@ -3,7 +3,7 @@
 /**
  * Handles item stockage.
  */
-class stockage extends techContainerAbstract {
+class stockage extends TechContainerAbstract {
 	/**
 	 * @return string
 	 */

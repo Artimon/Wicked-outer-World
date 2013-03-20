@@ -341,6 +341,10 @@ $translations = array(
 		'de' => 'Ingredienzien',
 		'en' => 'Ingredients'
 	),
+	'neededLevel' => array(
+		'de' => 'Benötigtes Level: %s',
+		'en' => 'Needed level: %s'
+	),
 
 	/*****************************************************
 	 * Navigation
