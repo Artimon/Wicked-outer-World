@@ -1,6 +1,8 @@
 <?php
 
-class ActionFight {
+class ActionFight extends ActionAbstract {
+	const ACTION_POINTS = 6;
+
 	/**
 	 * @var Starship
 	 */
@@ -22,12 +24,39 @@ class ActionFight {
 	private $data = array();
 
 	/**
-	 * @param Starship $aggressor
-	 * @param Starship $victim
+	 * @param \Starship $aggressor
+	 * @return $this
 	 */
-	public function __construct(Starship $aggressor, Starship $victim) {
+	public function setAggressor(Starship $aggressor) {
 		$this->aggressor = $aggressor;
+
+		return $this;
+	}
+
+	/**
+	 * @param \Starship $victim
+	 * @return $this
+	 */
+	public function setVictim(Starship $victim) {
 		$this->victim = $victim;
+
+		return $this;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function canStart() {
+		return $this->hasActionPoints();
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function hasActionPoints() {
+		$actionPoints = $this->aggressor->account()->actionPoints();
+
+		return ($actionPoints >= self::ACTION_POINTS);
 	}
 
 	/**
@@ -76,6 +105,13 @@ class ActionFight {
 	 * @return string
 	 */
 	public function start() {
+		if (!$this->canStart()) {
+			return '';
+		}
+
+		$account = $this->aggressor->account();
+		$account->incrementActionPoints(-self::ACTION_POINTS);
+
 		$aggressorTimer = new ActionFightTimer($this->aggressor, $this->victim);
 		$aggressorTimer
 			->init()
@@ -138,7 +174,7 @@ class ActionFight {
 			$message = i18n('skirmishLost', $victimName);
 		}
 
-		$this->aggressor->account()->levelProgress()->addExperience($experienceGain);
+		$account->levelProgress()->addExperience($experienceGain);
 
 		$this->update($this->aggressor);
 		$this->update($this->victim);

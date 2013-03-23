@@ -1,24 +1,6 @@
 <?php
 
 class ActionSkirmishOpponents extends ActionAbstract {
-	const ACTION_POINTS = 10;
-
-	/**
-	 * @return bool
-	 */
-	public function canStart() {
-		return $this->hasActionPoints();
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function hasActionPoints() {
-		$actionPoints = $this->account()->actionPoints();
-
-		return ($actionPoints >= self::ACTION_POINTS);
-	}
-
 	public function closeOpponents() {
 		$experience = $this->account()->experience();
 
@@ -51,6 +33,13 @@ class ActionSkirmishOpponents extends ActionAbstract {
 		$database->freeResult();
 
 		return $result;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function canStart() {
+		return true;
 	}
 
 	public function start() {

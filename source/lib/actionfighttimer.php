@@ -151,13 +151,13 @@ class ActionFightTimer {
 	 * @param Technology $item
 	 */
 	private function weaponAction(Technology $item) {
-		$hits = $this->accuracy()->hits(
-			$this->starship(),
-			$this->opponent(),
-			$item
-		);
+		$accuracy = $this->accuracy();
+		$hits = $accuracy
+			->setFiringStarship($this->starship())
+			->setOpponentStarship($this->opponent())
+			->hits($item);
 
-		$total = $item->burst();
+		$total = $accuracy->maxShots($item);
 
 		$missed = $total - $hits;
 		while ($missed-- > 0) {

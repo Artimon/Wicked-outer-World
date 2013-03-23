@@ -2,21 +2,74 @@
 
 class Accuracy {
 	/**
+	 * @var int
+	 */
+	private $chance;
+
+	/**
 	 * @var array
 	 */
 	private $hits = array();
 
 	/**
-	 * @param Starship $firingStarship
-	 * @param Starship $opponentStarship
+	 * @var Starship
+	 */
+	private $firingStarship;
+
+	/**
+	 * @var Starship
+	 */
+	private $opponentStarship;
+
+	/**
+	 * @param \Starship $firingStarship
+	 * @return $this
+	 */
+	public function setFiringStarship($firingStarship) {
+		$this->firingStarship = $firingStarship;
+
+		return $this;
+	}
+
+	/**
+	 * @param \Starship $opponentStarship
+	 * @return $this
+	 */
+	public function setOpponentStarship($opponentStarship) {
+		$this->opponentStarship = $opponentStarship;
+
+		return $this;
+	}
+
+	/**
+	 * @param Technology $item
+	 * @return int
+	 */
+	public function maxShots(Technology $item) {
+		$burst = $item->burst();
+
+		$ammunition = $item->ammunition();
+		if ($ammunition) {
+			$group = $this->firingStarship->ammunition();
+			$techId = $ammunition->id();
+
+			$ammunitionAmount = 0;
+			if ($group->hasItem($techId)) {
+				$ammunition = $group->item($techId);
+				$ammunitionAmount = $ammunition->amount();
+			}
+
+			$burst = min($burst, $ammunitionAmount);
+		}
+
+		return $burst;
+	}
+
+	/**
 	 * @param Technology $item
 	 * @return array
 	 */
-	public function hits(
-		Starship $firingStarship,
-		Starship $opponentStarship,
-		Technology $item
-	) {
+	public function hits(Technology $item) {
 		$this->hits = 0;
 
 		/*
@@ -25,39 +78,19 @@ class Accuracy {
 		 * $starship->maxWeight() for ship size (overall hit probability)
 		 * $starship->weight() for maneuverability
 		 */
-
-
-		$burst = $item->burst();
-		$ammunition = $item->ammunition();
-		if ($ammunition) {
-			$group = $firingStarship->ammunition();
-			$techId = $ammunition->id();
-
-			if ($group->hasItem($techId)) {
-				$ammunition = $group->item($techId);
-				$ammunitionAmount = $ammunition->amount();
-
-				$burst = min($burst, $ammunitionAmount);
-				$ammunition->sub($burst);
-			}
-		}
-
-		$this->hitSomething($opponentStarship, $burst);
+		$this->hitSomething(
+			$this->maxShots($item)
+		);
 
 		return $this->hits;
 	}
 
 	/**
-	 * @param Starship $starship
 	 * @param int $burst
 	 */
-	private function hitSomething(
-		Starship $starship,
-		$burst
-	) {
-		$size = $starship->size();
+	private function hitSomething($burst) {
 		for ($i = 0; $i < $burst; ++$i) {
-			$chance = $this->baseAccuracy($size);
+			$chance = $this->chance();
 			if ($this->strike($chance)) {
 				++$this->hits;
 			}
@@ -73,26 +106,16 @@ class Accuracy {
 	}
 
 	/**
-	 * Size range:
-	 * 1 very small part	15%
-	 * 10 small fighter		60%
-	 * 20 cruiser			85%
-	 * 30 battleship?		99%
-	 *
-	 * @param int $size
 	 * @return int
 	 */
-	private function baseAccuracy($size) {
-		if ($size < 10) {
-			return (10 + 5 * $size);
+	private function chance() {
+		if ($this->chance === null) {
+			$weight = $this->opponentStarship->weight();
+			$thrust = $this->opponentStarship->thrust();
+
+			$this->chance = 15;
 		}
 
-		if ($size < 20) {
-			$size -= 10;
-			return (int)round(60 + 2.5 * $size);
-		}
-
-		$size -= 20;
-		return (int)round(85 + 1.4 * $size);
+		return $this->chance;
 	}
 }

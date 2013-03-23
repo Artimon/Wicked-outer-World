@@ -274,6 +274,7 @@ $technology[COMBUSTION_DRIVE_ID] = array(
 	'name'		=> 'CombustionDrive',
 	'level'		=> 0,
 	'weight'	=> '5',
+	'thrust'	=> 2.2,	// Mega Newton (MN)
 	'seconds'	=> 7,
 	'price'		=> 560	// Value for trading.
 );
@@ -282,6 +283,7 @@ $technology[91] = array(
 	'name'		=> 'IonDrive',
 	'level'		=> 4,
 	'weight'	=> '3',
+	'thrust'	=> 3.1,	// Mega Newton (MN)
 	'seconds'	=> 7,
 	'price'		=> 2752,	// Value for trading.
 	'craft' => array(
@@ -297,6 +299,7 @@ $technology[92] = array(
 	'name'		=> 'PulseDrive',
 	'level'		=> 8,
 	'weight'	=> '5',
+	'thrust'	=> 5.1,	// == Space Shuttle (3x Hydrogen) Mega Newton (MN)
 	'seconds'	=> 8,
 	'price'		=> 4640	// Value for trading.
 );

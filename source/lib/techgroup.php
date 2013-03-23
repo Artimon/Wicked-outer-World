@@ -47,7 +47,12 @@ class techGroup extends techContainerSubclass {
 	 * @return Technology[]
 	 */
 	public function items() {
-		return $this->items;
+		$items = $this->items;
+		usort($items, function(Technology $a, Technology $b) {
+			return $a->name() > $b->name() ? 1 : -1;
+		});
+
+		return $items;
 	}
 
 	/**
@@ -111,7 +116,9 @@ class techGroup extends techContainerSubclass {
 				$currentItem->totalWeight();
 		}
 		else {
-			$weight = $item->totalWeight();
+			$weight = $item->totalWeight(
+				$amount - $item->amount()
+			);
 		}
 
 		$techContainer = $this->techContainer();
@@ -246,6 +253,19 @@ class techGroup extends techContainerSubclass {
 		}
 
 		return $payload;
+	}
+
+	/**
+	 * @return int Summed up weight of all drives.
+	 */
+	public function thrust() {
+		$thrust = 0;
+
+		foreach ($this->items() as $technology) {
+			$thrust += $technology->thrust();
+		}
+
+		return $thrust;
 	}
 
 	/**
@@ -388,8 +408,9 @@ class techGroup extends techContainerSubclass {
 			return $this;
 		}
 
+		$items = array();
 		foreach ($data as $techId => $amount) {
-			$this->items[$techId] = $this->newItem($techId, $amount);
+			$items[$techId] = $this->newItem($techId, $amount);
 		}
 
 		return $this;

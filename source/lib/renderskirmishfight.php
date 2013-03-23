@@ -34,10 +34,16 @@ class RenderSkirmishFight extends RendererAbstract {
 			$controller->redirect($url);
 		}
 
-		$fight = new ActionFight(
-			$account->starship(),
-			$opponent->starship()
-		);
+		$fight = new ActionFight($account);
+		$fight
+			->setAggressor($account->starship())
+			->setVictim($opponent->starship());
+
+		if (!$fight->canStart()) {
+			$controller->redirect(
+				$controller->section('skirmish')
+			);
+		}
 
 		$fightResultText = $fight->start();
 		$jsonResult = $fight->jsonData();

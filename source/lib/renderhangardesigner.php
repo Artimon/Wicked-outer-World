@@ -26,7 +26,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		$starship = $this->account()->starship();
 		$stockage = $this->account()->stockage();
 
-		$html = "
+		$designerHtml = "
 <colgroup>
 	<col width='40'>
 	<col>
@@ -42,13 +42,13 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	</td>
 </tr>";
 
-		$html .= plugins::itemList($stockage, $starship->weaponry(),	i18n('remove'));
-		$html .= plugins::itemList($stockage, $starship->ammunition(),	i18n('remove'));
-		$html .= plugins::itemList($stockage, $starship->equipment(),	i18n('remove'));
-		$html .= plugins::itemList($stockage, $starship->cargo(),		i18n('remove'));
-		$html .= plugins::itemList($stockage, $starship->engine(),		i18n('remove'));
+		$designerHtml .= plugins::itemList($stockage, $starship->weaponry(),	i18n('remove'));
+		$designerHtml .= plugins::itemList($stockage, $starship->ammunition(),	i18n('remove'));
+		$designerHtml .= plugins::itemList($stockage, $starship->equipment(),	i18n('remove'));
+		$designerHtml .= plugins::itemList($stockage, $starship->cargo(),		i18n('remove'));
+		$designerHtml .= plugins::itemList($stockage, $starship->engine(),		i18n('remove'));
 
-		$html .= "
+		$designerHtml .= "
 <tr>
 	<td colspan='2' class='headline'>
 			".i18n('yourStuff')."<br>
@@ -59,20 +59,24 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	</td>
 </tr>";
 
-		$html .= plugins::itemList($starship, $stockage->stock(),			i18n('equip'), false);
+		$designerHtml .= plugins::itemList($starship, $stockage->stock(),			i18n('equip'), false);
 
 		$howMany = i18n('howMany');
 		JavaScript::create()->bind("$('.moveItem').moveItem('{$howMany}');");
 
-		$html = html::defaultTable($html);
-		$html = "
+		$designerHtml = html::defaultTable($designerHtml);
+		$detailsHtml = $this->statusHtml();
+		$detailsHtml = Plugins::box(
+			i18n('yourShip'),
+			$detailsHtml
+		);
+
+		return "
 <h2>".i18n('garage')."</h2>
 <p>".i18n('garageDescription')."</p>
-<div class='floatRight columnRight'>&nbsp;<br><br>{$this->statusHtml()}</div>
-<div class='floatLeft columnLeft'>{$html}</div>
+<div class='floatRight columnRight'>{$detailsHtml}</div>
+<div class='floatLeft columnLeft'>{$designerHtml}</div>
 <div class='clear'></div>";
-
-		return $html;
 	}
 
 	/**
@@ -83,7 +87,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 
 		$html = "
 <colgroup>
-	<col width='200'>
+	<col width='180'>
 	<col width='80'>
 </colgroup>
 <tr>
@@ -142,24 +146,28 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		$group = $request->post('slot');
 		if ($starship->hasGroup($group)) {
 			$techGroup = $starship->groupByName($group);
-			$item = $techGroup->item($techId);
 
-			$techGroup->moveItemTo(
-				$stockage->stock(),
-				$item,
-				$amount
-			);
+			if ($techGroup->hasItem($techId)) {
+				$techGroup->moveItemTo(
+					$stockage->stock(),
+					$techGroup->item($techId),
+					$amount
+				);
+			}
 		}
 
 		if ($stockage->hasGroup($group)) {
 			$techGroup = $stockage->groupByName($group);
-			$item = $techGroup->item($techId);
 
-			$techGroup->moveItemTo(
-				$starship->itemSlot($item),
-				$item,
-				$amount
-			);
+			if ($techGroup->hasItem($techId)) {
+				$item = $techGroup->item($techId);
+
+				$techGroup->moveItemTo(
+					$starship->itemSlot($item),
+					$item,
+					$amount
+				);
+			}
 		}
 	}
 }

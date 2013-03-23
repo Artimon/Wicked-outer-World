@@ -428,6 +428,17 @@ class Technology extends AccountSubclass{
 		return 0;
 	}
 
+	/**
+	 * @return int
+	 */
+	public function thrust() {
+		if (array_key_exists('thrust', $this->techData)) {
+			return (int)$this->techData['thrust'];
+		}
+
+		return 0;
+	}
+
 	/*****************************************************
 	 * Energy drain
 	 ****************************************************/

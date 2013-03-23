@@ -143,6 +143,13 @@ class Starship extends TechContainerAbstract {
 	}
 
 	/**
+	 * @return int Total starship thrust, overrides Technology::thrust().
+	 */
+	public function thrust() {
+		return $this->engine()->thrust();
+	}
+
+	/**
 	 * @return int
 	 */
 	public function armor() {

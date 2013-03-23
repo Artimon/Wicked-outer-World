@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Pascal
- * Date: 17.02.13
- * Time: 22:59
- * To change this template use File | Settings | File Templates.
- */
+
 class RenderSkirmishOpponents extends RendererAbstract {
 
 	/**
@@ -30,6 +24,10 @@ class RenderSkirmishOpponents extends RendererAbstract {
 		$account = $this->account();
 		$accountId = $account->id();
 
+
+		$fight = new ActionFight($account);
+		$canStart = $fight->setAggressor($account->starship())->canStart();
+
 		$skirmishOpponents = $account->factory()->actionSkirmishOpponents();
 
 		$closeOpponents = $skirmishOpponents->closeOpponents();
@@ -44,13 +42,17 @@ class RenderSkirmishOpponents extends RendererAbstract {
 			if ($id === $accountId) {
 				$class = " class='push'";
 			}
-			else {
+			elseif ($canStart) {
 				$showHim = i18n('showHim');
 				$url = $this->controller()->currentSection(
 					array('section' => 'fight', 'attack' => $id)
 				);
 
 				$name = "<a href='{$url}' title='{$showHim}' class='tipTip action'>{$name}</a>";
+			}
+			else {
+				$notEnoughActionPoints = i18n('notEnoughActionPoints');
+				$name = "<span title='{$notEnoughActionPoints}' class='critical tipTip'>{$name}</span>";
 			}
 
 			$list .= "
