@@ -613,16 +613,17 @@ div.ingredient {
 	}
 }
 
-#register {
-	.techInfo {
-		width: 20px;
-		height: 20px;
+.infoIcon {
+	display: inline-block;
+	vertical-align: bottom;
 
-		background-image: url(../img/ic_info.png);
-		border: none;
+	width: 20px;
+	height: 20px;
 
-		cursor: pointer;
-	}
+	background-image: url(../img/ic_info.png);
+	border: none;
+
+	cursor: pointer;
 }
 
 /* Skirmish page */

@@ -369,7 +369,9 @@ div.ingredient {
   width: 730px;
   height: 730px; }
 
-#register .techInfo {
+.infoIcon {
+  display: inline-block;
+  vertical-align: bottom;
   width: 20px;
   height: 20px;
   background-image: url(../img/ic_info.png);

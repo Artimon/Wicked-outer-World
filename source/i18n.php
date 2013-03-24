@@ -788,7 +788,7 @@ $translations = array(
 		'de' => 'Taktik',
 		'en' => 'Tactics'
 	),
-	'tacticsDescription' => array(
+	'tacticsHelp' => array(
 		'de' => 'Taktisches Können verbessert Deine Treffsicherheit.',
 		'en' => 'Tactical skills improve your accuracy.'
 	),
@@ -796,7 +796,7 @@ $translations = array(
 		'de' => 'Abwehr',
 		'en' => 'Defense'
 	),
-	'defenseDescription' => array(
+	'defenseHelp' => array(
 		'de' => 'Gute Abwehrmanöver verbessern Deine Ausweichfähigkeit.',
 		'en' => 'Well defense maneuvers improve your evasion capability.'
 	),

@@ -135,7 +135,7 @@ class RenderRegister extends RendererAbstract {
 				<td class='variable'>{$yourShip}</td>
 				<td>{$select}</td>
 				<td>
-					<div class='techInfo tipTip' data-techId='{$techId}' title='{$infoTitle}'></div>
+					<div class='techInfo infoIcon tipTip' data-techId='{$techId}' title='{$infoTitle}'></div>
 				</td>
 			</tr>
 			<tr>

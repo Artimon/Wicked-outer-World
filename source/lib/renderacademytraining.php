@@ -27,9 +27,13 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 
 		$training = i18n('training');
 		$trainDescription = i18n('trainDescription');
+
 		$tactics = i18n('tactics');
 		$defense = i18n('defense');
 		$crafting = i18n('crafting');
+		$tacticsHelp = i18n('tacticsHelp');
+		$defenseHelp = i18n('defenseHelp');
+
 		$train = i18n('train');
 
 		$account = $this->account();
@@ -72,7 +76,10 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 		<col>
 	</colgroup>
 	<tr>
-		<td class='highlight'>{$tactics}</td>
+		<td class='highlight'>
+			{$tactics}
+			<span class='infoIcon tipTip' title='{$tacticsHelp}'></span>
+		</td>
 		<td class='smallFont variable'>
 			{$account->tacticsLevel()}<br>
 			{$bars->tacticsProgress()}
@@ -82,7 +89,10 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 		</td>
 	</tr><tr>
 	<tr>
-		<td class='highlight'>{$defense}</td>
+		<td class='highlight'>
+			{$defense}
+			<span class='infoIcon tipTip' title='{$defenseHelp}'></span>
+		</td>
 		<td class='smallFont variable'>
 			{$account->defenseLevel()}<br>
 			{$bars->defenseProgress()}
