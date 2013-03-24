@@ -166,6 +166,15 @@ $translations = array(
 		'en' => "With this batteries in the luggage one always has a radiation smile on his lips."
 	),
 
+	'nameSmallCapacitor' => array(
+		'de' => 'Kleiner Kondensator',
+		'en' => 'Small Capacitor'
+	),
+	'descSmallCapacitor' => array(
+		'de' => 'Dieser blöde Reaktor liefert einfach nicht genug Energie? Ein paar Kondensatoren könnten hier ein kleines Polster schaffen.',
+		'en' => 'That stupid reactor just does not provide enough energy? A few condensators could act as a buffer here.'
+	),
+
 	'nameCombustionDrive' => array(
 		'de' => 'Verbrennungsantrieb',
 		'en' => 'Combustion drive'
@@ -315,6 +324,14 @@ $translations = array(
 	'partEngine' => array(
 		'de' => 'Antrieb',
 		'en' => 'Engine'
+	),
+	'thrust' => array(
+		'de' => 'Schubkraft',
+		'en' => 'Thrust'
+	),
+	'movability' => array(
+		'de' => 'Beweglichkeit',
+		'en' => 'Movability'
 	),
 
 	/*****************************************************
@@ -771,9 +788,17 @@ $translations = array(
 		'de' => 'Taktik',
 		'en' => 'Tactics'
 	),
+	'tacticsDescription' => array(
+		'de' => 'Taktisches Können verbessert Deine Treffsicherheit.',
+		'en' => 'Tactical skills improve your accuracy.'
+	),
 	'defense' => array(
 		'de' => 'Abwehr',
 		'en' => 'Defense'
+	),
+	'defenseDescription' => array(
+		'de' => 'Gute Abwehrmanöver verbessern Deine Ausweichfähigkeit.',
+		'en' => 'Well defense maneuvers improve your evasion capability.'
 	),
 	'crafting' => array(
 		'de' => 'Basteln',

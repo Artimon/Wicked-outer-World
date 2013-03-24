@@ -46,8 +46,9 @@ class RenderFactoryFiddle extends RenderFactoryAbstract {
 		$items = $this->account()->stockage()->stock()->items();
 
 		$selectData = array(0 => i18n('empty'));
-		foreach ($items as $techId => $item) {
+		foreach ($items as $item) {
 			if ($item->isIngredient()) {
+				$techId = $item->id();
 				$selectData[$techId] = "{$item->name()} ({$item->amount()})";
 			}
 		}

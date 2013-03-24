@@ -1,8 +1,13 @@
 <?php
 
 class ActionSkirmishOpponents extends ActionAbstract {
+	const LEVEL_DIFFERENCE = 3;
+
 	public function closeOpponents() {
-		$experience = $this->account()->experience();
+		$account = $this->account();
+
+		$experience = $account->experience();
+		$level = $account->level() - self::LEVEL_DIFFERENCE;
 
 		$sql = "
 			SELECT
@@ -12,7 +17,8 @@ class ActionSkirmishOpponents extends ActionAbstract {
 			FROM
 				`accounts`
 			WHERE
-				`experience` <= {$experience}
+				`experience` <= {$experience} AND
+				`level` >= {$level}
 			LIMIT 21
 			UNION ALL
 			SELECT
@@ -22,7 +28,8 @@ class ActionSkirmishOpponents extends ActionAbstract {
 			FROM
 				`accounts`
 			WHERE
-				`experience` > {$experience}
+				`experience` > {$experience} AND
+				`level` >= {$level}
 			ORDER BY
 				`experience` DESC
 			LIMIT 20;";

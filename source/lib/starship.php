@@ -150,6 +150,20 @@ class Starship extends TechContainerAbstract {
 	}
 
 	/**
+	 * @return float
+	 */
+	public function movability() {
+		$weight = $this->weight();
+		$thrust = $this->thrust();
+		$movability = 0;
+		if ($thrust > 0) {
+			$movability = $weight / $thrust;
+		}
+
+		return (float)$movability;
+	}
+
+	/**
 	 * @return int
 	 */
 	public function armor() {

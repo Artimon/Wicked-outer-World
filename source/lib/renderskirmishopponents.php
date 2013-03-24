@@ -1,7 +1,6 @@
 <?php
 
 class RenderSkirmishOpponents extends RendererAbstract {
-
 	/**
 	 * @return string
 	 */
@@ -44,7 +43,7 @@ class RenderSkirmishOpponents extends RendererAbstract {
 			}
 			elseif ($canStart) {
 				$showHim = i18n('showHim');
-				$url = $this->controller()->currentSection(
+				$url = $this->controller()->currentRoute(
 					array('section' => 'fight', 'attack' => $id)
 				);
 

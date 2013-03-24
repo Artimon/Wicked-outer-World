@@ -110,10 +110,19 @@ class Accuracy {
 	 */
 	private function chance() {
 		if ($this->chance === null) {
-			$weight = $this->opponentStarship->weight();
-			$thrust = $this->opponentStarship->thrust();
+			$this->chance = 100;
+			$this->chance -= $this->opponentStarship->movability();	// Now 85% for example.
 
-			$this->chance = 15;
+			$opponent = $this->opponentStarship->account();
+			$defenseLevel = $opponent->defenseLevel() + $opponent->level() + 25;
+
+			$firing = $this->firingStarship->account();
+			$tacticsLevel = $firing->tacticsLevel() + $firing->level() + 25;
+
+			$this->chance *= ($tacticsLevel / $defenseLevel);
+
+			$this->chance = min(95, $this->chance);
+			$this->chance = max(5, $this->chance);
 		}
 
 		return $this->chance;

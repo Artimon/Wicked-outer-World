@@ -84,6 +84,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	 */
 	private function statusHtml() {
 		$starship = $this->account()->starship();
+		$movability = Format::number($starship->movability(), 1);
 
 		$html = "
 <colgroup>
@@ -101,6 +102,14 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 </tr><tr>
 	<td>".i18n('weight').":</td>
 	<td class='variable right'>{$starship->weight()}t</td>
+</tr><tr>
+	<td colspan='2' class='headline'>".i18n('partEngine')."</td>
+</tr><tr>
+	<td>".i18n('thrust').":</td>
+	<td class='variable right'>{$starship->thrust()}MN</td>
+</tr><tr>
+	<td>".i18n('movability').":</td>
+	<td class='variable right'>{$movability}</td>
 </tr><tr>
 	<td colspan='2' class='headline'>".i18n('technicalData')."</td>
 </tr><tr>
