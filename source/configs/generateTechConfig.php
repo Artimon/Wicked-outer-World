@@ -281,7 +281,7 @@ $technology[NUCLEAR_BATTERIES_ID] = array(
 );
 
 $technology[SMALL_CAPACITOR_ID] = array(
-	'type'		=> Technology::TYPE_REACTOR,
+	'type'		=> Technology::TYPE_CAPACITOR,
 	'name'		=> 'SmallCapacitor',
 	'level'		=> 1,
 	'weight'	=> 1,

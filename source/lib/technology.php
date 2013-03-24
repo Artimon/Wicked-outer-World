@@ -9,6 +9,7 @@ class Technology extends AccountSubclass{
 	const TYPE_WEAPON			= 2;	// Weapons
 	const TYPE_AMMUNITION		= 3;	// Ammunition
 	const TYPE_MINING_MODULE	= 4;	// Equipment
+	const TYPE_CAPACITOR		= 10;
 	const TYPE_PLATING			= 5;
 	const TYPE_SHIELD			= 6;
 	const TYPE_REACTOR			= 7;	// Engines
@@ -530,7 +531,7 @@ class Technology extends AccountSubclass{
 	 * @return int
 	 */
 	public function capacity() {
-		if ($this->isReactor()) {
+		if (array_key_exists('capacity', $this->techData)) {
 			return $this->techData['capacity'];
 		}
 
@@ -545,11 +546,7 @@ class Technology extends AccountSubclass{
 	 * @return float|int
 	 */
 	public function totalCapacity() {
-		if ($this->isReactor()) {
-			return ($this->amount() * $this->capacity());
-		}
-
-		return 0;
+		return ($this->amount() * $this->capacity());
 	}
 
 	/*****************************************************
@@ -626,6 +623,7 @@ class Technology extends AccountSubclass{
 				return techSelector::TYPE_AMMUNITION;
 
 			case self::TYPE_MINING_MODULE:
+			case self::TYPE_CAPACITOR:
 			case self::TYPE_PLATING:
 			case self::TYPE_SHIELD:
 				return techSelector::TYPE_EQUIPMENT;
@@ -753,6 +751,13 @@ class Technology extends AccountSubclass{
 	 */
 	public function isReactor() {
 		return (self::TYPE_REACTOR === $this->type());
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isCapacitor() {
+		return (self::TYPE_CAPACITOR === $this->type());
 	}
 
 	/**
