@@ -49,7 +49,7 @@ class RenderHangarStarTrip extends RendererAbstract {
 			});";
 		JavaScript::create()->bind($js);
 
-		$entityLoader = new entityLoader($account);
+		$entityLoader = new EntityLoader($account);
 		$entityLoader->initSector($starTourSeconds);
 
 		$headline = i18n('starTrip');

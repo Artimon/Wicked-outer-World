@@ -68,6 +68,9 @@ class ActionHangarMission extends ActionAbstract {
 		$account = $this->account();
 		$account->incrementActionPoints(-$mission['actionPoints']);
 
+		$stockage = $account->stockage();
+		$stock = $stockage->stock();
+
 		$result = array();
 		while ($amount-- > 0) {
 			$index = array_rand($events['list']);
@@ -89,7 +92,14 @@ class ActionHangarMission extends ActionAbstract {
 				case 'item':
 					foreach ($value as $techId) {
 						$item = Technology::raw($techId);
-						$account->stockage()->stock()->addItem($item);
+						$amount = $item->stackSize();
+
+						$fiddle = $stockage->fiddle();
+						$fiddle->moveItemTo(
+							$stock,
+							$fiddle->newItem($techId, $amount),
+							$amount
+						);
 					}
 					break;
 
@@ -100,7 +110,7 @@ class ActionHangarMission extends ActionAbstract {
 			$result[] = i18n($event['teaser'], $value);
 		}
 
-		$account->update();
+		$stock->update();
 
 		$result[] = i18n('missionSuccess');
 

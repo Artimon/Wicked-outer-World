@@ -96,6 +96,15 @@ class dispatcher {
 		$section = $request->get('section', '');
 		$renderer = $controller->renderer($section);
 
+		$fullPage = !$content->ajax();
+		$game = Game::getInstance();
+
+		if ($fullPage && $game->isOnline()) {
+			Initial::get()->pollute(
+				$game->account()
+			);
+		}
+
 //		switch ($this->route) {
 //			case 'test':
 //				$starship = $account->Starship();
@@ -118,8 +127,6 @@ class dispatcher {
 //				$renderer = new renderTechInfo($item);
 //				break;
 //		}
-
-		$fullPage = !$content->ajax();
 
 		if (isset($renderer)) {
 			$content->setRegionHead(
@@ -144,7 +151,7 @@ class dispatcher {
 		$sidebar = new RenderSidebar();
 
 		if ($fullPage) {
-			$game = Game::getInstance();
+			// Do not refactor, online state may have changed.
 			if ($game->isOnline()) {
 				$content->setRegionSidebar(
 					$sidebar->onlineHtml()

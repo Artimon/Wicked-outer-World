@@ -40,6 +40,7 @@ $techIds = array(
 	'SMALL_BLASTER_ID'			=> 60,
 	'BLASTER_AMMUNITION_ID'		=> 70,
 	'NUCLEAR_BATTERIES_ID'		=> 80,
+	'SOLAR_ARRAY_ID'			=> 81,
 	'COMBUSTION_DRIVE_ID'		=> 90,
 
 	'KINETIC_SHIELD_ID'			=> 120,
@@ -270,6 +271,11 @@ $technology[DISTORTION_SHIELD_ID] = array(
 	'price'		=> 14720	// Value for trading.
 );
 
+/**
+ * Anti Matter reactor
+ * Fusion Reactor
+ * Warp Reactor
+ */
 $technology[NUCLEAR_BATTERIES_ID] = array(
 	'type'		=> Technology::TYPE_REACTOR,
 	'name'		=> 'NuclearBatteries',
@@ -278,6 +284,19 @@ $technology[NUCLEAR_BATTERIES_ID] = array(
 	'recharge'	=> 4,
 	'capacity'	=> 10,
 	'price'		=> 420	// Value for trading.
+);
+$technology[SOLAR_ARRAY_ID] = array(
+	'type'		=> Technology::TYPE_REACTOR,
+	'name'		=> 'SolarArray',
+	'level'		=> 3,
+	'weight'	=> 3,
+	'recharge'	=> 5,
+	'capacity'	=> 6,
+	'craft' => array(
+		TECHNICAL_COMPONENTS_ID => 1,
+		CRYSTALS_ID	=> 5
+	),
+	'craftHint'	=> true
 );
 
 $technology[SMALL_CAPACITOR_ID] = array(

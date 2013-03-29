@@ -167,14 +167,14 @@ class techGroup extends techContainerSubclass {
 			return 0;
 		}
 
+		if (!$techGroup->hasSlotsAvailable()) {
+			return 0;
+		}
+
 		if ($techGroup->hasItem($item->id())) {
 			$techGroup->item($item->id())->add($amount);
 		}
 		else {
-			if (!$techGroup->hasSlotsAvailable()) {
-				return 0;
-			}
-
 			$techGroup->newItem($item->id(), $amount);
 		}
 

@@ -84,7 +84,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	 */
 	private function statusHtml() {
 		$starship = $this->account()->starship();
-		$movability = Format::number($starship->movability(), 1);
+		$movability = Format::number(100 - $starship->movability(), 1);
 
 		$html = "
 <colgroup>

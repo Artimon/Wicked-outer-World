@@ -800,6 +800,9 @@ class Technology extends AccountSubclass{
 			case self::TYPE_REACTOR:
 				return i18n('reactors');
 
+			case self::TYPE_CAPACITOR:
+				return i18n('capacitors');
+
 			case self::TYPE_DRIVE:
 				return i18n('drives');
 

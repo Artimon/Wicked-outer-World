@@ -187,7 +187,7 @@ function ConfirmBox(initCallback, confirmCallback) {
 				amountSelect,
 				initCallback,
 				confirmCallback,
-				htm;
+				html;
 
 			if (amountPossible > 1) {
 				initCallback = function () {
@@ -435,7 +435,6 @@ function ConfirmBox(initCallback, confirmCallback) {
 				increment()
 			);
 		});
-		console.log(json);
 	}
 }(jQuery));
 
@@ -932,26 +931,53 @@ function gameCycle() {
 */
 
 (function ($) {
-	$.fn.barScale = function (name, percentage) {
-		var width = Math.round(99 * (percentage / 100)) + 'px';
+	$.fn.barScale = function (name, percentage, set) {
+		var width = Math.round(99 * (percentage / 100)) + 'px',
+			$bar = this.find('.statusBar').find('.' + name);
 
-		this
-			.find('.statusBar')
-			.find('.' + name)
-			.stop()
-			.animate({width: width});
-	}
+		$bar.stop();
+
+		if (set) {
+			$bar.css('width', width);
+		}
+		else {
+			$bar.animate({width: width});
+		}
+	};
+
+	$.fn.setMoney = function (value) {
+		var parts = this.text().split(' ');
+
+		this.text(value + ' ' + parts[1]);
+	};
 }(jQuery));
 
 (function ($) {
-	$.fn.animateFight = function (jsonActions, jsonTranslations) {
+	$.fn.animateFight = function (
+		jsonActions,
+		jsonTranslations,
+		initialCondition,
+		initialMoney
+	) {
 		var $self = this,
 			actions = JSON.parse(jsonActions),
 			translations = JSON.parse(jsonTranslations),
 			$sides = {},
+			$status,
+			$money,
 			message,
 			object,
 			key = 0;
+
+		if (initialCondition) {
+			$status = $('#status');
+			$status.barScale('condition', initialCondition, true);
+		}
+
+		if (initialMoney) {
+			$money = $('.money');
+			$money.setMoney(initialMoney);
+		}
 
 		/**
 		 * @param side string
@@ -1049,6 +1075,11 @@ function gameCycle() {
 			fighterContainer('victim').barScale('condition', object.vi.c);
 			fighterContainer('victim').barScale('shield', object.vi.s);
 			fighterContainer('victim').barScale('energy', object.vi.e);
+
+			if (initialCondition) {
+				$status = $('#status');
+				$status.barScale('condition', object.ag.c);
+			}
 
 			key++;
 

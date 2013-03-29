@@ -92,6 +92,9 @@ class RenderHangarMissions extends RenderHangarAbstract {
 		$json = $mission->start();
 		$js = "$('#missionBox').missionBox('{$json}');";
 
+		$initial = Initial::get();
+		$js .= "$('.money').setMoney({$initial->money()})";
+
 		JavaScript::create()->bind($js);
 
 		$missionTitle = i18n('youStartAMission');

@@ -80,7 +80,7 @@ class RenderSidebar {
 		 */
 
 		$html = "
-<div class='floatRight'>{$money}</div>
+<div class='floatRight money'>{$money}</div>
 <div>{$moneyName}</div>
 <div class='clear seperator'></div>
 

@@ -122,9 +122,14 @@ class Condition extends StarshipSubclass {
 	 * @return float
 	 */
 	public function conditionPercentage() {
-		$condition = $this->structurePercentage() + $this->armorPercentage();
+		$condition = $this->structurePercentage();
 
-		return round($condition / 2);
+		if ($this->armor->max > 0) {
+			$condition += $this->armorPercentage();
+			$condition = round($condition / 2);;
+		}
+
+		return $condition;
 	}
 
 	/**

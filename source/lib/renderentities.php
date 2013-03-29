@@ -6,7 +6,7 @@ class RenderEntities extends AccountSubclass implements RendererInterface {
 	 * @return string
 	 */
 	public function bodyHtml() {
-		$entityLoader = new entityLoader($this->account());
+		$entityLoader = new EntityLoader($this->account());
 		return $entityLoader->entitiesJson();
 	}
 

@@ -165,6 +165,14 @@ $translations = array(
 		'de' => "Mit diesen Batterien im Gepäck hat man immer ein strahlendes lächeln auf den Lippen.",
 		'en' => "With this batteries in the luggage one always has a radiation smile on his lips."
 	),
+	'nameSolarArray' => array(
+		'de' => 'Solarmodul',
+		'en' => 'Solar Array'
+	),
+	'descSolarArray' => array(
+		'de' => 'Schon verrückt, wir sammeln solare Energie um dann wieder Laserstrahlen daraus zu machen.',
+		'en' => 'Quite loony, we collect solar energy to create laser beams from it.'
+	),
 
 	'nameSmallCapacitor' => array(
 		'de' => 'Kleiner Kondensator',
@@ -349,6 +357,10 @@ $translations = array(
 	'reactors' => array(
 		'de' => 'Reaktoren',
 		'en' => 'Reactors'
+	),
+	'capacitors' => array(
+		'de' => 'Kondensatoren',
+		'en' => 'Capacitors'
 	),
 	'drives' => array(
 		'de' => 'Antriebe',
@@ -971,7 +983,7 @@ $translations = array(
 		'en' => 'You really tore %s apart and took %s.'
 	),
 	'outOfFuel' => array(
-		'de' => 'Schnell zurück, befor der Treibstoff ausgeht!',
+		'de' => 'Schnell zurück, bevor der Treibstoff ausgeht!',
 		'en' => 'Hurry back home before fuel runs out!'
 	),
 	'noWeaponsInfo' => array(
@@ -1071,7 +1083,7 @@ $translations = array(
 		'en' => 'Engineer'
 	),
 	'engineerDescription' => array(
-		'de' => 'Du hast einen zufällig herumschlendernden Ingenieur mit Langeweise gefunden, er sagt...',
+		'de' => 'Du hast einen zufällig herumschlendernden Ingenieur mit Langeweile gefunden, er sagt...',
 		'en' => 'You found a bored, randomly lingering around engineer, he says...'
 	),
 	'haveYouTriedFiddle' => array(
@@ -1251,6 +1263,10 @@ $translations = array(
 	'yourShip' => array(
 		'de' => 'Dein Schiff',
 		'en' => 'Your ship'
+	),
+	'wtfIsThis' => array(
+		'de' => 'WTF is this??? (klick)',
+		'en' => 'WTF is this??? (click)'
 	),
 
 	/*****************************************************

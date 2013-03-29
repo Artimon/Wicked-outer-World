@@ -18,6 +18,9 @@ body {
   background-repeat: no-repeat;
   margin: 0; }
 
+ul {
+  padding-left: 40px; }
+
 .tipTip {
   cursor: help; }
   .tipTip.action {

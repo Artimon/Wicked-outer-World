@@ -57,7 +57,7 @@ class RenderRegister extends RendererAbstract {
 		$leaveEmpty = i18n('leaveEmpty');
 		$yourShip = i18n('yourShip');
 		$go = i18n('go');
-		$infoTitle = 'WTF is this???';	// Not translated by intention.
+		$infoTitle = i18n('wtfIsThis');
 
 		$values = $this->formValues();
 

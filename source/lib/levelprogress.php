@@ -40,6 +40,10 @@ class LevelProgress extends AccountSubclass {
 			--$x;
 		}
 
+		if ($x < 0) {
+			return 0;
+		}
+
 		$y = 500;
 		$y += 107 * $x;
 		$y += 243 * $x * $x;

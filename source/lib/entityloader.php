@@ -1,6 +1,6 @@
 <?php
 
-class entityLoader extends dataObjectProvider {
+class EntityLoader extends dataObjectProvider {
 	/**
 	 * Object types, may be temporary as we discover the need
 	 * of more detailed types. All none-player-entities could
@@ -297,18 +297,26 @@ class entityLoader extends dataObjectProvider {
 
 		$playerType = self::TYPE_PLAYER;
 
+//		$sql = "
+//			SELECT *
+//			FROM
+//				`entities`
+//			WHERE
+//				`type` IN({$forceTypes}) AND
+//				`accountId` = {$this->account()->id()}
+//			UNION SELECT *
+//			FROM
+//				`entities`
+//			WHERE
+//				`type` = {$playerType}
+//			LIMIT 10;";
+
 		$sql = "
 			SELECT *
 			FROM
 				`entities`
 			WHERE
-				`type` IN({$forceTypes}) AND
 				`accountId` = {$this->account()->id()}
-			UNION SELECT *
-			FROM
-				`entities`
-			WHERE
-				`type` = {$playerType}
 			LIMIT 10;";
 		$database = $this->database();
 		$database->query($sql);
