@@ -16,15 +16,15 @@ return array(
 			'list' => array(
 				array(
 					'teaser' => 'missionFoundMoney',
-					'reward' => array('money' => '3-7')
+					'reward' => array('money' => '14-53')
 				),
 				array(
 					'teaser' => 'missionTalkedWithPilots',
-					'reward' => array('exp' => 1)
+					'reward' => array('exp' => 3)
 				),
 				array(
 					'teaser' => 'missionThoughtAboutLife',
-					'reward' => array('exp' => 1)
+					'reward' => array('exp' => 4)
 				)
 			)
 		)
@@ -37,11 +37,11 @@ return array(
 			'list' => array(
 				array(
 					'teaser' => 'missionMetWithJunkers',
-					'reward' => array('exp' => 1)
+					'reward' => array('exp' => 4)
 				),
 				array(
 					'teaser' => 'missionBlindedByTheSun',
-					'reward' => array('exp' => 2)
+					'reward' => array('exp' => 7)
 				),
 				array(
 					'teaser' => 'missionFoundSpaceJunk',
@@ -66,19 +66,19 @@ return array(
 			'list' => array(
 				array(
 					'teaser' => 'missionSawShootingStar',
-					'reward' => array('exp' => 1)
+					'reward' => array('exp' => 8)
 				),
 				array(
 					'teaser' => 'missionLookingForTheSun',
-					'reward' => array('exp' => 4)
+					'reward' => array('exp' => 9)
 				),
 				array(
 					'teaser' => 'missionSawStardust',
-					'reward' => array('exp' => 2)
+					'reward' => array('exp' => 7)
 				),
 				array(
 					'teaser' => 'missionFoundFloatingJunk',
-					'reward' => array('money' => '3-7', 'item' => array(SPACE_JUNK_ID))
+					'reward' => array('money' => '32-79', 'item' => array(SPACE_JUNK_ID))
 				),
 				array(
 					'teaser' => 'missionWatchingStarships',
@@ -86,7 +86,7 @@ return array(
 				),
 				array(
 					'teaser' => 'missionEvadingAsteroid',
-					'reward' => array('exp' => 6)
+					'reward' => array('exp' => 13)
 				)
 			)
 		)
