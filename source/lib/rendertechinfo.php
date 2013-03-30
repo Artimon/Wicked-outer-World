@@ -105,7 +105,7 @@ class RenderTechInfo extends RendererAbstract {
 			$burstShots = i18n('perShot');
 		}
 
-		$ammunition = $this->item->ammunition();
+		$ammunition = $this->item->ammunitionItem();
 		if ($ammunition) {
 			$ammunitionType = $ammunition->name().' '.i18n('perShot');
 		} else {

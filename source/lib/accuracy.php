@@ -48,7 +48,7 @@ class Accuracy {
 	public function maxShots(Technology $item) {
 		$burst = $item->burst();
 
-		$ammunition = $item->ammunition();
+		$ammunition = $item->ammunitionItem();
 		if ($ammunition) {
 			$group = $this->firingStarship->ammunition();
 			$techId = $ammunition->id();

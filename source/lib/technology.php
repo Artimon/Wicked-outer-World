@@ -362,7 +362,7 @@ class Technology extends AccountSubclass{
 	/**
 	 * @return null|Technology
 	 */
-	public function ammunition() {
+	public function ammunitionItem() {
 		if ($this->isWeapon() && isset($this->techData['ammo'])) {
 			return new Technology(
 				$this->account(),

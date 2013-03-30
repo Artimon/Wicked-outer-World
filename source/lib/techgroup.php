@@ -167,14 +167,23 @@ class techGroup extends techContainerSubclass {
 			return 0;
 		}
 
-		if (!$techGroup->hasSlotsAvailable()) {
-			return 0;
-		}
-
 		if ($techGroup->hasItem($item->id())) {
+			if (!$item->isStackable() && !$techGroup->hasSlotsAvailable()) {
+				return 0;
+			}
+
+			/*
+			 * Add it if (already available)
+			 * and stackable (slot already taken)
+			 * or a slot is still available.
+			 */
 			$techGroup->item($item->id())->add($amount);
 		}
 		else {
+			if (!$techGroup->hasSlotsAvailable()) {
+				return 0;
+			}
+
 			$techGroup->newItem($item->id(), $amount);
 		}
 
@@ -182,7 +191,6 @@ class techGroup extends techContainerSubclass {
 		if ($item->amount() <= 0) {
 			$this->removeItem($item);
 		}
-
 
 		$this->update();
 		$techGroup->update();
