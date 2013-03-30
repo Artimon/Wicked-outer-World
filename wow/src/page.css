@@ -112,7 +112,13 @@ h2, .h2 {
     color: #e3131e;
     line-height: 48px;
     padding-left: 56px;
-    background-image: url(../img/messagebox_warning.png);
+    background-image: url(../img/ic_error.png);
+    background-repeat: no-repeat; }
+  h2.warning, .h2.warning {
+    color: #e3131e;
+    line-height: 48px;
+    padding-left: 56px;
+    background-image: url(../img/ic_warning.png);
     background-repeat: no-repeat; }
 
 .null {

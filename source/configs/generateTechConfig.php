@@ -37,6 +37,8 @@ require_once '../lib/technology.php';
 // Levels give skill points.
 
 $techIds = array(
+	'CREMLIN_ID'				=> 3,
+
 	'SMALL_BLASTER_ID'			=> 60,
 	'BLASTER_AMMUNITION_ID'		=> 70,
 	'NUCLEAR_BATTERIES_ID'		=> 80,
@@ -101,17 +103,17 @@ $technology[-1] = array(
 	'type' => null
 );	// Stockage
 
-// ID in registration config.
-$technology[1] = array(
+$technology[CREMLIN_ID] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
-	'name'		=> 'RagnarokMkI',
-	'weight'	=> 30,
-	'tonnage'	=> 18,
-	'structure'	=> 57,
+	'name'		=> 'Gremlin',
+	'price'		=> 9587,
+	'weight'	=> 25,
+	'tonnage'	=> 19,
+	'structure'	=> 24,
 	'slots' => array(
-		'weaponry'		=> 3,
-		'ammunition'	=> 2,
-		'equipment'		=> 1,
+		'weaponry'		=> 2,
+		'ammunition'	=> 1,
+		'equipment'		=> 2,
 		'cargo'			=> 1,
 		'engine'		=> 2
 	)
@@ -120,6 +122,7 @@ $technology[1] = array(
 $technology[2] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'GenesisSC4',
+	'price'		=> 8200,
 	'weight'	=> 30,
 	'tonnage'	=> 21,
 	'structure'	=> 33,
@@ -128,6 +131,22 @@ $technology[2] = array(
 		'ammunition'	=> 1,
 		'equipment'		=> 2,
 		'cargo'			=> 3,
+		'engine'		=> 2
+	)
+);
+// ID in registration config.
+$technology[1] = array(
+	'type'		=> Technology::TYPE_STARSHIP,
+	'name'		=> 'RagnarokMkI',
+	'price'		=> 10800,
+	'weight'	=> 30,
+	'tonnage'	=> 18,
+	'structure'	=> 57,
+	'slots' => array(
+		'weaponry'		=> 3,
+		'ammunition'	=> 2,
+		'equipment'		=> 1,
+		'cargo'			=> 1,
 		'engine'		=> 2
 	)
 );

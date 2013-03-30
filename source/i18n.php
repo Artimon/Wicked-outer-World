@@ -49,6 +49,16 @@ $translations = array(
 		'de' => "Ein Flug mit dieser Fähre fühlt sich an, als hätte sie den Bau der ersten Raumstationen miterlebt. Immerhin bietet sie etwas Laderaum.",
 		'en' => "A flight with this shuttle feels like it saw the creation of the first space stations. At least it provides some cargo space."
 	),
+
+	'nameGremlin' => array(
+		'de' => "Gremlin",
+		'en' => "Gremlin"
+	),
+	'descGremlin' => array(
+		'de' => "Dieser Gremlin ist klein und gemein. Ein leichter Erkundungsjäger mit einer angenehmen Menge Stauraum.",
+		'en' => "This gremlin is small and nasty. A light scout machine with comfortable stowage."
+	),
+
 /*
 	'cargoNameCargoModule' => array(
 		'de' => 'Frachtmodul',
@@ -583,6 +593,22 @@ $translations = array(
 	'itemsDepolluted' => array(
 		'de' => 'Du hast %s %s entsorgt.',
 		'en' => 'You depolluted %s %s.'
+	),
+	'youArePoor' => array(
+		'de' => 'Du bist arm wie eine Kirchenmaus',
+		'en' => 'You are as poor as a church mouse'
+	),
+	'buyStarshipNotice' => array(
+		'de' => 'Bevor Du ein neues Schiff kaufst, solltest Du alle Objekte, die Du behalten möchtest, aus Deinem alten Schiff ausbauen.',
+		'en' => 'Before you buy a new ship, you should unequip all items, you want to keep, from your old ship.'
+	),
+	'attention' => array(
+		'de' => 'Achtung',
+		'en' => 'Attention'
+	),
+	'shipBought' => array(
+		'de' => 'Gratulation! Viel Spaß mit Deinem neuen Schiff.',
+		'en' => 'Congratulation! Have fun with your new ship.'
 	),
 
 	/*****************************************************

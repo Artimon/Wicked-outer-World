@@ -278,7 +278,17 @@ h2, .h2 {
 
 		padding-left: 56px;
 
-		background-image: url(../img/messagebox_warning.png);
+		background-image: url(../img/ic_error.png);
+		background-repeat: no-repeat;
+	}
+
+	&.warning {
+		color: $colorError;
+		line-height: 48px;
+
+		padding-left: 56px;
+
+		background-image: url(../img/ic_warning.png);
 		background-repeat: no-repeat;
 	}
 }
