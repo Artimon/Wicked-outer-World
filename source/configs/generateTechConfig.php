@@ -38,11 +38,15 @@ require_once '../lib/technology.php';
 
 $techIds = array(
 	'CREMLIN_ID'				=> 3,
+	'NIGHTFALL_CB55_ID'			=> 4,
 
 	'SMALL_BLASTER_ID'			=> 60,
+	'LIGHT_LASER_ID'			=> 61,
 	'BLASTER_AMMUNITION_ID'		=> 70,
 	'NUCLEAR_BATTERIES_ID'		=> 80,
 	'SOLAR_ARRAY_ID'			=> 81,
+	'SMALL_FUSION_REACTOR_ID'	=> 82,
+
 	'COMBUSTION_DRIVE_ID'		=> 90,
 
 	'KINETIC_SHIELD_ID'			=> 120,
@@ -52,8 +56,11 @@ $techIds = array(
 	'SMALL_CAPACITOR_ID'		=> 130,
 
 	'IRON_ID'					=> 1000,
+	'MAGNET_COIL_ID'			=> 1005,
+
 	'PLASTICS_ID'				=> 1025,
 	'WATER_ID'					=> 1030,
+	'DEUTERIUM_ID'				=> 1031,
 	'COOLANT_ID'				=> 1035,
 
 	'CRYSTALS_ID'				=> 1050,
@@ -150,6 +157,21 @@ $technology[1] = array(
 		'engine'		=> 2
 	)
 );
+$technology[NIGHTFALL_CB55_ID] = array(
+	'type'		=> Technology::TYPE_STARSHIP,
+	'name'		=> 'NightfallCb55',
+	'price'		=> 13492,
+	'weight'	=> 35,
+	'tonnage'	=> 24,
+	'structure'	=> 86,
+	'slots' => array(
+		'weaponry'		=> 3,
+		'ammunition'	=> 2,
+		'equipment'		=> 1,
+		'cargo'			=> 1,
+		'engine'		=> 2
+	)
+);
 
 $technology[30] = array(
 	'type'		=> Technology::TYPE_MINING_MODULE,
@@ -180,6 +202,7 @@ $technology[40] = array(
  * Missile Pod
  * Imperium Galactica: Anti-matter ray, Torpedo
  * Gauss Cannon (high energy drain)
+ * Tesla gun
  *
  * Burst weapons without ammunition:
  * micro-laser, pulse-laser, quad-laser
@@ -204,7 +227,7 @@ $technology[SMALL_BLASTER_ID] = array(
 	),
 	'craftHint'	=> true
 );
-$technology[61] = array(
+$technology[LIGHT_LASER_ID] = array(
 	'type'			=> Technology::TYPE_WEAPON,
 	'name'			=> 'LightLaser',
 	'level'			=> 1,
@@ -317,6 +340,21 @@ $technology[SOLAR_ARRAY_ID] = array(
 	),
 	'craftHint'	=> true
 );
+$technology[SMALL_FUSION_REACTOR_ID] = array(
+	'type'		=> Technology::TYPE_REACTOR,
+	'name'		=> 'SmallFusionReactor',
+	'level'		=> 4,
+	'weight'	=> 5,
+	'recharge'	=> 7,
+	'capacity'	=> 11,
+	'craft' => array(
+		TECHNICAL_COMPONENTS_ID	=> 1,
+		MAGNET_COIL_ID			=> 1,
+		LIGHT_LASER_ID			=> 1,
+		DEUTERIUM_ID			=> 3
+	),
+	'craftHint'	=> true
+);
 
 $technology[SMALL_CAPACITOR_ID] = array(
 	'type'		=> Technology::TYPE_CAPACITOR,
@@ -332,6 +370,10 @@ $technology[SMALL_CAPACITOR_ID] = array(
 	'craftHint'	=> true
 );
 
+/**
+ * "Somehow engine"
+ * "Extreme engine"
+ */
 $technology[COMBUSTION_DRIVE_ID] = array(
 	'type'		=> Technology::TYPE_DRIVE,
 	'name'		=> 'CombustionDrive',
@@ -375,6 +417,8 @@ $technology[92] = array(
  *
  * Implement regain:
  * Everything that is craftable has a 50% regain chance for 50% of the needed resources (floor)
+ *
+ * Magnetsokopisch megnetosphärer regulator
  */
 $technology[IRON_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,
@@ -385,6 +429,18 @@ $technology[IRON_ID] = array(
 	'craft' => array(
 		SPACE_JUNK_ID	=> 1,
 		ENERGY_CELLS_ID	=> 1
+	),
+	'craftHint'	=> true
+);
+$technology[MAGNET_COIL_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'MagnetCoil',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> null,	// Value for trading.
+	'craft' => array(
+		ENERGY_CELLS_ID	=> 1,
+		IRON_ID			=> 2
 	),
 	'craftHint'	=> true
 );
@@ -401,6 +457,18 @@ $technology[WATER_ID] = array(
 	'weight'	=> 1,
 	'stack'		=> 1,
 	'price'		=> 5	// Value for trading.
+);
+$technology[DEUTERIUM_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'Deuterium',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> null,	// Value for trading.
+	'craft' => array(
+		ENERGY_CELLS_ID	=> 1,
+		WATER_ID		=> 3
+	),
+	'craftHint'	=> true
 );
 $technology[COOLANT_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,

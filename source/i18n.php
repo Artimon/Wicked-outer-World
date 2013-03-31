@@ -59,6 +59,15 @@ $translations = array(
 		'en' => "This gremlin is small and nasty. A light scout machine with comfortable stowage."
 	),
 
+	'nameNightfallCb55' => array(
+		'de' => 'Nightfall Cb55',
+		'en' => 'Nightfall Cb55'
+	),
+	'descNightfallCb55' => array(
+		'de' => 'Der Prototyp dieses Jägers war eigentlich als Fähre geplant, doch durch sein hervorragendes Design stellte sich schnell heraus, dass man besser Waffen anstelle von Frachkisten einbaut.',
+		'en' => 'The prototype of this fighter was intentionally planned as shuttle, but due to its excellent design it emergend that it better should be equipped with weapons instead of transport boxes.'
+	),
+
 /*
 	'cargoNameCargoModule' => array(
 		'de' => 'Frachtmodul',
@@ -183,6 +192,14 @@ $translations = array(
 		'de' => 'Schon verrückt, wir sammeln solare Energie um dann wieder Laserstrahlen daraus zu machen.',
 		'en' => 'Quite loony, we collect solar energy to create laser beams from it.'
 	),
+	'nameSmallFusionReactor' => array(
+		'de' => 'Kleiner Fusionsreaktor',
+		'en' => 'Small Fusion Reactor'
+	),
+	'descSmallFusionReactor' => array(
+		'de' => 'Die Energie der Sonne lodert in diesem Kern!',
+		'en' => 'The sun´s energy blazes in this core!'
+	),
 
 	'nameSmallCapacitor' => array(
 		'de' => 'Kleiner Kondensator',
@@ -230,6 +247,14 @@ $translations = array(
 		'de' => 'Die meisten Ausrüstungsteile werden aus Eisen gebaut. Dummerweise muss man das Eisen erst aus dem vielen Weltraumschrott herausschmelzen.',
 		'en' => 'Most equipment parts are made from iron. Unforunately you got to melt that iron out of all that space junk.'
 	),
+	'nameMagnetCoil' => array(
+		'de' => 'Magnetspule',
+		'en' => 'Magnet Coil'
+	),
+	'descMagnetCoil' => array(
+		'de' => 'Damit lassen sich Projektile und Teilchen wunderbar Beschleunigen.',
+		'en' => 'Projectiles and particles can be wonderfully accellerated with it.'
+	),
 	'namePlastics' => array(
 		'de' => 'Plastik',
 		'en' => 'Plastics'
@@ -245,6 +270,14 @@ $translations = array(
 	'descWater' => array(
 		'de' => 'Wasser kann zum Reinigen oder Mischen anderer Flüssigkeiten verwandt werden.',
 		'en' => 'Water can be used for cleaning or mixing with other fluids.'
+	),
+	'nameDeuterium' => array(
+		'de' => 'Deuterium',
+		'en' => 'Deuterium'
+	),
+	'descDeuterium' => array(
+		'de' => 'Der Brennstoff moderner Fusionsreaktoren.',
+		'en' => 'The fuel of modern fusion reactors.'
 	),
 	'nameCoolant' => array(
 		'de' => 'Kühlflüssigkeit',

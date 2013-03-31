@@ -22,6 +22,10 @@ class RenderTradeDeckShop extends RenderTradeDeckAbstract {
 		}
 
 		$item = Technology::raw($techId);
+		if ($item->isStarship()) {
+			return;
+		}
+
 		if (!$this->canAfford($item, $amount)) {
 			return;
 		}
@@ -63,7 +67,7 @@ class RenderTradeDeckShop extends RenderTradeDeckAbstract {
 		$config = array_keys($config->technology);
 		foreach ($config as $techId) {
 			$item = Technology::raw($techId);
-			if (!$item->isShoppable()) {
+			if (!$item->isShoppable() || $item->isStarship()) {
 				continue;
 			}
 
