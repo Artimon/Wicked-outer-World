@@ -74,6 +74,7 @@ class RenderTradeDeckShop extends RenderTradeDeckAbstract {
 			$type = $item->type();
 			if (!array_key_exists($type, $groups)) {
 				$groups[$type] = array(
+					'type' => $type,
 					'name' => $item->typeName(),
 					'items' => array()
 				);
@@ -84,11 +85,15 @@ class RenderTradeDeckShop extends RenderTradeDeckAbstract {
 			$groups[$type]['items'][] = $this->itemLine($item, $buyableAmount);
 		}
 
+		usort($groups, function ($a, $b) {
+			return ($a['name'] > $b['name'] ? 1 : -1);
+		});
+
 		$html = '';
 		$lastType = null;
 		foreach ($groups as $type => &$data) {
-			if ($lastType !== $type) {
-				$lastType = $type;
+			if ($lastType !== $data['type']) {
+				$lastType = $data['type'];
 
 				$html .= "
 <a href='javascript:;' class='accordion headline'>

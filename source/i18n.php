@@ -1038,7 +1038,7 @@ $translations = array(
 		'en' => 'That was quite close. For %s you let %s go.'
 	),
 	'skirmishWellWon' => array(
-		'de' => 'Du hast %s ziehmlich zerlegt und %s erbeutet.',
+		'de' => 'Du hast %s ziemlich zerlegt und %s erbeutet.',
 		'en' => 'You really tore %s apart and took %s.'
 	),
 	'outOfFuel' => array(
