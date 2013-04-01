@@ -47,10 +47,8 @@ class RenderFactoryFiddle extends RenderFactoryAbstract {
 
 		$selectData = array(0 => i18n('empty'));
 		foreach ($items as $item) {
-			if ($item->isIngredient()) {
-				$techId = $item->id();
-				$selectData[$techId] = "{$item->name()} ({$item->amount()})";
-			}
+			$techId = $item->id();
+			$selectData[$techId] = "{$item->name()} ({$item->amount()})";
 		}
 
 		$temp = "

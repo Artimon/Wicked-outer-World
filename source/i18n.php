@@ -875,6 +875,10 @@ $translations = array(
 		'de' => 'Basteln',
 		'en' => 'Crafting'
 	),
+	'craftingHelp' => array(
+		'de' => 'Mit besseren Handwerksfähigkeiten kannst Du neue Objekte herstellen.',
+		'en' => 'With better crafting skills you can craft new objects.'
+	),
 	'train' => array(
 		'de' => 'Trainieren',
 		'en' => 'Train'
@@ -1152,6 +1156,10 @@ $translations = array(
 	'lookForAnEngineer' => array(
 		'de' => '*schaue nach einem Ingenieur*',
 		'en' => '*look for an engineer*'
+	),
+	'noFiddleHint' => array(
+		'de' => 'Heute habe ich leider keinen neuen Tipp für Dich.',
+		'en' => 'Unfortunately I got no hint for you today.'
 	),
 
 	/*****************************************************

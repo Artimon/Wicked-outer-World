@@ -67,6 +67,13 @@ class crafting extends Lisbeth_Entity {
 	 * @return bool
 	 */
 	public function canCraft(techGroup $stock, $techId) {
+		$itemLevel = Technology::raw($techId)->level();
+		$craftingLevel = $stock->techContainer()->account()->craftingLevel();
+
+		if ($itemLevel > $craftingLevel) {
+			return false;
+		}
+
 		return (
 			$this->hasRecipe($techId) &&
 			$stock->hasIngredients($techId)

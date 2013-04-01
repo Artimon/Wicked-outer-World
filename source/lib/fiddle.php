@@ -43,6 +43,7 @@ class Fiddle {
 	 * @return int|null
 	 */
 	public function commit(stockage $stockage) {
+		$level = $stockage->account()->craftingLevel();
 		$stock = $stockage->stock();
 		$config = Config::getInstance()->technology();
 
@@ -53,6 +54,11 @@ class Fiddle {
 			}
 
 			if ($ingredientCount !== count($data['craft'])) {
+				continue;
+			}
+
+			$item = Technology::raw($techId);
+			if ($level < $item->level()) {
 				continue;
 			}
 

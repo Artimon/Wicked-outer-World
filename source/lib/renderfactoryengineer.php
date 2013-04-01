@@ -5,6 +5,7 @@ class RenderFactoryEngineer extends RenderFactoryAbstract {
 	 * @return string
 	 */
 	public function bodyHtml() {
+		/** @var $list Technology[] */
 		$list = array();
 
 		$config = Config::getInstance()->technology();
@@ -24,16 +25,26 @@ class RenderFactoryEngineer extends RenderFactoryAbstract {
 		$index = $random->random(1, count($list)) - 1;
 		$item = $list[$index];
 
-		$list = array();
+		$account = $this->account();
+		$crafting = $account->crafting();
+		$hasRecipe = $crafting->hasRecipe($item->id());
+		$hasLevel = ($account->craftingLevel() >= $item->level());
 
-		/** @var $item Technology */
-		foreach ($item->craftIngredients() as $techId => $amount) {
-			$list[] = $amount . ' ' . html::techLink($techId);
+		if ($hasRecipe || ! $hasLevel) {
+			$hint = i18n('noFiddleHint');
 		}
+		else {
+			$list = array();
 
-		$headline = i18n('engineer');
-		$description = i18n('engineerDescription');
-		$hint = i18n('haveYouTriedFiddle', implode(', ', $list));
+			/** @var $item Technology */
+			foreach ($item->craftIngredients() as $techId => $amount) {
+				$list[] = $amount . ' ' . html::techLink($techId);
+			}
+
+			$headline = i18n('engineer');
+			$description = i18n('engineerDescription');
+			$hint = i18n('haveYouTriedFiddle', implode(', ', $list));
+		}
 
 		return "
 			<h2>{$headline}</h2>

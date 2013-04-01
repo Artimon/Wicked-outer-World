@@ -46,11 +46,17 @@ class RenderLogin extends RendererAbstract {
 <div class='columLeft'>
 	<h2 class='error'>{$developmentHeadline}</h2>
 	<p>{$developmentMessage}</p>
+	<h2>Montag Mittag Update (german)</h2>
+	<ul>
+		<li>Neue Objekte und Schiffsmodelle.</li>
+		<li>Implementation des Herstellen-Skills.</li>
+		<li>Kleinere Anpassungen.</li>
+	</ul>
 	<h2>Samstag Morgen Update (german)</h2>
 	<ul>
 		<li>Raumschiff-Laden er&ouml;ffnet.</li>
 		<li>Missions-Ertr&auml;ge erh&ouml;ht.</li>
-		<li>Munnition-ins-Lader-zur&uuml;ck-Bug behoben.</li>
+		<li>Munition-ins-Lader-zur&uuml;ck-Bug behoben.</li>
 	</ul>
 	<h2>Freitag Morgen Update (german)</h2>
 	<ul>

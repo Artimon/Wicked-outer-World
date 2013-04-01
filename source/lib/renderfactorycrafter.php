@@ -106,7 +106,7 @@ class RenderFactoryCrafter extends RenderFactoryAbstract {
 						<form action='' method='post'>
 							<input type='hidden' name='craft' value='{$techId}'>
 							<input type='hidden' name='token' value='{$token}'>
-							<input id='craftCommit' data-n='{$amount}' type='submit' class='button{$disabled}' value='{$craft}'>
+							<input data-n='{$amount}' type='submit' class='craftCommit button{$disabled}' value='{$craft}'>
 						</form>
 					</div>";
 			}
@@ -123,7 +123,7 @@ class RenderFactoryCrafter extends RenderFactoryAbstract {
 			</div>";
 
 
-		$js = "$('#craftCommit').craft();";
+		$js = "$('.craftCommit').craft();";
 		JavaScript::create()->bind($js);
 
 		return $html;

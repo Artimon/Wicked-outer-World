@@ -33,6 +33,7 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 		$crafting = i18n('crafting');
 		$tacticsHelp = i18n('tacticsHelp');
 		$defenseHelp = i18n('defenseHelp');
+		$craftingHelp = i18n('craftingHelp');
 
 		$train = i18n('train');
 
@@ -102,7 +103,10 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 		</td>
 	</tr><tr>
 	<tr>
-		<td class='highlight'>{$crafting}</td>
+		<td class='highlight'>
+			{$crafting}
+			<span class='infoIcon tipTip' title='{$craftingHelp}'></span>
+		</td>
 		<td class='smallFont variable'>
 			{$account->craftingLevel()}<br>
 			{$bars->craftingProgress()}
