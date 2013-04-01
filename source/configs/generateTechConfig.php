@@ -39,6 +39,7 @@ require_once '../lib/technology.php';
 $techIds = array(
 	'CREMLIN_ID'				=> 3,
 	'NIGHTFALL_CB55_ID'			=> 4,
+	'RELENTLESS_ID'				=> 5,
 
 	'SMALL_BLASTER_ID'			=> 60,
 	'LIGHT_LASER_ID'			=> 61,
@@ -170,6 +171,21 @@ $technology[NIGHTFALL_CB55_ID] = array(
 		'equipment'		=> 1,
 		'cargo'			=> 1,
 		'engine'		=> 2
+	)
+);
+$technology[RELENTLESS_ID] = array(
+	'type'		=> Technology::TYPE_STARSHIP,
+	'name'		=> 'Relentless',
+	'price'		=> 14732,
+	'weight'	=> 35,
+	'tonnage'	=> 21,
+	'structure'	=> 102,
+	'slots' => array(
+		'weaponry'		=> 2,
+		'ammunition'	=> 1,
+		'equipment'		=> 2,
+		'cargo'			=> 1,
+		'engine'		=> 3
 	)
 );
 

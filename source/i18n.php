@@ -68,6 +68,15 @@ $translations = array(
 		'en' => 'The prototype of this fighter was intentionally planned as shuttle, but due to its excellent design it emergend that it better should be equipped with weapons instead of transport boxes.'
 	),
 
+	'nameRelentless' => array(
+		'de' => 'Relentless',
+		'en' => 'Relentless'
+	),
+	'descRelentless' => array(
+		'de' => 'Relentless-Klasse Raumgleiter sind durch ihre vielen Zusatzmodul-Slots speziell für Erkundungsmissionen ausgelegt.',
+		'en' => 'Relentless-Class space gliders have many supplement-slots and thus are specially designed for exploration missions.'
+	),
+
 /*
 	'cargoNameCargoModule' => array(
 		'de' => 'Frachtmodul',
