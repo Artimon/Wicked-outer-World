@@ -382,9 +382,11 @@ function ConfirmBox(initCallback, confirmCallback) {
 		var $this = this;
 
 		$this.click(function (event) {
+			var $button = $(this);
+
 			event.preventDefault();
 
-			if ($(this).hasClass('disabled')) {
+			if ($button.hasClass('disabled')) {
 				return;
 			}
 
@@ -395,8 +397,8 @@ function ConfirmBox(initCallback, confirmCallback) {
 						'default',
 						function () {
 							startIncrement(
-								$this.parent(),
-								$this.data('n')
+								$button.parent(),
+								$button.data('n')
 							);
 						}
 					);
