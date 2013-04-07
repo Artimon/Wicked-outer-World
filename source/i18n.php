@@ -585,6 +585,67 @@ $translations = array(
 	),
 
 	/*****************************************************
+	 * Bank
+	 ****************************************************/
+
+	'bank' => array(
+		'de' => 'Bank',
+		'en' => 'Bank'
+	),
+	'bankHeadline' => array(
+		'de' => 'Inter-Space Bank',
+		'en' => 'Inter-Space Bank'
+	),
+	'bankDescription' => array(
+		'de' => 'Willkommen in der ISB, wie können wir Ihnen helfen?',
+		'en' => 'Welcome to the ISB, how can we help you?'
+	),
+	'createBankAccount' => array(
+		'de' => 'Konto eröffnen',
+		'en' => 'Create account'
+	),
+	'create' => array(
+		'de' => 'Erstellen',
+		'en' => 'Create'
+	),
+	'bankAccountInfo' => array(
+		'de' => 'Auf einem Bankkonto kannst Du Deine Ersparnisse vor fiesen Piraten in Sicherheit bringen.',
+		'en' => 'On a bank account you can save your savings from nasty pirates.'
+	),
+	'bankAccountCreated' => array(
+		'de' => 'Du hast ein Bankkonto eröffnet.',
+		'en' => 'You created a bank account.'
+	),
+	'yourAccountBalance' => array(
+		'de' => 'Dein Kontostand',
+		'en' => 'Your account balance'
+	),
+	'bankTransferInfo' => array(
+		'de' => 'Für jeden Geldtransfer erheben wir eine Gebühr von %s.',
+		'en' => 'For every money transfer we charge a free of %s.'
+	),
+	'notEnoughMoney' => array(
+		'de' => 'Dir fehlt leider das nötige Kleingeld.',
+		'en' => 'You lack the necessary change.'
+	),
+	'depositSuccess' => array(
+		'de' => 'Du hast %s eingezahlt.',
+		'en' => 'You deposited %s.'
+	),
+	'drawSuccess' => array(
+		'de' => 'Du hast %s abgehoben.',
+		'en' => 'You drew %s.'
+	),
+	'bankIn' => array(
+		'de' => 'Einzahlen',
+		'en' => 'Deposit'
+	),
+	'bankOut' => array(
+		'de' => 'Abheben',
+		'en' => 'Draw'
+	),
+
+	/*****************************************************
 	 * Trade Deck
 	 ****************************************************/
 

@@ -46,6 +46,11 @@ class RenderLogin extends RendererAbstract {
 <div class='columLeft'>
 	<h2 class='error'>{$developmentHeadline}</h2>
 	<p>{$developmentMessage}</p>
+	<h2>Sonntag Mittag Update (german)</h2>
+	<ul>
+		<li>Bank er&ouml;ffnet!</li>
+		<li>Kr&auml;mer er&ouml;ffnet!</li>
+	</ul>
 	<h2>Montag Mittag Update (german)</h2>
 	<ul>
 		<li>Neue Objekte und Schiffsmodelle.</li>
@@ -57,13 +62,6 @@ class RenderLogin extends RendererAbstract {
 		<li>Raumschiff-Laden er&ouml;ffnet.</li>
 		<li>Missions-Ertr&auml;ge erh&ouml;ht.</li>
 		<li>Munition-ins-Lader-zur&uuml;ck-Bug behoben.</li>
-	</ul>
-	<h2>Freitag Morgen Update (german)</h2>
-	<ul>
-		<li>Status-Block Schiffszustand wird im Kampf aktualisiert.</li>
-		<li>Kontostand wird zum richtigen Zeitpunkt aktualisiert.</li>
-		<li>Mission Schrott sammeln fertiggestellt.</li>
-		<li>Ausr&uuml;sten von mehr Items als m&ouml;glich behoben.</li>
 	</ul>
 </div>
 <div class='clear'></div>";;

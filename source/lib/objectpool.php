@@ -132,6 +132,14 @@ class ObjectPool {
 
 	/**
 	 * @param Account $account
+	 * @return Bank
+	 */
+	public function bank(Account $account) {
+		return $this->fromPool('Bank', $account);
+	}
+
+	/**
+	 * @param Account $account
 	 * @return ActionProfileHealthCare
 	 */
 	public function actionProfileHealthCare(Account $account) {

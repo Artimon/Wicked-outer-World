@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Artimus
- * Date: 12.09.12
- * Time: 20:08
- * To change this template use File | Settings | File Templates.
- */
+
 interface RendererInterface {
 	/**
 	 * @return string

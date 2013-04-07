@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Pascal
- * Date: 18.04.12
- * Time: 12:27
- * To change this template use File | Settings | File Templates.
- */
+
 class Vector {
 	/**
 	 * @var float

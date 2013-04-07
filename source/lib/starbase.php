@@ -23,6 +23,7 @@ class Starbase {
 	const MODULE_SOLAR_POWER	= 7;	// Buy energy cells
 	const MODULE_LOUNGE			= 8;	// Quests?
 	const MODULE_ASTROMETRICS	= 9;	// "astrometrisches Labor" = map
+	const MODULE_BANK			= 10;
 
 	/**
 	 * @var int
@@ -57,6 +58,7 @@ class Starbase {
 			new StarbaseModuleQuarters(),
 			new StarbaseModuleAcademy(),
 			new StarbaseModuleJumpGate(),
+			new StarbaseModuleBank(),
 			new StarbaseModuleTradeDeck(),
 			new StarbaseModuleFactory(),
 			new StarbaseModuleHangar(),

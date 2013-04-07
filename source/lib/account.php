@@ -398,6 +398,13 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
+	 * @return Bank
+	 */
+	public function bank() {
+		return ObjectPool::get()->bank($this);
+	}
+
+	/**
 	 * @return int
 	 */
 	public function tacticsLevel() {

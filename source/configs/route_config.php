@@ -17,6 +17,10 @@ return array(
 		'controller'	=> 'ControllerHangar',
 		'database'		=> true
 	),
+	'bank' => array(
+		'controller'	=> 'ControllerBank',
+		'database'		=> true
+	),
 	'tradeDeck' => array(
 		'controller'	=> 'ControllerTradeDeck',
 		'database'		=> true
