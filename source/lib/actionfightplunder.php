@@ -9,6 +9,7 @@ class ActionFightPlunder {
 	public function apply(Starship $aggressor, Starship $victim) {
 		$account = $victim->account();
 		$value = $account->money()->value();
+		$value = max(0, $value);
 		$value = round(.1 * $value);
 
 		$account->decrement('money', $value)->update();

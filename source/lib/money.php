@@ -5,7 +5,14 @@ class Money extends AccountSubclass {
 	 * @return int
 	 */
 	public function value() {
-		return (int)$this->account()->value('money');
+		$money = (int)$this->account()->value('money');
+
+		if ($money < 0) {
+			$money = 0;
+			$this->account()->setValue('money', $money)->update();
+		}
+
+		return $money;
 	}
 
 	/**

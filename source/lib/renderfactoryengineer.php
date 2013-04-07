@@ -41,10 +41,11 @@ class RenderFactoryEngineer extends RenderFactoryAbstract {
 				$list[] = $amount . ' ' . html::techLink($techId);
 			}
 
-			$headline = i18n('engineer');
-			$description = i18n('engineerDescription');
 			$hint = i18n('haveYouTriedFiddle', implode(', ', $list));
 		}
+
+		$headline = i18n('engineer');
+		$description = i18n('engineerDescription');
 
 		return "
 			<h2>{$headline}</h2>

@@ -20,6 +20,8 @@ class RenderTradeDeckStarships extends RenderTradeDeckAbstract {
 			EventBox::get()->failure(
 				i18n('youArePoor')
 			);
+
+			return;
 		}
 
 		$price->buy();
