@@ -6,7 +6,7 @@ class RenderFactoryDisassemble extends RenderFactoryAbstract {
 	 */
 	public function bodyHtml() {
 		$headline = i18n('disassemble');
-		$description = i18n('grocerDescription');
+		$description = i18n('inPreparation');
 
 		return "
 			<h2 class='error'>{$headline}</h2>

@@ -605,8 +605,8 @@ $translations = array(
 		'en' => 'Grocer'
 	),
 	'grocerDescription' => array(
-		'de' => 'Die Vorbereitungen zur Eröffnung sind in vollem Gange.',
-		'en' => 'The preparations for the opening are ongoing.'
+		'de' => 'Du hast ein paar gebrauchte Dinge übrig? Hmm... mal sehen ob ich damit etwas anfangen kann.',
+		'en' => 'You got some things left over? Hmm... lets see if I can take use of something.'
 	),
 	'starships' => array(
 		'de' => 'Raumschiffe',
@@ -624,6 +624,10 @@ $translations = array(
 		'de' => 'Kaufen',
 		'en' => 'Buy'
 	),
+	'sell' => array(
+		'de' => 'Verkaufen',
+		'en' => 'Sell'
+	),
 	'depollute' => array(
 		'de' => 'Entsorgen',
 		'en' => 'Depollute'
@@ -631,6 +635,10 @@ $translations = array(
 	'itemBought' => array(
 		'de' => 'Du hast %s in Dein Lager gelegt.',
 		'en' => 'You put %s to you stock'
+	),
+	'itemSold' => array(
+		'de' => 'Du hast %s %s für %s verkauft.',
+		'de' => 'You sold %s %s for %s.'
 	),
 	'itemsDepolluted' => array(
 		'de' => 'Du hast %s %s entsorgt.',
@@ -651,6 +659,11 @@ $translations = array(
 	'shipBought' => array(
 		'de' => 'Gratulation! Viel Spaß mit Deinem neuen Schiff.',
 		'en' => 'Congratulation! Have fun with your new ship.'
+	),
+
+	'inPreparation' => array(
+		'de' => 'Die Vorbereitungen zur Eröffnung sind in vollem Gange.',
+		'en' => 'The preparations for the opening are ongoing.'
 	),
 
 	/*****************************************************

@@ -27,6 +27,16 @@ class Price extends AccountSubclass {
 	}
 
 	/**
+	 * Note:
+	 * Does not update immediately.
+	 *
+	 * @return Account
+	 */
+	public function sell() {
+		return $this->account()->increment('money', $this->value);
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function canAfford() {
