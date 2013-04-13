@@ -114,7 +114,17 @@ class RenderLogin extends RendererAbstract {
 			return null;
 		}
 
-		$_SESSION['id'] = (int)$account['id'];
+		$accountId = (int)$account['id'];
+
+		$session = new Leviathan_Session();
+		$session->store('id', $accountId);
+
+		$cookie = new Leviathan_Cookie();
+		$cookie->store(
+			'user',
+			md5($accountId . '_wow'),
+			86400 * 365
+		);
 
 		return Game::getInstance()->account();
 	}

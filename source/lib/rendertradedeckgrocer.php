@@ -70,7 +70,7 @@ class RenderTradeDeckGrocer extends RenderTradeDeckAbstract {
 	 * @return int
 	 */
 	public function sellPrice(Technology $item) {
-		return (int)round(0.09 * $item->shopPrice());
+		return max(1, (int)round(0.09 * $item->shopPrice()));
 	}
 
 	/**

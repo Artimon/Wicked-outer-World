@@ -114,6 +114,12 @@ function ConfirmBox(initCallback, confirmCallback) {
 			var $this = $(this),
 				href = $this.attr('href');
 
+			if ($this.hasClass('disabled')) {
+				event.preventDefault();
+
+				return;
+			}
+
 			$('.trainingOverview').fadeOut(
 				'default',
 				function () {
@@ -188,6 +194,12 @@ function ConfirmBox(initCallback, confirmCallback) {
 				initCallback,
 				confirmCallback,
 				html;
+
+			if ($this.hasClass('disabled')) {
+				event.preventDefault();
+
+				return;
+			}
 
 			if (amountPossible > 1) {
 				initCallback = function () {
@@ -327,8 +339,6 @@ function ConfirmBox(initCallback, confirmCallback) {
 		});
 
 		$this.click(function (event) {
-			var value;
-
 			event.preventDefault();
 			$this.addClass('disabled');
 
@@ -904,9 +914,18 @@ function init(engine2d, duration) {
 	}, 1000);
 }
 
+/**
+ * Common stuff.
+ */
 (function ($) {
 	$('.accordion').click(function () {
 		$(this).next().slideToggle();
+	});
+
+	$('.button').click(function (event) {
+		if ($(this).hasClass('disabled')) {
+			event.preventDefault();
+		}
 	});
 }(jQuery));
 

@@ -16,6 +16,9 @@ class RenderLogout extends RendererAbstract {
 		$description = i18n('logoutDescription');
 		$footNote = i18n('logoutFootNote');
 
+		$cookie = new Leviathan_Cookie();
+		$cookie->store('user', '');
+
 		return "
 			<h2 class='error'>{$headline}</h2>
 			<p>{$description}</p>
