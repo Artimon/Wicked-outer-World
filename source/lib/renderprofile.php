@@ -12,8 +12,8 @@ class RenderProfile extends RendererAbstract {
 			: $this->profileHtml();
 
 		return "
-<div class='floatRight columRight'>{$content}</div>
-<div class='center columLeft'>
+<div class='floatRight columnRight'>{$content}</div>
+<div class='center columnLeft'>
 	<img src='./wow/img/tmp_char.png'>
 </div>
 <div class='clear'></div>";

@@ -2,6 +2,12 @@
 
 class ControllerLogin extends ControllerAbstract {
 	protected function remember() {
+		if (Game::getInstance()->isOnline()) {
+			$this->redirect(
+				$this->route('profile')
+			);
+		}
+
 		$cookie = new Leviathan_Cookie();
 
 		$userKey = $cookie->value('user');
