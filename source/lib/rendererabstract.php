@@ -7,7 +7,7 @@
  */
 abstract class RendererAbstract implements RendererInterface {
 	/**
-	 * @var ControllerInterface
+	 * @var ControllerAbstract
 	 */
 	private $controller;
 

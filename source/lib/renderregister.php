@@ -16,6 +16,32 @@ class RenderRegister extends RendererAbstract {
 		);
 	}
 
+	/**
+	 * @param string $name
+	 * @param string $password
+	 * @param string $to
+	 */
+	protected function welcomeMail($name, $password, $to) {
+		$gameName = Game::getInstance()->name();
+		$subject = i18n('accountData', $gameName);
+
+		$message = i18n(
+			'welcomeMail',
+			$gameName,
+			$name,
+			$password,
+			$gameName,
+			$gameName
+		);
+
+		mail(
+			$to,
+			$subject,
+			$message,
+			"From: registration@wicked-outer-world.com"
+		);
+	}
+
 	protected function check() {
 		$request = $this->request();
 		if (!$request->post('register')) {
@@ -34,6 +60,12 @@ class RenderRegister extends RendererAbstract {
 		);
 
 		if (empty($invalid)) {
+			$this->welcomeMail(
+				$values['name'],
+				$values['password'],
+				$values['email']
+			);
+
 			$this->controller()->redirect(
 				$this->controller()->route('profile')
 			);

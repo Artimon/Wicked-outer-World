@@ -142,6 +142,33 @@ function ConfirmBox(initCallback, confirmCallback) {
 	};
 }(jQuery));
 
+(function ($) {
+	$.fn.messageOverview = function () {
+		this.find('.showHideMessage').click(function () {
+			var $this = $(this);
+
+			if (!$this.data('seen')) {
+				$this.data('seen', 1);
+				$this.closest('tr').removeClass('bold');
+
+				$.get($this.data('url'));
+			}
+
+			$this
+				.toggleClass('entypo-down-open')
+				.toggleClass('entypo-up-open');
+
+			$this.parent().parent().next().toggle();
+		});
+	};
+
+	$.fn.deleteMessage = function (message) {
+		this.click(function () {
+			return window.confirm(message);
+		});
+	};
+}(jQuery));
+
 
 /**
  * Wrapped function closure to event box.

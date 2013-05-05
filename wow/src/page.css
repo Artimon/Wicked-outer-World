@@ -1,3 +1,4 @@
+@import url(http://weloveiconfonts.com/api/?family=entypo);
 /* Hover arrows */
 * {
   padding: 0px;
@@ -47,7 +48,7 @@ form {
 input[type=text],
 input[type=password],
 select,
-.textinput {
+textarea {
   color: #0E1423;
   width: 120px;
   background: mintcream url(http://board-schlacht-um-kyoto.de/img_suk/candy_input.png) repeat-x;
@@ -57,7 +58,7 @@ select,
   input[type=text]:focus,
   input[type=password]:focus,
   select:focus,
-  .textinput:focus {
+  textarea:focus {
     border: 1px solid #91BAD5;
     border-top: 1px solid #6796AE;
     -webkit-box-shadow: 0 0 2px #6796AE, inset 0 0 2px #6796AE;
@@ -68,7 +69,7 @@ select,
   input[type=text].error,
   input[type=password].error,
   select.error,
-  .textinput.error {
+  textarea.error {
     background: #fac8ca;
     border: 1px solid #e3131e;
     border-top: 1px solid #e3131e;
@@ -77,6 +78,10 @@ select,
     -moz-box-shadow: 0 0 4px #e3131e, inset 0 0 4px #e3131e;
     /* firefox */
     box-shadow: 0 0 4px #e3131e, inset 0 0 4px #e3131e; }
+
+textarea {
+  width: 400px;
+  height: 250px; }
 
 input[type=text].small,
 select.small {
@@ -413,6 +418,23 @@ div.ingredient {
     font-weight: bold;
     white-space: nowrap; }
 
+#messages table {
+  width: 100%; }
+  #messages table tr td .entypo-cancel,
+  #messages table tr td .entypo-down-open,
+  #messages table tr td .entypo-up-open {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 5px; }
+  #messages table tr.bold td {
+    font-weight: bold; }
+  #messages table tr.message {
+    display: none; }
+  #messages table.message {
+    width: 400px; }
+
 /* Event box */
 .eventBox {
   position: absolute;
@@ -627,3 +649,8 @@ div.progressBar {
     color: white !important; }
     .button.important:hover {
       text-shadow: 0 0 2px white !important; }
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  color: white; }

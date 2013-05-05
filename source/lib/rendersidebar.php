@@ -74,6 +74,17 @@ class RenderSidebar {
 		$eventsTitle		= i18n('events');
 		$premiumCoinsTitle	= i18n('premiumCoins');
 
+		$messages = new MessagesReceived(
+			$account->id()
+		);
+		$messageCount = count(
+			$messages->entityIds()
+		);
+
+		if ($messageCount === 0) {
+			$messageCount = '-';
+		}
+
 		/*
 		 * Space Pounds s£
 		 * Space Pfund s£
@@ -84,13 +95,15 @@ class RenderSidebar {
 <div>{$moneyName}</div>
 <div class='clear seperator'></div>
 
-<div class='floatRight'>-</div>
-<div>{$messagesTitle}</div>
+<div class='floatRight'>{$messageCount}</div>
+<div>
+	<a href='?page=messages'>{$messagesTitle}</a>
+</div>
 <div class='clear seperator'></div>
 
-<div class='floatRight'>-</div>
-<div>{$eventsTitle}</div>
-<div class='clear seperator'></div>
+<!--<div class='floatRight'>-</div>-->
+<!--<div>{$eventsTitle}</div>-->
+<!--<div class='clear seperator'></div>-->
 
 <div class='floatRight'>{$premiumCoins}</div>
 <div>{$premiumCoinsTitle}</div>";

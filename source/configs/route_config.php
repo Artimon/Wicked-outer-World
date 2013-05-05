@@ -5,12 +5,20 @@ return array(
 		'controller'	=> 'ControllerProfile',
 		'database'		=> true
 	),
+	'messages' => array(
+		'controller'	=> 'ControllerMessages',
+		'database'		=> true
+	),
 	'quarters' => array(
 		'controller'	=> 'ControllerQuarters',
 		'database'		=> true
 	),
 	'academy' => array(
 		'controller'	=> 'ControllerAcademy',
+		'database'		=> true
+	),
+	'jumpGate' => array(
+		'controller'	=> 'ControllerJumpGate',
 		'database'		=> true
 	),
 	'hangar' => array(

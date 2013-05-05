@@ -728,6 +728,10 @@ $translations = array(
 	),
 
 	/*****************************************************
+	 * Jump Gate
+	 ****************************************************/
+
+	/*****************************************************
 	 * Crafter
 	 ****************************************************/
 
@@ -827,6 +831,75 @@ $translations = array(
 	'back' => array(
 		'de' => 'Zurück',
 		'en' => 'Back'
+	),
+
+	/*****************************************************
+	 * Messages
+	 ****************************************************/
+
+	'write' => array(
+		'de' => 'Schreiben',
+		'en' => 'Write'
+	),
+	'sent' => array(
+		'de' => 'Gesendet',
+		'en' => 'Sent'
+	),
+	'action' => array(
+		'de' => 'Aktion',
+		'en' => 'Action'
+	),
+	'sender' => array(
+		'de' => 'Absender',
+		'en' => 'Sender'
+	),
+	'subject' => array(
+		'de' => 'Betreff',
+		'en' => 'Subject'
+	),
+	'stardate' => array(
+		'de' => 'Sternzeit',
+		'en' => 'Stardate'
+	),
+	'delete' => array(
+		'de' => 'Löschen',
+		'en' => 'Delete'
+	),
+	'deleteMessage' => array(
+		'de' => 'Nachricht löschen',
+		'en' => 'Delete message'
+	),
+	'showHideMessage' => array(
+		'de' => 'Nachricht ein- / ausblenden',
+		'en' => 'Show / hide message'
+	),
+	'reallyDeleteMessage' => array(
+		'de' => 'Nachricht wirklich weghauen?',
+		'en' => 'Really dump message?'
+	),
+	'reply' => array(
+		'de' => 'Antworten',
+		'en' => 'Reply'
+	),
+	'messageDeleted' => array(
+		'de' => 'Du hast die Nachricht weggehauen.',
+		'en' => 'You dumped the message.'
+	),
+	'send' => array(
+		'de' => 'Senden',
+		'en' => 'Send'
+	),
+	'recipient' => array(
+		'de' => 'Empfänger',
+		'en' => 'Recipient'
+	),
+	'recipientNotFound' => array(
+		'de' => 'Wir konnten den Spieler %s leider nicht finden.',
+		'en' => 'We were not able to find the player %s.'
+	),
+	'messageSent' => array(
+		'de' => 'Der Postbote macht sich auf den Weg.',
+		'en' => 'The mailman is on its way.'
 	),
 
 	/*****************************************************
@@ -1417,6 +1490,42 @@ $translations = array(
 	'wtfIsThis' => array(
 		'de' => 'WTF is this??? (klick)',
 		'en' => 'WTF is this??? (click)'
+	),
+	'accountData' => array(
+		'de' => 'Dein %s Account',
+		'en' => 'Your %s account'
+	),
+	'welcomeMail' => array(
+		'de' => "Willkommen bei %s,
+
+mit Deinen Account Daten kannst Du Dich jederzeit auf http://www.wicked-outer-world.com einloggen.
+
+----------------------------
+Accountname: %s
+Passwort: %s
+----------------------------
+
+Dies ist eine automatisch generierte Email. Bitte beantworte diese Email nicht, sondern wenden Dich bei Fragen oder Problemen an info@wicked-outer-world.com.
+
+Wir wünschen Dir viel Spaß beim spielen vom %s!
+
+Mit freundlichen Grüßen
+Dein %s Team",
+		'en' => "Welcome at %s,
+
+with your account data you can log in at http://www.wicked-outer-world.com anytime.
+
+----------------------------
+Account name: %s
+Password: %s
+----------------------------
+
+This is an automatically generated email. Please do not answer to thie email. If you got questions or problems contact us at info@wicked-outer-world.com.
+
+Good luck and enjoy playing %s!
+
+Greetings
+Your %s team"
 	),
 
 	/*****************************************************

@@ -202,7 +202,7 @@ form {
 input[type=text],
 input[type=password],
 select,
-.textinput {
+textarea {
 	color: #0E1423;
 	width: 120px;
 
@@ -229,6 +229,11 @@ select,
 		-moz-box-shadow: 0 0 4px $colorError, inset 0 0 4px $colorError; /* firefox */
 		box-shadow: 0 0 4px $colorError, inset 0 0 4px $colorError;
 	}
+}
+
+textarea {
+	width: 400px;
+	height: 250px;
 }
 
 input[type=text].small,
@@ -689,6 +694,40 @@ div.ingredient {
 	}
 }
 
+#messages {
+	table {
+		width: 100%;
+
+		tr {
+			td {
+				.entypo-cancel,
+				.entypo-down-open,
+				.entypo-up-open {
+					display: block;
+
+					width: 20px;
+					height: 20px;
+
+					cursor: pointer;
+					margin-left: 5px;
+				}
+			}
+
+			&.bold td {
+				font-weight: bold;
+			}
+
+			&.message {
+				display: none;
+			}
+		}
+
+		&.message {
+			width: 400px;
+		}
+	}
+}
+
 
 /* Event box */
 .eventBox {
@@ -950,4 +989,13 @@ div.progressBar {
 			text-shadow: 0 0 2px $colorWhite !important;
 		}
 	}
+}
+
+
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+/* entypo */
+[class*="entypo-"]:before {
+	font-family: 'entypo', sans-serif;
+	color: white;
 }
