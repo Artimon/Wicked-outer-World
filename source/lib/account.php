@@ -68,14 +68,16 @@ class Account extends Lisbeth_Entity {
 	 * @param string $password
 	 * @param string $email
 	 * @param int $shipId
+	 * @param string $language
 	 * @return Account
 	 */
-	public static function create($name, $password, $email, $shipId) {
+	public static function create($name, $password, $email, $shipId, $language) {
 		$database = new Lisbeth_Database();
 		$name = $database->escape($name);
 		$email = $database->escape($email);
 		$password = md5($password);
 		$shipId = (int)$shipId;
+		$language = $database->escape($language);
 
 		$sql = "
 			INSERT INTO `accounts`
@@ -83,7 +85,8 @@ class Account extends Lisbeth_Entity {
 				`name` = '{$name}',
 				`password` = '{$password}',
 				`email` = '{$email}',
-				`starshipId` = {$shipId};";
+				`starshipId` = {$shipId},
+				`language` = '{$language}';";
 		$database->query($sql)->freeResult();
 
 		$id = mysql_insert_id();
@@ -105,6 +108,23 @@ class Account extends Lisbeth_Entity {
 		$stock->update();
 
 		return $account;
+	}
+
+	public function abandon() {
+		$accountId = $this->id();
+		$database = new Lisbeth_Database();
+
+		$sql = "DELETE FROM `entities` WHERE `accountId` = {$accountId};";
+		$database->query($sql)->freeResult();
+
+		$sql = "DELETE FROM `messages` WHERE `recipientId` = {$accountId};";
+		$database->query($sql)->freeResult();
+
+		$sql = "DELETE FROM `crafting` WHERE `accountId` = {$accountId};";
+		$database->query($sql)->freeResult();
+
+		$sql = "DELETE FROM `accounts` WHERE `id` = {$accountId};";
+		$database->query($sql)->freeResult();
 	}
 
 	/**

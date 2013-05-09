@@ -122,7 +122,8 @@ abstract class ControllerAbstract implements ControllerInterface {
 	 * @return bool
 	 */
 	protected function assertOnline() {
-		$isOnline = Game::getInstance()->isOnline();
+		$game = Game::getInstance();
+		$isOnline = $game->isOnline();
 		if ($isOnline) {
 			return;
 		}

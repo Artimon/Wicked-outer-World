@@ -68,7 +68,6 @@ class Router {
 			: $routes['default'];
 
 		$database = $this->hasOption($route, 'database');
-		$login = $this->hasOption($route, 'login');
 		$ajax = $this->hasOption($route, 'ajax');
 
 		/** @var $controller ControllerAbstract */

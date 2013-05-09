@@ -50,6 +50,10 @@ return array(
 		'controller'	=> 'ControllerSkirmish',
 		'database'		=> true
 	),
+	'account' => array(
+		'controller'	=> 'ControllerAccount',
+		'database'		=> true
+	),
 	'logout' => array(
 		'controller'	=> 'ControllerLogout',
 		'database'		=> true

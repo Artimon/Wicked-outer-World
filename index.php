@@ -36,6 +36,13 @@ class dispatcher {
 	}
 
 	/**
+	 * @return array
+	 */
+	public function availableLanguages() {
+		return array('de', 'en');
+	}
+
+	/**
 	 * @return string
 	 */
 	public function acceptedLanguage() {
@@ -43,7 +50,7 @@ class dispatcher {
 		$language = $request->server('HTTP_ACCEPT_LANGUAGE');
 		$language = substr($language, 0, 2);
 
-		$availableLanguages = array('de', 'en');
+		$availableLanguages = $this->availableLanguages();
 
 		return in_array($language, $availableLanguages)
 			? $language
@@ -51,25 +58,45 @@ class dispatcher {
 	}
 
 	public function dispatch() {
-		// @TODO refactor to session object
 		$session = new Leviathan_Session();
 
-		$acceptedLanguage = $this->acceptedLanguage();
-
 		$language = Request::getInstance()->get('lang');
-		if ($language) {
-			// @TODO Validate against available languages.
+		if ($language && in_array($language, $this->availableLanguages())) {
 			$session->store('language', $language);
 		}
 
 		if (!$session->value('language')) {
-			$session->store('language', $acceptedLanguage);
+			if (!$language) {
+				$language = $this->acceptedLanguage();
+			}
+
+			$session->store('language', $language);
 		}
 
 		$content = $this->controller();
 		echo $content->ajax()
 			? $this->ajax($content)
 			: $this->html($content);
+	}
+
+	/**
+	 * @param Account $account
+	 */
+	private function updateLanguage(Account $account) {
+		$session = new Leviathan_Session();
+
+		$languageAccount = $account->value('language');
+		$languageRequest = Request::getInstance()->both('lang');
+		$languageSession = $session->value('language');
+		if ($languageRequest) {
+			// Language has already been validated.
+			$account
+				->setValue('language', $languageSession)
+				->update();
+		}
+		elseif ($languageSession !== $languageAccount) {
+			$session->store('language', $languageAccount);
+		}
 	}
 
 	/**
@@ -100,9 +127,10 @@ class dispatcher {
 		$game = Game::getInstance();
 
 		if ($fullPage && $game->isOnline()) {
-			Initial::get()->pollute(
-				$game->account()
-			);
+			$account = $game->account();
+			$this->updateLanguage($account);
+
+			Initial::get()->pollute($account);
 		}
 
 //		switch ($this->route) {
@@ -213,8 +241,11 @@ class dispatcher {
 
 		$leaveFeedback = i18n('leaveFeedback');
 
+		$session = new Leviathan_Session();
+		$languageUrl = '?page=' . Request::getInstance()->both('page'). '&amp;lang=';
+
 		return "<!doctype html>
-<html lang='de'>
+<html lang='{$session->value('language')}'>
 	<head>
 		<title>{$title}</title>
 		<meta http-equiv='content-type' content='text/html; charset=windows-1252'>
@@ -231,8 +262,8 @@ class dispatcher {
 			{$eventBox->toHtml()}
 			<div id='topBanner'>
 				<div id='languageSelector'>
-					<a href='index.php?lang=de' class='lang de' title='Deutsch'></a>
-					<a href='index.php?lang=en' class='lang en' title='English'></a>
+					<a href='{$languageUrl}de' class='lang de' title='Deutsch'></a>
+					<a href='{$languageUrl}en' class='lang en' title='English'></a>
 				</div>
 				{$content->regionTeaser()}
 			</div>

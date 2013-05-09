@@ -52,7 +52,13 @@ class RenderSidebar {
 		}
 
 		$entries[] = array(
-			'title' => i18n('Logout'),
+			'title' => i18n('account'),
+			'route' => 'account',
+			'space' => true
+		);
+
+		$entries[] = array(
+			'title' => i18n('logout'),
 			'route' => 'logout'
 		);
 

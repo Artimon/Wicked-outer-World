@@ -1529,6 +1529,31 @@ Your %s team"
 	),
 
 	/*****************************************************
+	 * Account
+	 ****************************************************/
+
+	'account' => array(
+		'de' => 'Account',
+		'en' => 'Account'
+	),
+	'accountDataEmail' => array(
+		'de' => 'Deine Account-Daten wurden an "%s" gesendet.',
+		'en' => 'You account data has been sent to "%s".'
+	),
+	'confirm' => array(
+		'de' => 'Bestätigen',
+		'en' => 'Confirm'
+	),
+	'abandonAccount' => array(
+		'de' => 'Account aufgeben',
+		'en' => 'Abandon account'
+	),
+	'abandonNotice' => array(
+		'de' => 'Hier kannst Du Deinen Account unwiderruflich löschen.',
+		'en' => 'Here you can delete your account beyond recall.'
+	),
+
+	/*****************************************************
 	 * Custom
 	 ****************************************************/
 

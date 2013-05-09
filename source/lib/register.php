@@ -21,7 +21,15 @@ class Register {
 	 */
 	public function commit($name, $password, $email, $url, $shipId) {
 		if ($this->valid($name, $password, $email, $url, $shipId)) {
-			Account::create($name, $password, $email, $shipId);
+			$session = new Leviathan_Session();
+
+			Account::create(
+				$name,
+				$password,
+				$email,
+				$shipId,
+				$session->value('language')
+			);
 		}
 
 		return $this->invalid;

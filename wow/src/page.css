@@ -435,6 +435,9 @@ div.ingredient {
   #messages table.message {
     width: 400px; }
 
+#account .spacer {
+  margin-top: 35px; }
+
 /* Event box */
 .eventBox {
   position: absolute;

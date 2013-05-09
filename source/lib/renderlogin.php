@@ -96,7 +96,8 @@ class RenderLogin extends RendererAbstract {
 		$username = mysql_real_escape_string($username);
 		$sql = "
 			SELECT
-				`id`
+				`id`,
+				`language`
 			FROM
 				`accounts`
 			WHERE
@@ -117,7 +118,9 @@ class RenderLogin extends RendererAbstract {
 		$accountId = (int)$account['id'];
 
 		$session = new Leviathan_Session();
-		$session->store('id', $accountId);
+		$session
+			->store('id', $accountId)
+			->store('language', $account['language']);
 
 		$cookie = new Leviathan_Cookie();
 		$cookie->store(
