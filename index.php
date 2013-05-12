@@ -246,6 +246,53 @@ class dispatcher {
 
 		$imprint = i18n('imprint');
 
+		$products = '';
+		if (!$game->isOnline()) {
+			$moreGames = i18n('moreGames');
+
+			$battleForKyoto = i18n('battleForKyoto');
+
+			$gameBox = "
+				<ul class='gameList'>
+					<li>
+						<a href='http://www.schlacht-um-kyoto.de' target='_blank'>
+							<img src='./wow/img/suk_logo.png' alt='{$battleForKyoto}'
+								title='{$battleForKyoto}'><br>
+							{$battleForKyoto}
+						</a>
+					</li>
+				</ul>";
+
+			$gameBox = Plugins::box(
+				i18n('browsergames'),
+				$gameBox
+			);
+
+			$products = "
+				<div id='products'>
+					<div class='content'>
+						<div class='company'>
+							<a href='http://www.pad-soft.de' target='_blank'>
+								<span class='entypo-compass'></span>
+								PAD-Soft Game Development
+							</a>
+						</div>
+						<div class='moreGames'>
+							<div class='selectGames'>
+								{$moreGames}
+								&nbsp;
+								<span class='entypo-down-open'></span>
+							</div>
+							<div class='gamesBoard null'>
+								{$gameBox}
+							</div>
+						</div>
+					</div>
+				</div>";
+
+			$javaScript->bind("$('.moreGames').moreGames();");
+		}
+
 		return "<!doctype html>
 <html lang='{$session->value('language')}'>
 	<head>
@@ -260,6 +307,7 @@ class dispatcher {
 		<link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/trontastic/jquery-ui.css' type='text/css'>
 	</head>
 	<body background='{$fileName}'>
+		{$products}
 		<div id='contentContainer'>
 			{$eventBox->toHtml()}
 			<div id='topBanner'>
@@ -275,7 +323,7 @@ class dispatcher {
 			</div>
 		</div>
 
-		<div id='footer' class='center'>
+		<div id='footer'>
 			<div class='content'>
 				<a href='?page=imprint'>{$imprint}</a>
 			</div>

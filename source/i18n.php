@@ -1590,5 +1590,17 @@ Your %s team"
 	'leaveFeedback' => array(
 		'de' => 'Gib Feedback',
 		'en' => 'Leave feedback'
+	),
+	'moreGames' => array(
+		'de' => 'Mehr Spiele...',
+		'en' => 'More Games...'
+	),
+	'browsergames' => array(
+		'de' => 'Browsergames',
+		'en' => 'Browsergames'
+	),
+	'battleForKyoto' => array(
+		'de' => 'Schlacht um Kyoto',
+		'en' => 'Battle for Kyoto'
 	)
 );

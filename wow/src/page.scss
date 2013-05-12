@@ -515,10 +515,107 @@ div.box {
 	}
 }
 
+#products {
+	@include buttonGradient($colorBorderDark, $colorBorderDark, $colorDarkBackground);
+	@include boxShadow(10px, $colorBlack);
+
+	border-bottom: 1px solid $colorBorderLight;
+
+	.content {
+		position: relative;
+		width: 940px;
+		height: 32px;
+		line-height: 32px;
+
+		margin: 0 auto;
+
+		.company {
+			position: absolute;
+			left: 0;
+			top: 0;
+
+			height: 32px;
+			line-height: 32px;
+
+			a {
+				color: lightslategrey;
+				font-size: 11px;
+			}
+		}
+
+		.moreGames {
+			position: absolute;
+			right: 0;
+			top: 0;
+
+			height: 32px;
+			line-height: 32px;
+
+			text-align: left;
+
+			.selectGames {
+				display: inline-block;
+				height: 18px;
+				line-height: 18px;
+
+				margin-top: 6px;
+				padding: 0 5px;
+
+				border: 1px solid $colorBorderLight;
+				border-radius: 3px;
+
+				color: lightslategrey;
+				font-size: 11px;
+
+				cursor: pointer;
+			}
+
+			.gamesBoard {
+				position: absolute;
+				right: 0;
+				top: 32px;
+
+				z-index: 1;
+
+				.content {
+					width: 300px;
+					height: 200px;
+
+					ul.gameList {
+						padding: 0;
+
+						list-style: none;
+
+						li {
+							float: left;
+
+							padding: 5px;
+
+							width: 140px;
+							text-align: center;
+
+							&:hover {
+								border-radius: 4px;
+								background-color: $colorBorderLight;
+							}
+
+							a {
+								text-decoration: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 #footer {
 	.content {
 		display: inline-block;
 		width: 900px;
+		margin: 0 auto;
+
 		text-align: right;
 	}
 }

@@ -143,6 +143,30 @@ function ConfirmBox(initCallback, confirmCallback) {
 }(jQuery));
 
 (function ($) {
+	$.fn.moreGames = function () {
+		var $select = this.find('.selectGames'),
+			$box = this.find('.gamesBoard');
+
+		$select.click(function (event) {
+			if ($box.is(':visible')) {
+				$box.fadeOut();
+			}
+			else {
+				$box.fadeIn();
+			}
+
+			event.stopPropagation();
+		});
+
+		$('body').click(function () {
+			if ($box.is(':visible')) {
+				$box.fadeOut();
+			}
+		});
+	};
+}(jQuery));
+
+(function ($) {
 	$.fn.messageOverview = function () {
 		this.find('.showHideMessage').click(function () {
 			var $this = $(this);
