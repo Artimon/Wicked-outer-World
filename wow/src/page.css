@@ -300,6 +300,11 @@ div.box {
     #contentContainer #contentBody .profile {
       width: 320px; }
 
+#footer .content {
+  display: inline-block;
+  width: 900px;
+  text-align: right; }
+
 /* Flags */
 .lang {
   display: inline-block;

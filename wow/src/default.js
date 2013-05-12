@@ -956,6 +956,17 @@ function init(engine2d, duration) {
 	});
 }(jQuery));
 
+(function ($) {
+	$.fn.mail = function () {
+		this.click(function () {
+			$(this).attr(
+				'href',
+				'ma' + 'ilto:' + 'in' + 'fo@wi' + 'cked-outer' + '-world' + '.com'
+			);
+		});
+	};
+}(jQuery));
+
 /*
 var lastGameCycleTime = 0;
 var gameCycleDelay = 1000 / 30; // aim for 30 fps for game logic

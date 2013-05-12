@@ -66,6 +66,10 @@ return array(
 		'controller'	=> 'ControllerPirateNews',
 		'database'		=> true
 	),
+	'imprint' => array(
+		'controller'	=> 'ControllerImprint',
+		'database'		=> false
+	),
 	'default' => array(
 		'controller'	=> 'ControllerLogin',
 		'database'		=> true

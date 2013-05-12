@@ -244,6 +244,8 @@ class dispatcher {
 		$session = new Leviathan_Session();
 		$languageUrl = '?page=' . Request::getInstance()->both('page'). '&amp;lang=';
 
+		$imprint = i18n('imprint');
+
 		return "<!doctype html>
 <html lang='{$session->value('language')}'>
 	<head>
@@ -273,9 +275,11 @@ class dispatcher {
 			</div>
 		</div>
 
-<p class='center'>
-	...
-</p>
+		<div id='footer' class='center'>
+			<div class='content'>
+				<a href='?page=imprint'>{$imprint}</a>
+			</div>
+		</div>
 
 		<script type='text/javascript' src='./ext/jQuery/jquery-1.8.0.min.js'></script>
 		<script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js'></script>

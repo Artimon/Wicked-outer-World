@@ -475,6 +475,10 @@ $translations = array(
 		'de' => 'Das Paradies eines jeden Piloten, hier kannst Du an Deinem Raumschiff herum schrauben und zu Missionen starten.',
 		'en' => 'The paradise of every pilot, here you can work on your spaceship and start to missions.'
 	),
+	'imprint' => array(
+		'de' => 'Impressum',
+		'en' => 'Imprint'
+	),
 
 	/*****************************************************
 	 * Designer
@@ -1560,6 +1564,27 @@ Your %s team"
 	'latestJoiner' => array(
 		'de' => 'Neuester Weltraumpirat in den Gefilden: %s',
 		'en' => 'Newest space pirate in this realms: %s'
+	),
+
+	/*****************************************************
+	 * Imprint
+	 ****************************************************/
+
+	'address' => array(
+		'de' => 'Anschrift',
+		'en' => 'Address'
+	),
+	'country' => array(
+		'de' => 'Deutschland',
+		'en' => 'Germany'
+	),
+	'phone' => array(
+		'de' => 'Telefon: 07031 2058958',
+		'en' => 'Phone: +49 7031 2058958'
+	),
+	'contact' => array(
+		'de' => 'Email schreiben',
+		'en' => 'Write email'
 	),
 
 	/*****************************************************
