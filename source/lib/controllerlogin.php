@@ -30,8 +30,13 @@ class ControllerLogin extends ControllerAbstract {
 				$session = new Leviathan_Session();
 				$session->store('id', $result);
 
+				$continue = $this->request()->get('continue');
+				if (!$continue) {
+					$continue = 'profile';
+				}
+
 				$this->redirect(
-					$this->route('profile')
+					$this->route($continue)
 				);
 			}
 		}

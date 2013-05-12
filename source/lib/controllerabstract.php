@@ -128,7 +128,9 @@ abstract class ControllerAbstract implements ControllerInterface {
 			return;
 		}
 
-		$this->redirect('?');
+		$this->redirect(
+			'?continue=' . $this->request()->get('page')
+		);
 	}
 
 	public function redirect($url) {
