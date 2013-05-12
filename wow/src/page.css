@@ -278,6 +278,9 @@ div.box {
     #topBanner #status td {
       text-align: left;
       font-size: 9px; }
+      #topBanner #status td .icon {
+        color: gold;
+        font-size: 16px; }
 
 #contentContainer {
   display: inline-block;

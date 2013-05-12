@@ -478,6 +478,11 @@ div.box {
 		td {
 			text-align: left;
 			font-size: 9px;
+
+			.icon {
+				color: gold;
+				font-size: 16px;
+			}
 		}
 	}
 }

@@ -25,7 +25,7 @@ class RenderStatus extends AccountSubclass implements RendererInterface {
 	<table>
 		<tr>
 			<td class='bottom'>
-				<img src='./wow/img/condition.png' alt='+'>
+				<span class='entypo-tools icon'></span>
 			</td>
 			<td>
 				{$shipCondition}<br>
@@ -33,7 +33,7 @@ class RenderStatus extends AccountSubclass implements RendererInterface {
 			</td>
 		</tr><tr>
 			<td class='bottom'>
-				<img src='./wow/img/endurance.png' alt='*'>
+				<span class='entypo-battery icon'></span>
 			</td>
 			<td title='{$currently}: {$account->endurance()}' class='tipTip'>
 				{$endurance}<br>
@@ -41,7 +41,7 @@ class RenderStatus extends AccountSubclass implements RendererInterface {
 			</td>
 		</tr><tr>
 			<td class='bottom'>
-				<img src='./wow/img/action.png' alt='-'>
+				<span class='entypo-rocket icon'></span>
 			</td>
 			<td title='{$currently}: {$account->actionPoints()}' class='tipTip'>
 				{$actionPoints}<br>
