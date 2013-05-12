@@ -62,6 +62,10 @@ return array(
 		'controller'	=> 'ControllerRegister',
 		'database'		=> true
 	),
+	'pirateNews' => array(
+		'controller'	=> 'ControllerPirateNews',
+		'database'		=> true
+	),
 	'default' => array(
 		'controller'	=> 'ControllerLogin',
 		'database'		=> true
