@@ -68,7 +68,7 @@ return array(
 	),
 	'imprint' => array(
 		'controller'	=> 'ControllerImprint',
-		'database'		=> false
+		'database'		=> true
 	),
 	'default' => array(
 		'controller'	=> 'ControllerLogin',

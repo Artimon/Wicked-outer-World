@@ -1442,10 +1442,6 @@ $translations = array(
 		'de' => 'Nein Quatsch, wir machen nur Spaß. Bis zum nächsten mal! ;)',
 		'en' => 'No, just kidding. See you next time! ;)'
 	),
-	'developmentHeadline' => array(
-		'de' => 'Baustelle - in Entwicklung',
-		'en' => 'Construction site - development'
-	),
 	'developmentMessage' => array(
 		'de' => 'Du kannst Dich bereits registrieren, das Spiel ist jedoch noch in der Alpha-Entwicklung.',
 		'en' => 'You may already register, but the game is still under alpha construction.'

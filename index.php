@@ -255,7 +255,7 @@ class dispatcher {
 		<link rel='icon' href='./wow/img/favicon.png'>
 
 		<link rel='stylesheet' type='text/css' href='./ext/tipTip/tipTip.css'>
-		<link rel='stylesheet' type='text/css' href='./wow/src/page.css'>
+		<link rel='stylesheet' type='text/css' href='./wow/src/page.css?v=1.0'>
 		<link rel='stylesheet' type='text/css' href='./wow/src/jquery-ui.css'>
 		<link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/trontastic/jquery-ui.css' type='text/css'>
 	</head>
@@ -285,7 +285,7 @@ class dispatcher {
 		<script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js'></script>
 		<script type='text/javascript' src='./ext/tipTip/jquery.tipTip.minified.js'></script>
 		<script type='text/javascript' src='./ext/demetron/demetron.js'></script>
-		<script type='text/javascript' src='./wow/src/default.js'></script>
+		<script type='text/javascript' src='./wow/src/default.js?v=1.0'></script>
 		<script type='text/javascript'>{$javaScript->bindings()}</script>
 
 <script type='text/javascript'>

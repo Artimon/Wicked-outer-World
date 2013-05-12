@@ -14,12 +14,12 @@ class RenderLogin extends RendererAbstract {
 		$username = i18n('username');
 		$password = i18n('password');
 
-		$developmentHeadline = i18n('developmentHeadline');
+		$headline = Game::getInstance()->name();
 		$developmentMessage = i18n('developmentMessage');
 
 		$html = "
-<div class='floatRight columRight'>
-	<form action='' method='post'>
+<div class='floatRight columnRight'>
+	<form action='' method='post' class='floatRight'>
 		<table>
 			<tr>
 				<td>{$username}</td>
@@ -39,29 +39,18 @@ class RenderLogin extends RendererAbstract {
 			</tr>
 		</table>
 	</form>
-	<div class='center'>
+	<div class='clear'></div>
+	<p class='center'>
 		<img src='./wow/img/tmp_char.png'>
-	</div>
+	</p>
 </div>
-<div class='columLeft'>
-	<h2 class='error'>{$developmentHeadline}</h2>
+<div class='columnLeft'>
+	<h2>{$headline}</h2>
 	<p>{$developmentMessage}</p>
-	<h2>Sonntag Mittag Update (german)</h2>
+	<hr>
+	<p class='headline bold'>News:</p>
 	<ul>
-		<li>Bank er&ouml;ffnet!</li>
-		<li>Kr&auml;mer er&ouml;ffnet!</li>
-	</ul>
-	<h2>Montag Mittag Update (german)</h2>
-	<ul>
-		<li>Neue Objekte und Schiffsmodelle.</li>
-		<li>Implementation des Herstellen-Skills.</li>
-		<li>Kleinere Anpassungen.</li>
-	</ul>
-	<h2>Samstag Morgen Update (german)</h2>
-	<ul>
-		<li>Raumschiff-Laden er&ouml;ffnet.</li>
-		<li>Missions-Ertr&auml;ge erh&ouml;ht.</li>
-		<li>Munition-ins-Lader-zur&uuml;ck-Bug behoben.</li>
+		<li class='highlight'>Message System introduced.</li>
 	</ul>
 </div>
 <div class='clear'></div>";;
