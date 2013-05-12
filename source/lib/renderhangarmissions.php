@@ -19,11 +19,11 @@ class RenderHangarMissions extends RenderHangarAbstract {
 		$config = Config::getInstance()->missions();
 
 		$startMission = i18n('startMission');
-		$notEnoughEndurance = i18n('notEnoughEndurance');
 		$notEnoughActionPoints = i18n('notEnoughActionPoints');
 		$go = i18n('go');
 
-		$starTrip = $this->account()->factory()->actionHangarStarTrip();
+		$account = $this->account();
+		$starTrip = $account->factory()->actionHangarStarTrip();
 		if ($starTrip->canStart()) {
 			$class = '';
 			$title = $startMission;
@@ -31,8 +31,15 @@ class RenderHangarMissions extends RenderHangarAbstract {
 		}
 		else {
 			$class = ' disabled';
-			$title = $notEnoughEndurance;
-			$driveHint = "<p class='critical bold'>" . i18n('noDriveNotice') . "</p>";
+
+			if (!$starTrip->hasEndurance()) {
+				$title = i18n('notEnoughEndurance');
+			}
+			else {
+				$title = i18n('noDriveNotice');
+			}
+
+			$driveHint = "<p class='critical bold'>{$title}</p>";
 		}
 
 		$url = $this->controller()->currentRoute(
