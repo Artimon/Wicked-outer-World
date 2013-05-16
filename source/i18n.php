@@ -479,6 +479,23 @@ $translations = array(
 		'de' => 'Impressum',
 		'en' => 'Imprint'
 	),
+	'ranking' => array(
+		'de' => 'Ränge',
+		'en' => 'Ranking'
+	),
+
+	/*****************************************************
+	 * Ranks
+	 ****************************************************/
+
+	'rank' => array(
+		'de' => 'Rang',
+		'en' => 'Rank'
+	),
+	'ranksDescription' => array(
+		'de' => 'Was für Luschen hängen hier denn noch so herum? Der Weltraum ist auch nicht mehr das, was er mal war...',
+		'en' => 'What dud do hang out all around here? Outer space by far is not what it used to be any more...'
+	),
 
 	/*****************************************************
 	 * Designer

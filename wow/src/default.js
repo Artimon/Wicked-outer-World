@@ -147,6 +147,10 @@ function ConfirmBox(initCallback, confirmCallback) {
 		var $select = this.find('.selectGames'),
 			$box = this.find('.gamesBoard');
 
+		$box.click(function (event) {
+			event.stopPropagation();
+		});
+
 		$select.click(function (event) {
 			if ($box.is(':visible')) {
 				$box.fadeOut();

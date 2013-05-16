@@ -1,6 +1,10 @@
 <?php
 
 class ControllerTradeDeck extends ControllerAbstract {
+	public function __construct() {
+		$this->assertOnline();
+	}
+
 	/**
 	 * @param string $section
 	 * @return RendererInterface

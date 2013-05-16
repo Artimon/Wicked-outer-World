@@ -110,6 +110,10 @@ table th {
   color: #d9e0ee; }
 table th, table td {
   padding: 2px; }
+table tr.push td {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #b8ec79; }
 
 h2, .h2 {
   color: #d8e425;
@@ -279,7 +283,7 @@ div.box {
       text-align: left;
       font-size: 9px; }
       #topBanner #status td .icon {
-        color: gold;
+        color: #d9e0ee;
         font-size: 16px; }
 
 #contentContainer {
@@ -472,15 +476,36 @@ div.ingredient {
   border: none;
   cursor: pointer; }
 
+/* Ranks page */
+#ranks .column {
+  display: inline-block;
+  width: 360px;
+  vertical-align: top; }
+  #ranks .column table {
+    width: 100%; }
+  #ranks .column .paginator {
+    cursor: default; }
+    #ranks .column .paginator > a {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border-radius: 3px;
+      cursor: pointer;
+      color: white; }
+      #ranks .column .paginator > a:hover {
+        background-color: #054675; }
+      #ranks .column .paginator > a.disabled {
+        color: gray;
+        cursor: default; }
+        #ranks .column .paginator > a.disabled:hover {
+          background-color: transparent; }
+
 /* Skirmish page */
 #skirmish .column {
   display: inline-block;
   width: 360px;
   vertical-align: top; }
-  #skirmish .column tr.push td {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    color: #b8ec79; }
 #skirmish #fightContainer .fighter {
   display: inline-block;
   width: 350px; }
@@ -731,6 +756,7 @@ div.progressBar {
       text-shadow: 0 0 2px white !important; }
 
 /* entypo */
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
+[class*="entypo-"] {
   color: white; }
+  [class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif; }

@@ -1,6 +1,10 @@
 <?php
 
 class ControllerQuarters extends ControllerAbstract {
+	public function __construct() {
+		$this->assertOnline();
+	}
+
 	public function renderer($section) {
 		switch ($section) {
 			case 'quarter':

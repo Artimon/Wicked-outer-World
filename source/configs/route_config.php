@@ -50,6 +50,10 @@ return array(
 		'controller'	=> 'ControllerSkirmish',
 		'database'		=> true
 	),
+	'ranking' => array(
+		'controller'	=> 'ControllerRanking',
+		'database'		=> true
+	),
 	'account' => array(
 		'controller'	=> 'ControllerAccount',
 		'database'		=> true
