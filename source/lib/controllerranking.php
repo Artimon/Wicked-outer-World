@@ -1,16 +1,16 @@
 <?php
 
-class ControllerAccount extends ControllerAbstract {
+class ControllerRanking extends ControllerAbstract {
 	public function __construct() {
 		$this->assertOnline();
 	}
 
 	/**
 	 * @param string $section
-	 * @return RendererInterface
+	 * @return RendererAbstract|RendererInterface
 	 */
 	public function renderer($section) {
-		$renderer = new RenderAccount();
+		$renderer = new RenderRanking();
 
 		return $renderer->setController($this);
 	}

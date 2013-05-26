@@ -52,6 +52,12 @@ class RenderSidebar {
 		}
 
 		$entries[] = array(
+			'title' => i18n('ranking'),
+			'route' => 'ranking',
+			'space' => true
+		);
+
+		$entries[] = array(
 			'title' => i18n('account'),
 			'route' => 'account',
 			'space' => true

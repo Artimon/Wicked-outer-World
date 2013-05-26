@@ -5,11 +5,6 @@
  */
 class StarbaseModuleSkirmish extends StarbaseModuleAbstract {
 	/**
-	 * @var bool
-	 */
-	protected $menuSpacer = true;
-
-	/**
 	 * @return string
 	 */
 	public function name() {

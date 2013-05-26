@@ -272,6 +272,15 @@ table {
 	th, td {
 		padding: 2px;
 	}
+
+	tr.push td {
+		padding: {
+			top: 15px;
+			bottom: 15px;
+		}
+
+		color: $colorBright;
+	}
 }
 
 h2, .h2 {
@@ -480,7 +489,7 @@ div.box {
 			font-size: 9px;
 
 			.icon {
-				color: gold;
+				color: $colorLightText;
 				font-size: 16px;
 			}
 		}
@@ -759,6 +768,49 @@ div.ingredient {
 	cursor: pointer;
 }
 
+/* Ranks page */
+#ranks {
+	.column {
+		display: inline-block;
+		width: 360px;
+
+		vertical-align: top;
+
+		table {
+			width: 100%;
+		}
+
+		.paginator {
+			cursor: default;
+
+			> a {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+
+				border-radius: 3px;
+
+				cursor: pointer;
+				color: white;
+
+				&:hover {
+					background-color: $colorBorderLight;
+				}
+
+				&.disabled {
+					color: gray;
+					cursor: default;
+
+					&:hover {
+						background-color: transparent;
+					}
+				}
+			}
+		}
+	}
+}
+
 /* Skirmish page */
 #skirmish {
 	.column {
@@ -766,15 +818,6 @@ div.ingredient {
 		width: 360px;
 
 		vertical-align: top;
-
-		tr.push td {
-			padding: {
-				top: 15px;
-				bottom: 15px;
-			}
-
-			color: $colorBright;
-		}
 	}
 
 	#fightContainer {
@@ -1111,7 +1154,10 @@ div.progressBar {
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 
 /* entypo */
-[class*="entypo-"]:before {
-	font-family: 'entypo', sans-serif;
+[class*="entypo-"] {
 	color: white;
+
+	&:before {
+		font-family: 'entypo', sans-serif;
+	}
 }
