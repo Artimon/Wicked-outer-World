@@ -50,7 +50,8 @@ class RenderLogin extends RendererAbstract {
 	<hr>
 	<p class='headline bold'>News:</p>
 	<ul>
-		<li class='highlight'>Message System introduced.</li>
+	        <li class='highlight'>Ranking page introduced on 2013-05-16.</li>
+		<li>Message System introduced on 2013-05-12.</li>
 	</ul>
 </div>
 <div class='clear'></div>";;
