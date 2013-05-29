@@ -275,7 +275,7 @@ class EntityLoader extends dataObjectProvider {
 	 * @return string
 	 */
 	public function entitiesJson() {
-		$request = Request::getInstance();
+		$request = Leviathan_Request::getInstance();
 
 		// Current position.
 		$playerPos = new Vector(

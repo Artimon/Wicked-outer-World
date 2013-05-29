@@ -2,7 +2,7 @@
 
 class RenderAcademyCourse extends RenderAcademyAbstract {
 	protected function commitActions() {
-		$request = Request::getInstance();
+		$request = Leviathan_Request::getInstance();
 		$actionAcademyCourse = $this->account()->factory()->actionAcademyCourse();
 
 		if ($request->post('startCourse')) {

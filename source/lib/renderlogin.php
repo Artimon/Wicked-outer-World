@@ -73,7 +73,7 @@ class RenderLogin extends RendererAbstract {
 	 * @return Account|null
 	 */
 	private function login() {
-		$request = Request::getInstance();
+		$request = Leviathan_Request::getInstance();
 
 		$username = $request->post('username');
 		$password = $request->post('password');
@@ -86,6 +86,7 @@ class RenderLogin extends RendererAbstract {
 		$sql = "
 			SELECT
 				`id`,
+				`password`,
 				`language`
 			FROM
 				`accounts`
@@ -114,7 +115,7 @@ class RenderLogin extends RendererAbstract {
 		$cookie = new Leviathan_Cookie();
 		$cookie->store(
 			'user',
-			md5($accountId . '_wow'),
+			md5($accountId . $account['password']),
 			86400 * 365
 		);
 

@@ -9,7 +9,7 @@ class RenderFactoryFiddle extends RenderFactoryAbstract {
 			return null;
 		}
 
-		$request = Request::getInstance();
+		$request = Leviathan_Request::getInstance();
 		$ingredients = $request->post('ingredients');
 		$amounts = $request->post('amounts');
 
