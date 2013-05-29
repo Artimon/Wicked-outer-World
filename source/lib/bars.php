@@ -45,8 +45,8 @@ class Bars extends AccountSubclass {
 	 * @return string
 	 */
 	public function energyBar() {
-		$max = $this->account()->starship()->engine()->capacity();
-		$current = $max;	// Fill with account value;
+		$max = $this->account()->starship()->capacity();
+		$current = $max; // Fill with account value;
 
 		return Plugins::statusBar('energy', $max, $current);
 	}

@@ -67,7 +67,7 @@ class Accuracy {
 
 	/**
 	 * @param Technology $item
-	 * @return array
+	 * @return int
 	 */
 	public function hits(Technology $item) {
 		$this->hits = 0;

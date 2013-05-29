@@ -152,14 +152,20 @@ class ActionFightTimer {
 	 */
 	private function weaponAction(Technology $item) {
 		$accuracy = $this->accuracy();
+		$starship = $this->starship();
 		$hits = $accuracy
-			->setFiringStarship($this->starship())
+			->setFiringStarship($starship)
 			->setOpponentStarship($this->opponent())
 			->hits($item);
 
 		$total = $accuracy->maxShots($item);
 
 		$missed = $total - $hits;
+
+		$starship->account()->stats()
+			->addHits($hits)
+			->addMisses($missed);
+
 		while ($missed-- > 0) {
 			$this->newAttackEvent(
 				'm',
@@ -171,6 +177,8 @@ class ActionFightTimer {
 		$condition = $this->opponent()->condition();
 		$shieldActivated = $condition->isShieldActivated();
 
+		$starshipStats = $starship->account()->stats();
+		$opponentStats = $this->opponent()->account()->stats();
 		while ($hits-- > 0) {
 			$damage = $condition->addDamage($item, 1);
 
@@ -185,7 +193,8 @@ class ActionFightTimer {
 				$this->newAttackEvent('d', $item->nameRaw(), $delay, $damage);
 			}
 
-			$this->starship()->account()->stats()->addInflictedDamage($damage);
+			$starshipStats->addInflictedDamage($damage);
+			$opponentStats->addTakenDamage($damage);
 		}
 	}
 
