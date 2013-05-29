@@ -60,7 +60,7 @@ class dispatcher {
 	public function dispatch() {
 		$session = new Leviathan_Session();
 
-		$language = Request::getInstance()->get('lang');
+		$language = Leviathan_Request::getInstance()->get('lang');
 		if ($language && in_array($language, $this->availableLanguages())) {
 			$session->store('language', $language);
 		}
@@ -86,7 +86,7 @@ class dispatcher {
 		$session = new Leviathan_Session();
 
 		$languageAccount = $account->value('language');
-		$languageRequest = Request::getInstance()->both('lang');
+		$languageRequest = Leviathan_Request::getInstance()->both('lang');
 		$languageSession = $session->value('language');
 		if ($languageRequest) {
 			// Language has already been validated.
@@ -106,7 +106,7 @@ class dispatcher {
 		$content = new Content();
 
 		$router		= Router::getInstance();
-		$request	= Request::getInstance();
+		$request	= Leviathan_Request::getInstance();
 		$controller	= $router->controller();
 
 
@@ -242,7 +242,7 @@ class dispatcher {
 		$leaveFeedback = i18n('leaveFeedback');
 
 		$session = new Leviathan_Session();
-		$languageUrl = '?page=' . Request::getInstance()->both('page'). '&amp;lang=';
+		$languageUrl = '?page=' . Leviathan_Request::getInstance()->both('page'). '&amp;lang=';
 
 		$imprint = i18n('imprint');
 
@@ -316,6 +316,11 @@ class dispatcher {
 					<a href='{$languageUrl}en' class='lang en' title='English'></a>
 				</div>
 				{$content->regionTeaser()}
+				<h1>
+					<a href='?'>
+						<img src='' class='null' alt='WoW'>
+					</a>
+				</h1>
 			</div>
 			<div id='contentNavi' class='top'>{$content->regionSidebar()}</div>
 			<div id='contentBody' class='top'>
@@ -358,6 +363,17 @@ reformal_wdg_bimage = '8489db229aa0a66ab6b80ebbe0bb26cd.png';
 </script>
 
 <script type='text/javascript' language='JavaScript' src='http://idea.informer.com/tab6.js?domain=wicked-outer-world'></script><noscript><a href='http://wicked-outer-world.idea.informer.com'>Wicked outer World feedback </a> <a href='http://idea.informer.com'><img src='http://widget.idea.informer.com/tmpl/images/widget_logo.jpg' /></a></noscript>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41010022-1', 'wicked-outer-world.com');
+  ga('send', 'pageview');
+
+</script>
 	</body>
 </html>";
 	}

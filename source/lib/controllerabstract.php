@@ -24,7 +24,7 @@ abstract class ControllerAbstract implements ControllerInterface {
 	 * @return string
 	 */
 	public function currentRoute(array $parameters = array()) {
-		$page = Request::getInstance()->both('page');
+		$page = Leviathan_Request::getInstance()->both('page');
 
 		if ($page) {
 			$parameters = array_merge(
@@ -51,7 +51,7 @@ abstract class ControllerAbstract implements ControllerInterface {
 	 * @return string
 	 */
 	public function currentSection(array $parameters = array()) {
-		$section = Request::getInstance()->both('section');
+		$section = Leviathan_Request::getInstance()->both('section');
 
 		if ($section) {
 			$parameters['section'] = $section;

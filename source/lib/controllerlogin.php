@@ -21,7 +21,7 @@ class ControllerLogin extends ControllerAbstract {
 				FROM
 					`accounts`
 				WHERE
-					MD5(CONCAT(`id`,  '_wow')) = '{$escapedUserKey}'
+					MD5(CONCAT(`id`,  `password`)) = '{$escapedUserKey}'
 				LIMIT 1;";
 			$result = $database->query($sql)->fetchOne();
 			$database->freeResult();

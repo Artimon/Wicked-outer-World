@@ -131,7 +131,7 @@ class RenderSidebar {
 		$html = '';
 
 		// @TODO Change to game::create()->currentRoute();
-		$route = Request::getInstance()->get('page');
+		$route = Leviathan_Request::getInstance()->get('page');
 
 		$count = count($entries) - 1;
 		foreach ($entries as $index => $entry) {

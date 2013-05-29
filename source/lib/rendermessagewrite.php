@@ -43,7 +43,7 @@ class RenderMessageWrite extends RenderMessageAbstract {
 		}
 
 		if (!Leviathan_Token::getInstance()->valid('token')) {
-			return false;	// Do not notify about multi-send.
+			return false; // Do not notify about multi-send.
 		}
 
 		Message::send(

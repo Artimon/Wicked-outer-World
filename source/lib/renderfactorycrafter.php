@@ -30,7 +30,7 @@ class RenderFactoryCrafter extends RenderFactoryAbstract {
 			return null;
 		}
 
-		$request = Request::getInstance();
+		$request = Leviathan_Request::getInstance();
 		$techId = $request->post('craft');
 
 

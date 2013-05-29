@@ -141,7 +141,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	 * @return void
 	 */
 	public function moveItem() {
-		$request = Request::getInstance();
+		$request = Leviathan_Request::getInstance();
 
 		$techId = $request->post('techId');
 		$amount = (int)$request->post('amount');
