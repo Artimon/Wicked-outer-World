@@ -1,0 +1,9 @@
+[submodule "ext/lisbeth"]
+	path = ext/lisbeth
+	url = https://github.com/Artimon/lisbeth.git
+[submodule "ext/valkyrie"]
+	path = ext/valkyrie
+	url = https://github.com/Artimon/valkyrie.git
+[submodule "ext/leviathan"]
+	path = ext/leviathan
+	url = https://github.com/Artimon/leviathan.git

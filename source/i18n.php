@@ -720,7 +720,7 @@ $translations = array(
 	),
 	'itemSold' => array(
 		'de' => 'Du hast %s %s für %s verkauft.',
-		'de' => 'You sold %s %s for %s.'
+		'en' => 'You sold %s %s for %s.'
 	),
 	'itemsDepolluted' => array(
 		'de' => 'Du hast %s %s entsorgt.',

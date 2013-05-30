@@ -50,10 +50,11 @@ class RenderLogin extends RendererAbstract {
 	<hr>
 	<p class='headline bold'>News:</p>
 	<ul>
+		<li class='highlight'>Basic fight statistics added to account.</li>
 		<li class='highlight'>Message System introduced.</li>
 	</ul>
 </div>
-<div class='clear'></div>";;
+<div class='clear'></div>";
 
 		return $html;
 	}
