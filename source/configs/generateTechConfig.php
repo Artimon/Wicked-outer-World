@@ -37,13 +37,23 @@ require_once '../lib/technology.php';
 // Levels give skill points.
 
 $techIds = array(
-	'CREMLIN_ID'				=> 3,
+	'GREMLIN_ID'				=> 3,
 	'NIGHTFALL_CB55_ID'			=> 4,
 	'RELENTLESS_ID'				=> 5,
 
 	'SMALL_BLASTER_ID'			=> 60,
+
 	'LIGHT_LASER_ID'			=> 61,
+	'MEDIUM_LASER_ID'			=> 62,
+	'HEAVY_LASER_ID'			=> 63,
+
+	'LIGHT_DUAL_LASER_ID'		=> 64,
+
+	'LIGHT_QUAD_LASER_ID'		=> 67,
+
 	'BLASTER_AMMUNITION_ID'		=> 70,
+	'SHARK_TORPEDOES_ID'		=> 71,
+
 	'NUCLEAR_BATTERIES_ID'		=> 80,
 	'SOLAR_ARRAY_ID'			=> 81,
 	'SMALL_FUSION_REACTOR_ID'	=> 82,
@@ -55,6 +65,9 @@ $techIds = array(
 	'DISTORTION_SHIELD_ID'		=> 122,
 
 	'SMALL_CAPACITOR_ID'		=> 130,
+
+	'SHARK_2_ID'				=> 140,
+	'SHARK_5_ID'				=> 141,
 
 	'IRON_ID'					=> 1000,
 	'MAGNET_COIL_ID'			=> 1005,
@@ -73,6 +86,7 @@ $techIds = array(
 
 	'SPACE_JUNK_ID'				=> 1200,
 	'TOXIC_WASTE_ID'			=> 1225,
+	'EXPLOSIVES_ID'				=> 1230,
 
 	'TECHNICAL_COMPONENTS_ID'	=> 1250,
 	'COOLER_ID'					=> 1275
@@ -111,7 +125,7 @@ $technology[-1] = array(
 	'type' => null
 );	// Stockage
 
-$technology[CREMLIN_ID] = array(
+$technology[GREMLIN_ID] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'Gremlin',
 	'price'		=> 9587,
@@ -243,6 +257,45 @@ $technology[SMALL_BLASTER_ID] = array(
 	),
 	'craftHint'	=> true
 );
+$technology[SHARK_2_ID] = array(
+	'type'			=> Technology::TYPE_WEAPON,
+	'name'			=> 'Shark2',
+	'level'			=> 3,
+	'weight'		=> 2,
+	'damage'		=> 16,
+	'reload'		=> 3,
+	'drain'			=> 2,
+	'burst'			=> 2,
+	'damageType'	=> Technology::DAMAGE_KINETIC,
+	'ammo'			=> SHARK_TORPEDOES_ID,
+	'price'			=> null,	// Value for trading.
+	'craft' => array(
+		IRON_ID					=> 3,
+		TECHNICAL_COMPONENTS_ID	=> 3,
+		ELECTRONICS_ID			=> 1
+	),
+	'craftHint' => true
+);
+$technology[SHARK_5_ID] = array(
+	'type'			=> Technology::TYPE_WEAPON,
+	'name'			=> 'Shark5',
+	'level'			=> 12,
+	'weight'		=> 4,
+	'damage'		=> 16,
+	'reload'		=> 4,
+	'drain'			=> 4,
+	'burst'			=> 5,
+	'damageType'	=> Technology::DAMAGE_KINETIC,
+	'ammo'			=> SHARK_TORPEDOES_ID,
+	'price'			=> null,	// Value for trading.
+	'craft' => array(
+		IRON_ID					=> 5,
+		TECHNICAL_COMPONENTS_ID	=> 8,
+		ELECTRONICS_ID			=> 2,
+		COOLER_ID				=> 1
+	),
+	'craftHint' => true
+);
 $technology[LIGHT_LASER_ID] = array(
 	'type'			=> Technology::TYPE_WEAPON,
 	'name'			=> 'LightLaser',
@@ -261,6 +314,76 @@ $technology[LIGHT_LASER_ID] = array(
 	),
 	'craftHint'	=> true
 );
+$technology[MEDIUM_LASER_ID] = array(
+	'type'			=> Technology::TYPE_WEAPON,
+	'name'			=> 'MediumLaser',
+	'level'			=> 4,
+	'weight'		=> 2,
+	'damage'		=> 45,
+	'reload'		=> 2,
+	'drain'			=> 10,
+	'damageType'	=> Technology::DAMAGE_ENERGY,
+	'price'			=> null,	// Value for trading.
+	'craft' => array(
+		IRON_ID			=> 2,
+		CRYSTALS_ID		=> 4,
+		ENERGY_CELLS_ID	=> 4,
+		COOLER_ID		=> 2
+	),
+	'craftHint'	=> true
+);
+$technology[HEAVY_LASER_ID] = array(
+	'type'			=> Technology::TYPE_WEAPON,
+	'name'			=> 'HeavyLaser',
+	'level'			=> 9,
+	'weight'		=> 5,
+	'damage'		=> 72,
+	'reload'		=> 2,
+	'drain'			=> 14,
+	'damageType'	=> Technology::DAMAGE_ENERGY,
+	'price'			=> null,	// Value for trading.
+	'craft' => array(
+		IRON_ID			=> 2,
+		CRYSTALS_ID		=> 8,
+		ENERGY_CELLS_ID	=> 6,
+		COOLER_ID		=> 6
+	),
+	'craftHint'	=> true
+);
+$technology[LIGHT_DUAL_LASER_ID] = array(
+	'type'			=> Technology::TYPE_WEAPON,
+	'name'			=> 'LightDualLaser',
+	'level'			=> 6,
+	'weight'		=> 2,
+	'damage'		=> 27,
+	'reload'		=> 3,
+	'drain'			=> 12,
+	'burst'			=> 2,
+	'damageType'	=> Technology::DAMAGE_ENERGY,
+	'price'			=> null,	// Value for trading.
+	'craft' => array(
+		TECHNICAL_COMPONENTS_ID	=> 1,
+		LIGHT_LASER_ID			=> 2
+	),
+	'craftHint'	=> true
+);
+$technology[LIGHT_QUAD_LASER_ID] = array(
+	'type'			=> Technology::TYPE_WEAPON,
+	'name'			=> 'LightQuadLaser',
+	'level'			=> 14,
+	'weight'		=> 5,
+	'damage'		=> 27,
+	'reload'		=> 4,
+	'drain'			=> 24,
+	'burst'			=> 4,
+	'damageType'	=> Technology::DAMAGE_ENERGY,
+	'price'			=> null,	// Value for trading.
+	'craft' => array(
+		TECHNICAL_COMPONENTS_ID	=> 3,
+		LIGHT_LASER_ID			=> 4
+	),
+	'craftHint'	=> true
+);
 
 $technology[BLASTER_AMMUNITION_ID] = array(
 	'type'		=> Technology::TYPE_AMMUNITION,
@@ -271,6 +394,20 @@ $technology[BLASTER_AMMUNITION_ID] = array(
 	'craft' => array(
 		NOBLE_GAS_ID	=> 1,
 		ENERGY_CELLS_ID	=> 1
+	),
+	'craftHint'	=> true
+);
+
+$technology[SHARK_TORPEDOES_ID] = array(
+	'type'		=> Technology::TYPE_AMMUNITION,
+	'name'		=> 'SharkTorpedoes',
+	'weight'	=> 1,
+	'stack'		=> 50,
+	'price'		=> null,	// Value for trading.
+	'craft'		=> array(
+		ELECTRONICS_ID	=> 1,
+		EXPLOSIVES_ID	=> 1,
+		NOBLE_GAS_ID	=> 1
 	),
 	'craftHint'	=> true
 );
@@ -547,6 +684,13 @@ $technology[TOXIC_WASTE_ID] = array(
 	'name'		=> 'ToxicWaste',
 	'weight'	=> 1,
 	'stack'		=> 1
+);
+$technology[EXPLOSIVES_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'Explosives',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> 44	// Value for trading.
 );
 $technology[TECHNICAL_COMPONENTS_ID] = array(
 	'type'		=> Technology::TYPE_INGREDIENT,

@@ -105,10 +105,14 @@ class RenderTechInfo extends RendererAbstract {
 			$burstShots = i18n('perShot');
 		}
 
+		$ammunitionBurst = $burst;
+
 		$ammunition = $this->item->ammunitionItem();
 		if ($ammunition) {
 			$ammunitionType = $ammunition->name().' '.i18n('perShot');
-		} else {
+		}
+		else {
+			$ammunitionBurst = '-';
 			$ammunitionType = '';
 		}
 
@@ -132,7 +136,7 @@ class RenderTechInfo extends RendererAbstract {
 	<td class='variable'>{$burstShots}</td>
 </tr><tr>
 	<td>".i18n('ammunition').":</td>
-	<td class='headline right'>{$burst}</td>
+	<td class='headline right'>{$ammunitionBurst}</td>
 	<td class='variable'>{$ammunitionType}</td>
 </tr><tr>
 	<td>".i18n('damage').":</td>

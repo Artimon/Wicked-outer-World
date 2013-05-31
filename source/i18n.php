@@ -167,6 +167,24 @@ $translations = array(
 		'en' => "Blaster could be described as the further development of marketable guns, but this small model is already far beyond outdated."
 	),
 
+	'nameShark2' => array(
+		'de' => 'Shark-2 Werfer',
+		'en' => 'Shark-2 Thrower'
+	),
+	'descShark2' => array(
+		'de' => '"Shark"-Torpedowerfer zum simultanen Abfeuern von 2 Torpedos.',
+		'en' => '"Shark"-Torpedoe-Thrower to simultaneous fire 2 torpedoes.'
+	),
+
+	'nameShark5' => array(
+		'de' => 'Shark-5 Werfer',
+		'en' => 'Shark-5 Thrower'
+	),
+	'descShark5' => array(
+		'de' => 'Mehr Torpedos, mehr Treffer - ganz einfach!',
+		'en' => 'More torpedoes, more hits - quite simple!'
+	),
+
 	'nameLightLaser' => array(
 		'de' => 'Leichter Laser',
 		'en' => 'Light Laser'
@@ -176,6 +194,42 @@ $translations = array(
 		'en' => 'This is a sophisticated heat beam which we call a "Laser"... well, or more like his little brother.'
 	),
 
+	'nameMediumLaser' => array(
+		'de' => 'Mittlerer Laser',
+		'en' => 'Medium Laser'
+	),
+	'descMediumLaser' => array(
+		'de' => 'Dieser Laser bringt alles auf ein höheres Level, mehr Energie, mehr Schaden, mehr Bauteile.',
+		'en' => 'This laser brings it all to the next level, more energy, more damage, more components.'
+	),
+
+	'nameHeavyLaser' => array(
+		'de' => 'Schwerer Laser',
+		'en' => 'Heavy Laser'
+	),
+	'descHeavyLaser' => array(
+		'de' => 'Schwere Laser stoßen intensive Lichtstrahlen aus, welche Panzerung schmelzen und elektronische Komponenten überhitzen. Klingt lustig, oder?',
+		'en' => 'Heavy lasers emit intense light beams that melt armor and overheat electronic components. Sounds funny, right?'
+	),
+
+	'nameLightDualLaser' => array(
+		'de' => 'Dual-Laser',
+		'en' => 'Dual-Laser'
+	),
+	'descLightDualLaser' => array(
+		'de' => 'Manchmal sind die einfachsten Lösungen die besten. Ein paar Laser, technische Komponenten und voila!',
+		'en' => 'Sometimes the simple ways are the best. A few lasers, technical components and voila!'
+	),
+
+	'nameLightQuadLaser' => array(
+		'de' => 'Quad-Laser',
+		'en' => 'Quad-Laser'
+	),
+	'descLightQuadLaser' => array(
+		'de' => 'Warum nur zwei Laser nehmen, wenn man vier haben kann?',
+		'en' => 'Why only take two lasers when you can have four?'
+	),
+
 	'nameBlasterAmmunition' => array(
 		'de' => 'Blaster Munition',
 		'en' => 'Blaster Ammunition'
@@ -183,6 +237,15 @@ $translations = array(
 	'descBlasterAmmunition' => array(
 		'de' => "Hier ist der Name Programm: Das Hocherhitzte Plasma sengt dem Gegner nicht nur den Bürzel an, sondern ist auch kostengünstig in der Anschaffung.",
 		'en' => "Here the name says it: The high heated plasma not only burns your opponent's rump, but is also a cheap acquisition."
+	),
+
+	'nameSharkTorpedoes' => array(
+		'de' => 'Shark Torpedos',
+		'en' => 'Shark Torpedoes'
+	),
+	'descSharkTorpedoes' => array(
+		'de' => 'Leichte Weltraum-Torpedos die... "beissen".',
+		'en' => 'Light space-torpedoes that... "bite".'
 	),
 
 	'nameNuclearBatteries' => array(
@@ -343,6 +406,14 @@ $translations = array(
 	'descToxicWaste' => array(
 		'de' => 'Ich sollte mich davon fern halten, doch welche Schätze könnten darin stecken?',
 		'en' => 'I should stay away from it, but what kind of treasures may be hidden within?'
+	),
+	'nameExplosives' => array(
+		'de' => 'Sprengstoff',
+		'en' => 'Explosives'
+	),
+	'descExplosives' => array(
+		'de' => 'Spengstoffe sind chemische Verbindungen die große Energiemengen in kurzer Zeit freisetzen können und nicht nur für Kinderfeuerwerk gut.',
+		'en' => 'Explosives are chemical combinations that can free great amounts of energy an a short period of time and thus not only good for child fireworks.'
 	),
 	'nameTechnicalComponents' => array(
 		'de' => 'Technische Komponenten',
