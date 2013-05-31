@@ -20,7 +20,7 @@ class ControllerMessages extends ControllerAbstract {
 				break;
 
 			case 'markSeen':
-				$renderer = new RendererMessageMarkSeen();
+				$renderer = new RenderMessageMarkSeen();
 				break;
 
 			default:

@@ -68,13 +68,16 @@ class RenderMessageWrite extends RenderMessageAbstract {
 
 		$message = $this->message();
 		if ($message) {
-			$recipientName = $message->value('senderName');
+			$recipientName = $senderName = $message->value('senderName');
 			$title = $message->value('title');
 			if (strpos($title, 'Re: ') !== 0) {
 				$title = 'Re: ' . $title;
 			}
 			$message = $message->value('message');
 			$message = str_replace("\n", "\n> ", $message);
+			$message = str_replace("> >", ">>", $message);
+			$message = htmlentities($message, null, null, false);
+			$message = "\n\n\n\n{$senderName}:\n\n> " . $message;
 		}
 		elseif (!$sent) {
 			$request = $this->request();

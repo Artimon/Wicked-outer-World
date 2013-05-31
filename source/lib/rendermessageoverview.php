@@ -64,6 +64,10 @@ class RenderMessageOverview extends RenderMessageAbstract {
 				'mid' => $messageId
 			));
 
+			$messageText = nl2br(
+				$message->value('message')
+			);
+
 			$html .= "
 				<tr>
 					<td colspan='5'><hr></td>
@@ -86,7 +90,7 @@ class RenderMessageOverview extends RenderMessageAbstract {
 				<tr class='message'>
 					<td colspan='5'>
 						<hr>
-						{$message->value('message')}
+						{$messageText}
 						<hr>
 						<a href='{$replyUrl}' class='button'>{$reply}</a>
 						<a href='{$deleteUrl}' class='button deleteMessage'>{$delete}</a>

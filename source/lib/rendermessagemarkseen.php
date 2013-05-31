@@ -1,6 +1,6 @@
 <?php
 
-class RendererMessageMarkSeen extends RendererAbstract {
+class RenderMessageMarkSeen extends RendererAbstract {
 	/**
 	 * @return string
 	 */
