@@ -115,7 +115,7 @@ $translations = array(
 
 	'nameJunkCollector' => array(
 		'de' => 'Schrottsammler',
-		'en' => 'Junk collector'
+		'en' => 'Junk Collector'
 	),
 	'descJunkCollector' => array(
 		'de' => "Mit diesem Modul kannst Du kleine Mengen Weltraumschrott einsammeln. Wozu das gut ist? Was Du selbst nicht gebrauchen kannst lässt sich bestimmt irgend ein Idiot auf dem Flohmarkt andrehen.",
@@ -124,7 +124,7 @@ $translations = array(
 
 	'nameImpactArmor' => array(
 		'de' => 'Einschlagpanzerung',
-		'en' => 'Impact plating'
+		'en' => 'Impact Plating'
 	),
 	'descImpactArmor' => array(
 		'de' => "Einfache Stahlplatten schützen die Schiffshülle vor Partikel Einschlägen. Sie werden aber auch als Billigpanzerung genutzt; und wo ist schon der Unterschied zwischen Mikro-Meteoriten und infernalen Höllenlasern?",
@@ -133,7 +133,7 @@ $translations = array(
 
 	'nameKineticShield' => array(
 		'de' => 'Kinetischer Schild',
-		'en' => 'Kinetic shield'
+		'en' => 'Kinetic Shield'
 	),
 	'descKineticShield' => array(
 		'de' => "Dieser Schild hat schon so manches Schiff von Schäden durch herumfliegendem Weltraumschrott bewahrt.",
@@ -142,7 +142,7 @@ $translations = array(
 
 	'nameEnergyShield' => array(
 		'de' => 'Energieschild',
-		'en' => 'Energy shield'
+		'en' => 'Energy Shield'
 	),
 	'descEnergyShield' => array(
 		'de' => "@TODO",
@@ -151,7 +151,7 @@ $translations = array(
 
 	'nameDistortionShield' => array(
 		'de' => 'Distorsionsschild',
-		'en' => 'Distortion shield'
+		'en' => 'Distortion Shield'
 	),
 	'descDistortionShield' => array(
 		'de' => "Beschützt um das Schiff, was sich im Schiff befindet.",
@@ -160,16 +160,16 @@ $translations = array(
 
 	'nameSmallBlaster' => array(
 		'de' => 'Kleiner Blaster',
-		'en' => 'Small blaster'
+		'en' => 'Small Blaster'
 	),
 	'descSmallBlaster' => array(
 		'de' => "Blaster könnte man zwar als die Weiterentwicklung handelsüblicher Feuerwaffen bezeichnen, doch dieses kleine Modell ist schon mehr als überholt.",
-		'en' => "Blaster can be described as the further development of marketable guns, but this small model is already far beyond outdated."
+		'en' => "Blaster could be described as the further development of marketable guns, but this small model is already far beyond outdated."
 	),
 
 	'nameLightLaser' => array(
 		'de' => 'Leichter Laser',
-		'en' => 'Light laser'
+		'en' => 'Light Laser'
 	),
 	'descLightLaser' => array(
 		'de' => 'Dies ist ein hochentwickelter Hitzestrahl, wir nennen es einen "Laser"... naja, oder doch eher sein kleiner Bruder.',
@@ -187,7 +187,7 @@ $translations = array(
 
 	'nameNuclearBatteries' => array(
 		'de' => 'Atombatterie',
-		'en' => 'Nuclear batteries'
+		'en' => 'Nuclear Batteries'
 	),
 	'descNuclearBatteries' => array(
 		'de' => "Mit diesen Batterien im Gepäck hat man immer ein strahlendes lächeln auf den Lippen.",
@@ -207,7 +207,7 @@ $translations = array(
 	),
 	'descSmallFusionReactor' => array(
 		'de' => 'Die Energie der Sonne lodert in diesem Kern!',
-		'en' => 'The sun´s energy blazes in this core!'
+		'en' => "The sun's energy blazes in this core!"
 	),
 
 	'nameSmallCapacitor' => array(
@@ -221,7 +221,7 @@ $translations = array(
 
 	'nameCombustionDrive' => array(
 		'de' => 'Verbrennungsantrieb',
-		'en' => 'Combustion drive'
+		'en' => 'Combustion Drive'
 	),
 	'descCombustionDrive' => array(
 		'de' => "@TODO",
@@ -229,7 +229,7 @@ $translations = array(
 	),
 	'nameIonDrive' => array(
 		'de' => 'Ionenantrieb',
-		'en' => 'Ion drive'
+		'en' => 'Ion Drive'
 	),
 	'descIonDrive' => array(
 		'de' => "@TODO",
@@ -237,7 +237,7 @@ $translations = array(
 	),
 	'namePulseDrive' => array(
 		'de' => 'Impulsantrieb',
-		'en' => 'Pulse drive'
+		'en' => 'Pulse Drive'
 	),
 	'descPulseDrive' => array(
 		'de' => "@TODO",
@@ -261,7 +261,7 @@ $translations = array(
 		'en' => 'Magnet Coil'
 	),
 	'descMagnetCoil' => array(
-		'de' => 'Damit lassen sich Projektile und Teilchen wunderbar Beschleunigen.',
+		'de' => 'Damit lassen sich Projektile und Teilchen wunderbar beschleunigen.',
 		'en' => 'Projectiles and particles can be wonderfully accellerated with it.'
 	),
 	'namePlastics' => array(
@@ -294,7 +294,7 @@ $translations = array(
 	),
 	'descCoolant' => array(
 		'de' => 'Hochleistungskühler kommen nicht mehr ohne Kühlflüssigkeit aus.',
-		'en' => 'High performance coolers can´t get along without coolant.'
+		'en' => "High performance coolers can't get along without coolant."
 	),
 	'nameNobleGas' => array(
 		'de' => 'Edelgas',
@@ -322,7 +322,7 @@ $translations = array(
 	),
 	'nameEnergyCells' => array(
 		'de' => 'Energiezellen',
-		'en' => 'EnergyCells'
+		'en' => 'Energy Cells'
 	),
 	'descEnergyCells' => array(
 		'de' => 'Hier stecken einige Pferde drin. Damit lässt sich vermutlich auch etwas schmelzen?',
@@ -330,7 +330,7 @@ $translations = array(
 	),
 	'nameSpaceJunk' => array(
 		'de' => 'Weltraumschrott',
-		'en' => 'SpaceJunk'
+		'en' => 'Space Junk'
 	),
 	'descSpaceJunk' => array(
 		'de' => '"Zufällig" herumfliegender Weltraumschrott.',
@@ -346,7 +346,7 @@ $translations = array(
 	),
 	'nameTechnicalComponents' => array(
 		'de' => 'Technische Komponenten',
-		'en' => 'TechnicalComponents'
+		'en' => 'Technical Components'
 	),
 	'descTechnicalComponents' => array(
 		'de' => 'Sehr praktisch diese allgemeingebräuchlichen Bauteile.',
@@ -375,7 +375,7 @@ $translations = array(
 	),
 	'partWeaponry' => array(
 		'de' => 'Waffenphalanx',
-		'en' => 'Weapon phalanx'
+		'en' => 'Weapon Phalanx'
 	),
 	'partBody' => array(
 		'de' => 'Rumpf',
@@ -419,8 +419,8 @@ $translations = array(
 		'en' => 'Drives'
 	),
 	'ingredients' => array(
-		'de' => 'Ingredienzien',
-		'en' => 'Ingredients'
+		'de' => 'Bauteile',
+		'en' => 'Components'
 	),
 	'neededLevel' => array(
 		'de' => 'Benötigtes Level: %s',
@@ -472,8 +472,8 @@ $translations = array(
 		'en' => 'Status'
 	),
 	'hangarDescription' => array(
-		'de' => 'Das Paradies eines jeden Piloten, hier kannst Du an Deinem Raumschiff herum schrauben und zu Missionen starten.',
-		'en' => 'The paradise of every pilot, here you can work on your spaceship and start to missions.'
+		'de' => 'Das Paradies eines jeden Piloten, hier kannst Du an Deinem Raumschiff herumschrauben und zu Missionen aufbrechen.',
+		'en' => "Every pilot's paradise, here you can work on your spaceship and start to missions."
 	),
 	'imprint' => array(
 		'de' => 'Impressum',
@@ -512,11 +512,11 @@ $translations = array(
 	),
 	'yourStarship' => array(
 		'de' => 'Dein Raumschiff',
-		'en' => 'Your starship'
+		'en' => 'Your Starship'
 	),
 	'weaponry' => array(
 		'de' => 'Bewaffnung',
-		'en' => 'Weaponry'
+		'en' => 'Armament'
 	),
 	'ammunition' => array(
 		'de' => 'Munition',
@@ -566,11 +566,11 @@ $translations = array(
 	),
 	'technicalData' => array(
 		'de' => 'Technische Daten',
-		'en' => 'Technical data'
+		'en' => 'Technical Data'
 	),
 	'energyManagement' => array(
 		'de' => 'Energieversorgung',
-		'en' => 'Energy management'
+		'en' => 'Energy Management'
 	),
 	'internalStructure' => array(
 		'de' => 'Struktur',
@@ -619,11 +619,11 @@ $translations = array(
 	),
 	'bankDescription' => array(
 		'de' => 'Willkommen in der ISB, wie können wir Ihnen helfen?',
-		'en' => 'Welcome to the ISB, how can we help you?'
+		'en' => 'Welcome to the ISB, how can we assist you?'
 	),
 	'createBankAccount' => array(
 		'de' => 'Konto eröffnen',
-		'en' => 'Create account'
+		'en' => 'Create Account'
 	),
 	'create' => array(
 		'de' => 'Erstellen',
@@ -643,7 +643,7 @@ $translations = array(
 	),
 	'bankTransferInfo' => array(
 		'de' => 'Für jeden Geldtransfer erheben wir eine Gebühr von %s.',
-		'en' => 'For every money transfer we charge a free of %s.'
+		'en' => 'For every money transfer we charge a fee of %s.'
 	),
 	'notEnoughMoney' => array(
 		'de' => 'Dir fehlt leider das nötige Kleingeld.',
@@ -671,8 +671,8 @@ $translations = array(
 	 ****************************************************/
 
 	'tradeDeckDescription' => array(
-		'de' => 'Ein Shopping Zentrum im Weltraum? Na, warum nicht!',
-		'en' => 'A shopping centre  out in space? Well, why not!'
+		'de' => 'Ein Shopping-Zentrum im Weltraum? Na, warum nicht!',
+		'en' => 'A shopping centre out in space? Well, why not!'
 	),
 	'shop' => array(
 		'de' => 'Laden',
@@ -727,8 +727,8 @@ $translations = array(
 		'en' => 'You depolluted %s %s.'
 	),
 	'youArePoor' => array(
-		'de' => 'Du bist arm wie eine Kirchenmaus',
-		'en' => 'You are as poor as a church mouse'
+		'de' => 'Du bist arm wie eine Kirchenmaus!',
+		'en' => 'You are as poor as a church mouse!'
 	),
 	'buyStarshipNotice' => array(
 		'de' => 'Bevor Du ein neues Schiff kaufst, solltest Du alle Objekte, die Du behalten möchtest, aus Deinem alten Schiff ausbauen.',
@@ -781,7 +781,7 @@ $translations = array(
 		'en' => "You could not create something out of that."
 	),
 	'tryIt' => array(
-		'de' => 'Probier`s!',
+		'de' => "Probier's!",
 		'en' => 'Try it!'
 	),
 	'fiddlingAround' => array(
@@ -827,11 +827,11 @@ $translations = array(
 	),
 	'spaceDoctor' => array(
 		'de' => 'Weltraum Arzt',
-		'en' => 'Space doctor'
+		'en' => 'Space Doctor'
 	),
 	'spaceDoctorDescription' => array(
 		'de' => 'Weltraumfieber und Schwerelosigkeitskrankheit sind wirklich üble Gesellen, aber wer geht schon freiwillig zum Arzt? Darum erhälst Du bei jedem Arztbesuch eine Kleinigkeit.',
-		'en' => 'Space fever and zero gravtity disease are really bad companions, but who visits a doctor voluntarily? Thus you`ll get something nice for each visit at the doctor.'
+		'en' => "Space fever and zero gravity disease are really bad companions, but who visits a doctor voluntarily? Thus you'll get something nice for each visit at the doctor."
 	),
 	'healthCareReward' => array(
 		'de' => 'Du hast %s erhalten!',
@@ -920,7 +920,7 @@ $translations = array(
 	),
 	'messageSent' => array(
 		'de' => 'Der Postbote macht sich auf den Weg.',
-		'en' => 'The mailman is on its way.'
+		'en' => 'The mailman is on his way.'
 	),
 
 	/*****************************************************
@@ -941,7 +941,7 @@ $translations = array(
 	),
 	'restCureHeadline' => array(
 		'de' => 'Erholungskur',
-		'en' => 'Rest cure'
+		'en' => 'Rest Cure'
 	),
 	'restCureDescription' => array(
 		'de' => 'Das wird Deine morschen Glieder wieder auf Schwung bringen.',
@@ -962,7 +962,7 @@ $translations = array(
 	),
 	'academyDescription' => array(
 		'de' => 'Hier gibt es zwar keinen Kobayashi-Maru-Test, jedoch einige interessante Kurse, welche Dich als aufstrebenden Weltraum-Pionier weiter bringen könnten.',
-		'en' => 'You can`t take a Kobayashi-Maru-Test here, but some other interesting courses, that could bring you forth as an ambitious space-pioneer.'
+		'en' => "You can't take a Kobayashi-Maru-Test here, but some other interesting courses, that could bring you forth as an ambitious space-pioneer."
 	),
 	'courses' => array(
 		'de' => 'Kurse',
@@ -973,7 +973,7 @@ $translations = array(
 		'en' => 'Take academy courses to raise your action points. Every 2 certificates will grant you an additional point.'
 	),
 	'courseLevel' => array(
-		'de' => 'Kurs Stufe %s',
+		'de' => 'Kurs-Stufe %s',
 		'en' => 'Course grade %s'
 	),
 	'startCourseText' => array(
@@ -993,7 +993,7 @@ $translations = array(
 		'en' => 'You have to pass a course first.'
 	),
 	'courseStarted' => array(
-		'de' => 'Und schon geht`s los!',
+		'de' => "Und schon geht's los!",
 		'en' => 'And here we go!'
 	),
 	'takingCourse' => array(
@@ -1002,7 +1002,7 @@ $translations = array(
 	),
 	'courseFinished' => array(
 		'de' => 'Du hast den Kurs erfolgreich beendet und kannst Dein Zertifikat abholen.',
-		'en' => 'You finished the course successful and can collect your certificate.'
+		'en' => 'You finished the course successfully and can collect your certificate.'
 	),
 	'gotCourseCertificate' => array(
 		'de' => 'Dein Kurs Level hat sich um 1 erhöht!',
@@ -1030,7 +1030,7 @@ $translations = array(
 	),
 	'cannotStartTraining' => array(
 		'de' => 'Du bist fix und fertig!',
-		'en' => 'You`re all run down!'
+		'en' => "You're all run down!"
 	),
 	'tactics' => array(
 		'de' => 'Taktik',
@@ -1061,8 +1061,8 @@ $translations = array(
 		'en' => 'Train'
 	),
 	'trainDescription' => array(
-		'de' => 'Zeig` den verweichlichten Kadetten, was Du drauf hast!',
-		'en' => 'Show the mollycoddled cadets, what you`re about!'
+		'de' => "Zeig' den verweichlichten Kadetten, was Du drauf hast!",
+		'en' => "Show the mollycoddled cadets, what you're about!"
 	),
 	'youGo' => array(
 		'de' => 'Trau Dich!',
@@ -1095,7 +1095,7 @@ $translations = array(
 	),
 	'energyDrain' => array(
 		'de' => 'Energiebedarf',
-		'en' => 'Energy drain'
+		'en' => 'Energy Drain'
 	),
 	'perShot' => array(
 		'de' => 'pro Schuss',
@@ -1111,7 +1111,7 @@ $translations = array(
 	),
 	'reloadCycle' => array(
 		'de' => 'Nachladezyklus',
-		'en' => 'Reload cycle'
+		'en' => 'Reload Cycle'
 	),
 	'rounds' => array(
 		'de' => 'Runden',
@@ -1131,11 +1131,11 @@ $translations = array(
 	),
 	'shieldStrength' => array(
 		'de' => 'Schildstärke',
-		'en' => 'Shield strength'
+		'en' => 'Shield Strength'
 	),
 	'maxShieldStrength' => array(
 		'de' => 'Max. Schildstärke',
-		'en' => 'Max. shield strength'
+		'en' => 'Max. Shield Strength'
 	),
 	'maxShieldRecharge' => array(
 		'de' => 'Max. Aufladung',
@@ -1159,7 +1159,7 @@ $translations = array(
 	),
 	'maxCapacity' => array(
 		'de' => 'Max. Kapazität',
-		'en' => 'Max. capacity'
+		'en' => 'Max. Capacity'
 	),
 
 	/*****************************************************
@@ -1180,11 +1180,11 @@ $translations = array(
 	),
 	'pirateBay' => array(
 		'de' => 'Piratenhort',
-		'en' => 'Pirate bay'
+		'en' => 'Pirate Bay'
 	),
 	'showHim' => array(
-		'de' => 'Zeig`s ihm!',
-		'en' => 'Show him!'
+		'de' => "Zeig's ihm!",
+		'en' => 'In his face!'
 	),
 	'pirateBayDescription' => array(
 		'de' => 'Lust auf ein Kämpfchen? Die Sonntagsflieger dort draussen haben gewiss noch ein paar Münzen zuviel.',
@@ -1192,7 +1192,7 @@ $translations = array(
 	),
 	'badBoys' => array(
 		'de' => 'Böse Buben',
-		'en' => 'Bad boys'
+		'en' => 'Bad Boys'
 	),
 	'shieldUp' => array(
 		'de' => 'Schilde!',
@@ -1234,11 +1234,11 @@ $translations = array(
 
 	// Old
 	'insufficientEnergyWeapon' => array(
-		'de' => "Energielevel zu niedrig um %s abzufeuern.",
+		'de' => "Energielevel zu niedrig, um %s abzufeuern.",
 		'en' => "Energy level too low to fire %s."
 	),
 	'insufficientEnergyShield' => array(
-		'de' => "Energielevel zu niedrig um %s aufzubauen.",
+		'de' => "Energielevel zu niedrig, um %s aufzubauen.",
 		'en' => "Energy level too low to build up %s."
 	),
 	'firingWeapon' => array(
@@ -1515,7 +1515,7 @@ $translations = array(
 	'welcomeMail' => array(
 		'de' => "Willkommen bei %s,
 
-mit Deinen Account Daten kannst Du Dich jederzeit auf http://www.wicked-outer-world.com einloggen.
+mit Deinen Account-Daten kannst Du Dich jederzeit auf http://www.wicked-outer-world.com einloggen.
 
 ----------------------------
 Accountname: %s
@@ -1524,7 +1524,7 @@ Passwort: %s
 
 Dies ist eine automatisch generierte Email. Bitte beantworte diese Email nicht, sondern wenden Dich bei Fragen oder Problemen an info@wicked-outer-world.com.
 
-Wir wünschen Dir viel Spaß beim spielen vom %s!
+Wir wünschen Dir viel Spaß beim Spielen von %s!
 
 Mit freundlichen Grüßen
 Dein %s Team",
@@ -1537,7 +1537,7 @@ Account name: %s
 Password: %s
 ----------------------------
 
-This is an automatically generated email. Please do not answer to thie email. If you got questions or problems contact us at info@wicked-outer-world.com.
+This is an automatically generated email. Please do not answer to this email. If you have got any questions or problems contact us at info@wicked-outer-world.com.
 
 Good luck and enjoy playing %s!
 
