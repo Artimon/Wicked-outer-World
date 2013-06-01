@@ -41,16 +41,16 @@ class RenderHangarStarTrip extends RendererAbstract {
 
 		$actionHangarStarTrip->start();
 
-		$starTourSeconds = $account->starship()->engine()->starTourSeconds();
+		$starTripSeconds = $account->starship()->engine()->starTripSeconds();
 
 		$js = "
 			$('#space').engine2d(function (engine2d) {
-				init(engine2d, {$starTourSeconds});
+				init(engine2d, {$starTripSeconds});
 			});";
 		JavaScript::create()->bind($js);
 
 		$entityLoader = new EntityLoader($account);
-		$entityLoader->initSector($starTourSeconds);
+		$entityLoader->initSector($starTripSeconds);
 
 		$headline = i18n('starTrip');
 		$outOfFuel = i18n('outOfFuel');

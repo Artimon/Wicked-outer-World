@@ -235,7 +235,7 @@ class RenderTechInfo extends RendererAbstract {
 	</td>
 </tr>";
 
-		return html::defaultTable($html);
+		return html::defaultTable($html) . "<hr>" . i18n('shieldsHelp');
 	}
 
 	/**
@@ -259,7 +259,34 @@ class RenderTechInfo extends RendererAbstract {
 </tr><tr>
 	<td>".i18n('maxCapacity').":</td>
 	<td class='headline right'>{$this->item->capacity()}</td>
-	<td class='variable'></td>
+	<td class='variable'>".i18n('energy')."</td>
+</tr>";
+
+		return html::defaultTable($html);
+	}
+
+	/**
+	 * @return string
+	 */
+	private function driveData() {
+		$html = "
+<colgroup>
+	<col>
+	<col width='40'>
+	<col>
+</colgroup>
+<tr>
+	<td>".i18n('weight').":</td>
+	<td class='headline right'>{$this->item->weight()}</td>
+	<td class='variable'>{$this->weightUnit()}</td>
+</tr><tr>
+	<td>".i18n('thrust').":</td>
+	<td class='headline right'>{$this->item->thrust()}</td>
+	<td class='variable'>Mega Newton (MN)</td>
+</tr><tr>
+	<td>".i18n('starTripDuration').":</td>
+	<td class='headline right'>{$this->item->starTripSeconds()}</td>
+	<td class='variable'>".i18n('seconds')."</td>
 </tr>";
 
 		return html::defaultTable($html);
@@ -289,7 +316,11 @@ class RenderTechInfo extends RendererAbstract {
 				return $this->shieldData();
 
 			case $this->item->isReactor():
+			case $this->item->isCapacitor():
 				return $this->reactorData();
+
+			case $this->item->isDrive():
+				return $this->driveData();
 
 			default:
 				return '';

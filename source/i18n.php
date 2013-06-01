@@ -287,24 +287,24 @@ $translations = array(
 		'en' => 'Combustion Drive'
 	),
 	'descCombustionDrive' => array(
-		'de' => "@TODO",
-		'en' => "@TODO"
+		'de' => "Wenn Du wirklich Old School sein möchtest, solltest Du Dir diesen Antrieb zulegen. Space-Shuttle-Feeling FTW!",
+		'en' => "If you really wanna be old school get yourself this drive. Space-Shuttle-feeling FTW!"
 	),
 	'nameIonDrive' => array(
 		'de' => 'Ionenantrieb',
 		'en' => 'Ion Drive'
 	),
 	'descIonDrive' => array(
-		'de' => "@TODO",
-		'en' => "@TODO"
+		'de' => "Ionenantriebe funktionieren nach dem Furz-Prinzip: Das Raumschiff stößt hinten beschleunigte Gase aus um Schub zu erzeugen.",
+		'en' => "Ion drives work after the fart-principle: The spaceship exhausts accelerated gas from its back to advance."
 	),
 	'namePulseDrive' => array(
 		'de' => 'Impulsantrieb',
 		'en' => 'Pulse Drive'
 	),
 	'descPulseDrive' => array(
-		'de' => "@TODO",
-		'en' => "@TODO"
+		'de' => "Weisst Du was geil ist? Ionenantriebe sind geil. Aber Impulsantriebe gehören auch zur Familie magnetoplasmadynamischer Antrieb, verfügen aber über ihren eigenen Fusionsreaktor, denn mehr ist immer besser!",
+		'en' => "You know what is cool? Ion drives are cool. But pulse drive belong to the family of magnetoplasmadynamic thrusters, too, but got their own fusion reactor, since more is always better!"
 	),
 
 	/*****************************************************
@@ -1343,6 +1343,23 @@ $translations = array(
 	'xDamage' => array(
 		'de' => "%s Schaden (%s)",
 		'en' => "%s damage (%s)"
+	),
+
+	/*****************************************************
+	 * Tech data
+	 ****************************************************/
+
+	'starTripDuration' => array(
+		'de' => 'Sternentour-Zeit',
+		'en' => 'Star Trip-Time'
+	),
+	'seconds' => array(
+		'de' => 'Sekunden',
+		'en' => 'Seconds'
+	),
+	'shieldsHelp' => array(
+		'de' => 'Schilde erfordern inital Energie um sich aufzubauen. Jeder Treffer zieht Energie vom Schild ab, bis die Schildstärke auf null gefallen ist und es kollabiert. Schilde können sich jederzeit neu aufbauen oder regenerieren, sofern genügend Energie verfügbar ist. Schilde können, zusätzlich zu ihrer Schutzwirkung, den Schaden durch Absorbtion reduzieren, sofern Absorbtionstyp und Schadenstyp übereinstimmen.',
+		'en' => 'Shields require initial energy to build up. Every hits drains energy from the shield until its power drops to zero and it collapses. Shields can build up or regenerate any time, given there is enough energy available. In addition to the shields protective effect it can reduce damage when the absorb-type matches the damage-type.'
 	),
 
 	/*****************************************************

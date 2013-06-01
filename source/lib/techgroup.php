@@ -356,11 +356,11 @@ class techGroup extends techContainerSubclass {
 	 *
 	 * @return int
 	 */
-	public function starTourSeconds() {
+	public function starTripSeconds() {
 		$seconds = 0;
 
 		foreach ($this->items() as $technology) {
-			$seconds += $technology->starTourSeconds();
+			$seconds += $technology->starTripSeconds();
 		}
 
 		return $seconds;

@@ -421,7 +421,7 @@ class Technology extends AccountSubclass{
 	/**
 	 * @return int
 	 */
-	public function starTourSeconds() {
+	public function starTripSeconds() {
 		if ($this->isDrive()) {
 			return $this->techData['seconds'];
 		}
