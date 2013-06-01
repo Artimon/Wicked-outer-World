@@ -45,7 +45,17 @@ class RenderProfile extends RendererAbstract {
 		$shipCondition = i18n('shipCondition');
 		$endurance = i18n('endurance');
 		$actionPoints = i18n('actionPoints');
-		$inflictedDamage = i18n('inflictedDamage');
+
+		$damageDealt = i18n('damageDealt');
+		$damageTaken = i18n('damageTaken');
+		$hits = i18n('hits');
+		$misses = i18n('misses');
+
+		$stats = $account->stats();
+		$amountDamageDealt = Format::number($stats->inflictedDamage());
+		$amountDamageTaken = Format::number($stats->takenDamage());
+		$amountHits = Format::number($stats->hits());
+		$amountMisses = Format::number($stats->misses());
 
 		$spaceDoctor = i18n('spaceDoctor');
 		$startCheck = i18n('startCheck');
@@ -86,7 +96,8 @@ class RenderProfile extends RendererAbstract {
 		<td class='variable'>
 			{$account->level()}
 		</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td>{$experience}</td>
 		<td class='smallFont critical'>
 			{$account->experience()} /
@@ -94,31 +105,45 @@ class RenderProfile extends RendererAbstract {
 			[{$levelProgress->progress()}%]<br>
 			{$bars->experienceBar()}
 		</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td class='highlight'>{$shipCondition}</td>
 		<td class='smallFont variable'>
 			{$current} / {$maximum} [{$condition->conditionPercentage()}%]<br>
 			{$bars->conditionBar()}
 		</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td class='highlight'>{$endurance}</td>
 		<td class='smallFont variable'>
 			{$account->endurance()} / {$account->maxEndurance()}
 			[{$endurancePercentage}]<br>
 			{$bars->enduranceBar()}
 		</td>
-	</tr><tr>
+	</tr>
+	<tr>
 		<td class='highlight'>{$actionPoints}</td>
 		<td class='smallFont variable'>
 			{$account->actionPoints()} / {$account->maxActionPoints()}
 			[{$actionPointsPercentage}]<br>
 			{$bars->actionPointsBar()}
 		</td>
-	</tr><tr>
-		<td>{$inflictedDamage}</td>
-		<td class='variable'>
-			{$account->stats()->currentInflictedDamage()}
-		</td>
+	</tr>
+	<tr>
+		<td>{$damageDealt}</td>
+		<td class='variable'>{$amountDamageDealt}</td>
+	</tr>
+	<tr>
+		<td>{$damageTaken}</td>
+		<td class='variable'>{$amountDamageTaken}</td>
+	</tr>
+	<tr>
+		<td>{$hits}</td>
+		<td class='variable'>{$amountHits}</td>
+	</tr>
+	<tr>
+		<td>{$misses}</td>
+		<td class='variable'>{$amountMisses}</td>
 	</tr>
 </table>
 <hr>

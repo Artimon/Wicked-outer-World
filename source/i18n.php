@@ -892,10 +892,6 @@ $translations = array(
 		'de' => 'Erfahrung',
 		'en' => 'Experience'
 	),
-	'inflictedDamage' => array(
-		'de' => 'Ausgeteilter Schaden',
-		'en' => 'Inflicted damage'
-	),
 	'spaceDoctor' => array(
 		'de' => 'Weltraum Arzt',
 		'en' => 'Space Doctor'
@@ -1644,10 +1640,6 @@ Your %s team"
 	'accountDataEmail' => array(
 		'de' => 'Deine Account-Daten wurden an "%s" gesendet.',
 		'en' => 'You account data has been sent to "%s".'
-	),
-	'someStatistics' => array(
-		'de' => 'Ein paar kleine Statistiken',
-		'en' => 'Some small statistics'
 	),
 	'damageDealt' => array(
 		'de' => 'Schaden ausgeteilt',

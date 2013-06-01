@@ -41,41 +41,10 @@ class RenderAccount extends RendererAbstract {
 		$confirm = i18n('confirm');
 		$delete = i18n('delete');
 
-		$someStatistics = i18n('someStatistics');
-		$damageDealt = i18n('damageDealt');
-		$damageTaken = i18n('damageTaken');
-		$hits = i18n('hits');
-		$misses = i18n('misses');
-
-		$stats = $account->stats();
-		$amountDamageDealt = Format::number($stats->inflictedDamage());
-		$amountDamageTaken = Format::number($stats->takenDamage());
-		$amountHits = Format::number($stats->hits());
-		$amountMisses = Format::number($stats->misses());
-
 		return "
 			<div id='account'>
 				<h2>{$headline}</h2>
 				<p>{$accountDataEmail}</p>
-				<p class='bold highlight spacer'>{$someStatistics}</p>
-				<table>
-					<tr>
-						<td>{$damageDealt}:</td>
-						<td class='variable right'>{$amountDamageDealt}</td>
-					</tr>
-					<tr>
-						<td>{$damageTaken}:</td>
-						<td class='variable right'>{$amountDamageTaken}</td>
-					</tr>
-					<tr>
-						<td>{$hits}:</td>
-						<td class='variable right'>{$amountHits}</td>
-					</tr>
-					<tr>
-						<td>{$misses}:</td>
-						<td class='variable right'>{$amountMisses}</td>
-					</tr>
-				</table>
 				<p class='bold highlight spacer'>{$abandonAccount}</p>
 				<p>{$abandonNotice}</p>
 				<form action='' method='post'>
