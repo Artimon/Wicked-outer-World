@@ -157,7 +157,7 @@ class Starship extends TechContainerAbstract {
 		$thrust = $this->thrust();
 		$movability = 0;
 		if ($thrust > 0) {
-			$movability = $weight / $thrust;
+			$movability = 100 - ($weight / $thrust);
 		}
 
 		return (float)$movability;

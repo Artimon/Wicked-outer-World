@@ -110,8 +110,7 @@ class Accuracy {
 	 */
 	private function chance() {
 		if ($this->chance === null) {
-			$this->chance = 100;
-			$this->chance -= $this->opponentStarship->movability();	// Now 85% for example.
+			$this->chance = $this->opponentStarship->movability();	// Now 85% for example.
 
 			$opponent = $this->opponentStarship->account();
 			$defenseLevel = $opponent->defenseLevel() + $opponent->level() + 25;

@@ -213,8 +213,8 @@ $translations = array(
 	),
 
 	'nameLightDualLaser' => array(
-		'de' => 'Dual-Laser',
-		'en' => 'Dual-Laser'
+		'de' => 'Leichter Dual-Laser',
+		'en' => 'Leichter Dual-Laser'
 	),
 	'descLightDualLaser' => array(
 		'de' => 'Manchmal sind die einfachsten Lösungen die besten. Ein paar Laser, technische Komponenten und voila!',
@@ -222,8 +222,8 @@ $translations = array(
 	),
 
 	'nameLightQuadLaser' => array(
-		'de' => 'Quad-Laser',
-		'en' => 'Quad-Laser'
+		'de' => 'Leichter Quad-Laser',
+		'en' => 'Leichter Quad-Laser'
 	),
 	'descLightQuadLaser' => array(
 		'de' => 'Warum nur zwei Laser nehmen, wenn man vier haben kann?',

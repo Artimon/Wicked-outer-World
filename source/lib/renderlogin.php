@@ -50,6 +50,7 @@ class RenderLogin extends RendererAbstract {
 	<hr>
 	<p class='headline bold'>News:</p>
 	<ul>
+		<li class='highlight'>Several new weapons added.</li>
 		<li class='highlight'>Basic fight statistics added to account.</li>
 		<li class='highlight'>Message System introduced.</li>
 	</ul>
