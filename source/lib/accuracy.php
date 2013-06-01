@@ -106,11 +106,22 @@ class Accuracy {
 	}
 
 	/**
+	 * Formula:
+	 * P1: (100 / 0)
+	 * P2: (70 / 50)
+	 * P3: (0 / 100)
+	 * f(x) = -0,0095238095x² - 0,0476190476x + 100
+	 *
 	 * @return int
 	 */
-	private function chance() {
+	public function chance() {
 		if ($this->chance === null) {
-			$this->chance = $this->opponentStarship->movability();	// Now 85% for example.
+			$movability = $this->opponentStarship->movability();
+
+			$this->chance =
+				-0.0095238095 * ($movability * $movability) -
+				0.0476190476 * $movability +
+				100;
 
 			$opponent = $this->opponentStarship->account();
 			$defenseLevel = $opponent->defenseLevel() + $opponent->level() + 25;
@@ -122,6 +133,8 @@ class Accuracy {
 
 			$this->chance = min(95, $this->chance);
 			$this->chance = max(5, $this->chance);
+
+			$this->chance = round($this->chance);
 		}
 
 		return $this->chance;

@@ -15,7 +15,10 @@ function i18n($index) {
 
 	$language = $_SESSION['language'];
 
-	$translation = htmlentities($translations[$index][$language]);
+	$translation = htmlentities(
+		$translations[$index][$language],
+		ENT_COMPAT | ENT_QUOTES
+	);
 
 	$args = func_get_args();
 	$args = array_slice($args, 1);
