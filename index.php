@@ -274,7 +274,7 @@ class dispatcher {
 						<div class='company'>
 							<a href='http://www.pad-soft.de' target='_blank'>
 								<span class='entypo-compass'></span>
-								PAD-Soft Game Development
+								PAD-Soft Game Development by Artimus
 							</a>
 						</div>
 						<div class='moreGames'>
@@ -292,6 +292,18 @@ class dispatcher {
 
 			$javaScript->bind("$('.moreGames').moreGames();");
 		}
+
+		$ga = false ? "
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41010022-1', 'wicked-outer-world.com');
+  ga('send', 'pageview');
+
+</script>" : '';
 
 		return "<!doctype html>
 <html lang='{$session->value('language')}'>
@@ -364,16 +376,7 @@ reformal_wdg_bimage = '8489db229aa0a66ab6b80ebbe0bb26cd.png';
 
 <script type='text/javascript' language='JavaScript' src='http://idea.informer.com/tab6.js?domain=wicked-outer-world'></script><noscript><a href='http://wicked-outer-world.idea.informer.com'>Wicked outer World feedback </a> <a href='http://idea.informer.com'><img src='http://widget.idea.informer.com/tmpl/images/widget_logo.jpg' /></a></noscript>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-41010022-1', 'wicked-outer-world.com');
-  ga('send', 'pageview');
-
-</script>
+	{$ga}
 	</body>
 </html>";
 	}
@@ -386,26 +389,17 @@ reformal_wdg_bimage = '8489db229aa0a66ab6b80ebbe0bb26cd.png';
 		return $content->regionBody();
 	}
 
-	/**
-	 * @TODO Move to connection class.
-	 */
 	private function dbConnect() {
-		define('HOST_FOR_MYSQL',		'localhost');
-		define('USER_FOR_MYSQL',		'wowalpha');
-		define('PASS_FOR_MYSQL',		'$Vietam1383');
-		define('DATABASE_FOR_MYSQL',	'wowalpha');
+		$database = new Lisbeth_Database();
+		$database->connect(HOST_FOR_MYSQL, USER_FOR_MYSQL, PASS_FOR_MYSQL) or die('no connection');
+		$database->selectDatabase(DATABASE_FOR_MYSQL) or die('no database');
 
-		mysql_connect(HOST_FOR_MYSQL, USER_FOR_MYSQL, PASS_FOR_MYSQL) or die('no connection');
-		mysql_select_db(DATABASE_FOR_MYSQL) or die('no database');
-
-		cache::connect('localhost', 11211);
+		Lisbeth_Memcache::getInstance()->connect('localhost', 11211);
 	}
 
-	/**
-	 * @TODO Move to connection class.
-	 */
 	private function dbDisconnect() {
-		mysql_close();
+		$database = new Lisbeth_Database();
+		$database->close();
 	}
 }
 

@@ -80,6 +80,15 @@ $translations = array(
 		'en' => 'Relentless-Class space gliders have many supplement-slots and thus are specially designed for exploration missions.'
 	),
 
+	'nameEdinburgV5' => array(
+		'de' => 'Edinburg v5',
+		'en' => 'Edinburg v5'
+	),
+	'descEdinburgV5' => array(
+		'de' => 'Nach einigen skandalösen Pannen bei der Inbetriebnahme ist der Konzern nun sicher, dass die 5. Version der Edinburg den Jungfernflug sicher übersteht.',
+		'en' => 'After a few scandalous malfunctions during the launch, the company now is sure that the 5th version of the Edinburg will endure the maiden flight.'
+	),
+
 /*
 	'cargoNameCargoModule' => array(
 		'de' => 'Frachtmodul',
@@ -134,6 +143,15 @@ $translations = array(
 		'en' => "Simple steel plates protect the hull from particle strikes. But they are also used as cheap armor; and who could even tell where the difference between micro-meteorites and infernal hell lasers is?"
 	),
 
+	'nameDeflectorPlating' => array(
+		'de' => 'Deflektor Panzerung',
+		'en' => 'Deflector Plating'
+	),
+	'descDeflectorPlating' => array(
+		'de' => "Noch ein paar Veredelungsmaterialien hinzufügen und schon geht's los!",
+		'en' => 'Adding some refining material and here we go!'
+	),
+
 	'nameKineticShield' => array(
 		'de' => 'Kinetischer Schild',
 		'en' => 'Kinetic Shield'
@@ -186,6 +204,15 @@ $translations = array(
 	'descShark5' => array(
 		'de' => 'Mehr Torpedos, mehr Treffer - ganz einfach!',
 		'en' => 'More torpedoes, more hits - quite simple!'
+	),
+
+	'nameMicroLaser' => array(
+		'de' => 'Mikrolaser',
+		'en' => 'MicroLaser'
+	),
+	'descMicroLaser' => array(
+		'de' => 'Ein fieser kleiner Geselle der Laser-Familie. Er "sticht" nicht stark, aber oft.',
+		'en' => 'A mean little companion of the laser-family. His stings are not strong, but he stings often.'
 	),
 
 	'nameLightLaser' => array(
@@ -1476,12 +1503,12 @@ $translations = array(
 		'en' => 'Lucky day! You found %s s£!'
 	),
 	'missionTalkedWithPilots' => array(
-		'de' => 'Du hast Dich mit einem anderen Piloten unterhalten.',
-		'en' => 'You talked to another pilot.'
+		'de' => 'Du hast Dich mit einem anderen Piloten unterhalten. (%s Erfahrung)',
+		'en' => 'You talked to another pilot. (%s Experience)'
 	),
 	'missionThoughtAboutLife' => array(
-		'de' => 'Du hast über Dein Leben nachgedacht.',
-		'en' => 'You thought about your life.'
+		'de' => 'Du hast über Dein Leben nachgedacht. (%s Erfahrung)',
+		'en' => 'You thought about your life. (%s Experience)'
 	),
 
 	'missionCollectJunk' => array(
@@ -1489,12 +1516,12 @@ $translations = array(
 		'en' => 'Collect Junk'
 	),
 	'missionMetWithJunkers' => array(
-		'de' => 'Du hast Dich mit anderen Schrottsammlern unterhalten.',
-		'en' => 'You talked to other junkers.'
+		'de' => 'Du hast Dich mit anderen Schrottsammlern unterhalten. (%s Erfahrung)',
+		'en' => 'You talked to other junkers. (%s Experience)'
 	),
 	'missionBlindedByTheSun' => array(
-		'de' => 'Du wurdest von der Sonne geblendet.',
-		'en' => 'You have been blinded by the sun.'
+		'de' => 'Du wurdest von der Sonne geblendet. (%s Erfahrung)',
+		'en' => 'You have been blinded by the sun. (%s Experience)'
 	),
 	'missionFoundSpaceJunk' => array(
 		'de' => 'Du hast Weltraumschrott gefunden!',
@@ -1512,6 +1539,43 @@ $translations = array(
 	'missionExploration' => array(
 		'de' => 'Erkundung',
 		'en' => 'Exploration'
+	),
+	'missionSawShootingStar' => array(
+		'de' => 'Du hast eine Sternschnuppe gesehen. (%s Erfahrung)',
+		'en' => 'You saw a shooting star. (%s Experience)'
+	),
+	'missionLookingForTheSun' => array(
+		'de' => 'Du orientierst Dich nach der Sonne. (%s Erfahrung)',
+		'en' => 'You orientate yourself by the sun. (%s Experience)'
+	),
+	'missionSawStardust' => array(
+		'de' => 'Du hast Sternenstaub gesehen. (%s Erfahrung)',
+		'en' => 'You saw stardust. (%s Experience)'
+	),
+	'missionFoundFloatingJunk' => array(
+		'de' => 'Du hast zufällig herumfliegenden Weltraumschrott gefunden.',
+		'en' => 'You found accidentially floating around space junk.'
+	),
+	'missionWatchingStarships' => array(
+		'de' => 'Du hast andere Raumschiffe beobachtet. (%s Erfahrung)',
+		'en' => 'You are watching other starships. (%s Experience)'
+	),
+	'missionEvadingAsteroid' => array(
+		'de' => 'Du bist einem Asteroiden ausgewichen. (%s Erfahrung)',
+		'en' => 'You evaded an asteroid. (%s Experience)'
+	),
+
+	'missionCarriage' => array(
+		'de' => 'Transporter',
+		'en' => 'Transporter'
+	),
+	'missionDeliverySuccess' => array(
+		'de' => 'Du hast das Paket für %s s£ ungeöffnet und ohne Fragen zu stellen ausgeliefert.',
+		'en' => 'You delivered the package unopened and without asking further questions for %s s£.'
+	),
+	'missionDeliveryFailure' => array(
+		'de' => 'Bei der Lieferung gab es... gewisse "Komplikationen". (%s Erfahrung)',
+		'en' => 'There have been some... intricacies during the delivery. (%s Experience)'
 	),
 
 	/*****************************************************

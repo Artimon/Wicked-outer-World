@@ -73,8 +73,6 @@ class Accuracy {
 		$this->hits = 0;
 
 		/*
-		 * @TODO calculate by skills
-		 *
 		 * $starship->maxWeight() for ship size (overall hit probability)
 		 * $starship->weight() for maneuverability
 		 */

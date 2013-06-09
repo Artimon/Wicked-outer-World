@@ -40,6 +40,10 @@ $techIds = array(
 	'GREMLIN_ID'				=> 3,
 	'NIGHTFALL_CB55_ID'			=> 4,
 	'RELENTLESS_ID'				=> 5,
+	'EDINBURG_V5_ID'			=> 6,
+
+	'IMPACT_PLATING_ID'			=> 40,
+	'DEFLECTOR_PLATING_ID'		=> 41,
 
 	'SMALL_BLASTER_ID'			=> 60,
 
@@ -68,6 +72,8 @@ $techIds = array(
 
 	'SHARK_2_ID'				=> 140,
 	'SHARK_5_ID'				=> 141,
+
+	'MICRO_LASER_ID'			=> 150,
 
 	'IRON_ID'					=> 1000,
 	'MAGNET_COIL_ID'			=> 1005,
@@ -202,6 +208,21 @@ $technology[RELENTLESS_ID] = array(
 		'engine'		=> 3
 	)
 );
+$technology[EDINBURG_V5_ID] = array(
+	'type'		=> Technology::TYPE_STARSHIP,
+	'name'		=> 'EdinburgV5',
+	'price'		=> 17520,
+	'weight'	=> 40,
+	'tonnage'	=> 27,
+	'structure'	=> 124,
+	'slots'		=> array(
+		'weaponry'		=> 2,
+		'ammunition'	=> 1,
+		'equipment'		=> 2,
+		'cargo'			=> 2,
+		'engine'		=> 3
+	)
+);
 
 $technology[30] = array(
 	'type'		=> Technology::TYPE_MINING_MODULE,
@@ -210,7 +231,7 @@ $technology[30] = array(
 );
 
 // ballistic, explosion and energy armor
-$technology[40] = array(
+$technology[IMPACT_PLATING_ID] = array(
 	'type'		=> Technology::TYPE_PLATING,
 	'name'		=> 'ImpactArmor',
 	'weight'	=> 1,
@@ -221,6 +242,20 @@ $technology[40] = array(
 		IRON_ID	=> 4
 	),
 	'craftHint'	=> true
+);
+$technology[DEFLECTOR_PLATING_ID] = array(
+	'type'		=> Technology::TYPE_PLATING,
+	'name'		=> 'DeflectorPlating',
+	'level'		=> 4,
+	'weight'	=> 2,
+	'stack'		=> 1,
+	'armor'		=> 27,
+	'price'		=> null,	// Value for trading.
+	'craft' => array(
+		IMPACT_PLATING_ID	=> 1,
+		CRYSTALS_ID			=> 2,
+		ENERGY_CELLS_ID		=> 2
+	)
 );
 
 /*
@@ -295,6 +330,24 @@ $technology[SHARK_5_ID] = array(
 		COOLER_ID				=> 1
 	),
 	'craftHint' => true
+);
+$technology[MICRO_LASER_ID] = array(
+	'type'			=> Technology::TYPE_WEAPON,
+	'name'			=> 'MicroLaser',
+	'level'			=> 5,
+	'weight'		=> 2,
+	'damage'		=> 8,
+	'reload'		=> 2,
+	'drain'			=> 9,
+	'burst'			=> 5,
+	'damageType'	=> Technology::DAMAGE_ENERGY,
+	'price'			=> null,	// Value for trading.
+	'craft' => array(
+		IRON_ID			=> 2,
+		CRYSTALS_ID		=> 4,
+		COOLER_ID		=> 4
+	),
+	'craftHint'	=> true
 );
 $technology[LIGHT_LASER_ID] = array(
 	'type'			=> Technology::TYPE_WEAPON,

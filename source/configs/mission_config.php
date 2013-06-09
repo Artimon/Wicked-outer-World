@@ -6,6 +6,7 @@
 define('STROLL_AROUND',	1);
 define('COLLECT_JUNK',	2);
 define('EXPLORATION',	3);
+DEFINE('CARRIAGE',		4);
 
 return array(
 	STROLL_AROUND => array(
@@ -31,7 +32,7 @@ return array(
 	),
 	COLLECT_JUNK => array(
 		'name'			=> 'missionCollectJunk',
-		'actionPoints'	=> 6,	// Needed action points.
+		'actionPoints'	=> 4,	// Needed action points.
 		'events' => array(
 			'amount' => '2-4',
 			'list' => array(
@@ -60,9 +61,9 @@ return array(
 	),
 	EXPLORATION => array(
 		'name'			=> 'missionExploration',
-		'actionPoints'	=> 9,	// Needed action points.
+		'actionPoints'	=> 8,	// Needed action points.
 		'events' => array(
-			'amount' => '3-7',
+			'amount' => '4-7',
 			'list' => array(
 				array(
 					'teaser' => 'missionSawShootingStar',
@@ -90,5 +91,22 @@ return array(
 				)
 			)
 		)
+	),
+	CARRIAGE => array(
+		'name'			=> 'missionCarriage',
+		'actionPoints'	=> 9,	// Needed action points.
+		'events' => array(
+			'amount' => '4-5',
+			'list' => array(
+				array(
+					'teaser' => 'missionDeliverySuccess',
+					'reward' => array('money' => '28-153')
+				),
+				array(
+					'teaser' => 'missionDeliveryFailure',
+					'reward' => array('exp' => 10)
+				)
+			)
+		),
 	)
 );

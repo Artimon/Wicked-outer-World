@@ -50,10 +50,9 @@ class RenderLogin extends RendererAbstract {
 	<hr>
 	<p class='headline bold'>News:</p>
 	<ul>
+		<li class='highlight'>New mission, new items and a spaceship model have been added.</li>
 		<li class='highlight'>Basic fight statistics added to profile.</li>
 		<li class='highlight'>Missing item tech data sheets added.</li>
-		<li class='highlight'>Several new weapons added.</li>
-		<li class='highlight'>Message System introduced.</li>
 	</ul>
 </div>
 <div class='clear'></div>";
@@ -98,7 +97,7 @@ class RenderLogin extends RendererAbstract {
 				`password` = MD5('{$password}')
 			LIMIT 1;";
 
-		$database = new database();	// @TODO Replace with Lisbeth_Database
+		$database = new Lisbeth_Database();
 		$database->query($sql);
 
 		$account = $database->fetch();

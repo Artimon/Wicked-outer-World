@@ -541,8 +541,6 @@ class Technology extends AccountSubclass{
 	/**
 	 * Return the capacity of al items (amount * capacity).
 	 *
-	 * @TODO Add pure capacity items when invented...
-	 *
 	 * @return float|int
 	 */
 	public function totalCapacity() {

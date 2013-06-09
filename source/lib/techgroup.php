@@ -270,7 +270,7 @@ class techGroup extends techContainerSubclass {
 		$thrust = 0;
 
 		foreach ($this->items() as $technology) {
-			$thrust += $technology->thrust();
+			$thrust += $technology->thrust() * $technology->amount();
 		}
 
 		return $thrust;
