@@ -262,7 +262,7 @@ class RenderTechInfo extends RendererAbstract {
 	<td class='variable'>".i18n('energy')."</td>
 </tr>";
 
-		return html::defaultTable($html);
+		return html::defaultTable($html) . "<hr>" . i18n('reactorHelp');
 	}
 
 	/**
@@ -289,7 +289,7 @@ class RenderTechInfo extends RendererAbstract {
 	<td class='variable'>".i18n('seconds')."</td>
 </tr>";
 
-		return html::defaultTable($html);
+		return html::defaultTable($html) . "<hr>" . i18n('driveHelp');
 	}
 
 	/**

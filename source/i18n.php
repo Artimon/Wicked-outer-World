@@ -1387,6 +1387,14 @@ $translations = array(
 		'de' => 'Schilde erfordern inital Energie um sich aufzubauen. Jeder Treffer zieht Energie vom Schild ab, bis die Schildstärke auf null gefallen ist und es kollabiert. Schilde können sich jederzeit neu aufbauen oder regenerieren, sofern genügend Energie verfügbar ist. Schilde können, zusätzlich zu ihrer Schutzwirkung, den Schaden durch Absorbtion reduzieren, sofern Absorbtionstyp und Schadenstyp übereinstimmen.',
 		'en' => 'Shields require initial energy to build up. Every hits drains energy from the shield until its power drops to zero and it collapses. Shields can build up or regenerate any time, given there is enough energy available. In addition to the shields protective effect it can reduce damage when the absorb-type matches the damage-type.'
 	),
+	'reactorHelp' => array(
+		'de' => 'Reaktoren versorgen Deine Waffensysteme und Schilde mit Energie. Je höher die Aufladung ist, desto schneller füllt sich die nutzbare Kapazität auf.',
+		'en' => "Reactors provide power supply for your ship's weapon systems and shields. The higher the recharge rate, the fast the usable capacity recharges."
+	),
+	'driveHelp' => array(
+		'de' => 'Antriebe mit mehr Schubkraft verbessern die Wendigkeit des Schiffes und damit Deine Ausweichchance. Je schwerer das Schiff, desto stärker sollte der Antrieb sein.',
+		'en' => 'Drives with more thurst increase the agility of the ship and thus your evasion chance. The heavier the ship, the stronger the drive should be.'
+	),
 
 	/*****************************************************
 	 * Sidebar / Star Base
