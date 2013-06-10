@@ -5,19 +5,19 @@
  */
 abstract class techContainerSubclass {
 	/**
-	 * @var techContainerAbstract
+	 * @var TechContainerAbstract
 	 */
 	private $techContainer;
 
 	/**
-	 * @param techContainerAbstract $techContainer
+	 * @param TechContainerAbstract $techContainer
 	 */
-	public function __construct(techContainerAbstract $techContainer) {
+	public function __construct(TechContainerAbstract $techContainer) {
 		$this->techContainer = $techContainer;
 	}
 
 	/**
-	 * @return techContainerAbstract
+	 * @return TechContainerAbstract
 	 */
 	public function techContainer() {
 		return $this->techContainer;

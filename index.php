@@ -414,11 +414,6 @@ session_start();
 
 require_once './bootstrap.php';
 
-require_once './source/i18n.php';
-require_once './source/configs/base_config.php';
-require_once './source/configs/tech_config.php';
-require_once './source/configs/space_config.php';
-
 JavaScript::create()->bind("$('.techInfo').techInfo();");
 
 $dispatcher = new dispatcher();

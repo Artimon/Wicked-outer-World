@@ -26,7 +26,7 @@ class techGroupTest extends phpUnitFramework {
 			->method('stackGap')
 			->will($this->returnValue($stackGap));
 
-		$techContainer = $this->mock('techContainerAbstract');
+		$techContainer = $this->mock('TechContainerAbstract');
 		$techContainer
 			->expects($this->once())
 			->method('availableTonnage')

@@ -4,7 +4,7 @@
  * Things like starships or stockage are tech containers.
  * The tech container provides tech selector access.
  */
-abstract class techContainerAbstract
+abstract class TechContainerAbstract
 	extends Technology
 	implements TechContainerInterface {
 
