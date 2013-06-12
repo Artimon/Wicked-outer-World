@@ -833,4 +833,4 @@ $output[] = "\$technology = unserialize('{$serialized}');";
 
 $output = implode("\n", $output);
 
-file_put_contents('tech_config.php', $output);
+file_put_contents('tech.php', $output);

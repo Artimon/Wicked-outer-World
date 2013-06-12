@@ -67,7 +67,7 @@ class Config {
 	public function missions() {
 		if (!isset($this->configs->missions)) {
 			$this->configs->missions =
-				require_once 'source/configs/mission_config.php';
+				require_once 'source/configs/mission.php';
 		}
 
 		return $this->configs;

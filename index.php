@@ -390,6 +390,8 @@ reformal_wdg_bimage = '8489db229aa0a66ab6b80ebbe0bb26cd.png';
 	}
 
 	private function dbConnect() {
+		Lisbeth_KeyGenerator::setCacheSpace(DATABASE_FOR_MYSQL);
+
 		$database = new Lisbeth_Database();
 		$database->connect(HOST_FOR_MYSQL, USER_FOR_MYSQL, PASS_FOR_MYSQL) or die('no connection');
 		$database->selectDatabase(DATABASE_FOR_MYSQL) or die('no database');

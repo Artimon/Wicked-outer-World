@@ -7,13 +7,13 @@
 $baseDir = __DIR__;
 
 require_once $baseDir . '/source/i18n.php';
-require_once $baseDir . '/source/configs/base_config.php';
-require_once $baseDir . '/source/configs/tech_config.php';
-require_once $baseDir . '/source/configs/space_config.php';
+require_once $baseDir . '/source/configs/base.php';
+require_once $baseDir . '/source/configs/tech.php';
+require_once $baseDir . '/source/configs/space.php';
 
 
 $route = array_key_exists('page', $_REQUEST) ? $_REQUEST['page'] : '';
-$routes = require_once 'source/configs/route_config.php';
+$routes = require_once 'source/configs/route.php';
 if (!array_key_exists($route, $routes)) {
 	$route = 'default';
 	$parts = array();
