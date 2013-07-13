@@ -105,10 +105,10 @@ class Accuracy {
 
 	/**
 	 * Formula:
-	 * P1: (100 / 0)
-	 * P2: (70 / 50)
+	 * P1: (100 / 50)
+	 * P2: (70 / 75)
 	 * P3: (0 / 100)
-	 * f(x) = -0,0095238095x² - 0,0476190476x + 100
+	 * f(x) = -0,0047619048x² - 0,0238095238x + 100
 	 *
 	 * @return int
 	 */
@@ -117,8 +117,8 @@ class Accuracy {
 			$movability = $this->opponentStarship->movability();
 
 			$this->chance =
-				-0.0095238095 * ($movability * $movability) -
-				0.0476190476 * $movability +
+				-0.0047619048 * ($movability * $movability) -
+				0.0238095238 * $movability +
 				100;
 
 			$opponent = $this->opponentStarship->account();
