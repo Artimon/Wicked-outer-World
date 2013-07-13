@@ -66,24 +66,26 @@ class RenderMessageWrite extends RenderMessageAbstract {
 	public function bodyHtml() {
 		$sent = $this->commit();
 
-		$message = $this->message();
-		if ($message) {
-			$recipientName = $senderName = $message->value('senderName');
-			$title = $message->value('title');
-			if (strpos($title, 'Re: ') !== 0) {
-				$title = 'Re: ' . $title;
+		if (!$sent) {
+			$message = $this->message();
+			if ($message) {
+				$recipientName = $senderName = $message->value('senderName');
+				$title = $message->value('title');
+				if (strpos($title, 'Re: ') !== 0) {
+					$title = 'Re: ' . $title;
+				}
+				$message = $message->value('message');
+				$message = str_replace("\n", "\n> ", $message);
+				$message = str_replace("> >", ">>", $message);
+				$message = htmlentities($message, null, null, false);
+				$message = "\n\n\n\n{$senderName}:\n\n> " . $message;
 			}
-			$message = $message->value('message');
-			$message = str_replace("\n", "\n> ", $message);
-			$message = str_replace("> >", ">>", $message);
-			$message = htmlentities($message, null, null, false);
-			$message = "\n\n\n\n{$senderName}:\n\n> " . $message;
-		}
-		elseif (!$sent) {
-			$request = $this->request();
-			$recipientName = $request->post('recipient', '');
-			$title = $request->post('title', '');
-			$message = $request->post('message', '');
+			else {
+				$request = $this->request();
+				$recipientName = $request->post('recipient', '');
+				$title = $request->post('title', '');
+				$message = $request->post('message', '');
+			}
 		}
 		else {
 			$recipientName = '';
