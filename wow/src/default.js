@@ -140,6 +140,42 @@ function ConfirmBox(initCallback, confirmCallback) {
 			event.preventDefault();
 		});
 	};
+
+	/**
+	 * @param {{maskedId: {string}, unmaskedId: {string}}} options
+	 */
+	$.fn.password = function (options) {
+		var $checkbox = $(this),
+			$masked,
+			$unmasked,
+			defaults = {
+				maskedId: 'password',
+				unmaskedId: 'passwordUnmasked'
+			};
+
+		options = $.extend({}, defaults, options);
+		$masked = $('#' + options.maskedId);
+		$unmasked = $('#' + options.unmaskedId);
+
+		$checkbox.change(function () {console.log('jop');
+			$masked.attr('name', null);
+			$unmasked.attr('name', null);
+
+			if ($checkbox.is(':checked')) {
+				$unmasked.attr('value', $masked.attr('value'));
+				$unmasked.attr('name', options.maskedId);
+			}
+			else {
+				$masked.attr('value', $unmasked.attr('value'));
+				$masked.attr('name', options.maskedId);
+			}
+
+			$masked.toggle();
+			$unmasked.toggle();
+		});
+
+		return $checkbox;
+	};
 }(jQuery));
 
 (function ($) {

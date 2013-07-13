@@ -85,6 +85,7 @@ class RenderRegister extends RendererAbstract {
 		$coolName = i18n('coolName');
 		$nameTip = i18n('nameTip');
 		$crazyPassword = i18n('crazyPassword');
+		$showIt = i18n('showIt');
 		$email = i18n('email');
 		$leaveEmpty = i18n('leaveEmpty');
 		$yourShip = i18n('yourShip');
@@ -108,6 +109,10 @@ class RenderRegister extends RendererAbstract {
 				var techId = $(this).val();
 
 				$('.techInfo').attr('data-techId', techId);
+			});
+			$('#revealPassword').password({
+				maskedId: 'password',
+				unmaskedId: 'plainPassword'
 			});";
 		JavaScript::create()->bind($js);
 
@@ -115,9 +120,14 @@ class RenderRegister extends RendererAbstract {
 			? " class='error tipTip'"
 			: " class='tipTip'";
 
-		$passwordClass = array_key_exists('password', $invalid)
-			? " class='error'"
-			: '';
+		if (array_key_exists('password', $invalid)) {
+			$passwordClass = " class='error'";
+			$plainPasswordClass = " class='error null'";
+		}
+		else {
+			$passwordClass = '';
+			$plainPasswordClass = " class='null'";
+		}
 
 		$emailClass = array_key_exists('email', $invalid)
 			? " class='error'"
@@ -142,19 +152,24 @@ class RenderRegister extends RendererAbstract {
 			<tr>
 				<td class='highlight'>{$coolName}</td>
 				<td>
-					<input type='text' name='name' maxlength='15' value='{$values['name']}' title='{$nameTip}'{$nameClass}>
+					<input type='text' name='name' maxlength='15' value='{$values['name']}' title='{$nameTip}' autocomplete='off'{$nameClass}>
 				</td>
 			</tr>
 			<tr>
 				<td class='highlight'>{$crazyPassword}</td>
 				<td>
-					<input type='password' name='password' value='{$values['password']}'{$passwordClass}>
+					<input id='password' type='password' name='password' value='{$values['password']}' autocomplete='off'{$passwordClass}>
+					<input id='plainPassword' type='text' value='' autocomplete='off'{$plainPasswordClass}>
+					<label>
+						<input type='checkbox' id='revealPassword'>
+						{$showIt}
+					</label>
 				</td>
 			</tr>
 			<tr>
 				<td class='highlight'>{$email}</td>
 				<td>
-					<input type='text' name='email' value='{$values['email']}'{$emailClass}>
+					<input type='text' name='email' value='{$values['email']}' autocomplete='off'{$emailClass}>
 				</td>
 			</tr>
 			<tr class='null'>

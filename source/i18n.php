@@ -1667,6 +1667,10 @@ $translations = array(
 		'de' => 'WTF is this??? (klick)',
 		'en' => 'WTF is this??? (click)'
 	),
+	'showIt' => array(
+		'de' => 'Zeigs mir!',
+		'en' => 'Show it!'
+	),
 	'accountData' => array(
 		'de' => 'Dein %s Account',
 		'en' => 'Your %s account'
