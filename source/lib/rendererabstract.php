@@ -29,7 +29,7 @@ abstract class RendererAbstract implements RendererInterface {
 	}
 
 	/**
-	 * @return Request
+	 * @return Leviathan_Request
 	 */
 	public function request() {
 		return Leviathan_Request::getInstance();

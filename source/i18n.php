@@ -1606,6 +1606,10 @@ $translations = array(
 		'de' => 'Logout',
 		'en' => 'Logout'
 	),
+	'loginFailed' => array(
+		'de' => 'Spieler nicht gefunden.',
+		'en' => 'Player not found.'
+	),
 	'logoutHeadline' => array(
 		'de' => 'Fehler: Seite nicht gefunden',
 		'en' => 'Error: Page not found'
@@ -1739,6 +1743,22 @@ Your %s team"
 	'confirm' => array(
 		'de' => 'Bestätigen',
 		'en' => 'Confirm'
+	),
+	'save' => array(
+		'de' => 'Speichern',
+		'en' => 'Save'
+	),
+	'passwordForgotten' => array(
+		'de' => 'Hast Du vergessen ein Passwort einzugeben?',
+		'en' => 'Did you forget to enter a password?'
+	),
+	'passwordSaved' => array(
+		'de' => 'Password gespeichert.',
+		'en' => 'Password saved.'
+	),
+	'changePassword' => array(
+		'de' => 'Passwort ändern',
+		'en' => 'Change password'
 	),
 	'abandonAccount' => array(
 		'de' => 'Account aufgeben',

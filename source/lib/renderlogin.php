@@ -104,6 +104,10 @@ class RenderLogin extends RendererAbstract {
 		$database->freeResult();
 
 		if (!$account) {
+			EventBox::get()->failure(
+				i18n('loginFailed')
+			);
+
 			return null;
 		}
 

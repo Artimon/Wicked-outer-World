@@ -4,23 +4,45 @@ class RenderAccount extends RendererAbstract {
 	public function commit() {
 		$request = $this->request();
 
-		if (!$request->post('confirm')) {
+		if ($request->post('changePassword')) {
+			$password = $request->post('password');
+			if (empty($password)) {
+				EventBox::get()->failure(
+					i18n('passwordForgotten')
+				);
+
+				return;
+			}
+
+			$this->account()->setValue(
+				'password',
+				md5($password)
+			)->update();
+
+			EventBox::get()->success(
+				i18n('passwordSaved')
+			);
+
 			return;
 		}
 
-		$this->account()->abandon();
+		if ($request->post('deleteAccount') && $request->post('confirm')) {
+			$this->account()->abandon();
 
-		$session = new Leviathan_Session();
+			$session = new Leviathan_Session();
 
-		$language = $session->value('language');
-		$session
-			->reset()
-			->store('language', $language);
+			$language = $session->value('language');
+			$session
+				->reset()
+				->store('language', $language);
 
-		$controller = $this->controller();
-		$controller->redirect(
-			$controller->route('login')
-		);
+			$controller = $this->controller();
+			$controller->redirect(
+				$controller->route('login')
+			);
+
+			return;
+		}
 	}
 
 	/**
@@ -38,13 +60,45 @@ class RenderAccount extends RendererAbstract {
 		);
 		$abandonAccount = i18n('abandonAccount');
 		$abandonNotice = i18n('abandonNotice');
+		$changePassword = i18n('changePassword');
+		$showIt = i18n('showIt');
+		$save = i18n('save');
 		$confirm = i18n('confirm');
 		$delete = i18n('delete');
+
+		$js = "
+			$('#revealPassword').password({
+				maskedId: 'password',
+				unmaskedId: 'plainPassword'
+			});";
+		JavaScript::create()->bind($js);
 
 		return "
 			<div id='account'>
 				<h2>{$headline}</h2>
 				<p>{$accountDataEmail}</p>
+
+				<p class='bold highlight spacer'>{$changePassword}</p>
+				<form action='' method='post'>
+					<table>
+						<tr>
+							<td>
+								<input id='password' type='password' name='password' value='' autocomplete='off'>
+								<input id='plainPassword' type='text' value='' autocomplete='off' class='null'>
+								<label>
+									<input type='checkbox' id='revealPassword'>
+									{$showIt}
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type='submit' name='changePassword' value='{$save}' class='button'>
+							</td>
+						</tr>
+					</table>
+				</form>
+
 				<p class='bold highlight spacer'>{$abandonAccount}</p>
 				<p>{$abandonNotice}</p>
 				<form action='' method='post'>
@@ -52,7 +106,7 @@ class RenderAccount extends RendererAbstract {
 						<input type='checkbox' name='confirm'>
 						{$confirm}
 					</label>
-					<input type='submit' name='delete' class='button' value='{$delete}'>
+					<input type='submit' name='deleteAccount' class='button' value='{$delete}'>
 				</form>
 			</div>";
 	}
