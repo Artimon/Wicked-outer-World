@@ -40,6 +40,13 @@ class Stats extends AccountSubclass {
 	/**
 	 * @return int
 	 */
+	public function trainings() {
+		return (int)$this->account()->value('trainings');
+	}
+
+	/**
+	 * @return int
+	 */
 	public function currentInflictedDamage() {
 		return $this->inflictedDamage;
 	}
@@ -83,6 +90,15 @@ class Stats extends AccountSubclass {
 	 */
 	public function addMisses($amount) {
 		$this->account()->increment('misses', (int)$amount);
+
+		return $this;
+	}
+
+	/**
+	 * @return Stats
+	 */
+	public function addTraining() {
+		$this->account()->increment('trainings', 1);
 
 		return $this;
 	}

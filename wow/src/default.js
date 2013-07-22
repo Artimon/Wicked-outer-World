@@ -1,5 +1,34 @@
 /*jslint evil: true, sloppy: true, plusplus: true, newcap: true, browser: true */
-/*global jQuery: true, $: true, alert: true, escape: true, ActiveXObject: true */
+/*global jQuery: true, angular: true, translations: true, $: true, alert: true, escape: true, ActiveXObject: true */
+
+var wowApp = angular.module('wowApp', []);
+
+(function ($, angular, mwoApp, translations) {
+	mwoApp.filter('i18n', function () {
+		return function (translationKey) {
+			if (translations[translationKey]) {
+				return translations[translationKey];
+			}
+
+			return translationKey;
+		};
+	});
+}(jQuery, angular, wowApp, translations));
+
+/**
+ * City Controller
+ */
+wowApp.controller('ProfileCtrl', ['$scope', function ($scope) {
+	$scope.stats = [];
+
+	/**
+	 * @param {[]} stats
+	 */
+	$scope.setup = function (stats) {
+		$scope.stats = stats;
+	};
+}]);
+
 
 Math.sign = function (value) {
 	if (value === 0) {

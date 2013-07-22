@@ -49,8 +49,6 @@ class ActionAcademyTraining extends ActionAbstract {
 	}
 
 	/**
-	 * @TODO Create formula.
-	 *
 	 * Note:
 	 * Used within the self::needed***Experience() function.
 	 * As a result, access self::neededExperience.
@@ -131,6 +129,8 @@ class ActionAcademyTraining extends ActionAbstract {
 			$message = i18n('experienceGain', $experience);
 			EventBox::get()->success($message);
 		}
+
+		$account->stats()->addTraining();
 
 		$account
 			->incrementEndurance(-self::DRAIN_ENDURANCE)

@@ -46,17 +46,6 @@ class RenderProfile extends RendererAbstract {
 		$endurance = i18n('endurance');
 		$actionPoints = i18n('actionPoints');
 
-		$damageDealt = i18n('damageDealt');
-		$damageTaken = i18n('damageTaken');
-		$hits = i18n('hits');
-		$misses = i18n('misses');
-
-		$stats = $account->stats();
-		$amountDamageDealt = Format::number($stats->inflictedDamage());
-		$amountDamageTaken = Format::number($stats->takenDamage());
-		$amountHits = Format::number($stats->hits());
-		$amountMisses = Format::number($stats->misses());
-
 		$spaceDoctor = i18n('spaceDoctor');
 		$startCheck = i18n('startCheck');
 
@@ -84,9 +73,19 @@ class RenderProfile extends RendererAbstract {
 		$maximum = $condition->conditionMaximum();
 		$current = $condition->conditionCurrent();
 
+		$stats = $account->stats();
+		$statsData = array(
+			array('label' => 'damageDealt', 'number' => Format::number($stats->inflictedDamage())),
+			array('label' => 'damageTaken', 'number' => Format::number($stats->takenDamage())),
+			array('label' => 'hits', 'number' => Format::number($stats->hits())),
+			array('label' => 'misses', 'number' => Format::number($stats->misses())),
+			array('label' => 'trainings', 'number' => Format::number($stats->trainings()))
+		);
+		$statsData = json_encode($statsData);
+
 		return "
 <h2>{$account->name()}</h2>
-<table>
+<table ng-controller='ProfileCtrl' ng-init='setup({$statsData})'>
 	<colgroup>
 		<col width='200'>
 		<col width='120'>
@@ -129,21 +128,9 @@ class RenderProfile extends RendererAbstract {
 			{$bars->actionPointsBar()}
 		</td>
 	</tr>
-	<tr>
-		<td>{$damageDealt}</td>
-		<td class='variable'>{$amountDamageDealt}</td>
-	</tr>
-	<tr>
-		<td>{$damageTaken}</td>
-		<td class='variable'>{$amountDamageTaken}</td>
-	</tr>
-	<tr>
-		<td>{$hits}</td>
-		<td class='variable'>{$amountHits}</td>
-	</tr>
-	<tr>
-		<td>{$misses}</td>
-		<td class='variable'>{$amountMisses}</td>
+	<tr ng-repeat='stat in stats'>
+		<td>{{stat.label|i18n}}</td>
+		<td class='variable'>{{stat.number}}</td>
 	</tr>
 </table>
 <hr>

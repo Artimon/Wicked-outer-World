@@ -1724,22 +1724,6 @@ Your %s team"
 		'de' => 'Deine Account-Daten wurden an "%s" gesendet.',
 		'en' => 'You account data has been sent to "%s".'
 	),
-	'damageDealt' => array(
-		'de' => 'Schaden ausgeteilt',
-		'en' => 'Damage dealt'
-	),
-	'damageTaken' => array(
-		'de' => 'Schaden eingesteckt',
-		'en' => 'Damage taken'
-	),
-	'hits' => array(
-		'de' => 'Treffer',
-		'en' => 'Hits'
-	),
-	'misses' => array(
-		'de' => 'Verschielt',
-		'en' => 'Off the mark'
-	),
 	'confirm' => array(
 		'de' => 'Bestätigen',
 		'en' => 'Confirm'

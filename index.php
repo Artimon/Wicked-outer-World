@@ -305,8 +305,10 @@ class dispatcher {
 
 </script>" : '';
 
+		$language = $session->value('language');
+
 		return "<!doctype html>
-<html lang='{$session->value('language')}'>
+<html lang='{$language}' ng-app='wowApp'>
 	<head>
 		<title>{$title}</title>
 		<meta http-equiv='content-type' content='text/html; charset=windows-1252'>
@@ -346,8 +348,10 @@ class dispatcher {
 			</div>
 		</div>
 
+		<script type='text/javascript' src='./wow/src/i18n/{$language}.js'></script>
 		<script type='text/javascript' src='./ext/jQuery/jquery-1.8.0.min.js'></script>
 		<script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js'></script>
+		<script type='text/javascript' src='./ext/angular/angular.min.js'></script>
 		<script type='text/javascript' src='./ext/tipTip/jquery.tipTip.minified.js'></script>
 		<script type='text/javascript' src='./ext/demetron/demetron.js'></script>
 		<script type='text/javascript' src='./wow/src/default.js?v=1.0'></script>
