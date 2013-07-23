@@ -12,30 +12,6 @@ class Router {
 	 */
 	private $routes;
 
-	public function __construct() {
-		$this->routes = array(
-			'home' => array(
-				'dbConnect'	=> true,
-				'response'	=> self::RESPONSE_ONLINE
-			),
-			'test' => array(
-				// Include everything for dev.
-				'dbConnect'	=> true,
-				'response'	=> self::RESPONSE_ONLINE
-			),
-			'entities' => array(
-				// Return entites as json.
-				'dbConnect'	=> true,
-				'response'	=> self::RESPONSE_AJAX
-			),
-			'techInfo' => array(
-				// Return tech description html.
-				'dbConnect'	=> false,
-				'response'	=> self::RESPONSE_AJAX
-			)
-		);
-	}
-
 	/**
 	 * @return string
 	 */

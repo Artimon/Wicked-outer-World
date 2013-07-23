@@ -142,7 +142,7 @@ class RenderRegister extends RendererAbstract {
 	<h2>{$register}</h2>
 	<p>{$registerIntro}</p>
 	{$errorMessage}
-	<form action='' method='post'>
+	<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 		<table>
 			<colgroup>
 				<col width='160'>

@@ -63,7 +63,7 @@ class RendererQuartersLounge extends RendererQuartersAbstract {
 			<p>
 				{$priceLabel}: {$priceText}
 			</p>
-			<form action='' method='post'>
+			<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 				<input type='submit' name='restCure' value='{$begin}' class='{$buttonClass}'>
 			</form>";
 	}

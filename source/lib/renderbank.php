@@ -18,7 +18,7 @@ class RenderBank extends RendererAbstract {
 				<span class='variable'>{$accountBalance}</span>
 			</p>
 			<p>{$bankTransferInfo}</p>
-			<form action='' method='post'>
+			<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 				<input type='text' name='amount'>
 				<input type='submit' name='in' value='{$bankIn}' class='button'>
 				<input type='submit' name='out' value='{$bankOut}' class='button'>
@@ -55,7 +55,7 @@ class RenderBank extends RendererAbstract {
 <p>
 	{$priceTitle}: <span class='{$priceStyle}'>{$price}</span>
 </p>
-<form action='' method='post'>
+<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 	<input type='submit' name='createAccount' value='{$create}' class='button{$buttonClass}'>
 </form>";
 

@@ -98,7 +98,7 @@ class RenderFactoryFiddle extends RenderFactoryAbstract {
 		$token = Leviathan_Token::getInstance()->get();
 
 		$html .= "
-<form action='' method='post'>
+<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 	<p>
 		".str_repeat($temp, 5)."
 	</p>

@@ -103,7 +103,7 @@ class RenderMessageWrite extends RenderMessageAbstract {
 		return "
 			<h2>{$write}</h2>
 			<div id='messages'>
-				<form action='' method='post'>
+				<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 					<table class='message'>
 						<tr>
 							<td>{$recipient}:</td>

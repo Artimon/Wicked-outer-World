@@ -62,7 +62,7 @@ class RenderAcademyCourse extends RenderAcademyAbstract {
 	{$priceTitle}: <span class='{$priceStyle}'>{$price}</span><br>
 	{$durationTitle}: <span class='variable'>{$duration}</span>
 </p>
-<form action='' method='post'>
+<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 	<input type='submit' name='startCourse' value='{$startCourse}' class='button{$buttonClass}'>
 </form>";
 		}
@@ -73,7 +73,7 @@ class RenderAcademyCourse extends RenderAcademyAbstract {
 
 			$html .= "
 <p>{$courseFinished}</p>
-<form action='' method='post'>
+<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 	<input type='submit' name='getCertificate' value='{$collect}' class='button important'>
 </form>";
 		}

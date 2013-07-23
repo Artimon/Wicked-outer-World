@@ -110,7 +110,7 @@ class Plugins {
 	<td>{$weight}t</td>
 	<td class='variable'>{$item->name()}{$amountInfo}</td>
 	<td>
-		<form action='' method='post'>
+		<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 			<input type='button' class='techInfo button small' value='Info' data-techId='{$techId}'>
 
 			<input type='hidden' name='slot' value='{$group}'>

@@ -79,7 +79,7 @@ class RenderAccount extends RendererAbstract {
 				<p>{$accountDataEmail}</p>
 
 				<p class='bold highlight spacer'>{$changePassword}</p>
-				<form action='' method='post'>
+				<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 					<table>
 						<tr>
 							<td>
@@ -101,7 +101,7 @@ class RenderAccount extends RendererAbstract {
 
 				<p class='bold highlight spacer'>{$abandonAccount}</p>
 				<p>{$abandonNotice}</p>
-				<form action='' method='post'>
+				<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 					<label class='critical'>
 						<input type='checkbox' name='confirm'>
 						{$confirm}

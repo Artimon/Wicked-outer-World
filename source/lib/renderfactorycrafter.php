@@ -103,7 +103,7 @@ class RenderFactoryCrafter extends RenderFactoryAbstract {
 						<p class='variable'>
 							{$this->craftInfo($stock, $technology)}
 						</p>
-						<form action='' method='post'>
+						<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 							<input type='hidden' name='craft' value='{$techId}'>
 							<input type='hidden' name='token' value='{$token}'>
 							<input data-n='{$amount}' type='submit' class='craftCommit button{$disabled}' value='{$craft}'>

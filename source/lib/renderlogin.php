@@ -19,7 +19,7 @@ class RenderLogin extends RendererAbstract {
 
 		$html = "
 <div class='floatRight columnRight'>
-	<form action='' method='post' class='floatRight'>
+	<form action='{$_SERVER["REQUEST_URI"]}' method='post' class='floatRight'>
 		<table>
 			<tr>
 				<td>{$username}</td>

@@ -86,7 +86,7 @@ class RenderTradeDeckStarships extends RenderTradeDeckAbstract {
 		{$shopPrice}
 	</td>
 	<td class='top'>
-		<form action='' method='post'>
+		<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
 			<input type='button' class='techInfo button small' value='Info' data-techId='{$techId}'>
 
 			<input type='hidden' name='techId' value='{$techId}'>
