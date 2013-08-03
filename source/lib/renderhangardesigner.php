@@ -15,6 +15,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	 */
 	public function bodyHtml() {
 		$this->moveItem();
+		$this->energySetup();
 
 		return $this->setupHtml();
 	}
@@ -86,6 +87,10 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		$starship = $this->account()->starship();
 		$movability = Format::number($starship->movability(), 1);
 
+		$energySetupSelected = $this->account()->isEnergyToShields()
+			? " selected='selected'"
+			: '';
+
 		$html = "
 <colgroup>
 	<col width='180'>
@@ -132,6 +137,18 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 </tr><tr>
 	<td>".i18n('capacity').":</td>
 	<td class='variable right'>".Format::number($starship->capacity(), 1)."</td>
+</tr><tr>
+	<td colspan='2' class='headline'>{{\"mainEnergyTo\"|i18n}}</td>
+</tr><tr>
+	<td colspan='2'>
+		<form action='{$this->controller()->currentSection()}' method='post'>
+			<select name='energySetup'>
+				<option value='0'>{{\"weapons\"|i18n}}</option>
+				<option value='1'{$energySetupSelected}>{{\"shields\"|i18n}}</option>
+			</select>
+			<input type='submit' value='{{\"save\"|i18n}}' class='button'>
+		</form>
+	</td>
 </tr>";
 
 		return html::defaultTable($html);
@@ -178,5 +195,26 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 				);
 			}
 		}
+	}
+
+	public function energySetup() {
+		$request = Leviathan_Request::getInstance();
+
+		$energySetup = $request->post('energySetup');
+		if ($energySetup === null) {
+			return;
+		}
+
+		$energySetup = (int)$energySetup;
+		if (
+			$energySetup !== Account::ENERGY_TO_SHIELDS &&
+			$energySetup !== Account::ENERGY_TO_WEAPONS
+		) {
+			return;
+		}
+
+		$this->account()->setValue('energySetup', $energySetup)->update();
+
+		EventBox::get()->success("{{'newEnergySetup'|i18n}}");
 	}
 }

@@ -334,8 +334,13 @@ class ActionFightTimer {
 
 		$this->recharge();
 
-		// @TODO Toggle call order with different setups.
-		$this->fireWeapons();
-		$this->powerUpShield();
+		if ($this->starship()->account()->isEnergyToShields()) {
+			$this->powerUpShield();
+			$this->fireWeapons();
+		}
+		else {
+			$this->fireWeapons();
+			$this->powerUpShield();
+		}
 	}
 }

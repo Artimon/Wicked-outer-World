@@ -3,5 +3,10 @@ window.translations = {
 	damageTaken: 'Damage taken',
 	hits: 'Hits',
 	misses: 'Off the mark',
-	trainings: 'Trainings'
+	trainings: 'Trainings',
+	mainEnergyTo: 'Main energy to',
+	shields: 'Shields',
+	weapons: 'Weapons',
+	save: 'Save',
+	newEnergySetup: 'Energy setup saved.'
 };

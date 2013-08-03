@@ -38,6 +38,9 @@
  * "Premium Coins": Awkward Materia / Seltsame Materie
  */
 class Account extends Lisbeth_Entity {
+	const ENERGY_TO_WEAPONS = 0;
+	const ENERGY_TO_SHIELDS = 1;
+
 	/**
 	 * @var string
 	 */
@@ -311,6 +314,13 @@ class Account extends Lisbeth_Entity {
 	 */
 	public function lastHealthCare() {
 		return (int)$this->value('lastHealthCare');
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isEnergyToShields() {
+		return ($this->value('energySetup') == self::ENERGY_TO_SHIELDS);
 	}
 
 	/**

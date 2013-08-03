@@ -50,6 +50,7 @@ class RenderLogin extends RendererAbstract {
 	<hr>
 	<p class='headline bold'>News:</p>
 	<ul>
+		<li class='highlight'>New Ship &quot;Revenant&quot;, Railgun and main energy to shields/weapons setup added.</li>
 		<li class='highlight'>New mission, new items and a spaceship model have been added.</li>
 		<li class='highlight'>Basic fight statistics added to profile.</li>
 		<li class='highlight'>Missing item tech data sheets added.</li>
