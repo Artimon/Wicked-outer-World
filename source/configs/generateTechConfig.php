@@ -41,6 +41,7 @@ $techIds = array(
 	'NIGHTFALL_CB55_ID'			=> 4,
 	'RELENTLESS_ID'				=> 5,
 	'EDINBURG_V5_ID'			=> 6,
+	'REVENANT_ID'				=> 7,
 
 	'IMPACT_PLATING_ID'			=> 40,
 	'DEFLECTOR_PLATING_ID'		=> 41,
@@ -57,6 +58,7 @@ $techIds = array(
 
 	'BLASTER_AMMUNITION_ID'		=> 70,
 	'SHARK_TORPEDOES_ID'		=> 71,
+	'RAILGUN_AMMUNITION_ID'		=> 72,
 
 	'NUCLEAR_BATTERIES_ID'		=> 80,
 	'SOLAR_ARRAY_ID'			=> 81,
@@ -74,6 +76,8 @@ $techIds = array(
 	'SHARK_5_ID'				=> 141,
 
 	'MICRO_LASER_ID'			=> 150,
+
+	'STINGER_RAILGUN_ID'		=> 160,
 
 	'IRON_ID'					=> 1000,
 	'MAGNET_COIL_ID'			=> 1005,
@@ -223,6 +227,21 @@ $technology[EDINBURG_V5_ID] = array(
 		'engine'		=> 3
 	)
 );
+$technology[REVENANT_ID] = array(
+	'type'		=> Technology::TYPE_STARSHIP,
+	'name'		=> 'Revenant',
+	'price'		=> 19600,
+	'weight'	=> 40,
+	'tonnage'	=> 29,
+	'structure'	=> 141,
+	'slots'		=> array(
+		'weaponry'		=> 2,
+		'ammunition'	=> 1,
+		'equipment'		=> 1,
+		'cargo'			=> 2,
+		'engine'		=> 3
+	)
+);
 
 $technology[30] = array(
 	'type'		=> Technology::TYPE_MINING_MODULE,
@@ -330,6 +349,25 @@ $technology[SHARK_5_ID] = array(
 		COOLER_ID				=> 1
 	),
 	'craftHint' => true
+);
+$technology[STINGER_RAILGUN_ID] = array(
+	'type'			=> Technology::TYPE_WEAPON,
+	'name'			=> 'StingerRailgun',
+	'level'			=> 10,
+	'weight'		=> 3,
+	'damage'		=> 43,
+	'reload'		=> 1,
+	'drain'			=> 12,
+	'damageType'	=> Technology::DAMAGE_KINETIC,
+	'ammo'			=> RAILGUN_AMMUNITION_ID,
+	'price'			=> null,	// Value for trading.
+	'craft' => array(
+		TECHNICAL_COMPONENTS_ID	=> 1,
+		MAGNET_COIL_ID			=> 4,
+		ENERGY_CELLS_ID			=> 4,
+		COOLER_ID				=> 1
+	),
+	'craftHint'	=> true
 );
 $technology[MICRO_LASER_ID] = array(
 	'type'			=> Technology::TYPE_WEAPON,
@@ -461,6 +499,19 @@ $technology[SHARK_TORPEDOES_ID] = array(
 		ELECTRONICS_ID	=> 1,
 		EXPLOSIVES_ID	=> 1,
 		NOBLE_GAS_ID	=> 1
+	),
+	'craftHint'	=> true
+);
+
+$technology[RAILGUN_AMMUNITION_ID] = array(
+	'type'		=> Technology::TYPE_AMMUNITION,
+	'name'		=> 'RailgunAmmunition',
+	'weight'	=> 1,
+	'stack'		=> 100,
+	'price'		=> null,	// Value for trading.
+	'craft'		=> array(
+		IRON_ID			=> 2,
+		ENERGY_CELLS_ID	=> 1
 	),
 	'craftHint'	=> true
 );

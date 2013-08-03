@@ -89,6 +89,15 @@ $translations = array(
 		'en' => 'After a few scandalous malfunctions during the launch, the company now is sure that the 5th version of the Edinburg will endure the maiden flight.'
 	),
 
+	'nameRevenant' => array(
+		'de' => 'Revenant',
+		'en' => 'Revenant'
+	),
+	'descRevenant' => array(
+		'de' => 'Dieses Modell kann einiges einstecken, doch die hohe interne Struktur kostet Raum für Ausrüstung.',
+		'en' => 'This one sure can take some bullets, but its high internal structure comes with less equipment space.'
+	),
+
 /*
 	'cargoNameCargoModule' => array(
 		'de' => 'Frachtmodul',
@@ -188,6 +197,15 @@ $translations = array(
 		'en' => "Blaster could be described as the further development of marketable guns, but this small model is already far beyond outdated."
 	),
 
+	'nameStingerRailgun' => array(
+		'de' => 'Stinger Railgun',
+		'en' => 'Stinger Railgun'
+	),
+	'descStingerRailgun' => array(
+		'de' => "Railguns sind schöne kleine Spielzeuge. Wenn man ihnen genug Energie bereitstellt hält keine Schiffshülle dem Beschuss lange stand.",
+		'en' => "Railguns are nice little toys. If provided with enough energy no ship hull can withstand them for a long time."
+	),
+
 	'nameShark2' => array(
 		'de' => 'Shark-2 Werfer',
 		'en' => 'Shark-2 Thrower'
@@ -267,6 +285,15 @@ $translations = array(
 	'descBlasterAmmunition' => array(
 		'de' => "Hier ist der Name Programm: Das Hocherhitzte Plasma sengt dem Gegner nicht nur den Bürzel an, sondern ist auch kostengünstig in der Anschaffung.",
 		'en' => "Here the name says it: The high heated plasma not only burns your opponent's rump, but is also a cheap acquisition."
+	),
+
+	'nameRailgunAmmunition' => array(
+		'de' => 'Railgun Munition',
+		'en' => 'Railgun Ammunition'
+	),
+	'descRailgunAmmunition' => array(
+		'de' => "Je komplexer der Aufbau der Waffe, desto einfacher die Munition. Eine gewöhnliche Eisenkugel genügt hier bereits.",
+		'en' => "The more complex the weapon system, the simpler the ammunition. A common iron ball is just enough here."
 	),
 
 	'nameSharkTorpedoes' => array(
