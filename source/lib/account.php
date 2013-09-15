@@ -38,18 +38,10 @@
  * "Premium Coins": Awkward Materia / Seltsame Materie
  */
 class Account extends Lisbeth_Entity {
-	const ENERGY_TO_WEAPONS = 0;
-	const ENERGY_TO_SHIELDS = 1;
-
 	/**
 	 * @var string
 	 */
 	protected $table = 'accounts';
-
-	/**
-	 * @var Starship
-	 */
-	private $starship;
 
 	/**
 	 * @var stockage
@@ -176,11 +168,7 @@ class Account extends Lisbeth_Entity {
 	 * @return float
 	 */
 	public function repair() {
-		$repair = (float)$this->value('repair');
-		$repair = max(0, $repair);
-		$repair += 15 * $this->passedTicks();
-
-		return min(100, $repair);
+		return $this->starship()->repair();
 	}
 
 	/**
@@ -244,29 +232,15 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
-	 * @param float $repair
 	 * @param int $endurance
 	 * @param int $actionPoints
 	 * @return Lisbeth_Entity
 	 */
-	protected function applyTickValues($repair, $endurance, $actionPoints) {
+	protected function applyTickValues($endurance, $actionPoints) {
 		return $this
-			->setValue('repair', $repair)
 			->setValue('actionPoints', $endurance)
 			->setValue('endurance', $actionPoints)
 			->setValue('lastUpdate', TIME);
-	}
-
-	/**
-	 * @param float $value
-	 * @return Lisbeth_Entity
-	 */
-	public function incrementRepair($value) {
-		return $this->applyTickValues(
-			$this->repair() + $value,
-			$this->actionPoints(),
-			$this->endurance()
-		);
 	}
 
 	/**
@@ -277,7 +251,6 @@ class Account extends Lisbeth_Entity {
 	 */
 	public function incrementActionPoints($value) {
 		return $this->applyTickValues(
-			$this->repair(),
 			$this->actionPoints() + $value,
 			$this->endurance()
 		);
@@ -296,7 +269,6 @@ class Account extends Lisbeth_Entity {
 		}
 
 		return $this->applyTickValues(
-			$this->repair(),
 			$this->actionPoints(),
 			$this->endurance() + $value
 		);
@@ -314,13 +286,6 @@ class Account extends Lisbeth_Entity {
 	 */
 	public function lastHealthCare() {
 		return (int)$this->value('lastHealthCare');
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function isEnergyToShields() {
-		return ($this->value('energySetup') == self::ENERGY_TO_SHIELDS);
 	}
 
 	/**
@@ -360,14 +325,23 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
+	 * Note:
+	 * Do not cache, may change.
+	 *
 	 * @return Starship
 	 */
 	public function starship() {
-		if ($this->starship === null) {
-			$this->starship = new Starship($this, $this->value('starshipId'), 1);
-		}
+		return Starship::create($this);
+	}
 
-		return $this->starship;
+	/**
+	 * @return Starships
+	 */
+	public function starships() {
+		return Lisbeth_ObjectPool::get(
+			'Starships',
+			$this->id()
+		);
 	}
 
 	/**

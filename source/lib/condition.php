@@ -70,7 +70,7 @@ class Condition extends StarshipSubclass {
 	 */
 	public function applyDamage() {
 		$repair = $this->conditionPercentage();	// Current value.
-		$repair -= $this->starship()->repair();	// Subtract initial value o get negative difference.
+		$repair -= $this->starship()->repair();	// Subtract initial value to get negative difference.
 
 		$this->starship()->addDamage($repair);
 

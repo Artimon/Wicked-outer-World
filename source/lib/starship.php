@@ -5,10 +5,92 @@
  * Starships and accounts are the same.
  */
 class Starship extends TechContainerAbstract {
+	const ENERGY_TO_WEAPONS = 0;
+	const ENERGY_TO_SHIELDS = 1;
+
 	/**
 	 * @var Condition
 	 */
 	private $condition;
+
+	/**
+	 * @var StarshipData
+	 */
+	private $data;
+
+	/**
+	 * Does not matter when creating several starship objects since they
+	 * all use the same data entity.
+	 *
+	 * @param Account $owner
+	 * @param int $starshipId if omitted current starship is selected.
+	 * @return Starship
+	 */
+	public static function create(Account $owner, $starshipId = null) {
+		if (!$starshipId) {
+			$starshipId = $owner->value('starshipId');
+		}
+
+		$starshipData = Lisbeth_ObjectPool::get(
+			'StarshipData',
+			$starshipId
+		);
+
+		$starship = new Starship($owner, $starshipData->value('techId'), 1);
+		$starship->setData($starshipData);
+
+		return $starship;
+	}
+
+	/**
+	 * @param Account $creator
+	 * @param int $techId
+	 */
+	public static function createEntity(Account $creator, $techId) {
+		$techId = (int)$techId;
+		$lastUpdate = TIME;
+
+		$database = new Lisbeth_Database();
+		$database->query("
+			INSERT INTO `starships`
+			SET
+				`ownerId` = {$creator->id()},
+				`techId` = {$techId},
+				`lastUpdate` = {$lastUpdate};");
+
+		$starshipId = $database->insertId();
+	}
+
+	/**
+	 * @param StarshipData $data
+	 */
+	public function setData(StarshipData $data) {
+		$this->data = $data;
+	}
+
+	/**
+	 * @return StarshipData
+	 */
+	public function data() {
+		return $this->data;
+	}
+
+	/**
+	 * @return Lisbeth_Entity|StarshipData
+	 */
+	public function dataSource() {
+		return $this->data();
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isSelected() {
+		return (
+			$this->account()->value('starshipId') ==
+			$this->data()->id()
+		);
+	}
 
 	/**
 	 * @return techGroup
@@ -72,10 +154,53 @@ class Starship extends TechContainerAbstract {
 	}
 
 	/**
+	 * @return int
+	 */
+	public function lastUpdate() {
+		return (int)$this->data()->value('lastUpdate');
+	}
+
+	/**
+	 * One tick every 5 minutes.
+	 *
+	 * @return int ticks since last update
+	 */
+	public function passedTicks() {
+		$seconds = 300;
+
+		$lastUpdate = (int)($this->lastUpdate() / $seconds);
+		$now = (int)(TIME / $seconds);
+
+		return ($now - $lastUpdate);
+	}
+
+	/**
 	 * @return float
 	 */
 	public function repair() {
-		return $this->account()->repair();
+		$repair = (float)$this->data()->value('repair');
+		$repair = max(0, $repair);
+		$repair += 15 * $this->passedTicks();
+
+		return min(100, $repair);
+	}
+
+	/**
+	 * @param float $value
+	 */
+	public function incrementRepair($value) {
+		$repair = $this->repair() + $value;
+
+		$this->data()
+			->setValue('repair', $repair)
+			->setValue('lastUpdate', TIME);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isEnergyToShields() {
+		return ($this->data()->value('energySetup') == self::ENERGY_TO_SHIELDS);
 	}
 
 	/**
@@ -210,6 +335,6 @@ class Starship extends TechContainerAbstract {
 	 * @return Starship
 	 */
 	public function addDamage($value) {
-		return $this->account()->incrementRepair($value);
+		return $this->incrementRepair($value);
 	}
 }

@@ -14,6 +14,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	 * @return string
 	 */
 	public function bodyHtml() {
+		$this->shipActions();
 		$this->moveItem();
 		$this->energySetup();
 
@@ -26,6 +27,10 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	private function setupHtml() {
 		$starship = $this->account()->starship();
 		$stockage = $this->account()->stockage();
+
+		$selectorHtml = $this->selectorHtml(
+			$this->account()
+		);
 
 		$designerHtml = "
 <colgroup>
@@ -73,10 +78,72 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		);
 
 		return "
-<h2>".i18n('garage')."</h2>
-<p>".i18n('garageDescription')."</p>
-<div class='floatRight columnRight'>{$detailsHtml}</div>
-<div class='floatLeft columnLeft'>{$designerHtml}</div>
+<div id='garage'>
+	<h2>".i18n('garage')."</h2>
+	<p>".i18n('garageDescription')."</p>
+	{$selectorHtml}
+	<div class='floatRight columnRight'>{$detailsHtml}</div>
+	<div class='floatLeft columnLeft'>{$designerHtml}</div>
+	<div class='clear'></div>
+</div>";
+	}
+
+	/**
+	 * @param Account $account
+	 * @return string
+	 */
+	private function selectorHtml(Account $account) {
+		$raw = array(
+			'id' => null,
+			'name' => '',
+			'current' => false,
+			'urlSelect' => 'javascript:;',
+			'urlScrap' => 'javascript:;'
+		);
+		$data = array($raw, $raw, $raw);
+
+		$currentStarshipId = $account->starship()->data()->id();
+		$starships = $account->starships()->allStarships();
+		foreach ($starships as $key => $starship) {
+			$starshipId = $starship->data()->id();
+			$isCurrent = $starshipId === $currentStarshipId;
+
+			$urlSelect = $isCurrent
+				? 'javascript:;'
+				: $this->controller()->currentSection(array('select' => $starshipId));
+
+			$urlScrap = $isCurrent
+				? 'javascript:;'
+				: $this->controller()->currentSection(array('scrap' => $starshipId));
+
+			$data[$key] = array(
+				'id' => $starshipId,
+				'name' => $starship->name(),
+				'current' => $isCurrent,
+				'urlSelect' => $urlSelect,
+				'urlScrap' => $urlScrap
+			);
+		}
+
+		$data = json_encode($data);
+
+		return "
+<ul class='starshipSelector' ng-controller='StarshipSelectorCtrl'
+	ng-init='setup({$data})'
+	ng-show='starships.length > 1'>
+	<li ng-repeat='starship in starships'>
+		<p class='variable'>{{starshipName(starship)|i18n}}</p>
+
+		<a href='{{starship.urlSelect}}' class='button merge first'
+			ng-class='{ disabled: !starship.id || starship.current }'>
+			{{actionText(starship)|i18n}}
+		</a><a href='{{starship.urlScrap}}' class='button merge last'
+			ng-class='{ disabled: !starship.id || starship.current }'
+			ng-click='scrap(\$event, starship)'>
+			{{'scrap'|i18n}}
+		</a>
+	</li>
+</ul>
 <div class='clear'></div>";
 	}
 
@@ -87,7 +154,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		$starship = $this->account()->starship();
 		$movability = Format::number($starship->movability(), 1);
 
-		$energySetupSelected = $this->account()->isEnergyToShields()
+		$energySetupSelected = $starship->isEnergyToShields()
 			? " selected='selected'"
 			: '';
 
@@ -154,6 +221,34 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		return html::defaultTable($html);
 	}
 
+	public function shipActions() {
+		$request = Leviathan_Request::getInstance();
+
+		$starshipId = $request->get('select');
+		if ($starshipId) {
+			$account = $this->account();
+
+			$starship = $account->starships()->starship($starshipId);
+
+			if ($starship) {
+				$account->setValue('starshipId', $starshipId)->update();
+			}
+		}
+
+		$starshipId = $request->get('scrap');
+		if ($starshipId) {
+			$account = $this->account();
+
+			$starships = $account->starships();
+			$starship = $starships->starship($starshipId);
+
+			if ($starship && !$starship->isSelected()) {
+				$starship->data()->delete();
+				$starships->removeEntity($starshipId);
+			}
+		}
+	}
+
 	/**
 	 * @return void
 	 */
@@ -207,13 +302,16 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 
 		$energySetup = (int)$energySetup;
 		if (
-			$energySetup !== Account::ENERGY_TO_SHIELDS &&
-			$energySetup !== Account::ENERGY_TO_WEAPONS
+			$energySetup !== Starship::ENERGY_TO_SHIELDS &&
+			$energySetup !== Starship::ENERGY_TO_WEAPONS
 		) {
 			return;
 		}
 
-		$this->account()->setValue('energySetup', $energySetup)->update();
+		$this->account()->starship()->data()->setValue(
+			'energySetup',
+			$energySetup
+		)->update();
 
 		EventBox::get()->success("{{'newEnergySetup'|i18n}}");
 	}

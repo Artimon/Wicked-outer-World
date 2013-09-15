@@ -2,6 +2,11 @@
 
 interface TechContainerInterface {
 	/**
+	 * @return Lisbeth_Entity
+	 */
+	public function dataSource();
+
+	/**
 	 * Return the container's weight plus its payload.
 	 *
 	 * @abstract

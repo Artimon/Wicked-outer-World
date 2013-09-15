@@ -5,6 +5,13 @@
  */
 class trashContainer extends TechContainerAbstract {
 	/**
+	 * @return Account|Lisbeth_Entity
+	 */
+	public function dataSource() {
+		return $this->account();
+	}
+
+	/**
 	 * @return string
 	 */
 	public function name() {

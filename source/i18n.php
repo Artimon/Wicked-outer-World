@@ -822,6 +822,14 @@ $translations = array(
 		'de' => 'Raumschiffe',
 		'en' => 'Starships'
 	),
+	'starshipsDescription' => array(
+		'de' => 'Wie wäre es mit einem neuen, glänzenden Raumschiff für den Weltraumpiraten von morgen?',
+		'en' => 'How about a new, shiny starship for the space pirate of tomorrow?'
+	),
+	'newShipNotice' => array(
+		'de' => '* Neue Raumschiffe findest Du in Deiner Werkstatt.',
+		'en' => '* You will find new starships in your garage.'
+	),
 	'airlock' => array(
 		'de' => 'Luftschleuse',
 		'en' => 'Airlock'
@@ -859,8 +867,8 @@ $translations = array(
 		'en' => 'You are as poor as a church mouse!'
 	),
 	'buyStarshipNotice' => array(
-		'de' => 'Bevor Du ein neues Schiff kaufst, solltest Du alle Objekte, die Du behalten möchtest, aus Deinem alten Schiff ausbauen.',
-		'en' => 'Before you buy a new ship, you should unequip all items, you want to keep, from your old ship.'
+		'de' => 'Du kannst besitzt schon 3 Raumschiffe und solltest erst eines verschrotten, bevor Du ein neues kaufst.',
+		'en' => 'You already own 3 starships, scrap one of them first before buying a new one.'
 	),
 	'attention' => array(
 		'de' => 'Achtung',

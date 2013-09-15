@@ -46,7 +46,7 @@ class techSelector extends techContainerSubclass {
 
 		if ($load) {
 			$sourceString = self::fieldFromType($type);
-			$json = $this->techContainer()->account()->value($sourceString);
+			$json = $this->techContainer()->dataSource()->value($sourceString);
 
 			$techGroup->fromJson($json);
 		}

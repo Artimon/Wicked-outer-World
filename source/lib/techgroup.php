@@ -391,11 +391,11 @@ class techGroup extends techContainerSubclass {
 			return false;
 		}
 
-		$account = $this->techContainer()->account();
+		$dataSource = $this->techContainer()->dataSource();
 
 		$field = techSelector::fieldFromType($this->type());
 		$items = $this->toJson();
-		$account
+		$dataSource
 			->setValue($field, $items)
 			->update();
 

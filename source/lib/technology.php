@@ -3,7 +3,7 @@
 /**
  * Handles Technology.
  */
-class Technology extends AccountSubclass{
+class Technology extends AccountSubclass {
 	const TYPE_STOCKAGE			= 0;	// Item stockage
 	const TYPE_STARSHIP			= 1;	// Starships
 	const TYPE_WEAPON			= 2;	// Weapons

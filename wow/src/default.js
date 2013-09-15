@@ -29,6 +29,48 @@ wowApp.controller('ProfileCtrl', ['$scope', function ($scope) {
 	};
 }]);
 
+/**
+ * Starship Selector Controller
+ */
+wowApp.controller('StarshipSelectorCtrl', ['$scope', '$filter', function ($scope, $filter) {
+	$scope.starships = [];
+
+	/**
+	 * @param {[]} starships
+	 */
+	$scope.setup = function (starships) {
+		$scope.starships = starships;
+	};
+
+	/**
+	 * @param {object} starship
+	 * @returns {string}
+	 */
+	$scope.starshipName = function (starship) {
+		return (starship.name || 'empty');
+	};
+
+	/**
+	 * @param starship
+	 * @returns {string}
+	 */
+	$scope.actionText = function (starship) {
+		return starship.current ? 'selected' : 'select';
+	};
+
+	/**
+	 * @param $event
+	 * @param {object} starship
+	 */
+	$scope.scrap = function ($event, starship) {
+		var message = $filter('i18n')('confirmScrapStarship');
+
+		if (starship.current || !window.confirm(message)) {
+			$event.preventDefault();
+		}
+	};
+}]);
+
 
 Math.sign = function (value) {
 	if (value === 0) {

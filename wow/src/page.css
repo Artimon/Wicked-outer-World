@@ -462,6 +462,15 @@ div.ingredient {
   .fiddlingContainer #fiddleProgress {
     margin: 5px; }
 
+#garage ul.starshipSelector {
+  list-style: none;
+  height: 80px; }
+  #garage ul.starshipSelector li {
+    display: block;
+    width: 215px;
+    float: left;
+    text-align: center; }
+
 /* Hangar: mission page */
 #missionBox {
   margin: 35px;
@@ -764,6 +773,13 @@ div.progressBar {
     color: white !important; }
     .button.important:hover {
       text-shadow: 0 0 2px white !important; }
+  .button.merge.first {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none; }
+  .button.merge.last {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
 
 /* entypo */
 [class*="entypo-"] {

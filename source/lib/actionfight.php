@@ -98,6 +98,7 @@ class ActionFight extends ActionAbstract {
 	 * @param Starship $starship
 	 */
 	public function update(Starship $starship) {
+		$starship->account()->update();
 		$starship->ammunition()->update();
 	}
 
@@ -108,7 +109,6 @@ class ActionFight extends ActionAbstract {
 		if (!$this->canStart()) {
 			return '';
 		}
-
 		$account = $this->aggressor->account();
 		$account->incrementActionPoints(-self::ACTION_POINTS);
 

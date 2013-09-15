@@ -26,14 +26,7 @@ class RenderTradeDeckStarships extends RenderTradeDeckAbstract {
 
 		$price->buy();
 
-		$account
-			->setValue('starshipId', $item->id())
-			->setValue('itemsWeaponry', '')
-			->setValue('itemsAmmunition', '')
-			->setValue('itemsEquipment', '')
-			->setValue('itemsCargo', '')
-			->setValue('itemsEngine', '')
-			->update();
+		Starship::createEntity($account, $techId);
 
 		EventBox::get()->success(
 			i18n('shipBought')
@@ -47,12 +40,15 @@ class RenderTradeDeckStarships extends RenderTradeDeckAbstract {
 		$this->commit();
 
 		$headline = i18n('starships');
-		$attention = i18n('attention');
-		$notice = i18n('buyStarshipNotice');
+		$description = i18n('starshipsDescription');
+		$newShipNotice = i18n('newShipNotice');
+
 		$buttonText = i18n('buy');
 
 		$account = $this->account();
 		$price = $account->price();
+
+		$hasMaximumStarships = $account->starships()->hasMaximumAmount();
 
 		$html = '';
 
@@ -71,10 +67,17 @@ class RenderTradeDeckStarships extends RenderTradeDeckAbstract {
 
 			$shopPrice = Format::money($shopPrice);
 
+			if ($hasMaximumStarships) {
+				$class .= ' disabled';
+			}
+
 			if (!$canAfford) {
-				$title = i18n('youArePoor');
-				$title = " title='{$title}'";
-				$class .= ' disabled tipTip';
+				if (!$hasMaximumStarships) {
+					$title = i18n('youArePoor');
+					$title = " title='{$title}'";
+					$class .= ' disabled tipTip';
+				}
+
 				$shopPrice = "<span class='critical bold'>{$shopPrice}</span>";
 			}
 
@@ -98,10 +101,17 @@ class RenderTradeDeckStarships extends RenderTradeDeckAbstract {
 
 		$html = html::defaultTable($html);
 
+		if ($hasMaximumStarships) {
+			$attention = i18n('attention');
+			$notice = i18n('buyStarshipNotice');
+
+			$html = "
+				<h2 class='warning'>{$attention}</h2>
+				<p class='critical'>{$notice}</p>" . $html;
+		}
+
 		return "
 			<h2>{$headline}</h2>
-			<h2 class='warning'>{$attention}</h2>
-			<p class='critical'>{$notice}</p>
-			{$html}";
+			<p>{$description}<br>{$newShipNotice}</p>" . $html;
 	}
 }

@@ -43,9 +43,10 @@ class Accuracy {
 
 	/**
 	 * @param Technology $item
+	 * @param bool $subtractAmmunition
 	 * @return int
 	 */
-	public function maxShots(Technology $item) {
+	public function maxShots(Technology $item, $subtractAmmunition = false) {
 		$burst = $item->burst();
 
 		$ammunition = $item->ammunitionItem();
@@ -53,13 +54,18 @@ class Accuracy {
 			$group = $this->firingStarship->ammunition();
 			$techId = $ammunition->id();
 
-			$ammunitionAmount = 0;
 			if ($group->hasItem($techId)) {
 				$ammunition = $group->item($techId);
 				$ammunitionAmount = $ammunition->amount();
-			}
 
-			$burst = min($burst, $ammunitionAmount);
+				$burst = min($burst, $ammunitionAmount);
+				if ($subtractAmmunition) {
+					$ammunition->sub($burst);
+				}
+			}
+			else {
+				$burst = 0;
+			}
 		}
 
 		return $burst;
@@ -67,9 +73,10 @@ class Accuracy {
 
 	/**
 	 * @param Technology $item
+	 * @param bool $subtractAmmunition
 	 * @return int
 	 */
-	public function hits(Technology $item) {
+	public function hits(Technology $item, $subtractAmmunition = false) {
 		$this->hits = 0;
 
 		/*
@@ -77,7 +84,7 @@ class Accuracy {
 		 * $starship->weight() for maneuverability
 		 */
 		$this->hitSomething(
-			$this->maxShots($item)
+			$this->maxShots($item, $subtractAmmunition)
 		);
 
 		return $this->hits;

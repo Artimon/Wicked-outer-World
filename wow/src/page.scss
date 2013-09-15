@@ -752,6 +752,22 @@ div.ingredient {
 	}
 }
 
+#garage {
+	ul.starshipSelector {
+		list-style: none;
+		height: 80px;
+
+		li {
+			display: block;
+			width: 215px;
+
+			float: left;
+
+			text-align: center;
+		}
+	}
+}
+
 /* Hangar: mission page */
 #missionBox {
 	margin: 35px;
@@ -1165,6 +1181,19 @@ div.progressBar {
 
 		&:hover {
 			text-shadow: 0 0 2px $colorWhite !important;
+		}
+	}
+
+	&.merge {
+		&.first {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			border-right: none;
+		}
+
+		&.last {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
 		}
 	}
 }
