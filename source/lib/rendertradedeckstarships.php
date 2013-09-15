@@ -25,6 +25,7 @@ class RenderTradeDeckStarships extends RenderTradeDeckAbstract {
 		}
 
 		$price->buy();
+		$account->update();
 
 		Starship::createEntity($account, $techId);
 

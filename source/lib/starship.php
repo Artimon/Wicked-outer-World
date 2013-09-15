@@ -58,7 +58,8 @@ class Starship extends TechContainerAbstract {
 				`techId` = {$techId},
 				`lastUpdate` = {$lastUpdate};");
 
-		$starshipId = $database->insertId();
+		$starshipId = $database->insertId();var_dump($starshipId);
+		$creator->starships()->addEntity($starshipId);
 	}
 
 	/**

@@ -1,10 +1,6 @@
 <?php
 
 return array(
-	'tmp' => array(
-		'controller' => 'ControllerTmp',
-		'database' => true
-	),
 	'profile' => array(
 		'controller'	=> 'ControllerProfile',
 		'database'		=> true
