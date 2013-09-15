@@ -1658,8 +1658,8 @@ $translations = array(
 		'en' => 'No, just kidding. See you next time! ;)'
 	),
 	'developmentMessage' => array(
-		'de' => 'Du kannst Dich bereits registrieren, das Spiel ist jedoch noch in der Alpha-Entwicklung.',
-		'en' => 'You may already register, but the game is still under alpha construction.'
+		'de' => 'Wicked outer World wird gerade entwickelt und es kommen regelmäßig neue Features hinzu. Registriere Dir einen Account und gib und Feedback!',
+		'en' => 'Wicked outer World is currently being developed and new features arrive at a regular basis. Register yourself an account and give us feedback!'
 	),
 
 	/*****************************************************
