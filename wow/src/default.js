@@ -1,9 +1,7 @@
 /*jslint evil: true, sloppy: true, plusplus: true, newcap: true, browser: true */
 /*global jQuery: true, angular: true, translations: true, $: true, alert: true, escape: true, ActiveXObject: true */
 
-var wowApp = angular.module('wowApp', [], function ($compileProvider) {
-	$compileProvider.urlSanitizationWhitelist(/javascript:;/);
-});
+var wowApp = angular.module('wowApp', []);
 
 (function ($, angular, mwoApp, translations) {
 	mwoApp.filter('i18n', function () {
@@ -67,7 +65,7 @@ wowApp.controller('StarshipSelectorCtrl', ['$scope', '$filter', function ($scope
 	$scope.scrap = function ($event, starship) {
 		var message = $filter('i18n')('confirmScrapStarship');
 
-		if (starship.current || !window.confirm(message)) {
+		if (!starship.name || starship.current || !window.confirm(message)) {
 			$event.preventDefault();
 		}
 	};

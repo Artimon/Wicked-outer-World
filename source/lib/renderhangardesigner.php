@@ -97,8 +97,8 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 			'id' => null,
 			'name' => '',
 			'current' => false,
-			'urlSelect' => 'javascript:;',
-			'urlScrap' => 'javascript:;'
+			'urlSelect' => '#',
+			'urlScrap' => '#'
 		);
 		$data = array($raw, $raw, $raw);
 
@@ -109,11 +109,11 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 			$isCurrent = $starshipId === $currentStarshipId;
 
 			$urlSelect = $isCurrent
-				? 'javascript:;'
+				? '#'
 				: $this->controller()->currentSection(array('select' => $starshipId));
 
 			$urlScrap = $isCurrent
-				? 'javascript:;'
+				? '#'
 				: $this->controller()->currentSection(array('scrap' => $starshipId));
 
 			$data[$key] = array(
