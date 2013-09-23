@@ -57,7 +57,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 		$designerHtml .= "
 <tr>
 	<td colspan='2' class='headline'>
-			".i18n('yourStuff')."<br>
+		".i18n('yourStuff')."<br>
 		<span class='highlight'>
 			".$stockage->name()."
 			(".$stockage->payload()."t / ".$stockage->tonnage()."t)
@@ -134,10 +134,10 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	<li ng-repeat='starship in starships'>
 		<p class='variable'>{{starshipName(starship)|i18n}}</p>
 
-		<a href='{{starship.urlSelect}}' class='button merge first'
+		<a ng-href='{{starship.urlSelect}}' class='button merge first'
 			ng-class='{ disabled: !starship.id || starship.current }'>
 			{{actionText(starship)|i18n}}
-		</a><a href='{{starship.urlScrap}}' class='button merge last'
+		</a><a ng-href='{{starship.urlScrap}}' class='button merge last'
 			ng-class='{ disabled: !starship.id || starship.current }'
 			ng-click='scrap(\$event, starship)'>
 			{{'scrap'|i18n}}

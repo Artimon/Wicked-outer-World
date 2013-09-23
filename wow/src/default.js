@@ -1,7 +1,9 @@
 /*jslint evil: true, sloppy: true, plusplus: true, newcap: true, browser: true */
 /*global jQuery: true, angular: true, translations: true, $: true, alert: true, escape: true, ActiveXObject: true */
 
-var wowApp = angular.module('wowApp', []);
+var wowApp = angular.module('wowApp', [], function ($compileProvider) {
+	$compileProvider.urlSanitizationWhitelist(/javascript:;/);
+});
 
 (function ($, angular, mwoApp, translations) {
 	mwoApp.filter('i18n', function () {
