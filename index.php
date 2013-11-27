@@ -274,7 +274,7 @@ class dispatcher {
 						<div class='company'>
 							<a href='http://www.pad-soft.de' target='_blank'>
 								<span class='entypo-compass'></span>
-								PAD-Soft Game Development by Artimus
+								PadSoft Game Development by Artimus
 							</a>
 						</div>
 						<div class='moreGames'>
