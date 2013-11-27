@@ -98,6 +98,15 @@ $translations = array(
 		'en' => 'This one sure can take some bullets, but its high internal structure comes with less equipment space.'
 	),
 
+	'nameIgnis' => array(
+		'de' => 'Ignis',
+		'en' => 'Ignis'
+	),
+	'descIgnis' => array(
+		'de' => 'Die Ignis, auch "Feuervogel" genannt, wurde mit einer dicken Hülle für "heisse Einsätze" gebaut... nein, keine Kampfeinsätze sondern Sonnenmessungen, daher der große Raum für Ausrüstung.',
+		'en' => 'The Ignis, also called "Firebird", was designed with a thick hull for "hot missions"... no, not for battles, but for solar science, that\'s what the large equipment storage is for.'
+	),
+
 /*
 	'cargoNameCargoModule' => array(
 		'de' => 'Frachtmodul',
@@ -1658,7 +1667,7 @@ $translations = array(
 		'en' => 'No, just kidding. See you next time! ;)'
 	),
 	'developmentMessage' => array(
-		'de' => 'Wicked outer World wird gerade entwickelt und es kommen regelmäßig neue Features hinzu. Registriere Dir einen Account und gib und Feedback!',
+		'de' => 'Wicked outer World wird gerade entwickelt und es kommen regelmäßig neue Features hinzu. Registriere Dir einen Account und gib uns Feedback!',
 		'en' => 'Wicked outer World is currently being developed and new features arrive at a regular basis. Register yourself an account and give us feedback!'
 	),
 

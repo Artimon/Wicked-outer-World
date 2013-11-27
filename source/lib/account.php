@@ -73,6 +73,7 @@ class Account extends Lisbeth_Entity {
 		$password = md5($password);
 		$shipId = (int)$shipId;
 		$language = $database->escape($language);
+		$timeRegistered = TIME;
 
 		$sql = "
 			INSERT INTO `accounts`
@@ -81,7 +82,8 @@ class Account extends Lisbeth_Entity {
 				`password` = '{$password}',
 				`email` = '{$email}',
 				`starshipId` = {$shipId},
-				`language` = '{$language}';";
+				`language` = '{$language}',
+				`timeRegistered` = {$timeRegistered};";
 		$database->query($sql)->freeResult();
 
 		$id = mysql_insert_id();

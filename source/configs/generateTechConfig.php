@@ -42,6 +42,7 @@ $techIds = array(
 	'RELENTLESS_ID'				=> 5,
 	'EDINBURG_V5_ID'			=> 6,
 	'REVENANT_ID'				=> 7,
+	'IGNIS_ID'					=> 8,
 
 	'IMPACT_PLATING_ID'			=> 40,
 	'DEFLECTOR_PLATING_ID'		=> 41,
@@ -238,6 +239,21 @@ $technology[REVENANT_ID] = array(
 		'weaponry'		=> 2,
 		'ammunition'	=> 1,
 		'equipment'		=> 1,
+		'cargo'			=> 2,
+		'engine'		=> 3
+	)
+);
+$technology[IGNIS_ID] = array(
+	'type'		=> Technology::TYPE_STARSHIP,
+	'name'		=> 'Ignis',
+	'price'		=> 24995,
+	'weight'	=> 45,
+	'tonnage'	=> 33,
+	'structure'	=> 167,
+	'slots'		=> array(
+		'weaponry'		=> 2,
+		'ammunition'	=> 1,
+		'equipment'		=> 3,
 		'cargo'			=> 2,
 		'engine'		=> 3
 	)
