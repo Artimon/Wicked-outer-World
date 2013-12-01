@@ -5,9 +5,9 @@ abstract class RenderMessageAbstract extends RendererAbstract {
 		$controller = $this->controller();
 
 		$tabs = array(
-			$controller->section('messages') => i18n('messages'),
+			$controller->section('messages') => "{{'messages'|i18n}}",
 			$controller->section('sent') => i18n('sent'),
-			$controller->section('write') => i18n('write')
+			$controller->section('write') => "{{'write'|i18n}}"
 		);
 
 		return $this->tabsFromArray($tabs);
