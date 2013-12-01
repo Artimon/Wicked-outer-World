@@ -360,4 +360,13 @@ class Account extends Lisbeth_Entity_Accounts {
 
 		return $this->crafting;
 	}
+
+	/**
+	 * @param string $title
+	 * @param string $message
+	 * @param Account $sender
+	 */
+	public function newMessage($title, $message, Account $sender = null) {
+		Message::send($title, $message, $this, $sender);
+	}
 }

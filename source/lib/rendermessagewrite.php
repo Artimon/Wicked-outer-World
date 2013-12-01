@@ -33,6 +33,8 @@ class RenderMessageWrite extends RenderMessageAbstract {
 		}
 
 		$recipientName = $request->post('recipient');
+
+		/** @var Account $recipient */
 		$recipient = Account::blank()->by('name', $recipientName);
 		if (!$recipient->valid()) {
 			EventBox::get()->failure(
@@ -47,10 +49,10 @@ class RenderMessageWrite extends RenderMessageAbstract {
 		}
 
 		Message::send(
-			$this->account(),
-			$recipient,
 			$request->post('title'),
-			$request->post('message')
+			$request->post('message'),
+			$recipient,
+			$this->account()
 		);
 
 		EventBox::get()->success(
@@ -93,45 +95,42 @@ class RenderMessageWrite extends RenderMessageAbstract {
 			$message = '';
 		}
 
-		$send = i18n('send');
-		$write = i18n('write');
-		$recipient = i18n('recipient');
-		$subject = i18n('subject');
-
 		$token = Leviathan_Token::getInstance()->get();
 
 		return "
-			<h2>{$write}</h2>
-			<div id='messages'>
-				<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
-					<table class='message'>
-						<tr>
-							<td>{$recipient}:</td>
-							<td class='right'>
-								<input type='text' name='recipient' value='{$recipientName}'
-									placeholder='{$recipient}'>
-							</td>
-						</tr>
-						<tr>
-							<td>{$subject}:</td>
-							<td class='right'>
-								<input type='text' name='title' value='{$title}'
-									placeholder='{$subject}'>
-							</td>
-						</tr>
-						<tr>
-							<td colspan='2'>
-								<textarea name='message'>{$message}</textarea>
-							</td>
-						</tr>
-						<tr>
-							<td colspan='2' class='right'>
-								<input type='hidden' name='token' value='{$token}'>
-								<input type='submit' name='send' class='button' value='{$send}'>
-							</td>
-						</tr>
-					</table>
-				</form>
+			<div id='messageWrite'>
+				<h2>{{'write'|i18n}}</h2>
+				<div id='messages'>
+					<form action='{$_SERVER["REQUEST_URI"]}' method='post'>
+						<table class='message'>
+							<tr>
+								<td>{{'recipient'|i18n}}:</td>
+								<td class='right'>
+									<input type='text' name='recipient' value='{$recipientName}'
+										placeholder=\"{{'recipient'|i18n}}\">
+								</td>
+							</tr>
+							<tr>
+								<td>{{'subject'|i18n}}:</td>
+								<td class='right'>
+									<input type='text' name='title' value='{$title}'
+										placeholder=\"{{'subject'|i18n}}\">
+								</td>
+							</tr>
+							<tr>
+								<td colspan='2'>
+									<textarea name='message'>{$message}</textarea>
+								</td>
+							</tr>
+							<tr>
+								<td colspan='2' class='right'>
+									<input type='hidden' name='token' value='{$token}'>
+									<input type='submit' name='send' class='button' ng-value=\"{{'send'|i18n}}\">
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
 			</div>";
 	}
 }

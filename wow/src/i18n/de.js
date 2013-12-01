@@ -13,5 +13,19 @@ window.translations = {
 	select: 'Wählen',
 	selected: 'Gewählt',
 	scrap: 'Verschrotten',
-	confirmScrapStarship: 'Willst Du Dein Raumschiff wirklich verschrotten?'
+	confirmScrapStarship: 'Willst Du Dein Raumschiff wirklich verschrotten?',
+	battleSystem: 'Kampf System',
+	send: 'Senden',
+	write: 'Schreiben',
+	recipient: 'Empfänger',
+	subject: 'Betreff',
+	stardate: 'Sternzeit',
+	sender: 'Absender',
+	action: 'Aktion',
+	reply: 'Antworten',
+	'delete': 'Löschen',
+	messages: 'Nachrichten',
+	youWereAttacked: 'Du wurdest angegriffen',
+	ambushLost: '%1 hat Dich überfallen und platt gemacht. :<',
+	ambushWon: '%1 hat Dich überfallen und voll die Packung kassiert. :>'
 };

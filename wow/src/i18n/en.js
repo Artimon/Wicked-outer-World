@@ -13,5 +13,19 @@ window.translations = {
 	select: 'Select',
 	selected: 'Selected',
 	scrap: 'Scrap Ship',
-	confirmScrapStarship: 'Do you really scrap your starship?'
+	confirmScrapStarship: 'Do you really scrap your starship?',
+	battleSystem: 'Battle System',
+	send: 'Send',
+	write: 'Write',
+	recipient: 'Recipient',
+	subject: 'Subject',
+	stardate: 'Stardate',
+	sender: 'Sender',
+	action: 'Action',
+	reply: 'Reply',
+	'delete': 'Delete',
+	messages: 'Nachrichten',
+	youWereAttacked: 'You were attacked',
+	ambushLost: '%1 ambushed and smashed you. :<',
+	ambushWon: '%1 ambushed you and got spanked. :>'
 };

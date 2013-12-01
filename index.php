@@ -348,7 +348,7 @@ class dispatcher {
 			</div>
 		</div>
 
-		<script type='text/javascript' src='./wow/src/i18n/{$language}.js'></script>
+		<script type='text/javascript' src='./wow/src/i18n/{$language}.js?v=1.1'></script>
 		<script type='text/javascript' src='./ext/jQuery/jquery-1.8.0.min.js'></script>
 		<script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js'></script>
 		<script type='text/javascript' src='./ext/angular/angular.min.js'></script>

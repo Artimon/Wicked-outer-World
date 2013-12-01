@@ -999,33 +999,9 @@ $translations = array(
 	 * Messages
 	 ****************************************************/
 
-	'write' => array(
-		'de' => 'Schreiben',
-		'en' => 'Write'
-	),
 	'sent' => array(
 		'de' => 'Gesendet',
 		'en' => 'Sent'
-	),
-	'action' => array(
-		'de' => 'Aktion',
-		'en' => 'Action'
-	),
-	'sender' => array(
-		'de' => 'Absender',
-		'en' => 'Sender'
-	),
-	'subject' => array(
-		'de' => 'Betreff',
-		'en' => 'Subject'
-	),
-	'stardate' => array(
-		'de' => 'Sternzeit',
-		'en' => 'Stardate'
-	),
-	'delete' => array(
-		'de' => 'Löschen',
-		'en' => 'Delete'
 	),
 	'deleteMessage' => array(
 		'de' => 'Nachricht löschen',
@@ -1039,21 +1015,9 @@ $translations = array(
 		'de' => 'Nachricht wirklich weghauen?',
 		'en' => 'Really dump message?'
 	),
-	'reply' => array(
-		'de' => 'Antworten',
-		'en' => 'Reply'
-	),
 	'messageDeleted' => array(
 		'de' => 'Du hast die Nachricht weggehauen.',
 		'en' => 'You dumped the message.'
-	),
-	'send' => array(
-		'de' => 'Senden',
-		'en' => 'Send'
-	),
-	'recipient' => array(
-		'de' => 'Empfänger',
-		'en' => 'Recipient'
 	),
 	'recipientNotFound' => array(
 		'de' => 'Wir konnten den Spieler %s leider nicht finden.',
