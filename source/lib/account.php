@@ -116,6 +116,9 @@ class Account extends Lisbeth_Entity_Accounts {
 		$sql = "DELETE FROM `crafting` WHERE `accountId` = {$accountId};";
 		$database->query($sql)->freeResult();
 
+		$sql = "DELETE FROM `starships` WHERE `ownerId` = {$accountId};";
+		$database->query($sql)->freeResult();
+
 		$sql = "DELETE FROM `accounts` WHERE `id` = {$accountId};";
 		$database->query($sql)->freeResult();
 	}
