@@ -68,7 +68,7 @@ class RenderFactoryCrafter extends RenderFactoryAbstract {
 		$account = $this->account();
 		$stock = $account->stockage()->stock();
 		$crafting = $account->crafting();
-		$recipes = $crafting->recipes();
+		$recipes = $crafting->decodedRecipes();
 
 		$html = '';
 		if (empty($recipes)) {

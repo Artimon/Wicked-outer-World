@@ -19,9 +19,9 @@ class crafting extends Lisbeth_Entity_Crafting {
 	/**
 	 * @return array of [*techId* => *count crafted*]
 	 */
-	public function recipes() {
+	public function decodedRecipes() {
 		if ($this->recipes === null) {
-			$this->recipes = (array)json_decode($this->value('recipes'), true);
+			$this->recipes = (array)json_decode($this->recipes(), true);
 		}
 
 		return $this->recipes;
@@ -34,7 +34,7 @@ class crafting extends Lisbeth_Entity_Crafting {
 	public function hasRecipe($techId) {
 		$techId = (int)$techId;
 
-		$recipes = $this->recipes();
+		$recipes = $this->decodedRecipes();
 		return array_key_exists($techId, $recipes);
 	}
 
@@ -49,7 +49,7 @@ class crafting extends Lisbeth_Entity_Crafting {
 			return;
 		}
 
-		$recipes = $this->recipes();
+		$recipes = $this->decodedRecipes();
 		if ($this->hasRecipe($techId)) {
 			++$recipes[$techId];
 		} else {
