@@ -5,11 +5,11 @@ class Money extends AccountSubclass {
 	 * @return int
 	 */
 	public function value() {
-		$money = (int)$this->account()->value('money');
+		$money = (int)$this->account()->get('money');
 
 		if ($money < 0) {
 			$money = 0;
-			$this->account()->setValue('money', $money)->update();
+			$this->account()->set('money', $money)->update();
 		}
 
 		return $money;
@@ -33,6 +33,6 @@ class Money extends AccountSubclass {
 	 * @return int
 	 */
 	public function premiumCoins() {
-		return (int)$this->account()->value('premiumCoins');
+		return (int)$this->account()->get('premiumCoins');
 	}
 }

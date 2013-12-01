@@ -85,13 +85,13 @@ class dispatcher {
 	private function updateLanguage(Account $account) {
 		$session = new Leviathan_Session();
 
-		$languageAccount = $account->value('language');
+		$languageAccount = $account->get('language');
 		$languageRequest = Leviathan_Request::getInstance()->both('lang');
 		$languageSession = $session->value('language');
 		if ($languageRequest) {
 			// Language has already been validated.
 			$account
-				->setValue('language', $languageSession)
+				->set('language', $languageSession)
 				->update();
 		}
 		elseif ($languageSession !== $languageAccount) {
@@ -400,7 +400,7 @@ reformal_wdg_bimage = '8489db229aa0a66ab6b80ebbe0bb26cd.png';
 		$database->connect(HOST_FOR_MYSQL, USER_FOR_MYSQL, PASS_FOR_MYSQL) or die('no connection');
 		$database->selectDatabase(DATABASE_FOR_MYSQL) or die('no database');
 
-		Lisbeth_Memcache::getInstance()->connect('localhost', 11211);
+		Lisbeth_Memcache::getSingleton()->connect('localhost', 11211);
 	}
 
 	private function dbDisconnect() {

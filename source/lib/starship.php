@@ -28,7 +28,7 @@ class Starship extends TechContainerAbstract {
 	 */
 	public static function create(Account $owner, $starshipId = null) {
 		if (!$starshipId) {
-			$starshipId = $owner->value('starshipId');
+			$starshipId = $owner->get('starshipId');
 		}
 
 		$starshipData = Lisbeth_ObjectPool::get(
@@ -36,7 +36,7 @@ class Starship extends TechContainerAbstract {
 			$starshipId
 		);
 
-		$starship = new Starship($owner, $starshipData->value('techId'), 1);
+		$starship = new Starship($owner, $starshipData->get('techId'), 1);
 		$starship->setData($starshipData);
 
 		return $starship;
@@ -88,7 +88,7 @@ class Starship extends TechContainerAbstract {
 	 */
 	public function isSelected() {
 		return (
-			$this->account()->value('starshipId') ==
+			$this->account()->get('starshipId') ==
 			$this->data()->id()
 		);
 	}
@@ -158,7 +158,7 @@ class Starship extends TechContainerAbstract {
 	 * @return int
 	 */
 	public function lastUpdate() {
-		return (int)$this->data()->value('lastUpdate');
+		return (int)$this->data()->get('lastUpdate');
 	}
 
 	/**
@@ -179,7 +179,7 @@ class Starship extends TechContainerAbstract {
 	 * @return float
 	 */
 	public function repair() {
-		$repair = (float)$this->data()->value('repair');
+		$repair = (float)$this->data()->get('repair');
 		$repair = max(0, $repair);
 		$repair += 15 * $this->passedTicks();
 
@@ -193,15 +193,15 @@ class Starship extends TechContainerAbstract {
 		$repair = $this->repair() + $value;
 
 		$this->data()
-			->setValue('repair', $repair)
-			->setValue('lastUpdate', TIME);
+			->set('repair', $repair)
+			->set('lastUpdate', TIME);
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function isEnergyToShields() {
-		return ($this->data()->value('energySetup') == self::ENERGY_TO_SHIELDS);
+		return ($this->data()->get('energySetup') == self::ENERGY_TO_SHIELDS);
 	}
 
 	/**

@@ -77,7 +77,7 @@ class RenderSidebar {
 	protected function renderCharacter() {
 		$account = Game::getInstance()->account();
 
-		$accountMoney = $account->money();
+		$accountMoney = $account->myMoney();
 		$money = $accountMoney->short();
 		$premiumCoins = $accountMoney->premiumCoins();
 

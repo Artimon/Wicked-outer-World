@@ -16,7 +16,7 @@ class Initial {
 	 */
 	public function pollute(Account $account) {
 		$this->condition = $account->repair();
-		$this->money = $account->money()->value();
+		$this->money = $account->myMoney()->value();
 	}
 
 	/**

@@ -84,7 +84,7 @@ class RenderBank extends RendererAbstract {
 	}
 
 	public function bodyHtml() {
-		$bank = $this->account()->bank();
+		$bank = $this->account()->myBank();
 		$this->commit($bank);
 
 		$headline = i18n('bankHeadline');

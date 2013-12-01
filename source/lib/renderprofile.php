@@ -56,12 +56,12 @@ class RenderProfile extends RendererAbstract {
 		);
 
 		$endurancePercentage = Format::percentageOf(
-			$account->endurance(),
+			$account->realEndurance(),
 			$account->maxEndurance()
 		);
 
 		$actionPointsPercentage = Format::percentageOf(
-			$account->actionPoints(),
+			$account->realActionPoints(),
 			$account->maxActionPoints()
 		);
 
@@ -115,7 +115,7 @@ class RenderProfile extends RendererAbstract {
 	<tr>
 		<td class='highlight'>{$endurance}</td>
 		<td class='smallFont variable'>
-			{$account->endurance()} / {$account->maxEndurance()}
+			{$account->realEndurance()} / {$account->maxEndurance()}
 			[{$endurancePercentage}]<br>
 			{$bars->enduranceBar()}
 		</td>
@@ -123,7 +123,7 @@ class RenderProfile extends RendererAbstract {
 	<tr>
 		<td class='highlight'>{$actionPoints}</td>
 		<td class='smallFont variable'>
-			{$account->actionPoints()} / {$account->maxActionPoints()}
+			{$account->realActionPoints()} / {$account->maxActionPoints()}
 			[{$actionPointsPercentage}]<br>
 			{$bars->actionPointsBar()}
 		</td>

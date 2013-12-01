@@ -63,7 +63,7 @@ class ActionProfileHealthCare extends AccountSubclass {
 		EventBox::get()->success($message);
 
 		$account
-			->setValue('lastHealthCare', TIME)
+			->set('lastHealthCare', TIME)
 			->update();
 	}
 }

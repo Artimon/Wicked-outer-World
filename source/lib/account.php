@@ -37,12 +37,7 @@
  *
  * "Premium Coins": Awkward Materia / Seltsame Materie
  */
-class Account extends Lisbeth_Entity {
-	/**
-	 * @var string
-	 */
-	protected $table = 'accounts';
-
+class Account extends Lisbeth_Entity_Accounts {
 	/**
 	 * @var stockage
 	 */
@@ -66,7 +61,7 @@ class Account extends Lisbeth_Entity {
 	 * @param string $language
 	 * @return Account
 	 */
-	public static function create($name, $password, $email, $shipId, $language) {
+	public static function register($name, $password, $email, $shipId, $language) {
 		$database = new Lisbeth_Database();
 		$name = $database->escape($name);
 		$email = $database->escape($email);
@@ -75,28 +70,29 @@ class Account extends Lisbeth_Entity {
 		$language = $database->escape($language);
 		$timeRegistered = TIME;
 
-		$sql = "
-			INSERT INTO `accounts`
-			SET
-				`name` = '{$name}',
-				`password` = '{$password}',
-				`email` = '{$email}',
-				`starshipId` = {$shipId},
-				`language` = '{$language}',
-				`timeRegistered` = {$timeRegistered};";
-		$database->query($sql)->freeResult();
+		/** @var Account $account */
+		$account = self::create(array(
+			'name' => $name,
+			'password' => $password,
+			'email' => $email,
+			'starshipId' => $shipId,
+			'language' => $language,
+			'timeRegistered' => $timeRegistered
+		));
 
-		$id = mysql_insert_id();
+		$id = $account->id();
+
 		$game = Game::getInstance();
 		$game->session()->store('id', $id);
 
-		$sql = "
-			INSERT INTO `crafting`
-			SET
-				`accountId` = {$id};";
-		$database->query($sql)->freeResult();
+		crafting::create(array('accountId' => $id));
+		$starship = StarshipData::create(array(
+			'ownerId' => $id,
+			'techId' => $shipId
+		));
 
-		$account = $game->account();
+		$account->starshipId($starship->id());
+
 		$stock = $account->stockage()->stock();
 		$stock->newItem(SMALL_BLASTER_ID, 1);
 		$stock->newItem(BLASTER_AMMUNITION_ID, 75);
@@ -127,43 +123,8 @@ class Account extends Lisbeth_Entity {
 	/**
 	 * @return int
 	 */
-	public function id() {
-		return (int)$this->value('id');
-	}
-
-	/**
-	 * @return string
-	 */
-	public function name() {
-		return $this->value('name');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function targetId() {
-		return $this->value('targetId');
-	}
-
-	/**
-	 * @return int
-	 */
 	public function starbaseId() {
 		return 1;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function level() {
-		return (int)$this->value('level');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function experience() {
-		return (int)$this->value('experience');
 	}
 
 	/**
@@ -178,8 +139,8 @@ class Account extends Lisbeth_Entity {
 	 *
 	 * @return int
 	 */
-	public function endurance() {
-		$endurance = (int)$this->value('endurance');
+	public function realEndurance() {
+		$endurance = (int)$this->get('endurance');
 
 		return min(
 			$endurance + (3 * $this->passedTicks()),
@@ -192,8 +153,8 @@ class Account extends Lisbeth_Entity {
 	 *
 	 * @return int
 	 */
-	public function actionPoints() {
-		$actionPoints = (int)$this->value('actionPoints');
+	public function realActionPoints() {
+		$actionPoints = (int)$this->get('actionPoints');
 
 		return min(
 			$actionPoints + (2 * $this->passedTicks()),
@@ -220,29 +181,15 @@ class Account extends Lisbeth_Entity {
 	}
 
 	/**
-	 * @return int
-	 */
-	public function academyCourseLevel() {
-		return (int)$this->value('academyCourseLevel');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function academyCourseTime() {
-		return (int)$this->value('academyCourseTime');
-	}
-
-	/**
 	 * @param int $endurance
 	 * @param int $actionPoints
 	 * @return Lisbeth_Entity
 	 */
 	protected function applyTickValues($endurance, $actionPoints) {
 		return $this
-			->setValue('actionPoints', $endurance)
-			->setValue('endurance', $actionPoints)
-			->setValue('lastUpdate', TIME);
+			->set('actionPoints', $endurance)
+			->set('endurance', $actionPoints)
+			->set('lastUpdate', TIME);
 	}
 
 	/**
@@ -253,8 +200,8 @@ class Account extends Lisbeth_Entity {
 	 */
 	public function incrementActionPoints($value) {
 		return $this->applyTickValues(
-			$this->actionPoints() + $value,
-			$this->endurance()
+			$this->realActionPoints() + $value,
+			$this->realEndurance()
 		);
 	}
 
@@ -271,23 +218,9 @@ class Account extends Lisbeth_Entity {
 		}
 
 		return $this->applyTickValues(
-			$this->actionPoints(),
-			$this->endurance() + $value
+			$this->realActionPoints(),
+			$this->realEndurance() + $value
 		);
-	}
-
-	/**
-	 * @return int
-	 */
-	public function lastUpdate() {
-		return (int)$this->value('lastUpdate');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function lastHealthCare() {
-		return (int)$this->value('lastHealthCare');
 	}
 
 	/**
@@ -309,11 +242,11 @@ class Account extends Lisbeth_Entity {
 	 */
 	public function reset() {
 		return $this
-			->setValue('endurance', 20)
-			->setValue('actionPoints', 7)
-			->setValue('maxEndurance', 20)
-			->setValue('maxActionPoints', 7)
-			->setValue('lastUpdate', TIME)
+			->set('endurance', 20)
+			->set('actionPoints', 7)
+			->set('maxEndurance', 20)
+			->set('maxActionPoints', 7)
+			->set('lastUpdate', TIME)
 			->update();
 	}
 
@@ -399,57 +332,15 @@ class Account extends Lisbeth_Entity {
 	/**
 	 * @return Money
 	 */
-	public function money() {
+	public function myMoney() {
 		return ObjectPool::get()->money($this);
 	}
 
 	/**
 	 * @return Bank
 	 */
-	public function bank() {
+	public function myBank() {
 		return ObjectPool::get()->bank($this);
-	}
-
-	/**
-	 * @return int
-	 */
-	public function tacticsLevel() {
-		return (int)$this->value('tacticsLevel');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function tacticsExperience() {
-		return (int)$this->value('tacticsExperience');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function defenseLevel() {
-		return (int)$this->value('defenseLevel');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function defenseExperience() {
-		return (int)$this->value('defenseExperience');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function craftingLevel() {
-		return (int)$this->value('craftingLevel');
-	}
-
-	/**
-	 * @return int
-	 */
-	public function craftingExperience() {
-		return (int)$this->value('craftingExperience');
 	}
 
 	/**

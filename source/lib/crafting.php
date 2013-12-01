@@ -1,6 +1,6 @@
 <?php
 
-class crafting extends Lisbeth_Entity {
+class crafting extends Lisbeth_Entity_Crafting {
 	/**
 	 * @var string primary key name
 	 */
@@ -57,7 +57,7 @@ class crafting extends Lisbeth_Entity {
 		}
 
 		$this
-			->setValue('recipes', json_encode($recipes))
+			->set('recipes', json_encode($recipes))
 			->update();
 	}
 

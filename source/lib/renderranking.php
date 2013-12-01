@@ -134,7 +134,7 @@ class RenderRanking extends RendererAbstract {
 			FROM
 				`accounts`
 			WHERE
-				`experience` >= {$account->value('experience')};";
+				`experience` >= {$account->get('experience')};";
 		$position = $database->query($sql)->fetchOne();
 		$database->freeResult();
 

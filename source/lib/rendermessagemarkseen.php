@@ -30,7 +30,7 @@ class RenderMessageMarkSeen extends RendererAbstract {
 			return '';
 		}
 
-		$message->setValue('seen', 1)->update();
+		$message->set('seen', 1)->update();
 
 		return '';
 	}

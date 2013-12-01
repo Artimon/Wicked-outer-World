@@ -8,7 +8,7 @@ class RenderMessageOverview extends RenderMessageAbstract {
 		if ($message) {
 			$messagesReceived->removeEntity($messageId);
 			$messagesSent = new MessagesSent(
-				$message->value('senderId')
+				$message->get('senderId')
 			);
 			$messagesSent->removeEntity($messageId);
 			$message->delete();
@@ -45,11 +45,11 @@ class RenderMessageOverview extends RenderMessageAbstract {
 		$controller = $this->controller();
 
 		foreach ($messagesReceived->messages() as $message) {
-			$bold = $message->value('seen')
+			$bold = $message->get('seen')
 				? ''
 				: " class='bold'";
 
-			$created = date('Y-m-d H:i:s', $message->value('created'));
+			$created = date('Y-m-d H:i:s', $message->get('created'));
 
 			$messageId = $message->id();
 			$deleteUrl = $controller->currentSection(
@@ -65,7 +65,7 @@ class RenderMessageOverview extends RenderMessageAbstract {
 			));
 
 			$messageText = nl2br(
-				$message->value('message')
+				$message->get('message')
 			);
 
 			$html .= "
@@ -80,11 +80,11 @@ class RenderMessageOverview extends RenderMessageAbstract {
 					</td>
 					<td>
 						<span class='entypo-down-open bold tipTip showHideMessage' title='{$showHideMessage}'
-							data-seen='{$message->value('seen')}'
+							data-seen='{$message->get('seen')}'
 							data-url='{$seenUrl}'></span>
 					</td>
-					<td>{$message->value('senderName')}</td>
-					<td>{$message->value('title')}</td>
+					<td>{$message->get('senderName')}</td>
+					<td>{$message->get('title')}</td>
 					<td>{$created}</td>
 				</tr>
 				<tr class='message'>

@@ -7,7 +7,7 @@ class ActionHangarStarTrip extends ActionAbstract {
 	 * @return bool
 	 */
 	public function hasEndurance() {
-		return ($this->account()->endurance() >= self::ENDURANCE_DRAIN);
+		return ($this->account()->realEndurance() >= self::ENDURANCE_DRAIN);
 	}
 
 	/**

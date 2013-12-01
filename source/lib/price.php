@@ -40,7 +40,7 @@ class Price extends AccountSubclass {
 	 * @return bool
 	 */
 	public function canAfford() {
-		$value = $this->account()->money()->value();
+		$value = $this->account()->myMoney()->value();
 
 		return ($value >= $this->value);
 	}

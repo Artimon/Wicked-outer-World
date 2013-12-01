@@ -18,17 +18,17 @@ class RenderMessagesSent extends RenderMessageAbstract {
 
 		foreach ($messagesSent->messages() as $message) {
 			$account = ObjectPool::get()->account(
-				$message->value('recipientId')
+				$message->get('recipientId')
 			);
 			$recipientName = $account->valid()
 				? $account->name()
 				: '-';
 
-			$bold = $message->value('seen')
+			$bold = $message->get('seen')
 				? ''
 				: " class='bold'";
 
-			$created = date('Y-m-d H:i:s', $message->value('created'));
+			$created = date('Y-m-d H:i:s', $message->get('created'));
 
 			$html .= "
 				<tr>
@@ -36,13 +36,13 @@ class RenderMessagesSent extends RenderMessageAbstract {
 				</tr>
 				<tr{$bold}>
 					<td>{$recipientName}</td>
-					<td>{$message->value('title')}</td>
+					<td>{$message->get('title')}</td>
 					<td>{$created}</td>
 				</tr>
 				<tr class='message'>
 					<td colspan='5'>
 						<hr>
-						{$message->value('message')}
+						{$message->get('message')}
 					</td>
 				</tr>";
 		}

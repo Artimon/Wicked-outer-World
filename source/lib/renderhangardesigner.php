@@ -231,7 +231,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 			$starship = $account->starships()->starship($starshipId);
 
 			if ($starship) {
-				$account->setValue('starshipId', $starshipId)->update();
+				$account->set('starshipId', $starshipId)->update();
 			}
 		}
 
@@ -308,7 +308,7 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 			return;
 		}
 
-		$this->account()->starship()->data()->setValue(
+		$this->account()->starship()->data()->set(
 			'energySetup',
 			$energySetup
 		)->update();

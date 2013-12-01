@@ -49,7 +49,7 @@ class Bank extends AccountSubclass {
 		}
 
 		$price->buy();
-		$account->setValue('bank', 0)->update();
+		$account->set('bank', 0)->update();
 
 		EventBox::get()->success(
 			i18n('bankAccountCreated')
@@ -66,7 +66,7 @@ class Bank extends AccountSubclass {
 		}
 
 		$account = $this->account();
-		$result = $account->money()->value();
+		$result = $account->myMoney()->value();
 		$result -= $amount;
 		$result -= $this->transferFee();
 
@@ -79,7 +79,7 @@ class Bank extends AccountSubclass {
 		}
 
 		$account
-			->setValue('money', $result)
+			->set('money', $result)
 			->increment('bank', $amount)
 			->update();
 
@@ -123,6 +123,6 @@ class Bank extends AccountSubclass {
 	 * @return int
 	 */
 	public function value() {
-		return (int)$this->account()->value('bank');
+		return (int)$this->account()->get('bank');
 	}
 }

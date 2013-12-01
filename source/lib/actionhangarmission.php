@@ -121,7 +121,7 @@ class ActionHangarMission extends ActionAbstract {
 	 * @return bool
 	 */
 	public function canStart() {
-		$actionPoints = $this->account()->actionPoints();
+		$actionPoints = $this->account()->realActionPoints();
 		$data = $this->currentMission();
 
 		return ($actionPoints >= $data['actionPoints']);

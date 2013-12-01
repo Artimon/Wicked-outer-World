@@ -13,35 +13,35 @@ class Stats extends AccountSubclass {
 	 * @return int
 	 */
 	public function inflictedDamage() {
-		return (int)$this->account()->value('inflictedDamage');
+		return (int)$this->account()->get('inflictedDamage');
 	}
 
 	/**
 	 * @return int
 	 */
 	public function takenDamage() {
-		return (int)$this->account()->value('takenDamage');
+		return (int)$this->account()->get('takenDamage');
 	}
 
 	/**
 	 * @return int
 	 */
 	public function hits() {
-		return (int)$this->account()->value('hits');
+		return (int)$this->account()->get('hits');
 	}
 
 	/**
 	 * @return int
 	 */
 	public function misses() {
-		return (int)$this->account()->value('misses');
+		return (int)$this->account()->get('misses');
 	}
 
 	/**
 	 * @return int
 	 */
 	public function trainings() {
-		return (int)$this->account()->value('trainings');
+		return (int)$this->account()->get('trainings');
 	}
 
 	/**

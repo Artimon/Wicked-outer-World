@@ -23,7 +23,7 @@ class Register {
 		if ($this->valid($name, $password, $email, $url, $shipId)) {
 			$session = new Leviathan_Session();
 
-			Account::create(
+			Account::register(
 				$name,
 				$password,
 				$email,

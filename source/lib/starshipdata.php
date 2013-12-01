@@ -1,6 +1,6 @@
 <?php
 
-class StarshipData extends Lisbeth_Entity {
+class StarshipData extends Lisbeth_Entity_Starships {
 	protected $table = 'starships';
 
 	/**
@@ -9,7 +9,7 @@ class StarshipData extends Lisbeth_Entity {
 	public function owner() {
 		return Lisbeth_ObjectPool::get(
 			'Account',
-			$this->value('ownerId')
+			$this->get('ownerId')
 		);
 	}
 }

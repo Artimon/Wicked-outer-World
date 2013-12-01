@@ -24,7 +24,7 @@ class ActionAcademyTraining extends ActionAbstract {
 	public function experienceGain() {
 		$account = $this->account();
 
-		$experience = 1.5 * $account->endurance() + $account->maxEndurance();
+		$experience = 1.5 * $account->realEndurance() + $account->maxEndurance();
 		$experience = (int)($experience / 3);
 
 		return $experience;
@@ -94,8 +94,8 @@ class ActionAcademyTraining extends ActionAbstract {
 		$account = $this->account();
 
 		return (
-			($account->endurance() >= self::DRAIN_ENDURANCE) &&
-			($account->actionPoints() >= self::DRAIN_ACTION_POINTS)
+			($account->realEndurance() >= self::DRAIN_ENDURANCE) &&
+			($account->realActionPoints() >= self::DRAIN_ACTION_POINTS)
 		);
 	}
 
@@ -113,13 +113,13 @@ class ActionAcademyTraining extends ActionAbstract {
 		$experience = $this->experienceGain();
 
 		$expKey = $this->type . 'Experience';
-		$newExperience = $account->value($expKey) + $experience;
+		$newExperience = $account->get($expKey) + $experience;
 
 		if ($newExperience >= $this->neededExperience) {
 			$experience = $newExperience - $this->neededExperience;
 
 			$account
-				->setValue($expKey, 0)
+				->set($expKey, 0)
 				->increment($this->type . 'Level', 1);
 
 			$message = i18n('levelGain');

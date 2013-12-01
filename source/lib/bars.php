@@ -60,7 +60,7 @@ class Bars extends AccountSubclass {
 		return Plugins::statusBar(
 			'endurance',
 			$account->maxEndurance(),
-			$account->endurance()
+			$account->realEndurance()
 		);
 	}
 
@@ -73,7 +73,7 @@ class Bars extends AccountSubclass {
 		return Plugins::statusBar(
 			'condition',
 			$account->maxActionPoints(),
-			$account->actionPoints()
+			$account->realActionPoints()
 		);
 	}
 

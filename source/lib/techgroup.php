@@ -396,7 +396,7 @@ class techGroup extends techContainerSubclass {
 		$field = techSelector::fieldFromType($this->type());
 		$items = $this->toJson();
 		$dataSource
-			->setValue($field, $items)
+			->set($field, $items)
 			->update();
 
 		return true;

@@ -35,7 +35,7 @@ class RenderStatus extends AccountSubclass implements RendererInterface {
 			<td class='bottom'>
 				<span class='entypo-battery icon'></span>
 			</td>
-			<td title='{$currently}: {$account->endurance()}' class='tipTip'>
+			<td title='{$currently}: {$account->realEndurance()}' class='tipTip'>
 				{$endurance}<br>
 				{$bars->enduranceBar()}
 			</td>
@@ -43,7 +43,7 @@ class RenderStatus extends AccountSubclass implements RendererInterface {
 			<td class='bottom'>
 				<span class='entypo-rocket icon'></span>
 			</td>
-			<td title='{$currently}: {$account->actionPoints()}' class='tipTip'>
+			<td title='{$currently}: {$account->realActionPoints()}' class='tipTip'>
 				{$actionPoints}<br>
 				{$bars->actionPointsBar()}
 			</td>

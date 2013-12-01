@@ -54,7 +54,7 @@ class ActionFight extends ActionAbstract {
 	 * @return bool
 	 */
 	public function hasActionPoints() {
-		$actionPoints = $this->aggressor->account()->actionPoints();
+		$actionPoints = $this->aggressor->account()->realActionPoints();
 
 		return ($actionPoints >= self::ACTION_POINTS);
 	}

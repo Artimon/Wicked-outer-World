@@ -29,6 +29,6 @@ $autoloader
 	->addSourcePath($baseDir . '/ext/lisbeth')
 	->addSourcePath($baseDir . '/ext/leviathan')
 	->lowerCasePaths()
-	->start(VALKYRIE_BUILD);
+	->start(false); // VALKYRIE_BUILD
 
 Config::getInstance()->routes($routes);

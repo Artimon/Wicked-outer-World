@@ -99,7 +99,7 @@ class ActionAcademyCourse extends ActionAbstract {
 		$this
 			->price()
 			->buy()
-			->setValue('academyCourseTime', TIME + $this->duration())
+			->set('academyCourseTime', TIME + $this->duration())
 			->update();
 
 		EventBox::get()->success(
@@ -117,7 +117,7 @@ class ActionAcademyCourse extends ActionAbstract {
 		}
 
 		$this->account()
-			->setValue('academyCourseTime', 0)
+			->set('academyCourseTime', 0)
 			->increment('academyCourseLevel', 1)
 			->update();
 

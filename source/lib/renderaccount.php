@@ -14,7 +14,7 @@ class RenderAccount extends RendererAbstract {
 				return;
 			}
 
-			$this->account()->setValue(
+			$this->account()->set(
 				'password',
 				md5($password)
 			)->update();
@@ -56,7 +56,7 @@ class RenderAccount extends RendererAbstract {
 		$headline = i18n('account');
 		$accountDataEmail = i18n(
 			'accountDataEmail',
-			$account->value('email')
+			$account->get('email')
 		);
 		$abandonAccount = i18n('abandonAccount');
 		$abandonNotice = i18n('abandonNotice');

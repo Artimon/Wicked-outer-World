@@ -8,7 +8,7 @@ class Message extends Lisbeth_Entity {
 	 * @return bool
 	 */
 	public function isRecipient(Account $account) {
-		return ($this->value('recipientId') == $account->id());
+		return ($this->get('recipientId') == $account->id());
 	}
 
 	/**
