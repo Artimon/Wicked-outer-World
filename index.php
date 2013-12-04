@@ -354,7 +354,7 @@ class dispatcher {
 		<script type='text/javascript' src='./ext/angular/angular.min.js'></script>
 		<script type='text/javascript' src='./ext/tipTip/jquery.tipTip.minified.js'></script>
 		<script type='text/javascript' src='./ext/demetron/demetron.js'></script>
-		<script type='text/javascript' src='./wow/src/default.js?v=1.1'></script>
+		<script type='text/javascript' src='./wow/src/default.js?v=1.2'></script>
 		<script type='text/javascript'>{$javaScript->bindings()}</script>
 
 <script type='text/javascript'>

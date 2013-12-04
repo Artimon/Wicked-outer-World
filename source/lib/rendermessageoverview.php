@@ -37,8 +37,6 @@ class RenderMessageOverview extends RenderMessageAbstract {
 				<th>{{'stardate'|i18n}}</th>
 			</tr>";
 
-		$reply = i18n('reply');
-		$delete = i18n('delete');
 		$deleteMessage = i18n('deleteMessage');
 		$showHideMessage = i18n('showHideMessage');
 

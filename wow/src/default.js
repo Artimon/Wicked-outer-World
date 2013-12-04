@@ -6,7 +6,8 @@ var wowApp = angular.module('wowApp', []);
 (function ($, angular, mwoApp, translations) {
 	mwoApp.filter('i18n', function () {
 		return function (translationKey) {
-			var result, args;
+			var result = translationKey,
+				args;
 
 			if (translations[translationKey]) {
 				result = translations[translationKey];
@@ -16,7 +17,6 @@ var wowApp = angular.module('wowApp', []);
 				args = Array.prototype.slice.call(arguments, 1);
 
 				result = result.replace(/%(\d+)/g, function(_, index) {
-					console.log(index);
 					return args[--index];
 				});
 			}

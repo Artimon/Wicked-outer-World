@@ -31,9 +31,6 @@ class Message extends Lisbeth_Entity_Messages {
 			$senderName = $sender->name();
 		}
 
-		$title = $database->escape($title);
-		$message = $database->escape($message);
-
 		self::create(array(
 			'recipientId' => $recipient->id(),
 			'senderId' => $senderId,
