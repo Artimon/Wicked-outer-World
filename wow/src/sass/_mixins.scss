@@ -1,0 +1,104 @@
+/* Hover arrows */
+@mixin hoverArrowBase($width: 26px, $height: 26px) {
+	background-image: url(../img/navi_icons.png);
+	display: inline-block;
+	width: $width;
+	height: $height;
+	border: none;
+	text-decoration: none;
+	background-repeat: no-repeat;
+	vertical-align: bottom;
+}
+
+@mixin borderRadius($radius) {
+	border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+}
+
+@mixin edgedBorderRadius($topLeft, $topRight, $bottomLeft, $bottomRight) {
+	border-radius: $topLeft $topRight $bottomLeft $bottomRight;
+	-moz-border-radius: $topLeft $topRight $bottomLeft $bottomRight;
+	-webkit-border-radius: $topLeft $topRight $bottomLeft $bottomRight;
+}
+
+@mixin defaultBorder {
+	border: 1px solid $colorBorder {
+		top-color: $colorBorderLight;
+	}
+}
+
+@mixin windowBackground {
+	background-color: rgba($colorBlack, .65);
+	background-image: url(../img/menu_content.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+
+@mixin boxShadow($radius, $color) {
+	$list: 0px 0px $radius $color;
+
+	box-shadow: $list;
+	-webkit-box-shadow: $list;
+	-moz-box-shadow: $list;
+}
+
+@mixin complexShadow($list1, $list2) {
+	box-shadow: $list1, $list2;
+	-webkit-box-shadow: $list1, $list2;
+	-moz-box-shadow: $list1, $list2;
+}
+
+@mixin inset($radius, $color, $hOffset: 0, $vOffset: 0) {
+	$list: inset $hOffset $vOffset $radius $color;
+	box-shadow: $list;
+	-webkit-box-shadow: $list;
+	-moz-box-shadow: $list;
+}
+
+@mixin complexGradient($colorBackground, $list) {
+	background: $colorBackground;
+
+	background: linear-gradient($list);
+	background: -o-linear-gradient($list);
+	background: -moz-linear-gradient($list);
+	background: -webkit-linear-gradient($list);
+	background: -ms-linear-gradient($list);
+}
+
+@mixin buttonGradient($background, $bright, $dark) {
+	background: $background;
+	background: -moz-linear-gradient(top,  $background 0%, $background 48%, $dark 50%, $dark 60%, $bright 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$background), color-stop(48%,$background), color-stop(50%,$dark), color-stop(60%,$dark), color-stop(100%,$bright));
+	background: -webkit-linear-gradient(top,  $background 0%,$background 48%,$dark 50%,$dark 60%,$bright 100%);
+	background: -o-linear-gradient(top,  $background 0%,$background 48%,$dark 50%,$dark 60%,$bright 100%);
+	background: -ms-linear-gradient(top,  $background 0%,$background 48%,$dark 50%,$dark 60%,$bright 100%);
+	background: linear-gradient(to bottom,  $background 0%,$background 48%,$dark 50%,$dark 60%,$bright 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$colorDimGray', endColorstr='$colorGray',GradientType=0 );
+}
+
+@mixin linearGradient($colorBackground, $colorFrom, $colorTo) {
+	$list: bottom, $colorTo 0%, $colorFrom 100%;
+
+	@include complexGradient($colorBackground, $list);
+}
+
+@mixin linearDoubleGradient($colorBackground, $colorFrom, $colorAcross, $colorTo) {
+	background: $colorBackground;
+
+	background: linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+	background: -o-linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+	background: -moz-linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+	background: -webkit-linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+	background: -ms-linear-gradient(bottom, $colorTo 0%, $colorAcross 50%, $colorFrom 100%);
+}
+
+@mixin linkTriangle($color) {
+	display: inline-block;
+	width: 0px;
+	height: 0px;
+
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 4px solid $color;
+}

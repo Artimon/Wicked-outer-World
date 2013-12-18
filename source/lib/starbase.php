@@ -31,38 +31,60 @@ class Starbase {
 	private $id;
 
 	/**
-	 * @var StarbaseModuleInterface[]
+	 * @var Starbase_Module_Interface[]
 	 */
 	private $modules = array();
+
+	/**
+	 * @var string
+	 */
+	private $name = '';
 
 
 	/**
 	 * @param int $starbaseId
+	 * @param string $name
 	 */
-	public function __construct($starbaseId) {
+	public function __construct($starbaseId, $name) {
 		$this->id = (int)$starbaseId;
+		$this->name = $name;
 	}
 
 	/**
 	 * @return string
 	 */
 	public function name() {
-		return i18n('enigmaStarbase');
+		return $this->name;
 	}
 
 	/**
-	 * @return StarbaseModuleAbstract[]
+	 * @param Starbase_Module_Interface $module
+	 * @return $this
+	 */
+	public function addModule(Starbase_Module_Interface $module) {
+		$this->modules[] = $module;
+
+		return $this;
+	}
+
+	/**
+	 * @return Starbase_Module_Interface[]
 	 */
 	public function modules() {
-		return array(
-			new StarbaseModuleQuarters(),
-			new StarbaseModuleAcademy(),
-			new StarbaseModuleJumpGate(),
-			new StarbaseModuleBank(),
-			new StarbaseModuleTradeDeck(),
-			new StarbaseModuleFactory(),
-			new StarbaseModuleHangar(),
-			new StarbaseModuleSkirmish()
-		);
+		return $this->modules;
+	}
+
+	/**
+	 * @param string $key
+	 * @return null|Starbase_Module_Interface
+	 */
+	public function module($key) {
+		foreach ($this->modules as $module) {
+			if ($key === $module->name()) {
+				return $module;
+			}
+		}
+
+		return null;
 	}
 }

@@ -14,6 +14,8 @@ class RenderTechInfo extends RendererAbstract {
 	}
 
 	/**
+	 * @TODO Make it real json.
+	 *
 	 * @return string
 	 */
 	public function bodyHtml() {

@@ -8,37 +8,13 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 			return;
 		}
 
-		$actionAcademyTraining = $this->account()->factory()->actionAcademyTraining();
-		if ($request->get('train') === 'tactics') {
-			$actionAcademyTraining->startTactics();
-		}
-
-		if ($request->get('train') === 'defense') {
-			$actionAcademyTraining->startDefense();
-		}
-
-		if ($request->get('train') === 'crafting') {
-			$actionAcademyTraining->startCrafting();
-		}
+		$type = $request->get('train');
+		$actionAcademyTraining = $this->account()->factory()->actionAcademyTraining($type);
+		$actionAcademyTraining && $actionAcademyTraining->start();
 	}
 
 	public function bodyHtml() {
 		$this->commitActions();
-
-		$training = i18n('training');
-		$trainDescription = i18n('trainDescription');
-
-		$tactics = i18n('tactics');
-		$defense = i18n('defense');
-		$crafting = i18n('crafting');
-		$tacticsHelp = i18n('tacticsHelp');
-		$defenseHelp = i18n('defenseHelp');
-		$craftingHelp = i18n('craftingHelp');
-
-		$train = i18n('train');
-
-		$account = $this->account();
-		$bars = $account->bars();
 
 		$token = Leviathan_Token::getInstance()->get();
 
@@ -54,67 +30,85 @@ class RenderAcademyTraining extends RenderAcademyAbstract {
 
 		$progressBar = Plugins::progressBar('null');
 
-		$js = "$('.train').academyTraining();";
-		JavaScript::create()->bind($js);
+		$account = $this->account();
+		$accountFactory = $account->factory();
+		$tacticsTraining = $accountFactory->actionAcademyTraining('tactics');
+		$defenseTraining = $accountFactory->actionAcademyTraining('defense');
+		$craftingTraining = $accountFactory->actionAcademyTraining('crafting');
 
-		if ($account->factory()->actionAcademyTraining()->canStart()) {
-			$class = '';
-			$title = i18n('youGo');
-		}
-		else {
-			$class = ' disabled';
-			$title = i18n('cannotStartTraining');
-		}
+		$disciplines = array();
+		$disciplines[] = array(
+			'name' => 'tactics',
+			'level' => $account->tacticsLevel(),
+			'current' => $account->tacticsExperience(),
+			'max' => $tacticsTraining->neededExperience(),
+			'hasSufficientLevel' => $tacticsTraining->hasSufficientLevel(),
+			'hasStats' => $tacticsTraining->hasStats(),
+			'canStart' => $tacticsTraining->canStart(),
+			'url' => $trainTacticsUrl
+		);
+		$disciplines[] = array(
+			'name' => 'defense',
+			'level' => $account->defenseLevel(),
+			'current' => $account->defenseExperience(),
+			'max' => $defenseTraining->neededExperience(),
+			'hasSufficientLevel' => $defenseTraining->hasSufficientLevel(),
+			'hasStats' => $defenseTraining->hasStats(),
+			'canStart' => $defenseTraining->canStart(),
+			'url' => $trainDefenseUrl
+		);
+		$disciplines[] = array(
+			'name' => 'crafting',
+			'level' => $account->craftingLevel(),
+			'current' => $account->craftingExperience(),
+			'max' => $craftingTraining->neededExperience(),
+			'hasSufficientLevel' => $craftingTraining->hasSufficientLevel(),
+			'hasStats' => $craftingTraining->hasStats(),
+			'canStart' => $craftingTraining->canStart(),
+			'url' => $trainCraftingUrl
+		);
+		$disciplines = json_encode($disciplines);
 
 		return "
-<h2>{$training}</h2>
-<p>{$trainDescription}</p>
-{$progressBar}
-<table class='trainingOverview'>
-	<colgroup>
-		<col width='150'>
-		<col width='150'>
-		<col>
-	</colgroup>
-	<tr>
-		<td class='highlight'>
-			{$tactics}
-			<span class='infoIcon tipTip' title='{$tacticsHelp}'></span>
-		</td>
-		<td class='smallFont variable'>
-			{$account->tacticsLevel()}<br>
-			{$bars->tacticsProgress()}
-		</td>
-		<td>
-			<a href='{$trainTacticsUrl}' class='tipTip button trainSkill{$class}' title='{$title}'>{$train}</a>
-		</td>
-	</tr><tr>
-	<tr>
-		<td class='highlight'>
-			{$defense}
-			<span class='infoIcon tipTip' title='{$defenseHelp}'></span>
-		</td>
-		<td class='smallFont variable'>
-			{$account->defenseLevel()}<br>
-			{$bars->defenseProgress()}
-		</td>
-		<td>
-			<a href='{$trainDefenseUrl}' class='tipTip button trainSkill{$class}' title='{$title}''>{$train}</a>
-		</td>
-	</tr><tr>
-	<tr>
-		<td class='highlight'>
-			{$crafting}
-			<span class='infoIcon tipTip' title='{$craftingHelp}'></span>
-		</td>
-		<td class='smallFont variable'>
-			{$account->craftingLevel()}<br>
-			{$bars->craftingProgress()}
-		</td>
-		<td>
-			<a href='{$trainCraftingUrl}' class='tipTip button trainSkill{$class}' title='{$title}''>{$train}</a>
-		</td>
-	</tr>
-</table>";
+<div id='academyTraining' ng-controller='AcademyTrainingCtrl' ng-init='setup({$disciplines})'>
+	<h2>{{'training'|i18n}}</h2>
+	<p>{{'trainingDescription'|i18n}}</p>
+	{$progressBar}
+	<table class='trainingOverview'>
+		<colgroup>
+			<col width='120'>
+			<col width='150'>
+			<col width='200'>
+			<col>
+		</colgroup>
+		<tr ng-repeat='discipline in disciplines'>
+			<td class='highlight'>
+				{{discipline.name|i18n}}
+			</td>
+			<td class='smallFont variable'>
+				{{discipline.level}}<br>
+				<ng-status-bar current='discipline.current' max='discipline.max'>
+			</td>
+			<td>
+				<a href='javascript:;' class='button small' ng-click='info(discipline)'>
+					{{'info'|i18n}}
+				</a>
+				<a href='javascript:;' class='button' title='{{\"youGo\"|i18n}}'
+					ng-class='{ disabled: !discipline.canStart }'
+					ng-click='start(discipline)'>
+					{{'train'|i18n}}
+				</a>
+			</td>
+			<td>
+				<span class='critical bold' ng-show='!discipline.hasSufficientLevel'>
+					{{'moduleLevelTooLow'|i18n}}
+				</span>
+				<span class='critical bold' ng-show='discipline.hasSufficientLevel && !discipline.hasStats'>
+					{{'youAreAllRunDown'|i18n}}
+				</span>
+			</td>
+		</tr>
+	</table>
+</div>";
 	}
 }

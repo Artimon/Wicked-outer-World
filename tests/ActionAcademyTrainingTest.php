@@ -5,7 +5,7 @@ class ActionAcademyTrainingTest extends phpUnitFramework {
 		$this->markTestSkipped('Class has changed');
 
 		$account = $this->mock('Account');
-		$sut = new ActionAcademyTraining($account);
+		$sut = new Action_Academy_Training_Abstract($account);
 
 		$experience = 0;
 		for ($i = 0; $i < 100; ++$i) {

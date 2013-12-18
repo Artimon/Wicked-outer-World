@@ -31,7 +31,7 @@ class Router {
 	}
 
 	/**
-	 * @return ControllerAbstract
+	 * @return Controller_Abstract
 	 */
 	public function controller() {
 		$route = $this->route();
@@ -46,7 +46,7 @@ class Router {
 		$database = $this->hasOption($route, 'database');
 		$ajax = $this->hasOption($route, 'ajax');
 
-		/** @var $controller ControllerAbstract */
+		/** @var $controller Controller_Abstract */
 		$controller = $route['controller'];
 		$controller = new $controller();
 		$controller

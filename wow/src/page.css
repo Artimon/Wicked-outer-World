@@ -22,6 +22,9 @@ body {
 ul {
   padding-left: 40px; }
 
+.whatsThis {
+  cursor: help; }
+
 .tipTip {
   cursor: help; }
   .tipTip.action {
@@ -163,6 +166,12 @@ h2, .h2 {
 .smallFont {
   font-size: 9px; }
 
+.ceil {
+  margin-top: 0; }
+
+.floor {
+  margin-bottom: 0; }
+
 /* Boxes */
 div.box {
   margin-bottom: 8px; }
@@ -228,7 +237,7 @@ div.box {
         background: -moz-linear-gradient(bottom, transparent 0%, rgba(2, 121, 230, 0.5) 50%, transparent 100%);
         background: -webkit-linear-gradient(bottom, transparent 0%, rgba(2, 121, 230, 0.5) 50%, transparent 100%);
         background: -ms-linear-gradient(bottom, transparent 0%, rgba(2, 121, 230, 0.5) 50%, transparent 100%); }
-      div.box div.content .menu span {
+      div.box div.content .menu span:not(.level) {
         display: inline-block;
         width: 0px;
         height: 0px;
@@ -780,6 +789,39 @@ div.progressBar {
   .button.merge.last {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
+
+/* Hover arrows */
+#jumpGate .planetInformation {
+  width: 250px;
+  float: left; }
+#jumpGate .starmap {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  float: right;
+  background-color: rgba(9, 10, 12, 0.5);
+  box-shadow: inset 0 0 45px #002135;
+  -webkit-box-shadow: inset 0 0 45px #002135;
+  -moz-box-shadow: inset 0 0 45px #002135;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid #054675; }
+  #jumpGate .starmap .sectorLink {
+    position: absolute;
+    text-decoration: none;
+    font-size: 10px;
+    color: #d8e425; }
+    #jumpGate .starmap .sectorLink:hover {
+      color: white; }
+    #jumpGate .starmap .sectorLink.inactive {
+      color: #454545; }
+    #jumpGate .starmap .sectorLink.selected {
+      color: #e49128; }
+    #jumpGate .starmap .sectorLink span {
+      text-decoration: none;
+      font-size: 10px;
+      color: inherit; }
 
 /* entypo */
 [class*="entypo-"] {

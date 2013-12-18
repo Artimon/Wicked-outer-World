@@ -39,13 +39,19 @@ class RenderSidebar {
 				'route' => 'profile'
 			),
 			array(
-				'title' => $starbase->name()
+				'title' => "{{'{$starbase->name()}'|i18n}}"
 			)
 		);
 
 		foreach ($modules as $module) {
+			$title = "{{'{$module->name()}'|i18n}}";
+			$level = $module->level();
+			if ($level > 0) {
+				$title .= " <span class='level variable'>({$level})</span>";
+			}
+
 			$entries[] = array(
-				'title' => $module->name(),
+				'title' => $title,
 				'route' => $module->route(),
 				'space' => $module->menuSpacer()
 			);
@@ -117,7 +123,7 @@ class RenderSidebar {
 <!--<div>{$eventsTitle}</div>-->
 <!--<div class='clear seperator'></div>-->
 
-<div class='floatRight'>{$premiumCoins}</div>
+<div class='floatRight premiumCoins'>{$premiumCoins}</div>
 <div>{$premiumCoinsTitle}</div>";
 
 		return Format::box(i18n('pilot'), $html);

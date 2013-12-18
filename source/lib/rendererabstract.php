@@ -7,22 +7,22 @@
  */
 abstract class RendererAbstract implements RendererInterface {
 	/**
-	 * @var ControllerAbstract
+	 * @var Controller_Abstract
 	 */
 	private $controller;
 
 	/**
-	 * @param ControllerInterface $controller
+	 * @param Controller_Interface $controller
 	 * @return RendererAbstract
 	 */
-	public function setController(ControllerInterface $controller) {
+	public function setController(Controller_Interface $controller) {
 		$this->controller = $controller;
 
 		return $this;
 	}
 
 	/**
-	 * @return ControllerAbstract
+	 * @return Controller_Abstract
 	 */
 	public function controller() {
 		return $this->controller;

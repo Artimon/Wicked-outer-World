@@ -1,0 +1,28 @@
+
+$colorDefaultText: lighten(#3a5567, 10%);
+$colorLightText: #D9E0EE;
+$colorBrightText: white;
+$colorImportantText: #d8e425;
+$colorSelectedText: #e49128;
+
+$colorBlack: #090a0c;
+$colorWhite: white;
+$colorBright: #B8EC79;
+
+$colorError: #E02E10;
+
+$colorDefaultButton: #036;
+$colorDimButton: darken($colorDefaultButton, 4%);
+$colorDarkButton: darken($colorDefaultButton, 19%);
+
+$colorLightButton: lighten($colorDefaultButton, 7%);
+$colorLightDimButton: lighten($colorDimButton, 5%);
+$colorLightDarkButton: black;
+
+$colorNearBlack: #1B1613;
+
+$colorBorder: #063056;
+$colorBorderLight: #054675;
+$colorBorderDark: #002135;
+
+$colorDarkBackground: #031524;

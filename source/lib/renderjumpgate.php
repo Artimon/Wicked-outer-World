@@ -5,12 +5,17 @@ class RenderJumpGate extends RendererAbstract {
 	 * @return string
 	 */
 	public function bodyHtml() {
-		$jumpGate = i18n('jumpGate');
-		$inPreparation = i18n('inPreparation');
+		$account = $this->account();
+		$sectors = Sector_Abstract::__toListArray($account);
 
-		return "
-			<h2>{$jumpGate}</h2>
-			<p>{$inPreparation}</p>";
+		$template = new Leviathan_Template();
+		$template->assignArray(array(
+			'sectors' => json_encode($sectors),
+			'sectorId' => $account->sectorId(),
+			'money' => $account->myMoney()->value(),
+		));
+
+		return $template->render('source/view/jumpGate.php');
 	}
 
 	/**

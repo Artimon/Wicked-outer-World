@@ -2,80 +2,94 @@
 
 return array(
 	'profile' => array(
-		'controller'	=> 'ControllerProfile',
+		'controller'	=> 'Controller_Profile',
 		'database'		=> true
 	),
 	'messages' => array(
-		'controller'	=> 'ControllerMessages',
+		'controller'	=> 'Controller_Messages',
 		'database'		=> true
 	),
 	'quarters' => array(
-		'controller'	=> 'ControllerQuarters',
+		'controller'	=> 'Controller_Quarters',
 		'database'		=> true
 	),
 	'academy' => array(
-		'controller'	=> 'ControllerAcademy',
+		'controller'	=> 'Controller_Academy',
 		'database'		=> true
 	),
 	'jumpGate' => array(
-		'controller'	=> 'ControllerJumpGate',
+		'controller'	=> 'Controller_JumpGate',
 		'database'		=> true
 	),
+	'unlockSector' => array(
+		'controller'	=> 'Controller_UnlockSector',
+		'database'		=> true,
+		'ajax'			=> true
+	),
+	'travelTo' => array(
+		'controller'	=> 'Controller_TravelTo',
+		'database'		=> true,
+		'ajax'			=> true
+	),
 	'hangar' => array(
-		'controller'	=> 'ControllerHangar',
+		'controller'	=> 'Controller_Hangar',
 		'database'		=> true
 	),
 	'bank' => array(
-		'controller'	=> 'ControllerBank',
+		'controller'	=> 'Controller_Bank',
 		'database'		=> true
 	),
 	'tradeDeck' => array(
-		'controller'	=> 'ControllerTradeDeck',
+		'controller'	=> 'Controller_TradeDeck',
 		'database'		=> true
 	),
 	'factory' => array(
-		'controller'	=> 'ControllerFactory',
+		'controller'	=> 'Controller_Factory',
 		'database'		=> true
 	),
 	'techInfo' => array(
-		'controller'	=> 'ControllerTechInfo',
+		'controller'	=> 'Controller_TechInfo',
 		'ajax'			=> true
 	),
 	'entities' => array(
-		'controller'	=> 'ControllerEntities',
+		'controller'	=> 'Controller_Entities',
 		'database'		=> true,
 		'ajax'			=> true
 	),
 	'skirmish' => array(
-		'controller'	=> 'ControllerSkirmish',
+		'controller'	=> 'Controller_Skirmish',
 		'database'		=> true
 	),
 	'ranking' => array(
-		'controller'	=> 'ControllerRanking',
+		'controller'	=> 'Controller_Ranking',
 		'database'		=> true
 	),
 	'account' => array(
-		'controller'	=> 'ControllerAccount',
+		'controller'	=> 'Controller_Account',
 		'database'		=> true
 	),
 	'logout' => array(
-		'controller'	=> 'ControllerLogout',
+		'controller'	=> 'Controller_Logout',
 		'database'		=> true
 	),
 	'register' => array(
-		'controller'	=> 'ControllerRegister',
+		'controller'	=> 'Controller_Register',
 		'database'		=> true
 	),
 	'pirateNews' => array(
-		'controller'	=> 'ControllerPirateNews',
+		'controller'	=> 'Controller_PirateNews',
 		'database'		=> true
 	),
 	'imprint' => array(
-		'controller'	=> 'ControllerImprint',
+		'controller'	=> 'Controller_Imprint',
+		'database'		=> true
+	),
+	'versionLog' => array(
+		'controller'	=> 'Controller_VersionLog',
 		'database'		=> true
 	),
 	'default' => array(
-		'controller'	=> 'ControllerLogin',
+		'controller'	=> 'Controller_Login',
 		'database'		=> true
 	)
 );

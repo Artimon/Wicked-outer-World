@@ -1,0 +1,51 @@
+@import "variables";
+@import "mixins";
+
+#jumpGate {
+	.planetInformation {
+		width: 250px;
+		float: left;
+	}
+
+	.starmap {
+		position: relative;
+		width: 450px;
+		height: 450px;
+
+		float: right;
+
+		background-color: rgba($colorBlack, .5);
+		@include inset(45px, $colorBorderDark);
+
+		@include borderRadius(5px);
+		border: 1px solid $colorBorderLight;
+
+		.sectorLink {
+			position: absolute;
+
+			text-decoration: none;
+			font-size: 10px;
+
+			color: $colorImportantText;
+
+			&:hover {
+				color: $colorWhite;
+			}
+
+			&.inactive {
+				color: grayscale($colorLightButton);
+			}
+
+			&.selected {
+				color: $colorSelectedText;
+			}
+
+			span {
+				text-decoration: none;
+				font-size: 10px;
+
+				color: inherit;
+			}
+		}
+	}
+}

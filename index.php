@@ -236,7 +236,9 @@ class dispatcher {
 		}
 
 		if ($content->renderBox()) {
-			$contentBody = Format::box($content->regionHead(), $contentBody);
+			$contentHead = $content->regionHead();
+			$contentHead = "{{'{$contentHead}'|i18n}}";
+			$contentBody = Format::box($contentHead, $contentBody);
 		}
 
 		$leaveFeedback = i18n('leaveFeedback');
@@ -345,6 +347,8 @@ class dispatcher {
 		<div id='footer'>
 			<div class='content'>
 				<a href='?page=imprint'>{$imprint}</a>
+				&#124;
+				<a href='?page=versionLog' class='highlight'>v0.1.0</a>
 			</div>
 		</div>
 
@@ -386,6 +390,8 @@ reformal_wdg_bimage = '8489db229aa0a66ab6b80ebbe0bb26cd.png';
 	}
 
 	/**
+	 * @TODO Send application json header.
+	 *
 	 * @param Content $content
 	 * @return string
 	 */

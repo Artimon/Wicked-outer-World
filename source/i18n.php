@@ -811,14 +811,6 @@ $translations = array(
 		'de' => 'Ein Shopping-Zentrum im Weltraum? Na, warum nicht!',
 		'en' => 'A shopping centre out in space? Well, why not!'
 	),
-	'shop' => array(
-		'de' => 'Laden',
-		'en' => 'Shop'
-	),
-	'shopDescription' => array(
-		'de' => 'Du suchst nach der besten Ausrüstung in diesem großen schwarzen nichts? Sieh Dich einfach etwas um.',
-		'en' => 'Searching for the finest hardware out in that big black room? Just take a look around.'
-	),
 	'grocer' => array(
 		'de' => 'Krämer',
 		'en' => 'Grocer'
@@ -1132,10 +1124,6 @@ $translations = array(
 	'training' => array(
 		'de' => 'Training',
 		'en' => 'Training'
-	),
-	'cannotStartTraining' => array(
-		'de' => 'Du bist fix und fertig!',
-		'en' => "You're all run down!"
 	),
 	'tactics' => array(
 		'de' => 'Taktik',

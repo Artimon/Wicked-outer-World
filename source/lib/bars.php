@@ -85,7 +85,7 @@ class Bars extends AccountSubclass {
 
 		return Plugins::statusBar(
 			'tacticsProgress',
-			$account->factory()->actionAcademyTraining()->neededTacticsExperience(),
+			$account->factory()->actionAcademyTraining('tactics')->neededExperience(),
 			$account->tacticsExperience()
 		);
 	}
@@ -98,7 +98,7 @@ class Bars extends AccountSubclass {
 
 		return Plugins::statusBar(
 			'defenseProgress',
-			$account->factory()->actionAcademyTraining()->neededDefenseExperience(),
+			$account->factory()->actionAcademyTraining('defense')->neededExperience(),
 			$account->defenseExperience()
 		);
 	}
@@ -111,7 +111,7 @@ class Bars extends AccountSubclass {
 
 		return Plugins::statusBar(
 			'tacticsProgress',
-			$account->factory()->actionAcademyTraining()->neededCraftingExperience(),
+			$account->factory()->actionAcademyTraining('crafting')->neededExperience(),
 			$account->craftingExperience()
 		);
 	}

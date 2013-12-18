@@ -124,13 +124,6 @@ class Account extends Lisbeth_Entity_Accounts {
 	}
 
 	/**
-	 * @return int
-	 */
-	public function starbaseId() {
-		return 1;
-	}
-
-	/**
 	 * @return float
 	 */
 	public function repair() {
@@ -257,9 +250,7 @@ class Account extends Lisbeth_Entity_Accounts {
 	 * @return Starbase
 	 */
 	public function starbase() {
-		return entityPool::starbase(
-			$this->starbaseId()
-		);
+		return Sector_Abstract::getInstance($this)->starbase();
 	}
 
 	/**
@@ -323,6 +314,13 @@ class Account extends Lisbeth_Entity_Accounts {
 	 */
 	public function price() {
 		return ObjectPool::get()->price($this);
+	}
+
+	/**
+	 * @return PremiumPrice
+	 */
+	public function premiumPrice() {
+		return ObjectPool::get()->premiumPrice($this);
 	}
 
 	/**

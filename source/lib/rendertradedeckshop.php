@@ -23,6 +23,11 @@ class RenderTradeDeckShop extends RenderTradeDeckAbstract {
 			return;
 		}
 
+		$availableItems = $this->availableItems();
+		if (!array_key_exists($techId, $availableItems)) {
+			return;
+		}
+
 		$account = $this->account();
 		$stock = $account->stockage()->stock();
 
@@ -46,76 +51,80 @@ class RenderTradeDeckShop extends RenderTradeDeckAbstract {
 	}
 
 	/**
+	 * @return Technology[]
+	 */
+	protected function availableItems() {
+		static $availableItems = array();
+
+		if (count($availableItems) > 0) {
+			return $availableItems;
+		}
+
+		$account = $this->account();
+		$tradeDeck = $account->starbase()->module(Starbase_Module_TradeDeck::KEY);
+
+		$config = Config::getInstance()->technology();
+		$config = array_keys($config->technology);
+		$configCount = count($config);
+
+		$seed = $account->id() + $account->sectorId() + round(TIME / 3600);
+		$staticRandom = new Leviathan_StaticRandom($seed);
+
+		while (count($availableItems) < 8) {
+			$key = $staticRandom->random(0, $configCount - 1);
+			$techId = $config[$key];
+
+			$item = Technology::raw($techId);
+			if (
+				!$item->isShoppable() ||
+				$item->isStarship() ||
+				$item->level() > $tradeDeck->level() ||
+				array_key_exists($techId, $availableItems)
+			) {
+				continue;
+			}
+
+			$availableItems[$techId] = $item;
+		}
+
+		return $availableItems;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function bodyHtml() {
 		$this->commit();
 
-		$groups = array();
+		$account = $this->account();
 
-		$stockage = $this->account()->stockage();
+		$stockage = $account->stockage();
 		$stock = $stockage->stock();
 
-		$config = Config::getInstance()->technology();
-		$config = array_keys($config->technology);
-		foreach ($config as $techId) {
-			$item = Technology::raw($techId);
-			if (!$item->isShoppable() || $item->isStarship()) {
-				continue;
-			}
+		$html = '
+			<colgroup>
+				<col width="40">
+				<col width="200">
+				<col>
+			</colgroup>';
 
-			$type = $item->type();
-			if (!array_key_exists($type, $groups)) {
-				$groups[$type] = array(
-					'type' => $type,
-					'name' => $item->typeName(),
-					'items' => array()
-				);
-			}
-
+		foreach ($this->availableItems() as $item) {
 			$buyableAmount = $this->buyableAmount($stock, $item);
-
-			$groups[$type]['items'][] = $this->itemLine($item, $buyableAmount);
+			$html .= $this->itemLine($item, $buyableAmount);
 		}
-
-		usort($groups, function ($a, $b) {
-			return ($a['name'] > $b['name'] ? 1 : -1);
-		});
-
-		$html = '';
-		$lastType = null;
-		foreach ($groups as $type => &$data) {
-			if ($lastType !== $data['type']) {
-				$lastType = $data['type'];
-
-				$html .= "
-<a href='javascript:;' class='accordion headline'>
-	<span></span>
-	{$data['name']}
-</a>";
-			}
-
-			$groupHtml = implode('', $data['items']);
-			$groupHtml = html::defaultTable($groupHtml);
-			$html .= "<div class='null'>{$groupHtml}</div>";
-		}
-
-		$headline = i18n('shop');
-		$description = i18n('shopDescription');
-		$yourStuff = i18n('yourStuff');
 
 		$howMany = i18n('howMany');
 		JavaScript::create()->bind("$('.moveItem').moveItem('{$howMany}');");
 
 		return "
-			<h2>{$headline}</h2>
-			<p>{$description}</p>
+			<h2>{{'shop'|i18n}}</h2>
+			<p>{{'shopDescription'|i18n}}</p>
 			<p>
-				{$yourStuff}:
+				{{'yourStuff'|i18n}}:
 				<span class='variable'>
 					{$stockage->payload()}t / {$stockage->tonnage()}t
 				</span>
-			</p>" . $html;
+			</p>" . html::defaultTable($html);
 	}
 
 	/**

@@ -116,6 +116,14 @@ class ObjectPool {
 
 	/**
 	 * @param Account $account
+	 * @return Price
+	 */
+	public function premiumPrice(Account $account) {
+		return $this->fromPool('PremiumPrice', $account);
+	}
+
+	/**
+	 * @param Account $account
 	 * @return LevelProgress
 	 */
 	public function levelProgress(Account $account) {
@@ -156,10 +164,10 @@ class ObjectPool {
 
 	/**
 	 * @param Account $account
-	 * @return ActionAcademyTraining
+	 * @return Action_Academy_Training_Abstract
 	 */
 	public function actionAcademyTraining(Account $account) {
-		return $this->fromPool('ActionAcademyTraining', $account);
+		return $this->fromPool('Action_Academy_Training_Abstract', $account);
 	}
 
 	/**

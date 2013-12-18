@@ -23,10 +23,25 @@ class AccountFactory extends AccountSubclass {
 	}
 
 	/**
-	 * @return ActionAcademyTraining
+	 * @param $type
+	 * @return Action_Academy_Training_Abstract|null
 	 */
-	public function actionAcademyTraining() {
-		return ObjectPool::get()->actionAcademyTraining($this->account());
+	public function actionAcademyTraining($type) {
+		$account = $this->account();
+
+		switch ($type) {
+			case 'tactics':
+				return new Action_Academy_Training_Tactics($account);
+
+			case 'defense':
+				return new Action_Academy_Training_Defense($account);
+
+			case 'crafting':
+				return new Action_Academy_Training_Crafting($account);
+
+			default:
+				return null;
+		}
 	}
 
 	/**
