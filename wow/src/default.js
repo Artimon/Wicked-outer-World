@@ -286,7 +286,7 @@ var wowApp = angular.module('wowApp', []);
 	/**
 	 * Jump Gate Controller
 	 */
-	wowApp.controller('JumpGateCtrl', ['$scope', '$http', function ($scope, $http) {
+	wowApp.controller('JumpGateCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 		$scope.travelPrice = 0;
 		$scope.currentSector = {};
 		$scope.money = 0;
@@ -348,7 +348,7 @@ var wowApp = angular.module('wowApp', []);
 		 * @param {object} sector
 		 */
 		$scope.unlockSector = function (sector) {
-			if (sector.isAvailable || !sector.canAfford) {
+			if (sector.isAvailable || !sector.canAfford || !sector.hasLevelRequirement) {
 				return;
 			}
 
@@ -371,7 +371,78 @@ var wowApp = angular.module('wowApp', []);
 
 			$http.post('?page=travelTo', { sectorId: sector.key })
 				.success(function () {
-					window.location.href = '?page=jumpGate';
+					var animationBox = new ConfirmBox();
+					animationBox.show(
+						$filter('i18n')('movingToNewSector'),
+						"<canvas id='jumpGateTravel' width='380' height='80'></canvas>"
+					);
+
+					$('#infoLayer').find('.container').removeClass('small');
+					$('#jumpGateTravel').engine2d(function (engine2d) {
+						var stop = false;
+
+						engine2d.appendFunction('moveFighter', function (entity) {
+							if (stop) {
+								return;
+							}
+
+							entity.position.add(vector(5, 0));
+							if (entity.position.x > 420) {
+								stop = true;
+								window.location.href = '?page=jumpGate';
+							}
+						});
+
+						engine2d.appendFunction('fighterBooster', function (entity) {
+							entity.layer = entity.parentEntity.layer + 1;
+							entity.position.x = -entity.parentEntity.size.x / 2;
+							entity.position.y = 0;
+							entity.position
+								.rotate(entity.parentEntity.angle)
+								.add(entity.parentEntity.position);
+
+							entity.scale.normalize(
+								1.2 + 0.2 * Math.sin(entity.animationOffset + engine2d.totalTime / 10)
+							);
+						});
+
+						engine2d.appendFunction('createFighter', function () {
+							var fighter, flare;
+
+							fighter = engine2d.entityCreate(
+								'./wow/img/default_fighter.png',
+								engine2d.functions.moveFighter,
+								vector(-20, 40)
+							);
+
+							fighter.angle = 0;
+							flare = engine2d.entityCreate(
+								'./wow/img/white_flare.png',
+								engine2d.functions.fighterBooster,
+								vector()
+							);
+
+							flare.parentEntity = fighter;
+							flare.animationOffset = Math.random() * 360;
+
+							return fighter;
+						});
+
+						engine2d.appendFunction('moveBackground', function (entity) {
+							entity.position.add(vector(-0.25, 0));
+						});
+
+						engine2d.appendFunction('createBackground', function () {
+							engine2d.entityCreate(
+								'./wow/img/space_earth.jpg',
+								engine2d.functions.moveBackground,
+								vector(240, 40)
+							);
+						});
+
+						engine2d.functions.createBackground();
+						engine2d.functions.createFighter();
+					});
 				});
 		};
 	}]);
@@ -1200,9 +1271,6 @@ function init(engine2d, duration) {
 					(Math.abs(difference.x) > engine2d.size.x * 0.75) ||
 					(Math.abs(difference.y) > engine2d.size.y * 0.75)
 				) {
-					console.log('remove ' + entity.handleObject);
-					console.log(entityHandles);
-
 					engine2d.functions.deleteActor(entity);
 				}
 			}

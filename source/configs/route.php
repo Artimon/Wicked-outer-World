@@ -49,6 +49,7 @@ return array(
 	),
 	'techInfo' => array(
 		'controller'	=> 'Controller_TechInfo',
+		'database'		=> true,
 		'ajax'			=> true
 	),
 	'entities' => array(

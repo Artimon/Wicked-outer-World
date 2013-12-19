@@ -35,6 +35,16 @@ interface Sector_Interface {
 	/**
 	 * @return int
 	 */
+	public function unlockLevel();
+
+	/**
+	 * @return int[]
+	 */
+	public function starTravelItems();
+
+	/**
+	 * @return int
+	 */
 	public function x();
 
 	/**

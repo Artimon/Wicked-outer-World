@@ -58,6 +58,7 @@ abstract class Sector_Abstract implements Sector_Interface {
 		}
 
 		$unlockPrice = $this->unlockPrice();
+		$unlockLevel = $this->unlockLevel();
 
 		return array(
 			'key' => $this->key(),
@@ -66,6 +67,8 @@ abstract class Sector_Abstract implements Sector_Interface {
 			'isAvailable' => self::info($account, $this->key()),
 			'unlockPrice' => $unlockPrice,
 			'canAfford' => $account->premiumPrice()->set($unlockPrice)->canAfford(),
+			'unlockLevel' => $unlockLevel,
+			'hasLevelRequirement' => $account->level() >= $unlockLevel,
 			'x' => $this->x(),
 			'y' => $this->y(),
 			'starbase' => $starbase->name(),
@@ -95,7 +98,8 @@ abstract class Sector_Abstract implements Sector_Interface {
 			Sector_Earth::KEY => new Sector_Earth(),
 			Sector_AsteroidField::KEY => new Sector_AsteroidField(),
 			Sector_OldBattlefield::KEY => new Sector_OldBattlefield(),
-			Sector_StarAcademy::KEY => new Sector_StarAcademy()
+			Sector_StarAcademy::KEY => new Sector_StarAcademy(),
+			Sector_Titania::KEY => new Sector_Titania()
 		);
 	}
 

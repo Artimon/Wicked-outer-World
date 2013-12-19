@@ -1,7 +1,9 @@
 <?php
 
 require_once '../../ext/lisbeth/lisbeth/distributor.php';
+require_once '../../ext/lisbeth/lisbeth/ientity.php';
 require_once '../../ext/lisbeth/lisbeth/entity.php';
+require_once '../../ext/lisbeth/lisbeth/entity/accounts.php';
 require_once '../lib/account.php';
 require_once '../lib/accountsubclass.php';
 require_once '../lib/technology.php';
@@ -31,10 +33,30 @@ require_once '../lib/technology.php';
 // Ragnarok Mk I; reactor (-5), plating (-3), junk (-8)... (7 left)
 // Ragnarok Mk I; reactor (-5), plating (-2), junk (-8), cargo (-16)... (0 left)
 
-// Buy a ship automatically sells the old ship and unequips everything.
 // Level up clan base by putting money in.
 // Creating a clan only possible at a certain minimum level.
 // Levels give skill points.
+
+/*
+	Starship: Weight - Level
+	25	0
+	30	2
+	35	4
+	40	6
+	45	8
+	50	10
+	55	12
+	60	14
+	65	16
+	70	18
+	75	20
+	80	22
+	85	24
+	90	26
+	95	28
+	100	30
+*/
+
 
 $techIds = array(
 	'GREMLIN_ID'				=> 3,
@@ -100,7 +122,10 @@ $techIds = array(
 	'EXPLOSIVES_ID'				=> 1230,
 
 	'TECHNICAL_COMPONENTS_ID'	=> 1250,
-	'COOLER_ID'					=> 1275
+	'COOLER_ID'					=> 1275,
+
+	'FOOD_ID'					=> 1300,
+	'WATCH_ID'					=> 1301
 );
 
 foreach ($techIds as $name => $techId) {
@@ -139,6 +164,7 @@ $technology[-1] = array(
 $technology[GREMLIN_ID] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'Gremlin',
+	'level'		=> 0,
 	'price'		=> 9587,
 	'weight'	=> 25,
 	'tonnage'	=> 19,
@@ -155,6 +181,7 @@ $technology[GREMLIN_ID] = array(
 $technology[2] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'GenesisSC4',
+	'level'		=> 0,
 	'price'		=> 8200,
 	'weight'	=> 30,
 	'tonnage'	=> 21,
@@ -171,6 +198,7 @@ $technology[2] = array(
 $technology[1] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'RagnarokMkI',
+	'level'		=> 0,
 	'price'		=> 10800,
 	'weight'	=> 30,
 	'tonnage'	=> 18,
@@ -186,6 +214,7 @@ $technology[1] = array(
 $technology[NIGHTFALL_CB55_ID] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'NightfallCb55',
+	'level'		=> 2,
 	'price'		=> 13492,
 	'weight'	=> 35,
 	'tonnage'	=> 24,
@@ -201,6 +230,7 @@ $technology[NIGHTFALL_CB55_ID] = array(
 $technology[RELENTLESS_ID] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'Relentless',
+	'level'		=> 2,
 	'price'		=> 14732,
 	'weight'	=> 35,
 	'tonnage'	=> 21,
@@ -216,6 +246,7 @@ $technology[RELENTLESS_ID] = array(
 $technology[EDINBURG_V5_ID] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'EdinburgV5',
+	'level'		=> 5,
 	'price'		=> 17520,
 	'weight'	=> 40,
 	'tonnage'	=> 27,
@@ -231,6 +262,7 @@ $technology[EDINBURG_V5_ID] = array(
 $technology[REVENANT_ID] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'Revenant',
+	'level'		=> 6,
 	'price'		=> 19600,
 	'weight'	=> 40,
 	'tonnage'	=> 29,
@@ -246,6 +278,7 @@ $technology[REVENANT_ID] = array(
 $technology[IGNIS_ID] = array(
 	'type'		=> Technology::TYPE_STARSHIP,
 	'name'		=> 'Ignis',
+	'level'		=> 8,
 	'price'		=> 24995,
 	'weight'	=> 45,
 	'tonnage'	=> 33,
@@ -842,6 +875,20 @@ $technology[COOLER_ID] = array(
 		COOLANT_ID	=> array('chance' => 40, 'amount' => 2)
 	),
 	'craftHint'	=> true
+);
+$technology[FOOD_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'Food',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> 25	// Value for trading.
+);
+$technology[WATCH_ID] = array(
+	'type'		=> Technology::TYPE_INGREDIENT,
+	'name'		=> 'Watch',
+	'weight'	=> 1,
+	'stack'		=> 1,
+	'price'		=> 85	// Value for trading.
 );
 
 

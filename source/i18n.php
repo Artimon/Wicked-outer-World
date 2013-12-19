@@ -497,6 +497,22 @@ $translations = array(
 		'de' => 'Kühler sind zum Schutz allen Hitzerzeugenden Komponenten im Einsatz.',
 		'en' => 'Cooler are used to protect all heat generating components.'
 	),
+	'nameFood' => array(
+		'de' => 'Nahrung',
+		'en' => 'Food'
+	),
+	'descFood' => array(
+		'de' => 'Einfache Nahrungsvorräte.',
+		'en' => 'Simple food supplies.'
+	),
+	'nameWatch' => array(
+		'de' => 'Platin Armbanduhr',
+		'en' => 'Platinum Watch'
+	),
+	'descWatch' => array(
+		'de' => 'Eine Platin Armbanduhr, welche wohl einst einem verunglückten Astronauten gehörte.',
+		'en' => 'A platinum watch that once belonged to an accidentally crashed astronaut.'
+	),
 
 	/*****************************************************
 	 * Starship
@@ -562,6 +578,10 @@ $translations = array(
 	'neededLevel' => array(
 		'de' => 'Benötigtes Level: %s',
 		'en' => 'Needed level: %s'
+	),
+	'noLevelRequirement' => array(
+		'de' => 'Keine Levelanforderung',
+		'en' => 'No level requirement'
 	),
 
 	/*****************************************************
@@ -819,18 +839,6 @@ $translations = array(
 		'de' => 'Du hast ein paar gebrauchte Dinge übrig? Hmm... mal sehen ob ich damit etwas anfangen kann.',
 		'en' => 'You got some things left over? Hmm... lets see if I can take use of something.'
 	),
-	'starships' => array(
-		'de' => 'Raumschiffe',
-		'en' => 'Starships'
-	),
-	'starshipsDescription' => array(
-		'de' => 'Wie wäre es mit einem neuen, glänzenden Raumschiff für den Weltraumpiraten von morgen?',
-		'en' => 'How about a new, shiny starship for the space pirate of tomorrow?'
-	),
-	'newShipNotice' => array(
-		'de' => '* Neue Raumschiffe findest Du in Deiner Werkstatt.',
-		'en' => '* You will find new starships in your garage.'
-	),
 	'airlock' => array(
 		'de' => 'Luftschleuse',
 		'en' => 'Airlock'
@@ -866,10 +874,6 @@ $translations = array(
 	'youArePoor' => array(
 		'de' => 'Du bist arm wie eine Kirchenmaus!',
 		'en' => 'You are as poor as a church mouse!'
-	),
-	'buyStarshipNotice' => array(
-		'de' => 'Du kannst besitzt schon 3 Raumschiffe und solltest erst eines verschrotten, bevor Du ein neues kaufst.',
-		'en' => 'You already own 3 starships, scrap one of them first before buying a new one.'
 	),
 	'attention' => array(
 		'de' => 'Achtung',

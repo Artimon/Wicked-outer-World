@@ -103,4 +103,6 @@ ALTER TABLE  `accounts` ADD  `trainings` BIGINT UNSIGNED NOT NULL DEFAULT  '0' A
 
 ALTER TABLE  `accounts` ADD  `energySetup` TINYINT UNSIGNED NOT NULL DEFAULT  '0' AFTER  `repair` ;
 
-ALTER TABLE  `accounts` ADD  `timeRegistered` INT UNSIGNED NOT NULL DEFAULT  '0';
+ALTER TABLE  `accounts` ADD  `timeRegistered` INT UNSIGNED NOT NULL DEFAULT  '0' ;
+
+ALTER TABLE  `entities` CHANGE  `sectorId`  `techId` INT UNSIGNED NOT NULL DEFAULT  '0' ;

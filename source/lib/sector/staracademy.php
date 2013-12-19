@@ -24,6 +24,19 @@ class Sector_StarAcademy extends Sector_Abstract {
 	}
 
 	/**
+	 * @return int[]
+	 */
+	public function starTravelItems() {
+		return array(
+			SPACE_JUNK_ID	=> 40,
+			WATER_ID		=> 60,	// 20%
+			FOOD_ID			=> 75,	// 15%
+			ENERGY_CELLS_ID	=> 85,	// 10%
+			ELECTRONICS_ID	=> 100	// 15%
+		);
+	}
+
+	/**
 	 * @return int
 	 */
 	public function x() {
@@ -42,5 +55,12 @@ class Sector_StarAcademy extends Sector_Abstract {
 	 */
 	public function unlockPrice() {
 		return 5;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function unlockLevel() {
+		return 6;
 	}
 }

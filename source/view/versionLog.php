@@ -26,6 +26,7 @@
 				<p class="ceil">{{'version-0.1.1-1'|i18n}}</p>
 				<p>{{'version-0.1.1-2'|i18n}}</p>
 				<p>{{'version-0.1.1-3'|i18n}}</p>
+				<p>{{'version-0.1.1-4'|i18n}}</p>
 			</td>
 		</tr>
 		<tr>

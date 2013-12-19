@@ -44,6 +44,26 @@ class EntityLoader extends dataObjectProvider {
 	}
 
 	/**
+	 * @return int
+	 */
+	protected function randomItem() {
+		$sector = Sector_Abstract::getInstance(
+			$this->account()
+		);
+
+		$items = $sector->starTravelItems();
+		$percentage = rand(1, 100);
+
+		foreach ($items as $techId => $chance) {
+			if ($percentage <= $chance) {
+				return $techId;
+			}
+		}
+
+		return 0;
+	}
+
+	/**
 	 * @param int $duration
 	 */
 	public function initSector($duration) {
@@ -62,6 +82,7 @@ class EntityLoader extends dataObjectProvider {
 		$items = array(
 			array(
 				self::TYPE_PLAYER,
+				0,
 				$accountId,
 				$position->x,
 				$position->y,
@@ -75,6 +96,7 @@ class EntityLoader extends dataObjectProvider {
 			$position = $this->randomPosition();
 			$items[] = array(
 				self::TYPE_ITEM,
+				$this->randomItem(),
 				$accountId,
 				$position->x,
 				$position->y,
@@ -89,11 +111,12 @@ class EntityLoader extends dataObjectProvider {
 			$values[] = '(' . implode(',', $item) . ')';
 		}
 		$values = implode(',', $values);
-		// @TODO Create entities depending on sector settings.
+
 		$sql = "
 			INSERT INTO `entities`
 			(
 				`type`,
+				`techId`,
 				`accountId`,
 				`positionX`,
 				`positionY`,
@@ -133,16 +156,17 @@ class EntityLoader extends dataObjectProvider {
 
 	/**
 	 * @param int $type
+	 * @param int $techId
 	 * @param int $accountId
 	 * @return string
 	 */
-	protected function name($type, $accountId) {
+	protected function name($type, $techId, $accountId) {
 		switch ($type) {
 			case self::TYPE_PLAYER:
 				return ObjectPool::getLegacy('account', $accountId)->name();
 
 			case self::TYPE_ITEM:
-				return 'something';
+				return Technology::raw($techId)->name();
 
 			default:
 				return '';
@@ -174,20 +198,40 @@ class EntityLoader extends dataObjectProvider {
 	 * @param int $entityId
 	 */
 	protected function storeItem($entityId) {
-		$items = array();
+		$entityId = (int)$entityId;
 
-		$config = Config::getInstance()->technology();
-		$config = array_keys($config->technology);
-		foreach ($config as $techId) {
-			$item = Technology::raw($techId);
-			if ($item->isIngredient()) {
-				$items[$techId] = true;
-			}
+		$account = $this->account();
+		$accountId = $account->id();
+
+		$sql = "
+			SELECT
+				`techId`
+			FROM
+				`entities`
+			WHERE
+				`id` = :id AND
+				`accountId` = :accountId AND
+				`type` = :type
+			LIMIT 1;";
+
+		$database = new Lisbeth_Database();
+
+		$statement = $database->newStatement();
+		$statement->prepare(
+			array(
+				'id' => $entityId,
+				'accountId' => $accountId,
+				'type' => self::TYPE_ITEM
+			),
+			$sql
+		);
+
+		$techId = $statement->execute()->fetchOne();
+		$database->freeResult();
+
+		if ($techId) {
+			$account->stockage()->appear($techId);
 		}
-
-		$entityId = array_rand($items);
-
-		$this->account()->stockage()->appear($entityId);
 	}
 
 	protected function newItem($entityId) {
@@ -326,6 +370,7 @@ class EntityLoader extends dataObjectProvider {
 		while ($temp = $database->fetch()) {
 			$id			= (int)$temp['id'];
 			$type		= (int)$temp['type'];
+			$techId		= (int)$temp['techId'];
 			$accountId	= (int)$temp['accountId'];
 			$isPlayer	= $this->isPlayer($type, $accountId);
 
@@ -347,7 +392,7 @@ class EntityLoader extends dataObjectProvider {
 			$entities[] = array(
 				'handleObject'	=> $id,
 				'type'			=> $type,
-				'name'			=> $this->name($type, $accountId),
+				'name'			=> $this->name($type, $techId, $accountId),
 				'isPlayer'		=> $isPlayer,
 				'positionX'		=> $entityPos->x,
 				'positionY'		=> $entityPos->y,

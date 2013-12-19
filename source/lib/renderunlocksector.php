@@ -20,9 +20,14 @@ class RenderUnlockSector extends RendererAbstract {
 		}
 
 		$sector = $sectors[$sectorId];
+
 		$unlockPrice = $sector->unlockPrice();
 		$premiumPrice = $account->premiumPrice()->set($unlockPrice);
 		if (!$premiumPrice->canAfford()) {
+			return $this->json($account);
+		}
+
+		if ($sector->unlockLevel() > $account->level()) {
 			return $this->json($account);
 		}
 

@@ -10,7 +10,7 @@ abstract class RenderTradeDeckAbstract extends RendererAbstract {
 		$tabs = array(
 			$controller->section('shop') => "{{'shop'|i18n}}",
 			$controller->section('grocer') => i18n('grocer'),
-			$controller->section('starships') => i18n('starships'),
+			$controller->section('starships') => "{{'starships'|i18n}}",
 			$controller->section('airlock') => i18n('airlock')
 		);
 

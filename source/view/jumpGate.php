@@ -60,11 +60,17 @@ $setup = implode(',', $setup);
 		<div class="box" ng-hide="sector.isAvailable">
 			<h3 class="header">{{'openGate'|i18n}}</h3>
 			<div class="content">
+				<p class="ceil bold"
+					ng-class="{ critical: !sector.hasLevelRequirement, variable: sector.hasLevelRequirement}">
+					{{'neededLevel'|i18n:sector.unlockLevel}}
+				</p>
 				<p ng-class="{ critical: !sector.canAfford, bold: !sector.canAfford }">
 					{{'openGateInfo'|i18n:sector.unlockPrice}}
 				</p>
 				<div class="right" ng-show="sector.canAfford">
-					<button class="button" ng-click="unlockSector(sector)">
+					<button class="button"
+						ng-click="unlockSector(sector)"
+						ng-class="{ disabled: !sector.canAfford || !sector.hasLevelRequirement }">
 						{{'doIt'|i18n}}
 					</button>
 				</div>

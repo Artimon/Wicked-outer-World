@@ -19,12 +19,22 @@ class RenderTechInfo extends RendererAbstract {
 	 * @return string
 	 */
 	public function bodyHtml() {
-		$neededLevel = i18n('neededLevel', $this->item->level());
+		$level = $this->item->level();
+		$neededLevel = $level > 0
+			? i18n('neededLevel', $level)
+			: i18n('noLevelRequirement');
+
+		$class = ' variable';
+		$account = Game::getInstance()->account();
+		if ($account && $level > $account->level()) {
+			$class = ' critical';
+		}
+
 
 		return "
 <h2>{$this->item->name()}</h2>
 <div>
-	<p class='critical bold'>{$neededLevel}</p>
+	<p class='bold{$class}'>{$neededLevel}</p>
 	<p>{$this->item->description()}</p>
 	{$this->techData()}
 </div>";

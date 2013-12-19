@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pascal
- * Date: 10.12.13
- * Time: 12:36
- */
 
 class Sector_Earth extends Sector_Abstract {
 	const KEY = 0;
@@ -22,13 +16,26 @@ class Sector_Earth extends Sector_Abstract {
 	protected function addModules(Starbase $starbase) {
 		$starbase
 			->addModule(new Starbase_Module_Quarters())
-			->addModule(new Starbase_Module_Academy(10))
+			->addModule(new Starbase_Module_Academy(5))
 			->addModule(new Starbase_Module_JumpGate())
 			->addModule(new Starbase_Module_Bank())
 			->addModule(new Starbase_Module_TradeDeck(6))
-			->addModule(new Starbase_Module_Factory(7))
+			->addModule(new Starbase_Module_Factory()) // 7
 			->addModule(new Starbase_Module_Hangar())
 			->addModule(new Starbase_Module_Skirmish());
+	}
+
+	/**
+	 * @return int[]
+	 */
+	public function starTravelItems() {
+		return array(
+			SPACE_JUNK_ID	=> 55,
+			ENERGY_CELLS_ID	=> 70,	// 15%
+			ELECTRONICS_ID	=> 85,	// 20%
+			FOOD_ID			=> 95,	// 10%
+			WATCH_ID		=> 100	// 5%
+		);
 	}
 
 	/**
@@ -49,6 +56,13 @@ class Sector_Earth extends Sector_Abstract {
 	 * @return int
 	 */
 	public function unlockPrice() {
+		return 0;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function unlockLevel() {
 		return 0;
 	}
 }

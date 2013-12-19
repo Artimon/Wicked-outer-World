@@ -132,7 +132,9 @@ class RenderHangarDesigner extends RenderHangarAbstract {
 	ng-init='setup({$data})'
 	ng-show='starships.length > 1'>
 	<li ng-repeat='starship in starships'>
-		<p class='variable'>{{starshipName(starship)|i18n}}</p>
+		<p class='variable' ng-class='{ bold: starship.current }'>
+			{{starshipName(starship)|i18n}}
+		</p>
 
 		<a ng-href='{{starship.urlSelect}}' class='button merge first'
 			ng-class='{ disabled: !starship.id || starship.current }'>
